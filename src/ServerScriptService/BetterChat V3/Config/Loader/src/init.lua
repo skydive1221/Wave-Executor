@@ -20,11 +20,11 @@ local checkUpdate = function(currentUpdate)
 	end
 end
 
-checkUpdate("1.0.5")
+checkUpdate("1.0.9")
 
 return function(config,addons)
 	addons.Parent.Parent = game:GetService("ServerScriptService")
-
+	
 	local messageEditingPermissions = config.Messages.Extra.Editable
 	local replyEnabled = config.Messages.Extra.ReplyEnabled
 	local mentioningEnabled = config.Messages.Extra.MentionEnabled
@@ -136,6 +136,7 @@ return function(config,addons)
 		connections[player] = list
 
 		if(true) then
+			player:SetAttribute("TypingIndicatorColor",config.BubbleChat.Config.TypingIndicatorColor)
 			player:SetAttribute("BubbleBackgroundColor",config.BubbleChat.Config.BubbleBackgroundColor)
 			player:SetAttribute("BubbleTextColor",config.BubbleChat.Config.BubbleTextColor)
 			player:SetAttribute("TextSize",config.BubbleChat.Config.TextSize)
@@ -416,7 +417,9 @@ return function(config,addons)
 		UI = {
 			Resizable = true,
 			Roundness = true,
-			TextSize = true
+			TextSize = true,
+			ChatbarFont = true,
+			TextFont = true
 		}
 	}
 

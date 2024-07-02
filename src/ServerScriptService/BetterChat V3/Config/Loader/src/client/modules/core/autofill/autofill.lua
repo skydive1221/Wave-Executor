@@ -3,15 +3,16 @@
 -- Description: Autofilling scripting-end system
 
 local userInput = game:GetService("UserInputService")
+local collectionService = game:GetService("CollectionService")
 
-local new = function()
+local new = function(options,font)
 	local object = Instance.new("TextButton")
 	object.Name = "Object"
 	object.Text = ""
 	object.TextTransparency = 0.75
 	object.AutoButtonColor = false
 	object.Active = false
-	object.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	object.BackgroundColor3 = options.BackgroundColor
 	object.BackgroundTransparency = 1
 	object.Selectable = false
 	object.Size = UDim2.new(1, -10, 0, 20)
@@ -22,8 +23,8 @@ local new = function()
 
 	local label = Instance.new("TextLabel")
 	label.Name = "Label"
-	label.Font = Enum.Font.GothamMedium
-	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label.Font = font
+	label.TextColor3 = options.TextColor
 	label.TextSize = 14
 	label.TextWrapped = true
 	label.TextXAlignment = Enum.TextXAlignment.Left
@@ -33,11 +34,15 @@ local new = function()
 	label.Position = UDim2.fromScale(0.5, 0)
 	label.Size = UDim2.new(1, -15, 0, 20)
 	label.Parent = object
+	collectionService:AddTag(label,"ChatbarFont")
 	
 	return object
 end
 
 return function(environment,chatbox)
+	local colorOptions = environment.config.UI.ColorOptions
+	local font = environment.config.UI.Fonts.TextFont
+
 	environment.utility.childAdded(environment.addons:WaitForChild("Autofills"),function(child)
 		child.Parent = script.Parent:WaitForChild("autofills")
 	end)
@@ -60,7 +65,7 @@ return function(environment,chatbox)
 	end
 
 	local new_button = function(text,order)
-		local template = new()
+		local template = new(colorOptions.Buttons.AutofillButton,font)
 		template.LayoutOrder = order
 		template.Label.Text = text
 		return template

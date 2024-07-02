@@ -33,42 +33,102 @@ return function(environment)
 	local currentlyFocused
 	local zone
 	local currentStateForMouse = nil
-
+	
+	local default = function() end
+	
+	local tweenPropertiesInternal = function(properties,gui,easingDirection,easingStyle,length,override,callback)
+		utility:tween(
+			gui,
+			length or 1,
+			properties,
+			easingDirection or Enum.EasingDirection.Out,
+			easingStyle or Enum.EasingStyle.Linear
+		).Completed:Once(callback or default)
+	end
+	
+	environment.tweenSize = function(gui,endSize,...)
+		tweenPropertiesInternal({
+			["Size"] = endSize
+		},gui,...)
+	end
+	
+	environment.tweenPosition = function(gui,endPosition,...)
+		tweenPropertiesInternal({
+			["Position"] = endPosition
+		},gui,...)
+	end
+	
+	environment.tweenSizeAndPosition = function(gui,endSize,endPosition,...)
+		tweenPropertiesInternal({
+			["Size"] = endSize,
+			["Position"] = endPosition
+		},gui,...)
+	end
+	
 	-------- Fade: --------
-
+	
+	local FadeOptions = environment.config.UI.FadeOptions or {
+		Window = {
+			HoveringTransparency = 0.75, --> Transparency of main window when hovering
+			NotHoveringTransparency = 1 --> When not hovering
+		},
+		Chatbar = { --> Transparency of chatbar, resize button, channel button
+			HoveringTransparency = 0,
+			NotHoveringTransparency = 1,
+			TextColor = { --> Chatbar text color when hovering
+				Regular = {
+					Hovering = Color3.fromRGB(100,100,100),
+					NotHovering = Color3.fromRGB(255,255,255)
+				},
+				Placeholder = {
+					Hovering = Color3.fromRGB(80,80,80),
+					NotHovering = Color3.fromRGB(200,200,200)
+				}
+			}
+		}
+	}
+	
+	local hoveringTransparency = FadeOptions.Window.HoveringTransparency
+	local notHoveringTransparency = FadeOptions.Window.NotHoveringTransparency
+	local chatbarHovering = FadeOptions.Chatbar.HoveringTransparency
+	local chatbarNotHovering = FadeOptions.Chatbar.NotHoveringTransparency
+	
+	local o1 = FadeOptions.Chatbar.TextColor.Regular
+	local o2 = FadeOptions.Chatbar.TextColor.Placeholder
+			
 	local fadeState = function(length,state)
 		utility:tween({
 			mainUi.window,length,{
-				["BackgroundTransparency"] = state and 3/4 or 1
+				["BackgroundTransparency"] = state and hoveringTransparency or notHoveringTransparency
 			}
 		},{
 			mainUi.bar,length,{
-				["BackgroundTransparency"] = separate and (state and 3/4 or 1) or 1
+				["BackgroundTransparency"] = separate and (state and hoveringTransparency or notHoveringTransparency) or notHoveringTransparency
 			}
 		},{
 			mainUi.box.Parent,length,{
-				["BackgroundTransparency"] = state and 0 or 1
+				["BackgroundTransparency"] = state and chatbarHovering or chatbarNotHovering
 			}
 		},{
 			mainUi.box,length,{
-				["TextColor3"] = state and Color3.fromRGB(100,100,100) or Color3.fromRGB(255,255,255),
-				["PlaceholderColor3"] = state and Color3.fromRGB(80,80,80) or Color3.fromRGB(200,200,200)
+				["TextColor3"] = state and o1.Hovering or o1.NotHovering,
+				["PlaceholderColor3"] = state and o2.Hovering or o2.NotHovering,
 			}
 		},{
 			environment.resizeButton,length,{
-				["BackgroundTransparency"] = state and 0 or 1
+				["BackgroundTransparency"] = state and chatbarHovering or chatbarNotHovering
 			}
 		},{
 			environment.resizeButton.Icon,length,{
-				["ImageTransparency"] = state and 0 or 1
+				["ImageTransparency"] = state and chatbarHovering or chatbarNotHovering
 			}
 		},{
 			mainUi.channelBar.Main.Container,length,{
-				["BackgroundTransparency"] = (state and 3/4 or 1)
+				["BackgroundTransparency"] = (state and hoveringTransparency or notHoveringTransparency)
 			}
 		},{
 			mainUi.channelButton,length,{
-				["BackgroundTransparency"] = (state and 0 or 1)
+				["BackgroundTransparency"] = (state and chatbarHovering or chatbarNotHovering)
 			}
 		},{
 			mainUi.scroller.Parent,length,{
@@ -77,7 +137,7 @@ return function(environment)
 			}
 		},{
 			mainUi.autofillContainer,length,{
-				["BackgroundTransparency"] = (state and 3/4 or 1)
+				["BackgroundTransparency"] = (state and hoveringTransparency or 1)
 			}
 		})
 		currentState = state
@@ -191,7 +251,26 @@ return function(environment)
 				mainUi.channelBar.Visible = resizeButton.Visible
 			end)
 		end
+		
+		-- colors:
+		
+		local colorOptions = environment.config.UI.ColorOptions
+		
+		local windowColor = colorOptions.Window.BackgroundColor
+		local chatbarColor = colorOptions.ChatbarColor
+		local buttonBgColor = colorOptions.Buttons.ResizeButton.BackgroundColor
+		local buttonFillColor = colorOptions.Buttons.ResizeButton.IconColor
 
+		mainUi.box.Parent.BackgroundColor3 = chatbarColor
+		
+		resizeButton.BackgroundColor3 = buttonBgColor
+		resizeButton.Icon.ImageColor3 = buttonFillColor
+		
+		mainUi.window.BackgroundColor3 = windowColor
+		mainUi.bar.BackgroundColor3 = windowColor
+		mainUi.autofillContainer.BackgroundColor3 = windowColor
+		mainUi.channelBar.Main.Container.BackgroundColor3 = windowColor
+		
 		-------- Mouse event custom: --------
 
 		local mouseIn = false
@@ -281,33 +360,33 @@ return function(environment)
 					scroller.Size = UDim2.fromOffset(scroller.AbsoluteSize.X,scroller.AbsoluteSize.Y)
 					-- since each button is in a different corner they all need to be calculated differently :cry:
 					if(corner == "TopLeft") then
-						ui:TweenSize(UDim2.fromOffset(
+						environment.tweenSize(ui,UDim2.fromOffset(
 							math.clamp(input.Position.X,minX,maxX),
 							math.clamp(input.Position.Y + (separate and 0 or getChatbarSize()),minY,maxY)
-							),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
+						),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
 					elseif(corner == "BottomRight") then
 						local viewportSize = workspace.CurrentCamera.ViewportSize
 						local xAxis = (viewportSize.X - input.Position.X) + resizeButton.AbsoluteSize.X/2
 						local yAxis = (viewportSize.Y - input.Position.Y) - resizeButton.AbsoluteSize.Y
-						ui:TweenSize(UDim2.fromOffset(
+						environment.tweenSize(ui,UDim2.fromOffset(
 							math.clamp(xAxis,minX,maxX),
 							math.clamp(yAxis,minY,maxY)
-							),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
+						),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
 					elseif(corner == "TopRight") then
 						local viewportSize = workspace.CurrentCamera.ViewportSize
 						local xAxis = (viewportSize.X - input.Position.X)
 						local yAxis = (input.Position.Y + resizeButton.AbsoluteSize.Y/2) 
-						ui:TweenSize(UDim2.fromOffset(
+						environment.tweenSize(ui,UDim2.fromOffset(
 							math.clamp(xAxis,minX,maxX),
 							math.clamp(yAxis,minY,maxY)
-							),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
+						),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
 					elseif(corner == "BottomLeft") then
 						local viewportSize = workspace.CurrentCamera.ViewportSize
 						local yAxis = (viewportSize.Y - input.Position.Y) - resizeButton.AbsoluteSize.Y
-						ui:TweenSize(UDim2.fromOffset(
+						environment.tweenSize(ui,UDim2.fromOffset(
 							math.clamp(input.Position.X + 8,minX,maxX),
 							math.clamp(yAxis,minY,maxY)
-							),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
+						),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
 					end
 					heartbeat:Wait()
 					environment.textChanged()
@@ -335,21 +414,23 @@ return function(environment)
 
 			if(channelBar.Visible) then
 				channelBar.Size = UDim2.new(1,0,0,0)
-				channelBar:TweenSize(UDim2.new(1,0,0,size),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.16,true)
-				mainUi.window.Parent:TweenSizeAndPosition(
+				environment.tweenSize(channelBar,UDim2.new(1,0,0,size),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.16,true)
+				environment.tweenSizeAndPosition(
+					mainUi.window.Parent,
 					UDim2.new(1,0,1,(-size - (size + padding))),
 					UDim2.new(0,0,0,size + padding),
 					Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.16,true
 				)
 			else
-				mainUi.window.Parent:TweenSizeAndPosition(
+				environment.tweenSizeAndPosition(
+					mainUi.window.Parent,
 					UDim2.new(1,0,1,(-size)),
 					UDim2.new(0,0,0,0),
 					Enum.EasingDirection.In,Enum.EasingStyle.Quad,0.16,true
 				)
 			end
 		end
-
+		
 		mainUi.chatWindow.Changed:Connect(function()
 			if(environment.chatWindowVisible) then
 				if(separate) then

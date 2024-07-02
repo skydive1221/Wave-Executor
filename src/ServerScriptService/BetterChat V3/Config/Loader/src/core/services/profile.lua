@@ -2424,80 +2424,142 @@ update_settings = {
 end
 
 return function(config,cb)
-	local constructors
-	local profiles,pending,initialized = {raw = {}},{},false
-	local profileService = module()
-	local players = game:GetService("Players")
-
-	local handleRelease = function(player)
-		player:Kick("[Data could not be loaded]")
-	end
-
-	function profiles:get(player)
-		if(initialized) then
-			if(not profiles.raw[player]) then
-				local event = Instance.new("BindableEvent")
-				task.delay(0,function()
-					local running = coroutine.running()
-					pending[player] = pending[player] or {}
-					table.insert(pending[player],running)
-					coroutine.yield()
-					event:Fire()
-				end)
-				event.Event:Wait()
-				event:Destroy()
+	if config.User.SaveData.Advanced.HandleOwnData then
+		local profiles = {
+			raw = {}
+		}
+		
+		local players = game:GetService("Players")
+		local registered,registered2;
+		local default = function() end
+		
+		local getProfile = function(plr)
+			local attempts = 0
+			if not registered then
+				if(attempts > 10) then 
+					attempts = -9999999999
+					warn("[Handling own data, please call api:registerGetProfileFunction(<function>)")
+				end
+				attempts += 1
+				repeat
+					task.wait()
+				until registered
 			end
-			local current = profiles.raw[player]
-			return (current and true or false),(current and current["Data"] or nil)
-		else
-			return true,{}
+			local success,response = pcall(function()
+				return registered(plr)
+			end)
+			if success and response then
+				return true,response
+			else
+				warn("[failed to load profile for",plr,"?]")
+				return false,nil
+			end
 		end
-	end
+		
+		local unload = function(plr)
+			(registered2 or default)(plr)
+		end
 
-	function profiles.new(name)
-		initialized = true
-		local profileStore = profileService.GetProfileStore(name,{})
-		local playerAdded = function(player)
-			local profile = profileStore:LoadProfileAsync("pl-"..tostring(player.UserId))
-			if(profile ~= nil) then
-				profile:AddUserId(player.UserId)
-				profile:Reconcile()
-				profile:ListenToRelease(function()
-					profiles.raw[player] = nil
-					handleRelease(player)
-				end)
-				if(player:GetFullName() ~= player.Name) then
-					profiles.raw[player] = profile
-					constructors = constructors or cb()
-					for _,group in pairs(profile.Data.groups or {}) do
-						constructors.group.createChannelObject(group.name,group.id)
+		function profiles:get(player)
+			return getProfile(player)
+		end
+		
+		function profiles.new()
+			local playerAdded = function(plr)
+				profiles.raw[plr] = ({getProfile(plr)})[2]
+			end
+			local disconnect = function(plr)
+				unload(plr)
+				profiles.raw[plr] = nil
+			end
+			players.PlayerRemoving:Connect(disconnect)
+			players.PlayerAdded:Connect(playerAdded)
+			for _,player in pairs(players:GetPlayers()) do
+				task.spawn(playerAdded,player)
+			end
+		end
+		
+		function profiles:register(callback)
+			registered = callback
+		end
+		
+		function profiles:register2(callback)
+			registered2 = callback
+		end
+		
+		return profiles
+	else
+		local constructors
+		local profiles,pending,initialized = {raw = {}},{},false
+		local profileService = module()
+		local players = game:GetService("Players")
+
+		local handleRelease = function(player)
+			player:Kick("[Data could not be loaded]")
+		end
+
+		function profiles:get(player)
+			if(initialized) then
+				if(not profiles.raw[player]) then
+					local event = Instance.new("BindableEvent")
+					task.delay(0,function()
+						local running = coroutine.running()
+						pending[player] = pending[player] or {}
+						table.insert(pending[player],running)
+						coroutine.yield()
+						event:Fire()
+					end)
+					event.Event:Wait()
+					event:Destroy()
+				end
+				local current = profiles.raw[player]
+				return (current and true or false),(current and current["Data"] or nil)
+			else
+				return true,{}
+			end
+		end
+
+		function profiles.new(name)
+			initialized = true
+			local profileStore = profileService.GetProfileStore(name,{})
+			local playerAdded = function(player)
+				local profile = profileStore:LoadProfileAsync("pl-"..tostring(player.UserId))
+				if(profile ~= nil) then
+					profile:AddUserId(player.UserId)
+					profile:Reconcile()
+					profile:ListenToRelease(function()
+						profiles.raw[player] = nil
+						handleRelease(player)
+					end)
+					if(player:GetFullName() ~= player.Name) then
+						profiles.raw[player] = profile
+					else
+						profile:Release()
 					end
 				else
-					profile:Release()
+					handleRelease(player)
 				end
-			else
-				handleRelease(player)
+				if(pending[player]) then
+					for _,thread in pairs(pending[player]) do
+						coroutine.resume(thread)
+					end
+					pending[player] = nil
+				end
 			end
-			if(pending[player]) then
-				for _,thread in pairs(pending[player]) do
-					coroutine.resume(thread)
+
+			local disconnectProfile = function(player)
+				if(profiles.raw[player] ~= nil) then
+					profiles.raw[player]:Release()
 				end
-				pending[player] = nil
+			end
+
+			players.PlayerRemoving:Connect(disconnectProfile)
+			players.PlayerAdded:Connect(playerAdded)
+			for _,player in pairs(players:GetPlayers()) do
+				task.spawn(playerAdded,player)
 			end
 		end
 
-		local disconnectProfile = function(player)
-			if(profiles.raw[player] ~= nil) then
-				profiles.raw[player]:Release()
-			end
-		end
-
-		players.PlayerRemoving:Connect(disconnectProfile)
-		players.PlayerAdded:Connect(playerAdded)
-		for _,player in pairs(players:GetPlayers()) do
-			task.spawn(playerAdded,player)
-		end
+		return profiles
 	end
-
-	return profiles
 end

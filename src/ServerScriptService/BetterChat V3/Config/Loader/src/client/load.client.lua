@@ -76,7 +76,32 @@ if(currentPlatform ~= "Console") then
 			addons = addons,
 			signal = signal
 		}
-
+		
+		environment.config.UI.ColorOptions = environment.config.UI.ColorOptions or {
+			ChatbarColor = Color3.fromRGB(255,255,255),
+			Buttons = {
+				ResizeButton = { --> UI resize button
+					BackgroundColor = Color3.fromRGB(52,52,52),
+					IconColor = Color3.fromRGB(255,255,255)
+				},
+				ChannelButton = { --> Channel bar channel buttons: (also autofill too lol)
+					BackgroundColor = Color3.fromRGB(0,0,0),
+					TextColor = Color3.fromRGB(255,255,255)
+				},
+				AutofillButton = { --> Autofill buttons
+					BackgroundColor = Color3.fromRGB(30,30,30),
+					TextColor = Color3.fromRGB(255,255,255)
+				},
+				ReplyAndChannel = { --> On the chatbar, when whispering or replying this icon shows up
+					BackgroundColor = Color3.fromRGB(253,80,111), --> 253,80,111
+					TextAndIconColor = Color3.fromRGB(255,255,255)
+				}
+			},
+			Window = {
+				BackgroundColor = Color3.fromRGB(0,0,0),
+			}
+		}
+		
 		-- channel bar:
 		
 		function environment:getTextSize()
@@ -154,12 +179,12 @@ if(currentPlatform ~= "Console") then
 			container.Slot:Destroy()
 
 			local close = function()
-				saveChat:TweenPosition(UDim2.fromScale(0.5,-1.5),Enum.EasingDirection.In,Enum.EasingStyle.Linear,0.25,true)
+				environment.tweenPosition(saveChat,UDim2.fromScale(0.5,-1.5),Enum.EasingDirection.In,Enum.EasingStyle.Linear,0.25,true)
 			end
 
 			function environment:openSaveChat(message)
 				saveChat.Position = UDim2.fromScale(0.5,-1.5)
-				saveChat:TweenPosition(UDim2.fromScale(0.5,0.5),Enum.EasingDirection.In,Enum.EasingStyle.Linear,0.25,true)
+				environment.tweenPosition(saveChat,UDim2.fromScale(0.5,0.5),Enum.EasingDirection.In,Enum.EasingStyle.Linear,0.25,true)
 
 				for _,child in pairs(container:GetChildren()) do
 					if(child:IsA("TextButton")) then
@@ -608,7 +633,7 @@ if(currentPlatform ~= "Console") then
 		
 		-- plugins
 		
-		local api = require(core:WaitForChild("api"))(environment,wrap)
+		local api = require(core:WaitForChild("api"))(environment,wrap,connections)
 		environment.utility.childAdded(addons:FindFirstChild("Plugins") or Instance.new("Folder"),function(module)
 			require(module)(api)
 		end)

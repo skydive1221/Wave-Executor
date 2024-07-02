@@ -1,8 +1,9 @@
 -- Author: @Jumpathy
 -- Name: reply.lua
 -- Description: Reply constructor
+local collectionService = game:GetService("CollectionService")
 
-local bottom = function()
+local bottom = function(environment)
 	local bottom = Instance.new("Frame")
 	bottom.Name = "Bottom"
 	bottom.AutomaticSize = Enum.AutomaticSize.Y
@@ -22,7 +23,7 @@ local bottom = function()
 
 	local reply = Instance.new("TextLabel")
 	reply.Name = "Reply"
-	reply.Font = Enum.Font.GothamMedium
+	reply.Font = environment.config.UI.Fonts.TextFont
 	reply.RichText = true
 	reply.Text = ""
 	reply.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -38,10 +39,11 @@ local bottom = function()
 	reply.Position = UDim2.fromScale(1, 0)
 	reply.Size = UDim2.new(1, 0, 0, 16)
 	reply.ZIndex = 2
-
+	collectionService:AddTag(reply,"TextFont")
+	
 	local user = Instance.new("TextButton")
 	user.Name = "User"
-	user.Font = Enum.Font.GothamMedium
+	user.Font = environment.config.UI.Fonts.TextFont
 	user.RichText = true
 	user.TextColor3 = Color3.fromRGB(0, 0, 0)
 	user.TextSize = 15
@@ -52,6 +54,7 @@ local bottom = function()
 	user.BackgroundTransparency = 1
 	user.Size = UDim2.fromOffset(0, 16)
 	user.Parent = reply
+	collectionService:AddTag(user,"TextFont")
 
 	local mentioned = Instance.new("Frame")
 	mentioned.Name = "Mentioned"
@@ -85,7 +88,7 @@ local bottom = function()
 	local edit = Instance.new("TextBox")
 	edit.Name = "Edit"
 	edit.ClearTextOnFocus = false
-	edit.Font = Enum.Font.GothamMedium
+	edit.Font = environment.config.UI.Fonts.TextFont
 	edit.Text = ""
 	edit.TextColor3 = Color3.fromRGB(255, 255, 255)
 	edit.TextSize = 13
@@ -104,6 +107,7 @@ local bottom = function()
 	edit.Size = UDim2.new(1, 0, 0, 16)
 	edit.ZIndex = 2
 	edit.Parent = replyArea
+	collectionService:AddTag(edit,"TextFont")
 
 	replyArea.Parent = bottom
 
@@ -158,7 +162,7 @@ local bottom = function()
 	return bottom
 end
 
-local middle = function()
+local middle = function(environment)
 	local middle = Instance.new("Frame")
 	middle.Name = "Middle"
 	middle.AutomaticSize = Enum.AutomaticSize.Y
@@ -187,7 +191,7 @@ local middle = function()
 
 	local reply = Instance.new("TextLabel")
 	reply.Name = "Reply"
-	reply.Font = Enum.Font.GothamMedium
+	reply.Font = environment.config.UI.Fonts.TextFont
 	reply.RichText = true
 	reply.Text = ""
 	reply.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -202,10 +206,11 @@ local middle = function()
 	reply.Position = UDim2.fromScale(1, 0)
 	reply.Size = UDim2.new(1, 0, 0, 16)
 	reply.ZIndex = 2
-
+	collectionService:AddTag(reply,"TextFont")
+	
 	local user = Instance.new("TextButton")
 	user.Name = "User"
-	user.Font = Enum.Font.GothamMedium
+	user.Font = environment.config.UI.Fonts.TextFont
 	user.RichText = true
 	user.TextColor3 = Color3.fromRGB(0, 0, 0)
 	user.TextSize = 15
@@ -216,6 +221,7 @@ local middle = function()
 	user.BackgroundTransparency = 1
 	user.Size = UDim2.fromOffset(0, 16)
 	user.Parent = reply
+	collectionService:AddTag(user,"TextFont")
 
 	local mentioned = Instance.new("Frame")
 	mentioned.Name = "Mentioned"
@@ -250,7 +256,7 @@ local middle = function()
 	local edit = Instance.new("TextBox")
 	edit.Name = "Edit"
 	edit.ClearTextOnFocus = false
-	edit.Font = Enum.Font.GothamMedium
+	edit.Font = environment.config.UI.Fonts.TextFont
 	edit.Text = ""
 	edit.TextColor3 = Color3.fromRGB(255, 255, 255)
 	edit.TextSize = 13
@@ -268,12 +274,14 @@ local middle = function()
 	edit.Size = UDim2.new(1, 0, 0, 16)
 	edit.ZIndex = 2
 	edit.Parent = replyArea
+	
+	collectionService:AddTag(edit,"TextFont")
 
 	replyArea.Parent = middle
 	return middle
 end
 
-local new = function()
+local new = function(environment)
 	local replyMessage = Instance.new("Frame")
 	replyMessage.Name = "ReplyMessage"
 	replyMessage.AutomaticSize = Enum.AutomaticSize.Y
@@ -283,7 +291,7 @@ local new = function()
 
 	local original = Instance.new("TextLabel")
 	original.Name = "Original"
-	original.Font = Enum.Font.GothamMedium
+	original.Font = environment.config.UI.Fonts.TextFont
 	original.RichText = true
 	original.Text = "Bob: Hello world"
 	original.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -298,10 +306,11 @@ local new = function()
 	original.Position = UDim2.fromScale(1, 0)
 	original.Size = UDim2.new(1, 0, 0, 16)
 	original.ZIndex = 2
+	collectionService:AddTag(original,"TextFont")
 
 	local user = Instance.new("TextButton")
 	user.Name = "User"
-	user.Font = Enum.Font.GothamMedium
+	user.Font = environment.config.UI.Fonts.TextFont
 	user.RichText = true
 	user.TextColor3 = Color3.fromRGB(0, 0, 0)
 	user.TextSize = 12
@@ -312,6 +321,7 @@ local new = function()
 	user.BackgroundTransparency = 1
 	user.Size = UDim2.fromOffset(0, 16)
 	user.Parent = original
+	collectionService:AddTag(user,"TextFont")
 
 	local uIPadding = Instance.new("UIPadding")
 	uIPadding.Name = "UIPadding"
@@ -331,7 +341,7 @@ local new = function()
 	local edit = Instance.new("TextBox")
 	edit.Name = "Edit"
 	edit.ClearTextOnFocus = false
-	edit.Font = Enum.Font.GothamMedium
+	edit.Font = environment.config.UI.Fonts.TextFont
 	edit.Text = ""
 	edit.TextColor3 = Color3.fromRGB(255, 255, 255)
 	edit.TextSize = 15
@@ -347,6 +357,7 @@ local new = function()
 	edit.Size = UDim2.new(1, 0, 0, 16)
 	edit.Visible = false
 	edit.Parent = replyMessage
+	collectionService:AddTag(edit,"TextFont")
 
 	local replyChain = Instance.new("Frame")
 	replyChain.Name = "ReplyChain"
@@ -365,10 +376,10 @@ local new = function()
 	return replyMessage
 end
 
-return {new = function()
-	return new()
-end,Bottom = function()
-	return bottom()
-end,Middle = function()
-	return middle()
+return {new = function(environment)
+	return new(environment)
+end,Bottom = function(environment)
+	return bottom(environment)
+end,Middle = function(environment)
+	return middle(environment)
 end,}

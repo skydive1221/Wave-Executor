@@ -3,22 +3,24 @@
 -- Description: Set up the main channel bar
 
 local players = game:GetService("Players")
+local collectionService = game:GetService("CollectionService")
 local localPlayer = players.LocalPlayer
 
-local new = function()
+local new = function(buttonColor,textColor,font)
 	local button = Instance.new("TextButton")
 	button.Name = "Button"
-	button.Font = Enum.Font.GothamMedium
+	button.Font = font
 	button.Text = "Main"
-	button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	button.TextColor3 = textColor
 	button.TextSize = 14
 	button.AutomaticSize = Enum.AutomaticSize.X
-	button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	button.BackgroundColor3 = buttonColor
 	button.BackgroundTransparency = 0.5
 	button.BorderColor3 = Color3.fromRGB(27, 42, 53)
 	button.BorderSizePixel = 0
 	button.Size = UDim2.fromOffset(0, 25)
 	button.ZIndex = 2
+	collectionService:AddTag(button,"TextFont")
 
 	local uIPadding = Instance.new("UIPadding")
 	uIPadding.Name = "UIPadding"
@@ -62,6 +64,10 @@ return function(environment)
 	local teamPrefix = environment.localization:getMessagePrefix("Team")
 	local whisperPrefix = environment.localization:getMessagePrefix("To")
 	local ui = environment.channelBarUi
+	
+	local colorOptions = environment.config.UI.ColorOptions
+	local buttonColor = colorOptions.Buttons.ChannelButton.BackgroundColor
+	local textColor = colorOptions.Buttons.ChannelButton.TextColor
 
 	local getById = function(id)
 		for _,plr in pairs(players:GetPlayers()) do
@@ -110,7 +116,7 @@ return function(environment)
 	end
 
 	local getButton = function(text)
-		local button = new()
+		local button = new(buttonColor,textColor,environment.config.UI.Fonts.TextFont)
 		button.Text = text
 		return button
 	end

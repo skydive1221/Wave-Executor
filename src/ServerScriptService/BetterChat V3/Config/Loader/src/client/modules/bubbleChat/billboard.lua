@@ -7,6 +7,14 @@
 
 local billboard = {}
 local useRaycastingToDetermineVisibility = true
+local connections = {}
+
+local onDescendant = function(object,callback)
+	for _,descendant in pairs(object:GetDescendants()) do
+		task.spawn(callback,descendant)
+	end
+	return object.DescendantAdded:Connect(callback)
+end
 
 function billboard.init(config,network,environment)
 	local ui = require(script.Parent:WaitForChild("ui")).init(config)
@@ -57,34 +65,95 @@ function billboard.init(config,network,environment)
 				end
 			end))
 		end
+
 		local onCharacter = function(character)
 			gui = ui.billboard.new(tostring(player.UserId),player)
 			gui.Parent = containerGui
 			gui.Adornee = character:WaitForChild("Head")
 			gui.StudsOffset = Vector3.new(0,isLocalPlayer and 3.5 or 4,isLocalPlayer and 2 or 0.1)
+
 			typingIndicator = ui.typingIndicator.new(gui.Container)
 			typingIndicator.Visible = false
 			stack = stackModule.new(gui)
 			linked[character] = gui
+
 			if(useRaycastingToDetermineVisibility) then
 				linkAlwaysOnTop(gui,gui.Adornee)
 			end
+
+			local objs = {}
+
+			local newColor = function(obj,propertyName)
+				local bgColor = player:GetAttribute("BubbleBackgroundColor")
+				local indicatorColor = player:GetAttribute("TypingIndicatorColor")
+				local textColor = player:GetAttribute("BubbleTextColor")
+
+				if(obj and obj:GetFullName() ~= obj.Name) then
+					if obj:GetAttribute("TypingIndicator") then
+						obj[propertyName] = indicatorColor
+					else
+						local success,hasText = pcall(function()
+							return obj.Text
+						end)
+						if success then
+							obj["TextColor3"] = textColor
+						else
+							obj[propertyName] = bgColor
+						end
+					end
+				else 
+					objs[obj] = nil
+				end
+			end
+
+			connections[character] = connections[character] or {}
+
+			table.insert(connections[character],onDescendant(gui,function(object)
+				pcall(function()
+					if object.BackgroundColor3 then
+						objs[object] = "BackgroundColor3"
+						if object.ImageColor3 then
+							objs[object] = "ImageColor3"
+						end
+					end
+				end)
+				if objs[object] then
+					newColor(object,objs[object])
+				end
+			end))
+
+			local update = function()
+				for obj,property in pairs(objs) do
+					newColor(obj,property)
+				end
+			end
+
+			table.insert(connections[character],player:GetAttributeChangedSignal("BubbleBackgroundColor"):Connect(update))
+			table.insert(connections[character],player:GetAttributeChangedSignal("TypingIndicatorColor"):Connect(update))
+			table.insert(connections[character],player:GetAttributeChangedSignal("BubbleTextColor"):Connect(update))
 		end
+
 		local onRemoving = function(character)
 			if(linked[character]) then
 				linked[character]:Destroy()
 				linked[character] = nil
 				stack:Destroy()
 				lastState = nil
+				if connections[character] then
+					for _,connection in pairs(connections[character]) do
+						connection:Disconnect()
+					end
+					connections[character] = nil
+				end
 			end
 		end
-		
+
 		link(player.CharacterAdded:Connect(onCharacter))
 		link(player.CharacterRemoving:Connect(onRemoving))
 		if(player.Character) then
 			task.spawn(onCharacter,player.Character)
 		end
-		
+
 		if(config.Config.TypingIndicator) then
 			link(network.onClientEvent("typingIndicator",function(p,state) 
 				if(p == player and p.Character) then
@@ -100,9 +169,9 @@ function billboard.init(config,network,environment)
 				end 
 			end))
 		end
-		
+
 		environment.betterchatv3bubbles = {}
-		
+
 		link(network.onClientEvent("editMessage",function(data)
 			if(environment.betterchatv3bubbles[data.guid]) then
 				if data.deleted then

@@ -62,5 +62,7 @@ return function(environment,wrap)
 		return environment
 	end
 	
+	api.connections = connections
+	
 	return wrap(api)
 end

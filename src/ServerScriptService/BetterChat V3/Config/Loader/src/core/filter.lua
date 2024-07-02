@@ -2,7 +2,7 @@
 -- Name: filter.lua
 -- Description: Chat filtering
 
-return function(config,richText)
+return function(config,richText,msg)
 	-- WARNING: Don't edit this unless you know what you're doing! A compromised chat filter can lead to your game being deleted.
 	
 	local filter = {}
@@ -27,7 +27,7 @@ return function(config,richText)
 		local obj = {}
 		
 		function obj:GetChatForUserAsync(...)
-			return recombineFunc(filterObj:GetChatForUserAsync(...))
+			return recombineFunc(richText:escape(filterObj:GetChatForUserAsync(...)))
 		end
 		
 		return obj
@@ -36,7 +36,7 @@ return function(config,richText)
 	function filter.new(message,player,isBroadcast,isMarkdown)
 		local stripped,recombine
 		if isMarkdown then
-			local marked = richText:markdown(message)
+			local marked = richText:markdown(richText:escape(message))
 			stripped,recombine = richText:processForFilter(marked)
 			if recombine then
 				message = stripped
@@ -48,7 +48,8 @@ return function(config,richText)
 			end
 			if(player ~= nil) then
 				local success,result = pcall(function()
-					return textService:FilterStringAsync(message,player.UserId)
+					local handle = msg.preprocess(richText:unescape(message))
+					return textService:FilterStringAsync(handle,player.UserId)
 				end)
 				if(success) then
 					if recombine then

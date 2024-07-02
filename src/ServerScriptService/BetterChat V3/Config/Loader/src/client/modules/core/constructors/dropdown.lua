@@ -31,7 +31,7 @@ local images = {
 	[true] = "rbxassetid://8677748645"
 }
 
-function dropdown.new(gui,options,callback,main)
+function dropdown.new(gui,options,callback,main,environment)
 	main = main or function() end
 	local optionContainer = gui:WaitForChild("Dropdown"):WaitForChild("Options")
 	local top = gui:WaitForChild("TopContainer")
@@ -50,7 +50,7 @@ function dropdown.new(gui,options,callback,main)
 		if(state) then
 			set()
 		end
-		gui:TweenSize(UDim2.new(1,-10,0,(30 + (state and (25 * #options + (#options >= 2 and ((#options - 1)*3) or 0)) or 0))),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.25,true,function()
+		environment.tweenSize(gui,UDim2.new(1,-10,0,(30 + (state and (25 * #options + (#options >= 2 and ((#options - 1)*3) or 0)) or 0))),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.25,true,function()
 			if(last == key and (not state)) then
 				set()
 			end

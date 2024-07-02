@@ -76,7 +76,9 @@ return {
 
 			dot.Size = UDim2.fromOffset(x/4,x/4)
 			dot.BackgroundColor3 = config.TypingIndicatorColor
-
+			dot.Name = "TypingDot"
+			dot:SetAttribute("TypingIndicator",true)
+			
 			corner.Parent = dot
 			corner.CornerRadius = UDim.new(1,0)
 
@@ -95,7 +97,6 @@ return {
 						local newPos = base[dot] - UDim2.fromOffset(0,5)
 						local new
 						local loops = 0
-						
 						new = function()
 							if(dot:GetFullName() ~= dot.Name) then
 								local tween = tweenService:Create(dot,tweenInfo,{["Position"] = newPos,["BackgroundTransparency"] = 0.6})

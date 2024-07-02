@@ -4,9 +4,10 @@
 
 local richText = {}
 local f = math.floor
-local markdown = require(script.Parent:WaitForChild("markdown"))(richText)
 local runService = game:GetService("RunService")
 local isServer = runService:IsServer()
+local httpService = game:GetService("HttpService")
+local guid = httpService:GenerateGUID()
 
 function richText:escape(text) -- like one of the most important functions lol
 	return text:gsub(".",{
@@ -16,6 +17,24 @@ function richText:escape(text) -- like one of the most important functions lol
 		["'"] = "&apos;",
 		["&"] = "&amp;"
 	})
+end
+
+function richText:unescape(text)
+	local tbl = {
+		["&lt;"] = "<",
+		["&gt;"] = ">",
+		["&quot;"] = "\"",
+		["&apos;"] = "'",
+		["&amp;"] = "&"
+	}
+	for pattern, replacement in pairs(tbl) do
+		text = text:gsub(pattern, replacement)
+	end
+	return text
+end
+
+function richText:getId()
+	return guid
 end
 
 function richText:colorize(text,rgb)
@@ -37,6 +56,8 @@ end
 function richText:hexToRgb(hex)
 	return Color3.fromRGB(parse(hex:gsub("#",""),{1,2},{3,4},{5,6}))
 end
+
+local markdown = require(script.Parent:WaitForChild("markdown"))(richText)
 
 function richText:markdown(text)
 	if isServer then
@@ -76,11 +97,7 @@ local restoreTags = function(original,filtered)
 	return result
 end
 
-function richText:processForFilter(message,filter)
-	if richText:strip(message) == message then
-		return 
-	end
-	
+function richText:processForFilter(message)
 	local strippedText = stripXMLTags(message)
 	return strippedText,function(filteredText)
 		return restoreTags(message,filteredText)

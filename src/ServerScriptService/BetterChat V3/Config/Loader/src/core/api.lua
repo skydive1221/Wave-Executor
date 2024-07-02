@@ -7,13 +7,25 @@ return function(constructors,wrap,config)
 	local datastoreName = "betterchat_blacklisted_words2"
 	local blacklistHardcoded = config.Messages.BlacklistedWords or {}
 	local blacklistCanUseDatastores = config.Messages.BlacklistCanUseDatastores == true
-
+	
 	local api = {}
 	local message = constructors.message
 	local textChatService = game:GetService("TextChatService")
 	local datastoreService = game:GetService("DataStoreService")
 	local messagingService = game:GetService("MessagingService")
-	local blacklistedWords = datastoreService:GetDataStore(datastoreName)
+	
+	local success,blacklistedWords = pcall(function()
+		return datastoreService:GetDataStore(datastoreName)
+	end)
+	
+	if not success then
+		blacklistedWords = {
+			UpdateAsync = function(self,n,c)
+				c()
+			end,
+		}
+	end
+	
 	local chattedEvent = constructors.signal.new()
 
 	local blacklistEnabled = config.Messages.BlacklistEnabled == true
@@ -149,28 +161,43 @@ return function(constructors,wrap,config)
 			return getBlacklisted()
 		end
 	end
+	
+	local _gsub_escape_table = {
+		["\000"] = "%z", ["("] = "%(", [")"] = "%)", ["."] = "%.",
+		["%"] = "%%", ["+"] = "%+", ["-"] = "%-", ["*"] = "%*",
+		["?"] = "%?", ["["] = "%[", ["]"] = "%]", ["^"] = "%^",
+		["$"] = "%$",
+	}
 
-	local escapePattern = function(pattern)
-		local magic_characters = "%%%^%$%(%)%.%[%]%*%+%-%?"
-		return (pattern:gsub("[" .. magic_characters .. "]", "%%%1"))
+	local escapePattern = function(str)
+		return str:gsub("([%z%(%)%.%%%+%-%*%?%[%]%^%$])", _gsub_escape_table)
 	end
 
 	constructors.channel:onChannel(function(channel)
 		channel.events.chatted:Connect(function(message)
 			chattedEvent:Fire(message)
 		end)
-		channel:registerMessageProcess("word_blacklist",function(obj,filtered)
-			if not obj.filtered then
-				obj.unblacklisted = obj.message
-				for _,word in pairs(getBlacklisted()) do
-					obj.message = obj.message:gsub(escapePattern(word),string.rep("#",#word))
-				end
-			end
-		end)
 	end)
-
+	
+	constructors.message.preprocess = function(msg)
+		for _,word in pairs(getBlacklisted()) do
+			msg = msg:gsub(escapePattern(word),string.rep("#",#word))
+		end
+		return msg
+	end
+	
 	api.chatted = chattedEvent
 	api.messageDeleted = message.messageDeleted
+	
+	if config.User.SaveData.Advanced.HandleOwnData then
+		function api:registerGetProfileFunction(callback)
+			constructors.profileService:register(callback)
+		end
+		
+		function api:registerUnloadProfileFunction(callback)
+			constructors.profileService:register2(callback)
+		end
+	end
 
 	return wrap(api)
 end

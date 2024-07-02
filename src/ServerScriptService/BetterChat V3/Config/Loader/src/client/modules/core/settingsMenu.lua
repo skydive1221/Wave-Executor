@@ -27,7 +27,7 @@ return function(environment)
 		state = not state
 		environment.container.Visible = not state
 		local position = state and UDim2.new(0.5,0,0.5,0) or UDim2.new(0.5,0,-1.5,0)
-		ui:TweenPosition(position,Enum.EasingDirection.Out,Enum.EasingStyle.Linear,0.16,true)
+		environment.tweenPosition(ui,position,Enum.EasingDirection.Out,Enum.EasingStyle.Linear,0.16,true)
 		environment:setChatLocked(state)
 	end
 
@@ -43,14 +43,14 @@ return function(environment)
 	local inPosition = UDim2.fromScale(0,0)
 
 	local selectPage = function(page)
-		navigation:TweenPosition(outPosition,unpack(args))
+		environment.tweenPosition(navigation,outPosition,unpack(args))
 		page.Position = UDim2.fromScale(1,0)
-		page:TweenPosition(inPosition,unpack(args))
+		environment.tweenPosition(page,inPosition,unpack(args))
 	end
 
 	local back = function(page)
-		navigation:TweenPosition(inPosition,unpack(args))
-		page:TweenPosition(UDim2.fromScale(1,0),unpack(args))
+		environment.tweenPosition(navigation,inPosition,unpack(args))
+		environment.tweenPosition(page,UDim2.fromScale(1,0),unpack(args))
 	end
 
 	for _,pageName in pairs(pages) do
@@ -165,7 +165,7 @@ return function(environment)
 					button.Visible = new
 					environment.settingChanged:Fire("UI","Resizable",new)
 					environment.network:invoke("writeConfig","UI","Resizable",new)
-				end)
+				end,environment)
 
 				if(last) then
 					button.Visible = true
@@ -208,7 +208,33 @@ return function(environment)
 				end)
 
 				apis["UI"]["TextSize"] = newSetting("slider",{"UI","TextSize"},{10,20},api,last)
-			end
+			end,
+			TextFont = function(object)
+				local default
+				default = getConfig("UI","TextFont")
+				if(default == nil) then
+					default = environment.config.UI.Fonts.TextFont
+				else
+					default = Enum.Font[default]
+				end
+
+				environment.config.UI.Fonts.TextFont = default
+				environment:updFont(default)
+				
+				local fonts = getFontsList(default)
+				local api = constructors.dropdown.new(object,fonts,function(picked)
+					local currentFont = Enum.Font[picked]
+					environment.config.UI.Fonts.TextFont = currentFont
+					environment.settingChanged:Fire("UI","TextFont",picked)
+					environment.network:invoke("writeConfig","UI","TextFont",picked)
+					environment:updFont(currentFont)
+				end,function(object)
+					object.Font = Enum.Font[object.text]
+					environment:updFont(Enum.Font[object.text])
+				end,environment)
+
+				apis["UI"]["TextFont"] = newSetting("dropdown",{"UI","Font"},api,fonts[1],fonts)
+			end,
 		},
 		BubbleChat = {
 			Enabled = function(object)
@@ -229,7 +255,7 @@ return function(environment)
 					end
 					environment.settingChanged:Fire("BubbleChat","Enabled",new)
 					environment.network:invoke("writeConfig","BubbleChat","Enabled",new)
-				end)
+				end,environment)
 
 				api:set(default)
 				apis["BubbleChat"]["Resizable"] = newSetting("toggle",{"BubbleChat","Enabled"},api,default)
@@ -246,7 +272,7 @@ return function(environment)
 					local selection = from(picked)
 					environment.bubbleChatAnimationStyle = selection
 					environment.network:invoke("writeConfig","BubbleChat","AnimationStyle",picked)
-				end)
+				end,nil,environment)
 				if(default ~= nil) then
 					environment.bubbleChatAnimationStyle = from(default)
 					api:set(default)
@@ -280,6 +306,7 @@ return function(environment)
 				end
 
 				localPlayer:SetAttribute("BubbleFont",default.Name)
+				environment.config.BubbleChat.Config.BubbleFont = default
 
 				local fonts = getFontsList(default)
 				local api = constructors.dropdown.new(object,fonts,function(picked)
@@ -290,7 +317,7 @@ return function(environment)
 					environment.network:invoke("writeConfig","BubbleChat","Font",picked)
 				end,function(object)
 					object.Font = Enum.Font[object.text]
-				end)
+				end,environment)
 
 				apis["BubbleChat"]["Font"] = newSetting("dropdown",{"BubbleChat","Font"},api,fonts[1],fonts)
 			end,

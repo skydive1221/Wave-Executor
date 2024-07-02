@@ -2,7 +2,9 @@
 -- Name: regular.lua
 -- Description: Regular message constructor
 
-local create = function()
+local collectionService = game:GetService("CollectionService")
+
+local create = function(environment)
 	local message = Instance.new("Frame")
 	message.Name = "Message"
 	message.AutomaticSize = Enum.AutomaticSize.Y
@@ -12,7 +14,7 @@ local create = function()
 
 	local raw = Instance.new("TextLabel")
 	raw.Name = "Raw"
-	raw.Font = Enum.Font.GothamMedium
+	raw.Font = environment.config.UI.Fonts.TextFont	
 	raw.RichText = true
 	raw.Text = ""
 	raw.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -27,6 +29,7 @@ local create = function()
 	raw.Position = UDim2.fromScale(1, 0)
 	raw.Size = UDim2.new(1, 0, 0, 16)
 	raw.ZIndex = 2
+	collectionService:AddTag(raw,"TextFont")
 
 	local user = Instance.new("TextButton")
 	user.Name = "User"
@@ -106,10 +109,12 @@ local create = function()
 	edit.Size = UDim2.new(1, 0, 0, 16)
 	edit.Visible = false
 	edit.Parent = message
-	
+	edit.Font = environment.config.UI.Fonts.TextFont
+	collectionService:AddTag(edit,"TextFont")
+
 	return message
 end
 
-return {new = function()
-	return create()
+return {new = function(environment)
+	return create(environment)
 end}

@@ -3,539 +3,411 @@
 -- Description: Chat gui
 
 return function()
-	local Chat = {
-		Chat = Instance.new("ScreenGui"),
-		Container = Instance.new("Frame"),
-		ChatWindow = Instance.new("Frame"),
-		Main = Instance.new("Frame"),
-		UICorner = Instance.new("UICorner"),
-		Scroller = Instance.new("ScrollingFrame"),
-		MessageContainer = Instance.new("Frame"),
-		UIListLayout = Instance.new("UIListLayout"),
-		ChatBarContainer = Instance.new("Frame"),
-		Main_2 = Instance.new("Frame"),
-		Container_2 = Instance.new("Frame"),
-		UICorner_2 = Instance.new("UICorner"),
-		Box = Instance.new("Frame"),
-		UICorner_3 = Instance.new("UICorner"),
-		Input = Instance.new("TextBox"),
-		Bar = Instance.new("TextLabel"),
-		UIPadding = Instance.new("UIPadding"),
-		Resize = Instance.new("TextButton"),
-		Icon = Instance.new("ImageLabel"),
-		UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint"),
-		UICorner_4 = Instance.new("UICorner"),
-		Container_3 = Instance.new("Frame"),
-		Channel = Instance.new("TextButton"),
-		Label = Instance.new("TextLabel"),
-		UICorner_5 = Instance.new("UICorner"),
-		ReplyIcon = Instance.new("ImageLabel"),
-		Autofill = Instance.new("Frame"),
-		Corner = Instance.new("UICorner"),
-		Container_4 = Instance.new("Frame"),
-		Scroller_2 = Instance.new("ScrollingFrame"),
-		Layout = Instance.new("UIListLayout"),
-		Zone = Instance.new("Frame"),
-		Channelbar = Instance.new("Frame"),
-		Main_3 = Instance.new("Frame"),
-		Container_5 = Instance.new("Frame"),
-		UICorner_6 = Instance.new("UICorner"),
-		Scroller_3 = Instance.new("ScrollingFrame"),
-		UIListLayout_2 = Instance.new("UIListLayout"),
-		Settings = Instance.new("Frame"),
-		UICorner_7 = Instance.new("UICorner"),
-		Pages = Instance.new("Frame"),
-		Navigation = Instance.new("Frame"),
-		Content = Instance.new("Frame"),
-		UIListLayout_3 = Instance.new("UIListLayout"),
-		UI = Instance.new("TextButton"),
-		UICorner_8 = Instance.new("UICorner"),
-		Icon_2 = Instance.new("ImageLabel"),
-		BubbleChat = Instance.new("TextButton"),
-		UICorner_9 = Instance.new("UICorner"),
-		Icon_3 = Instance.new("ImageLabel"),
-		QuickChat = Instance.new("TextButton"),
-		UICorner_10 = Instance.new("UICorner"),
-		Icon_4 = Instance.new("ImageLabel"),
-		Title = Instance.new("TextLabel"),
-		Close = Instance.new("TextButton"),
-		UICorner_11 = Instance.new("UICorner"),
-		Icon_5 = Instance.new("ImageLabel"),
-		UI_2 = Instance.new("Frame"),
-		Title_2 = Instance.new("TextLabel"),
-		Back = Instance.new("TextButton"),
-		ImageLabel = Instance.new("ImageLabel"),
-		UICorner_12 = Instance.new("UICorner"),
-		Scroller_4 = Instance.new("ScrollingFrame"),
-		UIListLayout_4 = Instance.new("UIListLayout"),
-		TextSize = Instance.new("Frame"),
-		Center = Instance.new("Frame"),
-		Title_3 = Instance.new("Frame"),
-		Icon_6 = Instance.new("ImageLabel"),
-		Label_2 = Instance.new("TextLabel"),
-		Actual = Instance.new("Frame"),
-		Amount = Instance.new("TextBox"),
-		UICorner_13 = Instance.new("UICorner"),
-		UIPadding_2 = Instance.new("UIPadding"),
-		Bar_2 = Instance.new("Frame"),
-		Ignore = Instance.new("UICorner"),
-		Button = Instance.new("TextButton"),
-		Ignore_2 = Instance.new("UICorner"),
-		Progress = Instance.new("Frame"),
-		Ignore_3 = Instance.new("UICorner"),
-		UICorner_14 = Instance.new("UICorner"),
-		Roundness = Instance.new("Frame"),
-		Center_2 = Instance.new("Frame"),
-		Title_4 = Instance.new("Frame"),
-		Icon_7 = Instance.new("ImageLabel"),
-		Label_3 = Instance.new("TextLabel"),
-		Actual_2 = Instance.new("Frame"),
-		Amount_2 = Instance.new("TextBox"),
-		UICorner_15 = Instance.new("UICorner"),
-		UIPadding_3 = Instance.new("UIPadding"),
-		Bar_3 = Instance.new("Frame"),
-		Ignore_4 = Instance.new("UICorner"),
-		Button_2 = Instance.new("TextButton"),
-		Ignore_5 = Instance.new("UICorner"),
-		Progress_2 = Instance.new("Frame"),
-		Ignore_6 = Instance.new("UICorner"),
-		UICorner_16 = Instance.new("UICorner"),
-		Resizable = Instance.new("Frame"),
-		Title_5 = Instance.new("Frame"),
-		Icon_8 = Instance.new("ImageLabel"),
-		Label_4 = Instance.new("TextLabel"),
-		UICorner_17 = Instance.new("UICorner"),
-		Toggle = Instance.new("Frame"),
-		Ignore_7 = Instance.new("UICorner"),
-		Zone_2 = Instance.new("TextButton"),
-		Ignore_8 = Instance.new("UICorner"),
-		Rounded = Instance.new("Frame"),
-		Ignore_9 = Instance.new("UICorner"),
-		BubbleChat_2 = Instance.new("Frame"),
-		Title_6 = Instance.new("TextLabel"),
-		Back_2 = Instance.new("TextButton"),
-		ImageLabel_2 = Instance.new("ImageLabel"),
-		UICorner_18 = Instance.new("UICorner"),
-		Scroller_5 = Instance.new("ScrollingFrame"),
-		UIListLayout_5 = Instance.new("UIListLayout"),
-		AnimationStyle = Instance.new("Frame"),
-		Title_7 = Instance.new("Frame"),
-		Icon_9 = Instance.new("ImageLabel"),
-		Label_5 = Instance.new("TextLabel"),
-		Drop = Instance.new("TextButton"),
-		UICorner_19 = Instance.new("UICorner"),
-		Icon_10 = Instance.new("ImageLabel"),
-		Selected = Instance.new("TextLabel"),
-		TopContainer = Instance.new("Frame"),
-		Background = Instance.new("Frame"),
-		Main_4 = Instance.new("Frame"),
-		UICorner_20 = Instance.new("UICorner"),
-		Flat = Instance.new("Frame"),
-		Dropdown = Instance.new("Frame"),
-		BottomContainer = Instance.new("Frame"),
-		Rounded_2 = Instance.new("Frame"),
-		UICorner_21 = Instance.new("UICorner"),
-		Options = Instance.new("Frame"),
-		UIListLayout_6 = Instance.new("UIListLayout"),
-		UIPadding_4 = Instance.new("UIPadding"),
-		Frame = Instance.new("Frame"),
-		FadeoutTime = Instance.new("Frame"),
-		Center_3 = Instance.new("Frame"),
-		Title_8 = Instance.new("Frame"),
-		Icon_11 = Instance.new("ImageLabel"),
-		Label_6 = Instance.new("TextLabel"),
-		Actual_3 = Instance.new("Frame"),
-		Amount_3 = Instance.new("TextBox"),
-		UICorner_22 = Instance.new("UICorner"),
-		UIPadding_5 = Instance.new("UIPadding"),
-		Bar_4 = Instance.new("Frame"),
-		Ignore_10 = Instance.new("UICorner"),
-		Button_3 = Instance.new("TextButton"),
-		Ignore_11 = Instance.new("UICorner"),
-		Progress_3 = Instance.new("Frame"),
-		Ignore_12 = Instance.new("UICorner"),
-		UICorner_23 = Instance.new("UICorner"),
-		["Font"] = Instance.new("Frame"),
-		Title_9 = Instance.new("Frame"),
-		Icon_12 = Instance.new("ImageLabel"),
-		Label_7 = Instance.new("TextLabel"),
-		Drop_2 = Instance.new("TextButton"),
-		UICorner_24 = Instance.new("UICorner"),
-		Icon_13 = Instance.new("ImageLabel"),
-		Selected_2 = Instance.new("TextLabel"),
-		TopContainer_2 = Instance.new("Frame"),
-		Background_2 = Instance.new("Frame"),
-		Main_5 = Instance.new("Frame"),
-		UICorner_25 = Instance.new("UICorner"),
-		Flat_2 = Instance.new("Frame"),
-		Dropdown_2 = Instance.new("Frame"),
-		BottomContainer_2 = Instance.new("Frame"),
-		Rounded_3 = Instance.new("Frame"),
-		UICorner_26 = Instance.new("UICorner"),
-		Options_2 = Instance.new("Frame"),
-		UIListLayout_7 = Instance.new("UIListLayout"),
-		UIPadding_6 = Instance.new("UIPadding"),
-		Frame_2 = Instance.new("Frame"),
-		Enabled = Instance.new("Frame"),
-		Title_10 = Instance.new("Frame"),
-		Icon_14 = Instance.new("ImageLabel"),
-		Label_8 = Instance.new("TextLabel"),
-		UICorner_27 = Instance.new("UICorner"),
-		Toggle_2 = Instance.new("Frame"),
-		Ignore_13 = Instance.new("UICorner"),
-		Zone_3 = Instance.new("TextButton"),
-		Ignore_14 = Instance.new("UICorner"),
-		Rounded_4 = Instance.new("Frame"),
-		Ignore_15 = Instance.new("UICorner"),
-		QuickChat_2 = Instance.new("Frame"),
-		Title_11 = Instance.new("TextLabel"),
-		Back_3 = Instance.new("TextButton"),
-		ImageLabel_3 = Instance.new("ImageLabel"),
-		UICorner_28 = Instance.new("UICorner"),
-		Scroller_6 = Instance.new("ScrollingFrame"),
-		UIListLayout_8 = Instance.new("UIListLayout"),
-		SaveChat = Instance.new("Frame"),
-		Container_6 = Instance.new("ScrollingFrame"),
-		UIListLayout_9 = Instance.new("UIListLayout"),
-		Slot = Instance.new("TextButton"),
-		UICorner_29 = Instance.new("UICorner"),
-		UICorner_30 = Instance.new("UICorner"),
-		UIGradient = Instance.new("UIGradient"),
-		Header = Instance.new("Frame"),
-		UI_3 = Instance.new("Frame"),
-		Close_2 = Instance.new("TextButton"),
-		ImageLabel_4 = Instance.new("ImageLabel"),
-		UICorner_31 = Instance.new("UICorner"),
-		Title_12 = Instance.new("TextLabel"),
-		UICorner_32 = Instance.new("UICorner"),
-	}
+	chat = Instance.new("ScreenGui")
+	chat.Name = "Chat"
+	chat.DisplayOrder = 2
+	chat.ResetOnSpawn = false
 
-	--Properties:
+	container = Instance.new("Frame")
+	container.Name = "Container"
+	container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	container.BackgroundTransparency = 1
+	container.Position = UDim2.fromOffset(16, 8)
+	container.Size = UDim2.fromOffset(400, 235)
+	container.Visible = false
 
-	Chat.Chat.Name = "Chat"
-	Chat.Chat.DisplayOrder = 2
-	Chat.Chat.ResetOnSpawn = false
+	chatWindow = Instance.new("Frame")
+	chatWindow.Name = "ChatWindow"
+	chatWindow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	chatWindow.BackgroundTransparency = 1
+	chatWindow.BorderSizePixel = 0
+	chatWindow.Size = UDim2.new(1, 0, 1, -35)
 
-	Chat.Container.Name = "Container"
-	Chat.Container.Parent = Chat.Chat
-	Chat.Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Container.BackgroundTransparency = 1.000
-	Chat.Container.Position = UDim2.new(0, 16, 0, 8)
-	Chat.Container.Size = UDim2.new(0, 400, 0, 235)
-	Chat.Container.Visible = false
+	main = Instance.new("Frame")
+	main.Name = "Main"
+	main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	main.BackgroundTransparency = 0.75
+	main.BorderSizePixel = 0
+	main.ClipsDescendants = true
+	main.Size = UDim2.fromScale(1, 1)
 
-	Chat.ChatWindow.Name = "ChatWindow"
-	Chat.ChatWindow.Parent = Chat.Container
-	Chat.ChatWindow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ChatWindow.BackgroundTransparency = 1.000
-	Chat.ChatWindow.BorderSizePixel = 0
-	Chat.ChatWindow.Size = UDim2.new(1, 0, 1, -35)
+	uICorner = Instance.new("UICorner")
+	uICorner.Name = "UICorner"
+	uICorner.Parent = main
 
-	Chat.Main.Name = "Main"
-	Chat.Main.Parent = Chat.ChatWindow
-	Chat.Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Main.BackgroundTransparency = 0.750
-	Chat.Main.BorderSizePixel = 0
-	Chat.Main.ClipsDescendants = true
-	Chat.Main.Size = UDim2.new(1, 0, 1, 0)
+	scroller = Instance.new("ScrollingFrame")
+	scroller.Name = "Scroller"
+	scroller.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	scroller.BottomImage = "rbxassetid://8082116996"
+	scroller.CanvasSize = UDim2.new()
+	scroller.MidImage = "rbxassetid://7488333553"
+	scroller.ScrollBarThickness = 0
+	scroller.TopImage = "rbxassetid://8082122989"
+	scroller.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	scroller.BackgroundTransparency = 1
+	scroller.BorderSizePixel = 0
+	scroller.Position = UDim2.fromOffset(5, 5)
+	scroller.Selectable = false
+	scroller.Size = UDim2.new(1, -15, 1, -10)
 
-	Chat.UICorner.Parent = Chat.Main
+	messageContainer = Instance.new("Frame")
+	messageContainer.Name = "MessageContainer"
+	messageContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	messageContainer.BackgroundTransparency = 1
+	messageContainer.Size = UDim2.new(1, -10, 0, 0)
 
-	Chat.Scroller.Name = "Scroller"
-	Chat.Scroller.Parent = Chat.Main
-	Chat.Scroller.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Scroller.BackgroundTransparency = 1.000
-	Chat.Scroller.BorderSizePixel = 0
-	Chat.Scroller.Position = UDim2.new(0, 5, 0, 5)
-	Chat.Scroller.Selectable = false
-	Chat.Scroller.Size = UDim2.new(1, -15, 1, -10)
-	Chat.Scroller.BottomImage = "rbxassetid://8082116996"
-	Chat.Scroller.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Scroller.MidImage = "rbxassetid://7488333553"
-	Chat.Scroller.ScrollBarThickness = 0
-	Chat.Scroller.TopImage = "rbxassetid://8082122989"
-	Chat.Scroller.AutomaticCanvasSize = Enum.AutomaticSize.Y
-	
-	Chat.MessageContainer.Name = "MessageContainer"
-	Chat.MessageContainer.Parent = Chat.Scroller
-	Chat.MessageContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.MessageContainer.BackgroundTransparency = 1.000
-	Chat.MessageContainer.Size = UDim2.new(1, -10, 0, 0)
+	uIListLayout = Instance.new("UIListLayout")
+	uIListLayout.Name = "UIListLayout"
+	uIListLayout.Padding = UDim.new(0, 2)
+	uIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout.Parent = messageContainer
 
-	Chat.UIListLayout.Parent = Chat.MessageContainer
-	Chat.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout.Padding = UDim.new(0, 2)
+	messageContainer.Parent = scroller
 
-	Chat.ChatBarContainer.Name = "ChatBarContainer"
-	Chat.ChatBarContainer.Parent = Chat.Container
-	Chat.ChatBarContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ChatBarContainer.BackgroundTransparency = 1.000
-	Chat.ChatBarContainer.BorderSizePixel = 0
-	Chat.ChatBarContainer.Position = UDim2.new(0, 0, 0, 205)
-	Chat.ChatBarContainer.Size = UDim2.new(1, 0, 0, 35)
+	scroller.Parent = main
 
-	Chat.Main_2.Name = "Main"
-	Chat.Main_2.Parent = Chat.ChatBarContainer
-	Chat.Main_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Main_2.BackgroundTransparency = 1.000
-	Chat.Main_2.BorderSizePixel = 0
-	Chat.Main_2.Size = UDim2.new(1, 0, 0, 35)
+	main.Parent = chatWindow
 
-	Chat.Container_2.Name = "Container"
-	Chat.Container_2.Parent = Chat.Main_2
-	Chat.Container_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Container_2.BackgroundTransparency = 0.750
-	Chat.Container_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Container_2.BorderSizePixel = 0
-	Chat.Container_2.Size = UDim2.new(1, 0, 1, 0)
+	chatWindow.Parent = container
 
-	Chat.UICorner_2.Parent = Chat.Container_2
+	chatBarContainer = Instance.new("Frame")
+	chatBarContainer.Name = "ChatBarContainer"
+	chatBarContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	chatBarContainer.BackgroundTransparency = 1
+	chatBarContainer.BorderSizePixel = 0
+	chatBarContainer.Position = UDim2.fromOffset(0, 205)
+	chatBarContainer.Size = UDim2.new(1, 0, 0, 35)
 
-	Chat.Box.Name = "Box"
-	Chat.Box.Parent = Chat.Container_2
-	Chat.Box.Active = true
-	Chat.Box.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Box.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Box.BorderSizePixel = 0
-	Chat.Box.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Box.Size = UDim2.new(1, -40, 0, 25)
+	main1 = Instance.new("Frame")
+	main1.Name = "Main"
+	main1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	main1.BackgroundTransparency = 1
+	main1.BorderSizePixel = 0
+	main1.Size = UDim2.new(1, 0, 0, 35)
 
-	Chat.UICorner_3.Parent = Chat.Box
+	container1 = Instance.new("Frame")
+	container1.Name = "Container"
+	container1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	container1.BackgroundTransparency = 0.75
+	container1.BorderSizePixel = 0
+	container1.Size = UDim2.fromScale(1, 1)
 
-	Chat.Input.Name = "Input"
-	Chat.Input.Parent = Chat.Box
-	Chat.Input.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Input.BackgroundTransparency = 1.000
-	Chat.Input.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Input.Size = UDim2.new(1, -10, 0, 14)
-	Chat.Input.ZIndex = 2
-	Chat.Input.ClearTextOnFocus = false
-	Chat.Input.Font = Enum.Font.Gotham
-	Chat.Input.PlaceholderColor3 = Color3.fromRGB(80, 80, 80)
-	Chat.Input.PlaceholderText = "Click here or press '/' to chat."
-	Chat.Input.Text = ""
-	Chat.Input.TextColor3 = Color3.fromRGB(100, 100, 100)
-	Chat.Input.TextSize = 14.000
-	Chat.Input.TextWrapped = true
-	Chat.Input.TextXAlignment = Enum.TextXAlignment.Left
-	Chat.Input.TextYAlignment = Enum.TextYAlignment.Top
+	uICorner1 = Instance.new("UICorner")
+	uICorner1.Name = "UICorner"
+	uICorner1.Parent = container1
 
-	Chat.Bar.Name = "Bar"
-	Chat.Bar.Parent = Chat.Input
-	Chat.Bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Bar.BackgroundTransparency = 1.000
-	Chat.Bar.BorderSizePixel = 0
-	Chat.Bar.Size = UDim2.new(1, 0, 1, 0)
-	Chat.Bar.Font = Enum.Font.GothamMedium
-	Chat.Bar.Text = ""
-	Chat.Bar.TextColor3 = Color3.fromRGB(100, 100, 100)
-	Chat.Bar.TextSize = 14.000
-	Chat.Bar.TextTransparency = 0.500
-	Chat.Bar.TextWrapped = true
-	Chat.Bar.TextXAlignment = Enum.TextXAlignment.Left
+	box = Instance.new("Frame")
+	box.Name = "Box"
+	box.Active = true
+	box.AnchorPoint = Vector2.new(0, 0.5)
+	box.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	box.BorderSizePixel = 0
+	box.Position = UDim2.new(0, 5, 0.5, 0)
+	box.Size = UDim2.new(1, -40, 0, 25)
 
-	Chat.UIPadding.Parent = Chat.Box
-	Chat.UIPadding.PaddingBottom = UDim.new(0, 8)
-	Chat.UIPadding.PaddingTop = UDim.new(0, 8)
+	uICorner2 = Instance.new("UICorner")
+	uICorner2.Name = "UICorner"
+	uICorner2.Parent = box
 
-	Chat.Resize.Name = "Resize"
-	Chat.Resize.Parent = Chat.Container_2
-	Chat.Resize.Active = false
-	Chat.Resize.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Resize.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
-	Chat.Resize.BorderSizePixel = 0
-	Chat.Resize.Position = UDim2.new(1, -5, 0, 17)
-	Chat.Resize.Selectable = false
-	Chat.Resize.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Resize.Visible = false
-	Chat.Resize.Text = ""
+	input = Instance.new("TextBox")
+	input.Name = "Input"
+	input.ClearTextOnFocus = false
+	input.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json")
+	input.PlaceholderColor3 = Color3.fromRGB(80, 80, 80)
+	input.PlaceholderText = "Click here or press '/' to chat."
+	input.Text = ""
+	input.TextColor3 = Color3.fromRGB(100, 100, 100)
+	input.TextSize = 14
+	input.TextWrapped = true
+	input.TextXAlignment = Enum.TextXAlignment.Left
+	input.TextYAlignment = Enum.TextYAlignment.Top
+	input.AnchorPoint = Vector2.new(0, 0.5)
+	input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	input.BackgroundTransparency = 1
+	input.Position = UDim2.new(0, 5, 0.5, 0)
+	input.Size = UDim2.new(1, -10, 0, 14)
+	input.ZIndex = 2
 
-	Chat.Icon.Name = "Icon"
-	Chat.Icon.Parent = Chat.Resize
-	Chat.Icon.Active = true
-	Chat.Icon.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Icon.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Icon.BackgroundTransparency = 1.000
-	Chat.Icon.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Icon.BorderSizePixel = 0
-	Chat.Icon.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.Icon.Selectable = true
-	Chat.Icon.Size = UDim2.new(0.800000012, 0, 0.800000012, 0)
-	Chat.Icon.Image = "rbxassetid://8571348189"
+	bar = Instance.new("TextLabel")
+	bar.Name = "Bar"
+	bar.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	bar.Text = ""
+	bar.TextColor3 = Color3.fromRGB(100, 100, 100)
+	bar.TextSize = 14
+	bar.TextTransparency = 0.5
+	bar.TextWrapped = true
+	bar.TextXAlignment = Enum.TextXAlignment.Left
+	bar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	bar.BackgroundTransparency = 1
+	bar.BorderSizePixel = 0
+	bar.Size = UDim2.fromScale(1, 1)
+	bar.Parent = input
 
-	Chat.UIAspectRatioConstraint.Parent = Chat.Icon
+	input.Parent = box
 
-	Chat.UICorner_4.Parent = Chat.Resize
+	uIPadding = Instance.new("UIPadding")
+	uIPadding.Name = "UIPadding"
+	uIPadding.PaddingBottom = UDim.new(0, 8)
+	uIPadding.PaddingTop = UDim.new(0, 8)
+	uIPadding.Parent = box
 
-	Chat.Container_3.Name = "Container"
-	Chat.Container_3.Parent = Chat.Container_2
-	Chat.Container_3.Active = true
-	Chat.Container_3.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Container_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Container_3.BackgroundTransparency = 1.000
-	Chat.Container_3.Position = UDim2.new(0.5, 0, 0, 17)
-	Chat.Container_3.Selectable = true
-	Chat.Container_3.Size = UDim2.new(1, -30, 0, 14)
+	box.Parent = container1
 
-	Chat.Channel.Name = "Channel"
-	Chat.Channel.Parent = Chat.Container_3
-	Chat.Channel.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Channel.BackgroundColor3 = Color3.fromRGB(253, 80, 111)
-	Chat.Channel.BorderSizePixel = 0
-	Chat.Channel.Position = UDim2.new(0, -7, 0.5, 0)
-	Chat.Channel.Size = UDim2.new(0, 0, 0, 20)
-	Chat.Channel.Visible = false
-	Chat.Channel.Font = Enum.Font.GothamMedium
-	Chat.Channel.Text = ""
-	Chat.Channel.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Channel.TextSize = 15.000
-	Chat.Channel.TextWrapped = true
+	resize = Instance.new("TextButton")
+	resize.Name = "Resize"
+	resize.Text = ""
+	resize.Active = false
+	resize.AnchorPoint = Vector2.new(1, 0.5)
+	resize.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	resize.BorderSizePixel = 0
+	resize.Position = UDim2.new(1, -5, 0, 17)
+	resize.Selectable = false
+	resize.Size = UDim2.fromOffset(25, 25)
+	resize.Visible = false
 
-	Chat.Label.Name = "Label"
-	Chat.Label.Parent = Chat.Channel
-	Chat.Label.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label.BackgroundTransparency = 1.000
-	Chat.Label.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Label.Size = UDim2.new(1, 0, 1, 0)
-	Chat.Label.Font = Enum.Font.GothamMedium
-	Chat.Label.Text = "test"
-	Chat.Label.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label.TextSize = 14.000
+	icon = Instance.new("ImageLabel")
+	icon.Name = "Icon"
+	icon.Image = "rbxassetid://8571348189"
+	icon.Active = true
+	icon.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	icon.BackgroundTransparency = 1
+	icon.BorderSizePixel = 0
+	icon.Position = UDim2.fromScale(0.5, 0.5)
+	icon.Selectable = true
+	icon.Size = UDim2.fromScale(0.8, 0.8)
 
-	Chat.UICorner_5.Parent = Chat.Channel
+	uIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	uIAspectRatioConstraint.Name = "UIAspectRatioConstraint"
+	uIAspectRatioConstraint.Parent = icon
 
-	Chat.ReplyIcon.Name = "ReplyIcon"
-	Chat.ReplyIcon.Parent = Chat.Channel
-	Chat.ReplyIcon.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.ReplyIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ReplyIcon.BackgroundTransparency = 1.000
-	Chat.ReplyIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.ReplyIcon.Size = UDim2.new(0, 16, 0, 16)
-	Chat.ReplyIcon.Visible = false
-	Chat.ReplyIcon.ZIndex = 5
-	Chat.ReplyIcon.Image = "rbxassetid://8595302757"
+	icon.Parent = resize
 
-	Chat.Autofill.Name = "Autofill"
-	Chat.Autofill.Parent = Chat.Main_2
-	Chat.Autofill.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Autofill.BackgroundTransparency = 0.750
-	Chat.Autofill.BorderSizePixel = 0
-	Chat.Autofill.Position = UDim2.new(0, 0, 1, 5)
-	Chat.Autofill.Size = UDim2.new(1, 0, 0, 0)
+	uICorner3 = Instance.new("UICorner")
+	uICorner3.Name = "UICorner"
+	uICorner3.Parent = resize
 
-	Chat.Corner.Name = "Corner"
-	Chat.Corner.Parent = Chat.Autofill
+	resize.Parent = container1
 
-	Chat.Container_4.Name = "Container"
-	Chat.Container_4.Parent = Chat.Autofill
-	Chat.Container_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Container_4.BackgroundTransparency = 1.000
-	Chat.Container_4.Size = UDim2.new(1, 0, 1, 0)
+	container2 = Instance.new("Frame")
+	container2.Name = "Container"
+	container2.Active = true
+	container2.AnchorPoint = Vector2.new(0.5, 0.5)
+	container2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	container2.BackgroundTransparency = 1
+	container2.Position = UDim2.new(0.5, 0, 0, 17)
+	container2.Selectable = true
+	container2.Size = UDim2.new(1, -30, 0, 14)
 
-	Chat.Scroller_2.Name = "Scroller"
-	Chat.Scroller_2.Parent = Chat.Container_4
-	Chat.Scroller_2.Active = true
-	Chat.Scroller_2.AnchorPoint = Vector2.new(0.5, 0)
-	Chat.Scroller_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Scroller_2.BackgroundTransparency = 1.000
-	Chat.Scroller_2.BorderSizePixel = 0
-	Chat.Scroller_2.Position = UDim2.new(0.5, 0, 0, 4)
-	Chat.Scroller_2.Size = UDim2.new(1, -10, 1, 0)
-	Chat.Scroller_2.BottomImage = "rbxassetid://8082116996"
-	Chat.Scroller_2.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Scroller_2.MidImage = "rbxassetid://7488333553"
-	Chat.Scroller_2.ScrollBarThickness = 0
-	Chat.Scroller_2.TopImage = "rbxassetid://8082122989"
+	channel = Instance.new("TextButton")
+	channel.Name = "Channel"
+	channel.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	channel.Text = ""
+	channel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	channel.TextSize = 15
+	channel.TextWrapped = true
+	channel.AnchorPoint = Vector2.new(0, 0.5)
+	channel.BackgroundColor3 = Color3.fromRGB(253, 80, 111)
+	channel.BorderSizePixel = 0
+	channel.Position = UDim2.new(0, -7, 0.5, 0)
+	channel.Size = UDim2.fromOffset(0, 20)
+	channel.Visible = false
 
-	Chat.Layout.Name = "Layout"
-	Chat.Layout.Parent = Chat.Scroller_2
-	Chat.Layout.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.Layout.VerticalAlignment = Enum.VerticalAlignment.Center
-	Chat.Layout.Padding = UDim.new(0, 2)
+	label = Instance.new("TextLabel")
+	label.Name = "Label"
+	label.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	label.Text = "test"
+	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label.TextSize = 14
+	label.AnchorPoint = Vector2.new(0, 0.5)
+	label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label.BackgroundTransparency = 1
+	label.Position = UDim2.new(0, 5, 0.5, 0)
+	label.Size = UDim2.fromScale(1, 1)
+	label.Parent = channel
 
-	Chat.Zone.Name = "Zone"
-	Chat.Zone.Parent = Chat.Container
-	Chat.Zone.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Zone.BackgroundTransparency = 1.000
-	Chat.Zone.Size = UDim2.new(1, 0, 1, 5)
-	Chat.Zone.ZIndex = 3
+	uICorner4 = Instance.new("UICorner")
+	uICorner4.Name = "UICorner"
+	uICorner4.Parent = channel
 
-	Chat.Channelbar.Name = "Channelbar"
-	Chat.Channelbar.Parent = Chat.Container
-	Chat.Channelbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Channelbar.BackgroundTransparency = 1.000
-	Chat.Channelbar.BorderSizePixel = 0
-	Chat.Channelbar.ClipsDescendants = true
-	Chat.Channelbar.Size = UDim2.new(1, 0, 0, 35)
-	Chat.Channelbar.Visible = false
+	replyIcon = Instance.new("ImageLabel")
+	replyIcon.Name = "ReplyIcon"
+	replyIcon.Image = "rbxassetid://8595302757"
+	replyIcon.AnchorPoint = Vector2.new(0.5, 0.5)
+	replyIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	replyIcon.BackgroundTransparency = 1
+	replyIcon.Position = UDim2.fromScale(0.5, 0.5)
+	replyIcon.Size = UDim2.fromOffset(16, 16)
+	replyIcon.Visible = false
+	replyIcon.ZIndex = 5
+	replyIcon.Parent = channel
 
-	Chat.Main_3.Name = "Main"
-	Chat.Main_3.Parent = Chat.Channelbar
-	Chat.Main_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Main_3.BackgroundTransparency = 1.000
-	Chat.Main_3.BorderSizePixel = 0
-	Chat.Main_3.Size = UDim2.new(1, 0, 1, 0)
+	channel.Parent = container2
 
-	Chat.Container_5.Name = "Container"
-	Chat.Container_5.Parent = Chat.Main_3
-	Chat.Container_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Container_5.BackgroundTransparency = 0.750
-	Chat.Container_5.BorderSizePixel = 0
-	Chat.Container_5.Size = UDim2.new(1, 0, 1, 0)
+	container2.Parent = container1
 
-	Chat.UICorner_6.Parent = Chat.Container_5
+	container1.Parent = main1
 
-	Chat.Scroller_3.Name = "Scroller"
-	Chat.Scroller_3.Parent = Chat.Container_5
-	Chat.Scroller_3.Active = true
-	Chat.Scroller_3.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Scroller_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Scroller_3.BackgroundTransparency = 1.000
-	Chat.Scroller_3.BorderSizePixel = 0
-	Chat.Scroller_3.Position = UDim2.new(1, -5, 0.5, 0)
-	Chat.Scroller_3.Size = UDim2.new(1, -10, 1, 0)
-	Chat.Scroller_3.BottomImage = "rbxassetid://8082116996"
-	Chat.Scroller_3.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Scroller_3.MidImage = "rbxassetid://7488333553"
-	Chat.Scroller_3.ScrollBarThickness = 0
-	Chat.Scroller_3.TopImage = "rbxassetid://8082122989"
+	autofill = Instance.new("Frame")
+	autofill.Name = "Autofill"
+	autofill.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	autofill.BackgroundTransparency = 0.75
+	autofill.BorderSizePixel = 0
+	autofill.Position = UDim2.new(0, 0, 1, 5)
+	autofill.Size = UDim2.fromScale(1, 0)
 
-	Chat.UIListLayout_2.Parent = Chat.Scroller_3
-	Chat.UIListLayout_2.FillDirection = Enum.FillDirection.Horizontal
-	Chat.UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
-	Chat.UIListLayout_2.Padding = UDim.new(0, 5)
+	corner = Instance.new("UICorner")
+	corner.Name = "Corner"
+	corner.Parent = autofill
 
-	Chat.Settings.Name = "Settings"
-	Chat.Settings.Parent = Chat.Chat
-	Chat.Settings.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Settings.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Settings.BackgroundTransparency = 0.500
-	Chat.Settings.BorderSizePixel = 0
-	Chat.Settings.Position = UDim2.new(0.5, 0, -1.5, 0)
-	Chat.Settings.Size = UDim2.new(0, 325, 0, 300)
-	Chat.Settings.ZIndex = 5
+	container3 = Instance.new("Frame")
+	container3.Name = "Container"
+	container3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	container3.BackgroundTransparency = 1
+	container3.Size = UDim2.fromScale(1, 1)
 
-	Chat.UICorner_7.Parent = Chat.Settings
+	scroller1 = Instance.new("ScrollingFrame")
+	scroller1.Name = "Scroller"
+	scroller1.BottomImage = "rbxassetid://8082116996"
+	scroller1.CanvasSize = UDim2.new()
+	scroller1.MidImage = "rbxassetid://7488333553"
+	scroller1.ScrollBarThickness = 0
+	scroller1.TopImage = "rbxassetid://8082122989"
+	scroller1.Active = true
+	scroller1.AnchorPoint = Vector2.new(0.5, 0)
+	scroller1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	scroller1.BackgroundTransparency = 1
+	scroller1.BorderSizePixel = 0
+	scroller1.Position = UDim2.new(0.5, 0, 0, 4)
+	scroller1.Size = UDim2.new(1, -10, 1, 0)
 
-	Chat.Pages.Name = "Pages"
-	Chat.Pages.Parent = Chat.Settings
-	Chat.Pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Pages.BackgroundTransparency = 1.000
-	Chat.Pages.ClipsDescendants = true
-	Chat.Pages.Size = UDim2.new(1, 0, 1, 0)
-	Chat.Pages.ZIndex = 6
+	layout = Instance.new("UIListLayout")
+	layout.Name = "Layout"
+	layout.Padding = UDim.new(0, 2)
+	layout.SortOrder = Enum.SortOrder.LayoutOrder
+	layout.VerticalAlignment = Enum.VerticalAlignment.Center
+	layout.Parent = scroller1
 
-	Chat.Navigation.Name = "Navigation"
-	Chat.Navigation.Parent = Chat.Pages
-	Chat.Navigation.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Navigation.BackgroundTransparency = 1.000
-	Chat.Navigation.Size = UDim2.new(1, 0, 1, 0)
-	Chat.Navigation.ZIndex = 6
-	
-	local credit = Instance.new("TextLabel")
+	scroller1.Parent = container3
+
+	container3.Parent = autofill
+
+	autofill.Parent = main1
+
+	main1.Parent = chatBarContainer
+
+	chatBarContainer.Parent = container
+
+	zone = Instance.new("Frame")
+	zone.Name = "Zone"
+	zone.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	zone.BackgroundTransparency = 1
+	zone.Size = UDim2.new(1, 0, 1, 5)
+	zone.ZIndex = 3
+	zone.Parent = container
+
+	channelbar = Instance.new("Frame")
+	channelbar.Name = "Channelbar"
+	channelbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	channelbar.BackgroundTransparency = 1
+	channelbar.BorderSizePixel = 0
+	channelbar.ClipsDescendants = true
+	channelbar.Size = UDim2.new(1, 0, 0, 35)
+	channelbar.Visible = false
+
+	main2 = Instance.new("Frame")
+	main2.Name = "Main"
+	main2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	main2.BackgroundTransparency = 1
+	main2.BorderSizePixel = 0
+	main2.Size = UDim2.fromScale(1, 1)
+
+	container4 = Instance.new("Frame")
+	container4.Name = "Container"
+	container4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	container4.BackgroundTransparency = 0.75
+	container4.BorderSizePixel = 0
+	container4.Size = UDim2.fromScale(1, 1)
+
+	uICorner5 = Instance.new("UICorner")
+	uICorner5.Name = "UICorner"
+	uICorner5.Parent = container4
+
+	scroller2 = Instance.new("ScrollingFrame")
+	scroller2.Name = "Scroller"
+	scroller2.BottomImage = "rbxassetid://8082116996"
+	scroller2.CanvasSize = UDim2.new()
+	scroller2.MidImage = "rbxassetid://7488333553"
+	scroller2.ScrollBarThickness = 0
+	scroller2.TopImage = "rbxassetid://8082122989"
+	scroller2.Active = true
+	scroller2.AnchorPoint = Vector2.new(1, 0.5)
+	scroller2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	scroller2.BackgroundTransparency = 1
+	scroller2.BorderSizePixel = 0
+	scroller2.Position = UDim2.new(1, -5, 0.5, 0)
+	scroller2.Size = UDim2.new(1, -10, 1, 0)
+
+	uIListLayout1 = Instance.new("UIListLayout")
+	uIListLayout1.Name = "UIListLayout"
+	uIListLayout1.Padding = UDim.new(0, 5)
+	uIListLayout1.FillDirection = Enum.FillDirection.Horizontal
+	uIListLayout1.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout1.VerticalAlignment = Enum.VerticalAlignment.Center
+	uIListLayout1.Parent = scroller2
+
+	scroller2.Parent = container4
+
+	container4.Parent = main2
+
+	main2.Parent = channelbar
+
+	channelbar.Parent = container
+
+	container.Parent = chat
+
+	settings = Instance.new("Frame")
+	settings.Name = "Settings"
+	settings.AnchorPoint = Vector2.new(0.5, 0.5)
+	settings.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	settings.BackgroundTransparency = 0.5
+	settings.BorderSizePixel = 0
+	settings.Position = UDim2.fromScale(0.5, -1.5)
+	settings.Size = UDim2.fromOffset(325, 300)
+	settings.ZIndex = 5
+
+	uICorner6 = Instance.new("UICorner")
+	uICorner6.Name = "UICorner"
+	uICorner6.Parent = settings
+
+	pages = Instance.new("Frame")
+	pages.Name = "Pages"
+	pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	pages.BackgroundTransparency = 1
+	pages.ClipsDescendants = true
+	pages.Size = UDim2.fromScale(1, 1)
+	pages.ZIndex = 6
+
+	navigation = Instance.new("Frame")
+	navigation.Name = "Navigation"
+	navigation.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	navigation.BackgroundTransparency = 1
+	navigation.Size = UDim2.fromScale(1, 1)
+	navigation.ZIndex = 6
+
+	credit = Instance.new("TextLabel")
 	credit.Name = "Credit"
 	credit.FontFace = Font.new(
 		"rbxasset://fonts/families/GothamSSm.json",
@@ -553,1307 +425,2094 @@ return function()
 	credit.Position = UDim2.new(0, 0, 1, -5)
 	credit.Size = UDim2.new(1, 0, 0, 30)
 	credit.ZIndex = 5
-	credit.Parent = Chat.Navigation
-
-	Chat.Content.Name = "Content"
-	Chat.Content.Parent = Chat.Navigation
-	Chat.Content.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Content.BackgroundTransparency = 1.000
-	Chat.Content.Position = UDim2.new(0.5, 0, 1, -10)
-	Chat.Content.Size = UDim2.new(1, -10, 1, -50)
-	Chat.Content.ZIndex = 6
-
-	Chat.UIListLayout_3.Parent = Chat.Content
-	Chat.UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_3.Padding = UDim.new(0, 5)
-
-	Chat.UI.Name = "UI"
-	Chat.UI.Parent = Chat.Content
-	Chat.UI.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.UI.BackgroundTransparency = 0.300
-	Chat.UI.BorderSizePixel = 0
-	Chat.UI.Size = UDim2.new(1, 0, 0, 35)
-	Chat.UI.ZIndex = 6
-	Chat.UI.Font = Enum.Font.GothamMedium
-	Chat.UI.Text = "UI"
-	Chat.UI.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.UI.TextSize = 20.000
-	Chat.UI.TextWrapped = true
-
-	Chat.UICorner_8.Parent = Chat.UI
-
-	Chat.Icon_2.Name = "Icon"
-	Chat.Icon_2.Parent = Chat.UI
-	Chat.Icon_2.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Icon_2.BackgroundTransparency = 1.000
-	Chat.Icon_2.BorderSizePixel = 0
-	Chat.Icon_2.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Icon_2.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Icon_2.ZIndex = 7
-	Chat.Icon_2.Image = "http://www.roblox.com/asset/?id=6035030081"
-
-	Chat.BubbleChat.Name = "BubbleChat"
-	Chat.BubbleChat.Parent = Chat.Content
-	Chat.BubbleChat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.BubbleChat.BackgroundTransparency = 0.300
-	Chat.BubbleChat.BorderSizePixel = 0
-	Chat.BubbleChat.Position = UDim2.new(0.0327868834, 0, 0.0439999998, 0)
-	Chat.BubbleChat.Size = UDim2.new(1, 0, 0, 35)
-	Chat.BubbleChat.ZIndex = 6
-	Chat.BubbleChat.Font = Enum.Font.GothamMedium
-	Chat.BubbleChat.Text = "Bubble Chat"
-	Chat.BubbleChat.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.BubbleChat.TextSize = 20.000
-	Chat.BubbleChat.TextWrapped = true
-
-	Chat.UICorner_9.Parent = Chat.BubbleChat
-
-	Chat.Icon_3.Name = "Icon"
-	Chat.Icon_3.Parent = Chat.BubbleChat
-	Chat.Icon_3.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Icon_3.BackgroundTransparency = 1.000
-	Chat.Icon_3.BorderSizePixel = 0
-	Chat.Icon_3.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Icon_3.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Icon_3.ZIndex = 7
-	Chat.Icon_3.Image = "rbxassetid://8678032944"
-
-	Chat.QuickChat.Name = "QuickChat"
-	Chat.QuickChat.Parent = Chat.Content
-	Chat.QuickChat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.QuickChat.BackgroundTransparency = 0.300
-	Chat.QuickChat.BorderSizePixel = 0
-	Chat.QuickChat.LayoutOrder = 2
-	Chat.QuickChat.Size = UDim2.new(1, 0, 0, 35)
-	Chat.QuickChat.ZIndex = 6
-	Chat.QuickChat.Font = Enum.Font.GothamMedium
-	Chat.QuickChat.Text = "Quick Chat"
-	Chat.QuickChat.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.QuickChat.TextSize = 20.000
-	Chat.QuickChat.TextWrapped = true
-
-	Chat.UICorner_10.Parent = Chat.QuickChat
-
-	Chat.Icon_4.Name = "Icon"
-	Chat.Icon_4.Parent = Chat.QuickChat
-	Chat.Icon_4.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Icon_4.BackgroundTransparency = 1.000
-	Chat.Icon_4.BorderSizePixel = 0
-	Chat.Icon_4.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Icon_4.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Icon_4.ZIndex = 7
-	Chat.Icon_4.Image = "rbxassetid://6031243319"
-
-	Chat.Title.Name = "Title"
-	Chat.Title.Parent = Chat.Navigation
-	Chat.Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title.BackgroundTransparency = 1.000
-	Chat.Title.Position = UDim2.new(0, 0, 0, 5)
-	Chat.Title.Size = UDim2.new(1, 0, 0, 30)
-	Chat.Title.ZIndex = 6
-	Chat.Title.Font = Enum.Font.GothamMedium
-	Chat.Title.Text = "BetterChat Settings"
-	Chat.Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title.TextSize = 20.000
-
-	Chat.Close.Name = "Close"
-	Chat.Close.Parent = Chat.Title
-	Chat.Close.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Close.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Close.BackgroundTransparency = 0.300
-	Chat.Close.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Close.BorderSizePixel = 0
-	Chat.Close.Position = UDim2.new(1, -5, 0.5, 0)
-	Chat.Close.Size = UDim2.new(0, 30, 0, 30)
-	Chat.Close.ZIndex = 8
-	Chat.Close.Text = ""
-
-	Chat.UICorner_11.Parent = Chat.Close
-
-	Chat.Icon_5.Name = "Icon"
-	Chat.Icon_5.Parent = Chat.Close
-	Chat.Icon_5.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Icon_5.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-	Chat.Icon_5.BackgroundTransparency = 1.000
-	Chat.Icon_5.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Icon_5.BorderSizePixel = 0
-	Chat.Icon_5.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.Icon_5.Selectable = true
-	Chat.Icon_5.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Icon_5.ZIndex = 8
-	Chat.Icon_5.Image = "http://www.roblox.com/asset/?id=6031094678"
-
-	Chat.UI_2.Name = "UI"
-	Chat.UI_2.Parent = Chat.Pages
-	Chat.UI_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.UI_2.BackgroundTransparency = 1.000
-	Chat.UI_2.Position = UDim2.new(1, 0, 0, 0)
-	Chat.UI_2.Size = UDim2.new(1, 0, 1, 0)
-	Chat.UI_2.ZIndex = 6
-
-	Chat.Title_2.Name = "Title"
-	Chat.Title_2.Parent = Chat.UI_2
-	Chat.Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_2.BackgroundTransparency = 1.000
-	Chat.Title_2.Position = UDim2.new(0, 0, 0, 5)
-	Chat.Title_2.Size = UDim2.new(1, 0, 0, 30)
-	Chat.Title_2.ZIndex = 6
-	Chat.Title_2.Font = Enum.Font.GothamMedium
-	Chat.Title_2.Text = "UI Settings"
-	Chat.Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_2.TextSize = 20.000
-
-	Chat.Back.Name = "Back"
-	Chat.Back.Parent = Chat.Title_2
-	Chat.Back.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Back.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Back.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Back.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Back.ZIndex = 6
-	Chat.Back.Font = Enum.Font.SourceSans
-	Chat.Back.Text = ""
-	Chat.Back.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Back.TextSize = 14.000
-
-	Chat.ImageLabel.Parent = Chat.Back
-	Chat.ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ImageLabel.BackgroundTransparency = 1.000
-	Chat.ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.ImageLabel.Size = UDim2.new(0.850000024, 0, 0.850000024, 0)
-	Chat.ImageLabel.ZIndex = 6
-	Chat.ImageLabel.Image = "rbxassetid://8677511725"
-
-	Chat.UICorner_12.Parent = Chat.Back
-
-	Chat.Scroller_4.Name = "Scroller"
-	Chat.Scroller_4.Parent = Chat.UI_2
-	Chat.Scroller_4.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Scroller_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Scroller_4.BackgroundTransparency = 1.000
-	Chat.Scroller_4.BorderSizePixel = 0
-	Chat.Scroller_4.Position = UDim2.new(0.5, 0, 1, -10)
-	Chat.Scroller_4.Selectable = false
-	Chat.Scroller_4.Size = UDim2.new(1, -10, 1, -50)
-	Chat.Scroller_4.ZIndex = 6
-	Chat.Scroller_4.BottomImage = "rbxassetid://8082116996"
-	Chat.Scroller_4.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Scroller_4.MidImage = "rbxassetid://7488333553"
-	Chat.Scroller_4.ScrollBarThickness = 5
-	Chat.Scroller_4.TopImage = "rbxassetid://8082122989"
-
-	Chat.UIListLayout_4.Parent = Chat.Scroller_4
-	Chat.UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_4.Padding = UDim.new(0, 5)
-
-	Chat.TextSize.Name = "TextSize"
-	Chat.TextSize.Parent = Chat.Scroller_4
-	Chat.TextSize.Active = true
-	Chat.TextSize.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.TextSize.BackgroundTransparency = 0.500
-	Chat.TextSize.BorderSizePixel = 0
-	Chat.TextSize.Position = UDim2.new(0.0327868834, 0, 0.0439999998, 0)
-	Chat.TextSize.Selectable = true
-	Chat.TextSize.Size = UDim2.new(1, -10, 0, 55)
-	Chat.TextSize.ZIndex = 6
-
-	Chat.Center.Name = "Center"
-	Chat.Center.Parent = Chat.TextSize
-	Chat.Center.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Center.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Center.BackgroundTransparency = 1.000
-	Chat.Center.Position = UDim2.new(0, 0, 0.5, 0)
-	Chat.Center.Size = UDim2.new(1, 0, 0.75, 0)
-	Chat.Center.ZIndex = 6
-
-	Chat.Title_3.Name = "Title"
-	Chat.Title_3.Parent = Chat.Center
-	Chat.Title_3.AnchorPoint = Vector2.new(0.5, 0)
-	Chat.Title_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_3.BackgroundTransparency = 1.000
-	Chat.Title_3.BorderSizePixel = 0
-	Chat.Title_3.Position = UDim2.new(0.5, 0, 0, 0)
-	Chat.Title_3.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_3.ZIndex = 6
-
-	Chat.Icon_6.Name = "Icon"
-	Chat.Icon_6.Parent = Chat.Title_3
-	Chat.Icon_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_6.BackgroundTransparency = 1.000
-	Chat.Icon_6.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_6.ZIndex = 6
-	Chat.Icon_6.Image = "rbxassetid://8677222862"
-
-	Chat.Label_2.Name = "Label"
-	Chat.Label_2.Parent = Chat.Title_3
-	Chat.Label_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_2.BackgroundTransparency = 1.000
-	Chat.Label_2.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_2.Size = UDim2.new(0.5, 0, 0, 18)
-	Chat.Label_2.ZIndex = 6
-	Chat.Label_2.Font = Enum.Font.GothamBold
-	Chat.Label_2.Text = "Text Size"
-	Chat.Label_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_2.TextSize = 14.000
-	Chat.Label_2.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.Actual.Name = "Actual"
-	Chat.Actual.Parent = Chat.Center
-	Chat.Actual.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Actual.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Actual.BackgroundTransparency = 1.000
-	Chat.Actual.Position = UDim2.new(0.5, 0, 1, 5)
-	Chat.Actual.Size = UDim2.new(0.949999988, 0, 0, 25)
-	Chat.Actual.ZIndex = 6
-
-	Chat.Amount.Name = "Amount"
-	Chat.Amount.Parent = Chat.Actual
-	Chat.Amount.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Amount.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Amount.BackgroundTransparency = 0.500
-	Chat.Amount.BorderSizePixel = 0
-	Chat.Amount.Position = UDim2.new(1, 0, 0.5, 0)
-	Chat.Amount.Size = UDim2.new(0.125, 0, 0, 20)
-	Chat.Amount.ZIndex = 6
-	Chat.Amount.Font = Enum.Font.GothamMedium
-	Chat.Amount.PlaceholderColor3 = Color3.fromRGB(220, 220, 220)
-	Chat.Amount.PlaceholderText = "%"
-	Chat.Amount.Text = "_"
-	Chat.Amount.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Amount.TextSize = 14.000
-
-	Chat.UICorner_13.Parent = Chat.Amount
-
-	Chat.UIPadding_2.Parent = Chat.Amount
-	Chat.UIPadding_2.PaddingLeft = UDim.new(0, 5)
-	Chat.UIPadding_2.PaddingRight = UDim.new(0, 5)
-
-	Chat.Bar_2.Name = "Bar"
-	Chat.Bar_2.Parent = Chat.Actual
-	Chat.Bar_2.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Bar_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Bar_2.BorderSizePixel = 0
-	Chat.Bar_2.Position = UDim2.new(0, 0, 0.5, 0)
-	Chat.Bar_2.Size = UDim2.new(0.850000024, 0, 0, 10)
-	Chat.Bar_2.ZIndex = 6
-
-	Chat.Ignore.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore.Name = "Ignore"
-	Chat.Ignore.Parent = Chat.Bar_2
-
-	Chat.Button.Name = "Button"
-	Chat.Button.Parent = Chat.Bar_2
-	Chat.Button.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Button.BackgroundColor3 = Color3.fromRGB(30, 200, 150)
-	Chat.Button.BorderSizePixel = 0
-	Chat.Button.Position = UDim2.new(0, 10, 0.5, 0)
-	Chat.Button.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Button.ZIndex = 7
-	Chat.Button.Font = Enum.Font.SourceSans
-	Chat.Button.Text = ""
-	Chat.Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Button.TextSize = 14.000
-
-	Chat.Ignore_2.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_2.Name = "Ignore"
-	Chat.Ignore_2.Parent = Chat.Button
-
-	Chat.Progress.Name = "Progress"
-	Chat.Progress.Parent = Chat.Bar_2
-	Chat.Progress.BackgroundColor3 = Color3.fromRGB(25, 170, 127)
-	Chat.Progress.BorderSizePixel = 0
-	Chat.Progress.Size = UDim2.new(0, 0, 1, 0)
-	Chat.Progress.ZIndex = 6
-
-	Chat.Ignore_3.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_3.Name = "Ignore"
-	Chat.Ignore_3.Parent = Chat.Progress
-
-	Chat.UICorner_14.Parent = Chat.TextSize
-
-	Chat.Roundness.Name = "Roundness"
-	Chat.Roundness.Parent = Chat.Scroller_4
-	Chat.Roundness.Active = true
-	Chat.Roundness.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Roundness.BackgroundTransparency = 0.500
-	Chat.Roundness.BorderSizePixel = 0
-	Chat.Roundness.Position = UDim2.new(0.0327868834, 0, 0.0439999998, 0)
-	Chat.Roundness.Selectable = true
-	Chat.Roundness.Size = UDim2.new(1, -10, 0, 55)
-	Chat.Roundness.ZIndex = 6
-
-	Chat.Center_2.Name = "Center"
-	Chat.Center_2.Parent = Chat.Roundness
-	Chat.Center_2.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Center_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Center_2.BackgroundTransparency = 1.000
-	Chat.Center_2.Position = UDim2.new(0, 0, 0.5, 0)
-	Chat.Center_2.Size = UDim2.new(1, 0, 0.75, 0)
-	Chat.Center_2.ZIndex = 6
-
-	Chat.Title_4.Name = "Title"
-	Chat.Title_4.Parent = Chat.Center_2
-	Chat.Title_4.AnchorPoint = Vector2.new(0.5, 0)
-	Chat.Title_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_4.BackgroundTransparency = 1.000
-	Chat.Title_4.BorderSizePixel = 0
-	Chat.Title_4.Position = UDim2.new(0.5, 0, 0, 0)
-	Chat.Title_4.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_4.ZIndex = 6
-
-	Chat.Icon_7.Name = "Icon"
-	Chat.Icon_7.Parent = Chat.Title_4
-	Chat.Icon_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_7.BackgroundTransparency = 1.000
-	Chat.Icon_7.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_7.ZIndex = 6
-	Chat.Icon_7.Image = "rbxassetid://8677280864"
-
-	Chat.Label_3.Name = "Label"
-	Chat.Label_3.Parent = Chat.Title_4
-	Chat.Label_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_3.BackgroundTransparency = 1.000
-	Chat.Label_3.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_3.Size = UDim2.new(0.5, 0, 0, 18)
-	Chat.Label_3.ZIndex = 6
-	Chat.Label_3.Font = Enum.Font.GothamBold
-	Chat.Label_3.Text = "Roundness"
-	Chat.Label_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_3.TextSize = 14.000
-	Chat.Label_3.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.Actual_2.Name = "Actual"
-	Chat.Actual_2.Parent = Chat.Center_2
-	Chat.Actual_2.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Actual_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Actual_2.BackgroundTransparency = 1.000
-	Chat.Actual_2.Position = UDim2.new(0.5, 0, 1, 5)
-	Chat.Actual_2.Size = UDim2.new(0.949999988, 0, 0, 25)
-	Chat.Actual_2.ZIndex = 6
-
-	Chat.Amount_2.Name = "Amount"
-	Chat.Amount_2.Parent = Chat.Actual_2
-	Chat.Amount_2.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Amount_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Amount_2.BackgroundTransparency = 0.500
-	Chat.Amount_2.BorderSizePixel = 0
-	Chat.Amount_2.Position = UDim2.new(1, 0, 0.5, 0)
-	Chat.Amount_2.Size = UDim2.new(0.125, 0, 0, 20)
-	Chat.Amount_2.ZIndex = 6
-	Chat.Amount_2.Font = Enum.Font.GothamMedium
-	Chat.Amount_2.PlaceholderColor3 = Color3.fromRGB(220, 220, 220)
-	Chat.Amount_2.PlaceholderText = "%"
-	Chat.Amount_2.Text = "_"
-	Chat.Amount_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Amount_2.TextSize = 14.000
-
-	Chat.UICorner_15.Parent = Chat.Amount_2
-
-	Chat.UIPadding_3.Parent = Chat.Amount_2
-	Chat.UIPadding_3.PaddingLeft = UDim.new(0, 5)
-	Chat.UIPadding_3.PaddingRight = UDim.new(0, 5)
-
-	Chat.Bar_3.Name = "Bar"
-	Chat.Bar_3.Parent = Chat.Actual_2
-	Chat.Bar_3.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Bar_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Bar_3.BorderSizePixel = 0
-	Chat.Bar_3.Position = UDim2.new(0, 0, 0.5, 0)
-	Chat.Bar_3.Size = UDim2.new(0.850000024, 0, 0, 10)
-	Chat.Bar_3.ZIndex = 6
-
-	Chat.Ignore_4.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_4.Name = "Ignore"
-	Chat.Ignore_4.Parent = Chat.Bar_3
-
-	Chat.Button_2.Name = "Button"
-	Chat.Button_2.Parent = Chat.Bar_3
-	Chat.Button_2.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Button_2.BackgroundColor3 = Color3.fromRGB(30, 200, 150)
-	Chat.Button_2.BorderSizePixel = 0
-	Chat.Button_2.Position = UDim2.new(0, 10, 0.5, 0)
-	Chat.Button_2.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Button_2.ZIndex = 7
-	Chat.Button_2.Font = Enum.Font.SourceSans
-	Chat.Button_2.Text = ""
-	Chat.Button_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Button_2.TextSize = 14.000
-
-	Chat.Ignore_5.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_5.Name = "Ignore"
-	Chat.Ignore_5.Parent = Chat.Button_2
-
-	Chat.Progress_2.Name = "Progress"
-	Chat.Progress_2.Parent = Chat.Bar_3
-	Chat.Progress_2.BackgroundColor3 = Color3.fromRGB(25, 170, 127)
-	Chat.Progress_2.BorderSizePixel = 0
-	Chat.Progress_2.Size = UDim2.new(0, 0, 1, 0)
-	Chat.Progress_2.ZIndex = 6
-
-	Chat.Ignore_6.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_6.Name = "Ignore"
-	Chat.Ignore_6.Parent = Chat.Progress_2
-
-	Chat.UICorner_16.Parent = Chat.Roundness
-
-	Chat.Resizable.Name = "Resizable"
-	Chat.Resizable.Parent = Chat.Scroller_4
-	Chat.Resizable.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Resizable.BackgroundTransparency = 0.500
-	Chat.Resizable.Size = UDim2.new(1, -10, 0, 30)
-	Chat.Resizable.ZIndex = 6
-
-	Chat.Title_5.Name = "Title"
-	Chat.Title_5.Parent = Chat.Resizable
-	Chat.Title_5.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Title_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_5.BackgroundTransparency = 1.000
-	Chat.Title_5.BorderSizePixel = 0
-	Chat.Title_5.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.Title_5.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_5.ZIndex = 6
-
-	Chat.Icon_8.Name = "Icon"
-	Chat.Icon_8.Parent = Chat.Title_5
-	Chat.Icon_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_8.BackgroundTransparency = 1.000
-	Chat.Icon_8.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_8.ZIndex = 6
-	Chat.Icon_8.Image = "rbxassetid://8571348189"
-
-	Chat.Label_4.Name = "Label"
-	Chat.Label_4.Parent = Chat.Title_5
-	Chat.Label_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_4.BackgroundTransparency = 1.000
-	Chat.Label_4.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_4.Size = UDim2.new(0.5, 0, 0, 18)
-	Chat.Label_4.ZIndex = 6
-	Chat.Label_4.Font = Enum.Font.GothamBold
-	Chat.Label_4.Text = "Resizable"
-	Chat.Label_4.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_4.TextSize = 14.000
-	Chat.Label_4.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.UICorner_17.Parent = Chat.Resizable
-
-	Chat.Toggle.Name = "Toggle"
-	Chat.Toggle.Parent = Chat.Resizable
-	Chat.Toggle.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Toggle.BackgroundColor3 = Color3.fromRGB(72, 175, 240)
-	Chat.Toggle.BorderSizePixel = 0
-	Chat.Toggle.Position = UDim2.new(1, -5, 0.5, 0)
-	Chat.Toggle.Size = UDim2.new(0, 40, 0, 18)
-	Chat.Toggle.ZIndex = 6
-
-	Chat.Ignore_7.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_7.Name = "Ignore"
-	Chat.Ignore_7.Parent = Chat.Toggle
-
-	Chat.Zone_2.Name = "Zone"
-	Chat.Zone_2.Parent = Chat.Toggle
-	Chat.Zone_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Zone_2.BackgroundTransparency = 1.000
-	Chat.Zone_2.Size = UDim2.new(1, 0, 1, 0)
-	Chat.Zone_2.ZIndex = 8
-	Chat.Zone_2.Font = Enum.Font.SourceSans
-	Chat.Zone_2.Text = ""
-	Chat.Zone_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Zone_2.TextSize = 14.000
-
-	Chat.Ignore_8.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_8.Name = "Ignore"
-	Chat.Ignore_8.Parent = Chat.Zone_2
-
-	Chat.Rounded.Name = "Rounded"
-	Chat.Rounded.Parent = Chat.Toggle
-	Chat.Rounded.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Rounded.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Rounded.Position = UDim2.new(1, -3, 0.5, 0)
-	Chat.Rounded.Size = UDim2.new(0, 14, 0, 14)
-	Chat.Rounded.ZIndex = 6
-
-	Chat.Ignore_9.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_9.Name = "Ignore"
-	Chat.Ignore_9.Parent = Chat.Rounded
-
-	Chat.BubbleChat_2.Name = "BubbleChat"
-	Chat.BubbleChat_2.Parent = Chat.Pages
-	Chat.BubbleChat_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.BubbleChat_2.BackgroundTransparency = 1.000
-	Chat.BubbleChat_2.Position = UDim2.new(1, 0, 0, 0)
-	Chat.BubbleChat_2.Size = UDim2.new(1, 0, 1, 0)
-	Chat.BubbleChat_2.ZIndex = 6
-
-	Chat.Title_6.Name = "Title"
-	Chat.Title_6.Parent = Chat.BubbleChat_2
-	Chat.Title_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_6.BackgroundTransparency = 1.000
-	Chat.Title_6.Position = UDim2.new(0, 0, 0, 5)
-	Chat.Title_6.Size = UDim2.new(1, 0, 0, 30)
-	Chat.Title_6.ZIndex = 6
-	Chat.Title_6.Font = Enum.Font.GothamMedium
-	Chat.Title_6.Text = "Bubble Chat"
-	Chat.Title_6.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_6.TextSize = 20.000
-
-	Chat.Back_2.Name = "Back"
-	Chat.Back_2.Parent = Chat.Title_6
-	Chat.Back_2.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Back_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Back_2.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Back_2.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Back_2.ZIndex = 6
-	Chat.Back_2.Font = Enum.Font.SourceSans
-	Chat.Back_2.Text = ""
-	Chat.Back_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Back_2.TextSize = 14.000
-
-	Chat.ImageLabel_2.Parent = Chat.Back_2
-	Chat.ImageLabel_2.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ImageLabel_2.BackgroundTransparency = 1.000
-	Chat.ImageLabel_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.ImageLabel_2.Size = UDim2.new(0.850000024, 0, 0.850000024, 0)
-	Chat.ImageLabel_2.ZIndex = 6
-	Chat.ImageLabel_2.Image = "rbxassetid://8677511725"
-
-	Chat.UICorner_18.Parent = Chat.Back_2
-
-	Chat.Scroller_5.Name = "Scroller"
-	Chat.Scroller_5.Parent = Chat.BubbleChat_2
-	Chat.Scroller_5.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Scroller_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Scroller_5.BackgroundTransparency = 1.000
-	Chat.Scroller_5.BorderSizePixel = 0
-	Chat.Scroller_5.Position = UDim2.new(0.5, 0, 1, -10)
-	Chat.Scroller_5.Selectable = false
-	Chat.Scroller_5.Size = UDim2.new(1, -10, 1, -50)
-	Chat.Scroller_5.ZIndex = 6
-	Chat.Scroller_5.BottomImage = "rbxassetid://8082116996"
-	Chat.Scroller_5.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Scroller_5.MidImage = "rbxassetid://7488333553"
-	Chat.Scroller_5.ScrollBarThickness = 5
-	Chat.Scroller_5.TopImage = "rbxassetid://8082122989"
-
-	Chat.UIListLayout_5.Parent = Chat.Scroller_5
-	Chat.UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_5.Padding = UDim.new(0, 5)
-
-	Chat.AnimationStyle.Name = "AnimationStyle"
-	Chat.AnimationStyle.Parent = Chat.Scroller_5
-	Chat.AnimationStyle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.AnimationStyle.BackgroundTransparency = 1.000
-	Chat.AnimationStyle.ClipsDescendants = true
-	Chat.AnimationStyle.Size = UDim2.new(1, -10, 0, 30)
-	Chat.AnimationStyle.ZIndex = 6
-
-	Chat.Title_7.Name = "Title"
-	Chat.Title_7.Parent = Chat.AnimationStyle
-	Chat.Title_7.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Title_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_7.BackgroundTransparency = 1.000
-	Chat.Title_7.BorderSizePixel = 0
-	Chat.Title_7.Position = UDim2.new(0.5, 0, 0, 15)
-	Chat.Title_7.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_7.ZIndex = 8
-
-	Chat.Icon_9.Name = "Icon"
-	Chat.Icon_9.Parent = Chat.Title_7
-	Chat.Icon_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_9.BackgroundTransparency = 1.000
-	Chat.Icon_9.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_9.ZIndex = 9
-	Chat.Icon_9.Image = "rbxassetid://8677960616"
-
-	Chat.Label_5.Name = "Label"
-	Chat.Label_5.Parent = Chat.Title_7
-	Chat.Label_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_5.BackgroundTransparency = 1.000
-	Chat.Label_5.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_5.Size = UDim2.new(0, 0, 0, 18)
-	Chat.Label_5.ZIndex = 9
-	Chat.Label_5.Font = Enum.Font.GothamBold
-	Chat.Label_5.Text = "Animation Style"
-	Chat.Label_5.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_5.TextSize = 14.000
-	Chat.Label_5.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.Drop.Name = "Drop"
-	Chat.Drop.Parent = Chat.Title_7
-	Chat.Drop.AnchorPoint = Vector2.new(1, 0)
-	Chat.Drop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Drop.BorderSizePixel = 0
-	Chat.Drop.Position = UDim2.new(1, 0, 0, 0)
-	Chat.Drop.Size = UDim2.new(0, 30, 0, 20)
-	Chat.Drop.ZIndex = 9
-	Chat.Drop.Font = Enum.Font.SourceSans
-	Chat.Drop.Text = ""
-	Chat.Drop.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Drop.TextSize = 14.000
-
-	Chat.UICorner_19.Parent = Chat.Drop
-
-	Chat.Icon_10.Name = "Icon"
-	Chat.Icon_10.Parent = Chat.Drop
-	Chat.Icon_10.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Icon_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_10.BackgroundTransparency = 1.000
-	Chat.Icon_10.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.Icon_10.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Icon_10.ZIndex = 10
-	Chat.Icon_10.Image = "rbxassetid://8677555693"
-
-	Chat.Selected.Name = "Selected"
-	Chat.Selected.Parent = Chat.Title_7
-	Chat.Selected.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Selected.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Selected.BackgroundTransparency = 1.000
-	Chat.Selected.Position = UDim2.new(1, -35, 0.5, 0)
-	Chat.Selected.Size = UDim2.new(0, 0, 0, 18)
-	Chat.Selected.ZIndex = 9
-	Chat.Selected.Font = Enum.Font.Gotham
-	Chat.Selected.Text = "Linear"
-	Chat.Selected.TextColor3 = Color3.fromRGB(200, 200, 200)
-	Chat.Selected.TextSize = 14.000
-	Chat.Selected.TextXAlignment = Enum.TextXAlignment.Right
-
-	Chat.TopContainer.Name = "TopContainer"
-	Chat.TopContainer.Parent = Chat.AnimationStyle
-	Chat.TopContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.TopContainer.BackgroundTransparency = 1.000
-	Chat.TopContainer.LayoutOrder = 2
-	Chat.TopContainer.Size = UDim2.new(1, 0, 0, 25)
-	Chat.TopContainer.ZIndex = 6
-
-	Chat.Background.Name = "Background"
-	Chat.Background.Parent = Chat.TopContainer
-	Chat.Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Background.BackgroundTransparency = 1.000
-	Chat.Background.LayoutOrder = 2
-	Chat.Background.Size = UDim2.new(1, 0, 0, 25)
-	Chat.Background.ZIndex = 6
-
-	Chat.Main_4.Name = "Main"
-	Chat.Main_4.Parent = Chat.Background
-	Chat.Main_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Main_4.BackgroundTransparency = 0.500
-	Chat.Main_4.LayoutOrder = 2
-	Chat.Main_4.Size = UDim2.new(1, 0, 0, 30)
-	Chat.Main_4.ZIndex = 6
-
-	Chat.UICorner_20.Parent = Chat.Main_4
-
-	Chat.Flat.Name = "Flat"
-	Chat.Flat.Parent = Chat.TopContainer
-	Chat.Flat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Flat.BackgroundTransparency = 0.500
-	Chat.Flat.BorderSizePixel = 0
-	Chat.Flat.Position = UDim2.new(0, 0, 0, 25)
-	Chat.Flat.Size = UDim2.new(1, 0, 0, 5)
-	Chat.Flat.Visible = false
-	Chat.Flat.ZIndex = 6
-
-	Chat.Dropdown.Name = "Dropdown"
-	Chat.Dropdown.Parent = Chat.AnimationStyle
-	Chat.Dropdown.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Dropdown.BackgroundTransparency = 1.000
-	Chat.Dropdown.BorderSizePixel = 0
-	Chat.Dropdown.ClipsDescendants = true
-	Chat.Dropdown.Position = UDim2.new(0, 0, 0, 30)
-	Chat.Dropdown.Size = UDim2.new(1, 0, 0, 0)
-	Chat.Dropdown.ZIndex = 6
-	Chat.Dropdown.AutomaticSize = Enum.AutomaticSize.Y
+	credit.Parent = navigation
+
+	content = Instance.new("Frame")
+	content.Name = "Content"
+	content.AnchorPoint = Vector2.new(0.5, 1)
+	content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	content.BackgroundTransparency = 1
+	content.Position = UDim2.new(0.5, 0, 1, -10)
+	content.Size = UDim2.new(1, -10, 1, -50)
+	content.ZIndex = 6
+
+	uIListLayout2 = Instance.new("UIListLayout")
+	uIListLayout2.Name = "UIListLayout"
+	uIListLayout2.Padding = UDim.new(0, 5)
+	uIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout2.Parent = content
+
+	uI = Instance.new("TextButton")
+	uI.Name = "UI"
+	uI.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	uI.Text = "UI"
+	uI.TextColor3 = Color3.fromRGB(255, 255, 255)
+	uI.TextSize = 20
+	uI.TextWrapped = true
+	uI.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	uI.BackgroundTransparency = 0.3
+	uI.BorderSizePixel = 0
+	uI.Size = UDim2.new(1, 0, 0, 35)
+	uI.ZIndex = 6
+
+	uICorner7 = Instance.new("UICorner")
+	uICorner7.Name = "UICorner"
+	uICorner7.Parent = uI
+
+	icon1 = Instance.new("ImageLabel")
+	icon1.Name = "Icon"
+	icon1.Image = "http://www.roblox.com/asset/?id=6035030081"
+	icon1.AnchorPoint = Vector2.new(0, 0.5)
+	icon1.BackgroundTransparency = 1
+	icon1.BorderSizePixel = 0
+	icon1.Position = UDim2.new(0, 5, 0.5, 0)
+	icon1.Size = UDim2.fromOffset(25, 25)
+	icon1.ZIndex = 7
+	icon1.Parent = uI
+
+	uI.Parent = content
+
+	bubbleChat = Instance.new("TextButton")
+	bubbleChat.Name = "BubbleChat"
+	bubbleChat.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	bubbleChat.Text = "Bubble Chat"
+	bubbleChat.TextColor3 = Color3.fromRGB(255, 255, 255)
+	bubbleChat.TextSize = 20
+	bubbleChat.TextWrapped = true
+	bubbleChat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	bubbleChat.BackgroundTransparency = 0.3
+	bubbleChat.BorderSizePixel = 0
+	bubbleChat.Position = UDim2.fromScale(0.0328, 0.044)
+	bubbleChat.Size = UDim2.new(1, 0, 0, 35)
+	bubbleChat.ZIndex = 6
+
+	uICorner8 = Instance.new("UICorner")
+	uICorner8.Name = "UICorner"
+	uICorner8.Parent = bubbleChat
+
+	icon2 = Instance.new("ImageLabel")
+	icon2.Name = "Icon"
+	icon2.Image = "rbxassetid://8678032944"
+	icon2.AnchorPoint = Vector2.new(0, 0.5)
+	icon2.BackgroundTransparency = 1
+	icon2.BorderSizePixel = 0
+	icon2.Position = UDim2.new(0, 5, 0.5, 0)
+	icon2.Size = UDim2.fromOffset(25, 25)
+	icon2.ZIndex = 7
+	icon2.Parent = bubbleChat
+
+	bubbleChat.Parent = content
+
+	quickChat = Instance.new("TextButton")
+	quickChat.Name = "QuickChat"
+	quickChat.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	quickChat.Text = "Quick Chat"
+	quickChat.TextColor3 = Color3.fromRGB(255, 255, 255)
+	quickChat.TextSize = 20
+	quickChat.TextWrapped = true
+	quickChat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	quickChat.BackgroundTransparency = 0.3
+	quickChat.BorderSizePixel = 0
+	quickChat.LayoutOrder = 2
+	quickChat.Size = UDim2.new(1, 0, 0, 35)
+	quickChat.ZIndex = 6
+
+	uICorner9 = Instance.new("UICorner")
+	uICorner9.Name = "UICorner"
+	uICorner9.Parent = quickChat
+
+	icon3 = Instance.new("ImageLabel")
+	icon3.Name = "Icon"
+	icon3.Image = "rbxassetid://6031243319"
+	icon3.AnchorPoint = Vector2.new(0, 0.5)
+	icon3.BackgroundTransparency = 1
+	icon3.BorderSizePixel = 0
+	icon3.Position = UDim2.new(0, 5, 0.5, 0)
+	icon3.Size = UDim2.fromOffset(25, 25)
+	icon3.ZIndex = 7
+	icon3.Parent = quickChat
+
+	quickChat.Parent = content
+
+	content.Parent = navigation
+
+	title = Instance.new("TextLabel")
+	title.Name = "Title"
+	title.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	title.Text = "BetterChat Settings"
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextSize = 20
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1
+	title.Position = UDim2.fromOffset(0, 5)
+	title.Size = UDim2.new(1, 0, 0, 30)
+	title.ZIndex = 6
+
+	close = Instance.new("TextButton")
+	close.Name = "Close"
+	close.Text = ""
+	close.AnchorPoint = Vector2.new(1, 0.5)
+	close.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	close.BackgroundTransparency = 0.3
+	close.BorderSizePixel = 0
+	close.Position = UDim2.new(1, -5, 0.5, 0)
+	close.Size = UDim2.fromOffset(30, 30)
+	close.ZIndex = 8
+
+	uICorner10 = Instance.new("UICorner")
+	uICorner10.Name = "UICorner"
+	uICorner10.Parent = close
+
+	icon4 = Instance.new("ImageLabel")
+	icon4.Name = "Icon"
+	icon4.Image = "http://www.roblox.com/asset/?id=6031094678"
+	icon4.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon4.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	icon4.BackgroundTransparency = 1
+	icon4.BorderSizePixel = 0
+	icon4.Position = UDim2.fromScale(0.5, 0.5)
+	icon4.Selectable = true
+	icon4.Size = UDim2.fromOffset(25, 25)
+	icon4.ZIndex = 8
+	icon4.Parent = close
+
+	close.Parent = title
+
+	title.Parent = navigation
+
+	navigation.Parent = pages
+
+	uI1 = Instance.new("Frame")
+	uI1.Name = "UI"
+	uI1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	uI1.BackgroundTransparency = 1
+	uI1.Position = UDim2.fromScale(1, 0)
+	uI1.Size = UDim2.fromScale(1, 1)
+	uI1.ZIndex = 6
+
+	title1 = Instance.new("TextLabel")
+	title1.Name = "Title"
+	title1.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	title1.Text = "UI Settings"
+	title1.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title1.TextSize = 20
+	title1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title1.BackgroundTransparency = 1
+	title1.Position = UDim2.fromOffset(0, 5)
+	title1.Size = UDim2.new(1, 0, 0, 30)
+	title1.ZIndex = 6
+
+	back = Instance.new("TextButton")
+	back.Name = "Back"
+	back.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	back.Text = ""
+	back.TextColor3 = Color3.fromRGB(0, 0, 0)
+	back.TextSize = 14
+	back.AnchorPoint = Vector2.new(0, 0.5)
+	back.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	back.Position = UDim2.new(0, 5, 0.5, 0)
+	back.Size = UDim2.fromOffset(25, 25)
+	back.ZIndex = 6
+
+	imageLabel = Instance.new("ImageLabel")
+	imageLabel.Name = "ImageLabel"
+	imageLabel.Image = "rbxassetid://8677511725"
+	imageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	imageLabel.BackgroundTransparency = 1
+	imageLabel.Position = UDim2.fromScale(0.5, 0.5)
+	imageLabel.Size = UDim2.fromScale(0.85, 0.85)
+	imageLabel.ZIndex = 6
+	imageLabel.Parent = back
+
+	uICorner11 = Instance.new("UICorner")
+	uICorner11.Name = "UICorner"
+	uICorner11.Parent = back
+
+	back.Parent = title1
+
+	title1.Parent = uI1
+
+	scroller3 = Instance.new("ScrollingFrame")
+	scroller3.Name = "Scroller"
+	scroller3.BottomImage = "rbxassetid://8082116996"
+	scroller3.CanvasSize = UDim2.new()
+	scroller3.MidImage = "rbxassetid://7488333553"
+	scroller3.ScrollBarThickness = 5
+	scroller3.TopImage = "rbxassetid://8082122989"
+	scroller3.AnchorPoint = Vector2.new(0.5, 1)
+	scroller3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	scroller3.BackgroundTransparency = 1
+	scroller3.BorderSizePixel = 0
+	scroller3.Position = UDim2.new(0.5, 0, 1, -10)
+	scroller3.Selectable = false
+	scroller3.Size = UDim2.new(1, -10, 1, -50)
+	scroller3.ZIndex = 6
+
+	uIListLayout3 = Instance.new("UIListLayout")
+	uIListLayout3.Name = "UIListLayout"
+	uIListLayout3.Padding = UDim.new(0, 5)
+	uIListLayout3.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout3.Parent = scroller3
+
+	textSize = Instance.new("Frame")
+	textSize.Name = "TextSize"
+	textSize.Active = true
+	textSize.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	textSize.BackgroundTransparency = 0.5
+	textSize.BorderSizePixel = 0
+	textSize.Position = UDim2.fromScale(0.0328, 0.044)
+	textSize.Selectable = true
+	textSize.Size = UDim2.new(1, -10, 0, 55)
+	textSize.ZIndex = 6
+
+	center = Instance.new("Frame")
+	center.Name = "Center"
+	center.AnchorPoint = Vector2.new(0, 0.5)
+	center.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	center.BackgroundTransparency = 1
+	center.Position = UDim2.fromScale(0, 0.5)
+	center.Size = UDim2.fromScale(1, 0.75)
+	center.ZIndex = 6
+
+	title2 = Instance.new("Frame")
+	title2.Name = "Title"
+	title2.AnchorPoint = Vector2.new(0.5, 0)
+	title2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title2.BackgroundTransparency = 1
+	title2.BorderSizePixel = 0
+	title2.Position = UDim2.fromScale(0.5, 0)
+	title2.Size = UDim2.new(0.95, 0, 0, 20)
+	title2.ZIndex = 6
+
+	icon5 = Instance.new("ImageLabel")
+	icon5.Name = "Icon"
+	icon5.Image = "rbxassetid://8677222862"
+	icon5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon5.BackgroundTransparency = 1
+	icon5.Size = UDim2.fromOffset(20, 20)
+	icon5.ZIndex = 6
+	icon5.Parent = title2
+
+	label1 = Instance.new("TextLabel")
+	label1.Name = "Label"
+	label1.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label1.Text = "Text Size"
+	label1.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label1.TextSize = 14
+	label1.TextXAlignment = Enum.TextXAlignment.Left
+	label1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label1.BackgroundTransparency = 1
+	label1.Position = UDim2.fromOffset(25, 0)
+	label1.Size = UDim2.new(0.5, 0, 0, 18)
+	label1.ZIndex = 6
+	label1.Parent = title2
+
+	title2.Parent = center
+
+	actual = Instance.new("Frame")
+	actual.Name = "Actual"
+	actual.AnchorPoint = Vector2.new(0.5, 1)
+	actual.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	actual.BackgroundTransparency = 1
+	actual.Position = UDim2.new(0.5, 0, 1, 5)
+	actual.Size = UDim2.new(0.95, 0, 0, 25)
+	actual.ZIndex = 6
+
+	amount = Instance.new("TextBox")
+	amount.Name = "Amount"
+	amount.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	amount.PlaceholderColor3 = Color3.fromRGB(220, 220, 220)
+	amount.PlaceholderText = "%"
+	amount.Text = "_"
+	amount.TextColor3 = Color3.fromRGB(255, 255, 255)
+	amount.TextSize = 14
+	amount.AnchorPoint = Vector2.new(1, 0.5)
+	amount.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	amount.BackgroundTransparency = 0.5
+	amount.BorderSizePixel = 0
+	amount.Position = UDim2.fromScale(1, 0.5)
+	amount.Size = UDim2.new(0.125, 0, 0, 20)
+	amount.ZIndex = 6
+
+	uICorner12 = Instance.new("UICorner")
+	uICorner12.Name = "UICorner"
+	uICorner12.Parent = amount
+
+	uIPadding1 = Instance.new("UIPadding")
+	uIPadding1.Name = "UIPadding"
+	uIPadding1.PaddingLeft = UDim.new(0, 5)
+	uIPadding1.PaddingRight = UDim.new(0, 5)
+	uIPadding1.Parent = amount
+
+	amount.Parent = actual
+
+	bar1 = Instance.new("Frame")
+	bar1.Name = "Bar"
+	bar1.AnchorPoint = Vector2.new(0, 0.5)
+	bar1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	bar1.BorderSizePixel = 0
+	bar1.Position = UDim2.fromScale(0, 0.5)
+	bar1.Size = UDim2.new(0.85, 0, 0, 10)
+	bar1.ZIndex = 6
+
+	ignore = Instance.new("UICorner")
+	ignore.Name = "Ignore"
+	ignore.CornerRadius = UDim.new(1, 0)
+	ignore.Parent = bar1
+
+	button = Instance.new("TextButton")
+	button.Name = "Button"
+	button.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	button.Text = ""
+	button.TextColor3 = Color3.fromRGB(0, 0, 0)
+	button.TextSize = 14
+	button.AnchorPoint = Vector2.new(0.5, 0.5)
+	button.BackgroundColor3 = Color3.fromRGB(30, 200, 150)
+	button.BorderSizePixel = 0
+	button.Position = UDim2.new(0, 10, 0.5, 0)
+	button.Size = UDim2.fromOffset(20, 20)
+	button.ZIndex = 7
+
+	ignore1 = Instance.new("UICorner")
+	ignore1.Name = "Ignore"
+	ignore1.CornerRadius = UDim.new(1, 0)
+	ignore1.Parent = button
+
+	button.Parent = bar1
+
+	progress = Instance.new("Frame")
+	progress.Name = "Progress"
+	progress.BackgroundColor3 = Color3.fromRGB(25, 170, 127)
+	progress.BorderSizePixel = 0
+	progress.Size = UDim2.fromScale(0, 1)
+	progress.ZIndex = 6
+
+	ignore2 = Instance.new("UICorner")
+	ignore2.Name = "Ignore"
+	ignore2.CornerRadius = UDim.new(1, 0)
+	ignore2.Parent = progress
+
+	progress.Parent = bar1
+
+	bar1.Parent = actual
+
+	actual.Parent = center
+
+	center.Parent = textSize
+
+	uICorner13 = Instance.new("UICorner")
+	uICorner13.Name = "UICorner"
+	uICorner13.Parent = textSize
+
+	textSize.Parent = scroller3
+
+	roundness = Instance.new("Frame")
+	roundness.Name = "Roundness"
+	roundness.Active = true
+	roundness.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	roundness.BackgroundTransparency = 0.5
+	roundness.BorderSizePixel = 0
+	roundness.Position = UDim2.fromScale(0.0328, 0.044)
+	roundness.Selectable = true
+	roundness.Size = UDim2.new(1, -10, 0, 55)
+	roundness.ZIndex = 6
+
+	center1 = Instance.new("Frame")
+	center1.Name = "Center"
+	center1.AnchorPoint = Vector2.new(0, 0.5)
+	center1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	center1.BackgroundTransparency = 1
+	center1.Position = UDim2.fromScale(0, 0.5)
+	center1.Size = UDim2.fromScale(1, 0.75)
+	center1.ZIndex = 6
+
+	title3 = Instance.new("Frame")
+	title3.Name = "Title"
+	title3.AnchorPoint = Vector2.new(0.5, 0)
+	title3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title3.BackgroundTransparency = 1
+	title3.BorderSizePixel = 0
+	title3.Position = UDim2.fromScale(0.5, 0)
+	title3.Size = UDim2.new(0.95, 0, 0, 20)
+	title3.ZIndex = 6
+
+	icon6 = Instance.new("ImageLabel")
+	icon6.Name = "Icon"
+	icon6.Image = "rbxassetid://8677280864"
+	icon6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon6.BackgroundTransparency = 1
+	icon6.Size = UDim2.fromOffset(20, 20)
+	icon6.ZIndex = 6
+	icon6.Parent = title3
+
+	label2 = Instance.new("TextLabel")
+	label2.Name = "Label"
+	label2.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label2.Text = "Roundness"
+	label2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label2.TextSize = 14
+	label2.TextXAlignment = Enum.TextXAlignment.Left
+	label2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label2.BackgroundTransparency = 1
+	label2.Position = UDim2.fromOffset(25, 0)
+	label2.Size = UDim2.new(0.5, 0, 0, 18)
+	label2.ZIndex = 6
+	label2.Parent = title3
+
+	title3.Parent = center1
+
+	actual1 = Instance.new("Frame")
+	actual1.Name = "Actual"
+	actual1.AnchorPoint = Vector2.new(0.5, 1)
+	actual1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	actual1.BackgroundTransparency = 1
+	actual1.Position = UDim2.new(0.5, 0, 1, 5)
+	actual1.Size = UDim2.new(0.95, 0, 0, 25)
+	actual1.ZIndex = 6
+
+	amount1 = Instance.new("TextBox")
+	amount1.Name = "Amount"
+	amount1.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	amount1.PlaceholderColor3 = Color3.fromRGB(220, 220, 220)
+	amount1.PlaceholderText = "%"
+	amount1.Text = "_"
+	amount1.TextColor3 = Color3.fromRGB(255, 255, 255)
+	amount1.TextSize = 14
+	amount1.AnchorPoint = Vector2.new(1, 0.5)
+	amount1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	amount1.BackgroundTransparency = 0.5
+	amount1.BorderSizePixel = 0
+	amount1.Position = UDim2.fromScale(1, 0.5)
+	amount1.Size = UDim2.new(0.125, 0, 0, 20)
+	amount1.ZIndex = 6
+
+	uICorner14 = Instance.new("UICorner")
+	uICorner14.Name = "UICorner"
+	uICorner14.Parent = amount1
+
+	uIPadding2 = Instance.new("UIPadding")
+	uIPadding2.Name = "UIPadding"
+	uIPadding2.PaddingLeft = UDim.new(0, 5)
+	uIPadding2.PaddingRight = UDim.new(0, 5)
+	uIPadding2.Parent = amount1
+
+	amount1.Parent = actual1
+
+	bar2 = Instance.new("Frame")
+	bar2.Name = "Bar"
+	bar2.AnchorPoint = Vector2.new(0, 0.5)
+	bar2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	bar2.BorderSizePixel = 0
+	bar2.Position = UDim2.fromScale(0, 0.5)
+	bar2.Size = UDim2.new(0.85, 0, 0, 10)
+	bar2.ZIndex = 6
+
+	ignore3 = Instance.new("UICorner")
+	ignore3.Name = "Ignore"
+	ignore3.CornerRadius = UDim.new(1, 0)
+	ignore3.Parent = bar2
+
+	button1 = Instance.new("TextButton")
+	button1.Name = "Button"
+	button1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	button1.Text = ""
+	button1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	button1.TextSize = 14
+	button1.AnchorPoint = Vector2.new(0.5, 0.5)
+	button1.BackgroundColor3 = Color3.fromRGB(30, 200, 150)
+	button1.BorderSizePixel = 0
+	button1.Position = UDim2.new(0, 10, 0.5, 0)
+	button1.Size = UDim2.fromOffset(20, 20)
+	button1.ZIndex = 7
+
+	ignore4 = Instance.new("UICorner")
+	ignore4.Name = "Ignore"
+	ignore4.CornerRadius = UDim.new(1, 0)
+	ignore4.Parent = button1
+
+	button1.Parent = bar2
+
+	progress1 = Instance.new("Frame")
+	progress1.Name = "Progress"
+	progress1.BackgroundColor3 = Color3.fromRGB(25, 170, 127)
+	progress1.BorderSizePixel = 0
+	progress1.Size = UDim2.fromScale(0, 1)
+	progress1.ZIndex = 6
+
+	ignore5 = Instance.new("UICorner")
+	ignore5.Name = "Ignore"
+	ignore5.CornerRadius = UDim.new(1, 0)
+	ignore5.Parent = progress1
+
+	progress1.Parent = bar2
+
+	bar2.Parent = actual1
+
+	actual1.Parent = center1
+
+	center1.Parent = roundness
+
+	uICorner15 = Instance.new("UICorner")
+	uICorner15.Name = "UICorner"
+	uICorner15.Parent = roundness
+
+	roundness.Parent = scroller3
+
+	resizable = Instance.new("Frame")
+	resizable.Name = "Resizable"
+	resizable.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	resizable.BackgroundTransparency = 0.5
+	resizable.Size = UDim2.new(1, -10, 0, 30)
+	resizable.ZIndex = 6
+
+	title4 = Instance.new("Frame")
+	title4.Name = "Title"
+	title4.AnchorPoint = Vector2.new(0.5, 0.5)
+	title4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title4.BackgroundTransparency = 1
+	title4.BorderSizePixel = 0
+	title4.Position = UDim2.fromScale(0.5, 0.5)
+	title4.Size = UDim2.new(0.95, 0, 0, 20)
+	title4.ZIndex = 6
+
+	icon7 = Instance.new("ImageLabel")
+	icon7.Name = "Icon"
+	icon7.Image = "rbxassetid://8571348189"
+	icon7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon7.BackgroundTransparency = 1
+	icon7.Size = UDim2.fromOffset(20, 20)
+	icon7.ZIndex = 6
+	icon7.Parent = title4
+
+	label3 = Instance.new("TextLabel")
+	label3.Name = "Label"
+	label3.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label3.Text = "Resizable"
+	label3.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label3.TextSize = 14
+	label3.TextXAlignment = Enum.TextXAlignment.Left
+	label3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label3.BackgroundTransparency = 1
+	label3.Position = UDim2.fromOffset(25, 0)
+	label3.Size = UDim2.new(0.5, 0, 0, 18)
+	label3.ZIndex = 6
+	label3.Parent = title4
+
+	title4.Parent = resizable
+
+	uICorner16 = Instance.new("UICorner")
+	uICorner16.Name = "UICorner"
+	uICorner16.Parent = resizable
+
+	toggle = Instance.new("Frame")
+	toggle.Name = "Toggle"
+	toggle.AnchorPoint = Vector2.new(1, 0.5)
+	toggle.BackgroundColor3 = Color3.fromRGB(72, 175, 240)
+	toggle.BorderSizePixel = 0
+	toggle.Position = UDim2.new(1, -5, 0.5, 0)
+	toggle.Size = UDim2.fromOffset(40, 18)
+	toggle.ZIndex = 6
+
+	ignore6 = Instance.new("UICorner")
+	ignore6.Name = "Ignore"
+	ignore6.CornerRadius = UDim.new(1, 0)
+	ignore6.Parent = toggle
+
+	zone1 = Instance.new("TextButton")
+	zone1.Name = "Zone"
+	zone1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	zone1.Text = ""
+	zone1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	zone1.TextSize = 14
+	zone1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	zone1.BackgroundTransparency = 1
+	zone1.Size = UDim2.fromScale(1, 1)
+	zone1.ZIndex = 8
+
+	ignore7 = Instance.new("UICorner")
+	ignore7.Name = "Ignore"
+	ignore7.CornerRadius = UDim.new(1, 0)
+	ignore7.Parent = zone1
+
+	zone1.Parent = toggle
+
+	rounded = Instance.new("Frame")
+	rounded.Name = "Rounded"
+	rounded.AnchorPoint = Vector2.new(1, 0.5)
+	rounded.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	rounded.Position = UDim2.new(1, -3, 0.5, 0)
+	rounded.Size = UDim2.fromOffset(14, 14)
+	rounded.ZIndex = 6
+
+	ignore8 = Instance.new("UICorner")
+	ignore8.Name = "Ignore"
+	ignore8.CornerRadius = UDim.new(1, 0)
+	ignore8.Parent = rounded
+
+	rounded.Parent = toggle
+
+	toggle.Parent = resizable
+
+	resizable.Parent = scroller3
+
+	chatbarFont = Instance.new("Frame")
+	chatbarFont.Name = "ChatbarFont"
+	chatbarFont.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	chatbarFont.BackgroundTransparency = 1
+	chatbarFont.ClipsDescendants = true
+	chatbarFont.LayoutOrder = 1
+	chatbarFont.Size = UDim2.new(1, -10, 0, 30)
+	chatbarFont.ZIndex = 6
+
+	title5 = Instance.new("Frame")
+	title5.Name = "Title"
+	title5.AnchorPoint = Vector2.new(0.5, 0.5)
+	title5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title5.BackgroundTransparency = 1
+	title5.BorderSizePixel = 0
+	title5.Position = UDim2.new(0.5, 0, 0, 15)
+	title5.Size = UDim2.new(0.95, 0, 0, 20)
+	title5.ZIndex = 8
+
+	icon8 = Instance.new("ImageLabel")
+	icon8.Name = "Icon"
+	icon8.Image = "rbxassetid://8678012976"
+	icon8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon8.BackgroundTransparency = 1
+	icon8.Size = UDim2.fromOffset(20, 20)
+	icon8.ZIndex = 9
+	icon8.Parent = title5
+
+	label4 = Instance.new("TextLabel")
+	label4.Name = "Label"
+	label4.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label4.Text = "Chatbar Font"
+	label4.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label4.TextSize = 14
+	label4.TextXAlignment = Enum.TextXAlignment.Left
+	label4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label4.BackgroundTransparency = 1
+	label4.Position = UDim2.fromOffset(25, 0)
+	label4.Size = UDim2.fromOffset(0, 18)
+	label4.ZIndex = 9
+	label4.Parent = title5
+
+	drop = Instance.new("TextButton")
+	drop.Name = "Drop"
+	drop.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	drop.Text = ""
+	drop.TextColor3 = Color3.fromRGB(0, 0, 0)
+	drop.TextSize = 14
+	drop.AnchorPoint = Vector2.new(1, 0)
+	drop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	drop.BorderSizePixel = 0
+	drop.Position = UDim2.fromScale(1, 0)
+	drop.Size = UDim2.fromOffset(30, 20)
+	drop.ZIndex = 9
+
+	uICorner17 = Instance.new("UICorner")
+	uICorner17.Name = "UICorner"
+	uICorner17.Parent = drop
+
+	icon9 = Instance.new("ImageLabel")
+	icon9.Name = "Icon"
+	icon9.Image = "rbxassetid://8677555693"
+	icon9.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon9.BackgroundTransparency = 1
+	icon9.Position = UDim2.fromScale(0.5, 0.5)
+	icon9.Size = UDim2.fromOffset(25, 25)
+	icon9.ZIndex = 10
+	icon9.Parent = drop
+
+	drop.Parent = title5
+
+	selected = Instance.new("TextLabel")
+	selected.Name = "Selected"
+	selected.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json")
+	selected.Text = "GothamMedium"
+	selected.TextColor3 = Color3.fromRGB(200, 200, 200)
+	selected.TextSize = 14
+	selected.TextXAlignment = Enum.TextXAlignment.Right
+	selected.AnchorPoint = Vector2.new(1, 0.5)
+	selected.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	selected.BackgroundTransparency = 1
+	selected.Position = UDim2.new(1, -35, 0.5, 0)
+	selected.Size = UDim2.fromOffset(0, 18)
+	selected.ZIndex = 9
+	selected.Parent = title5
+
+	title5.Parent = chatbarFont
+
+	topContainer = Instance.new("Frame")
+	topContainer.Name = "TopContainer"
+	topContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	topContainer.BackgroundTransparency = 1
+	topContainer.LayoutOrder = 2
+	topContainer.Size = UDim2.new(1, 0, 0, 25)
+	topContainer.ZIndex = 6
+
+	background = Instance.new("Frame")
+	background.Name = "Background"
+	background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	background.BackgroundTransparency = 1
+	background.LayoutOrder = 2
+	background.Size = UDim2.new(1, 0, 0, 25)
+	background.ZIndex = 6
+
+	main3 = Instance.new("Frame")
+	main3.Name = "Main"
+	main3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	main3.BackgroundTransparency = 0.5
+	main3.LayoutOrder = 2
+	main3.Size = UDim2.new(1, 0, 0, 30)
+	main3.ZIndex = 6
+
+	uICorner18 = Instance.new("UICorner")
+	uICorner18.Name = "UICorner"
+	uICorner18.Parent = main3
+
+	main3.Parent = background
+
+	background.Parent = topContainer
+
+	flat = Instance.new("Frame")
+	flat.Name = "Flat"
+	flat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	flat.BackgroundTransparency = 0.5
+	flat.BorderSizePixel = 0
+	flat.Position = UDim2.fromOffset(0, 25)
+	flat.Size = UDim2.new(1, 0, 0, 5)
+	flat.Visible = false
+	flat.ZIndex = 6
+	flat.Parent = topContainer
+
+	topContainer.Parent = chatbarFont
+
+	dropdown = Instance.new("Frame")
+	dropdown.Name = "Dropdown"
+	dropdown.AutomaticSize = Enum.AutomaticSize.Y
+	dropdown.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	dropdown.BackgroundTransparency = 1
+	dropdown.BorderSizePixel = 0
+	dropdown.ClipsDescendants = true
+	dropdown.Position = UDim2.fromOffset(0, 30)
+	dropdown.Size = UDim2.fromScale(1, 0)
+	dropdown.ZIndex = 6
+
+	bottomContainer = Instance.new("Frame")
+	bottomContainer.Name = "BottomContainer"
+	bottomContainer.AnchorPoint = Vector2.new(0, 1)
+	bottomContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	bottomContainer.BackgroundTransparency = 1
+	bottomContainer.BorderSizePixel = 0
+	bottomContainer.ClipsDescendants = true
+	bottomContainer.Position = UDim2.new(0, 0, 2, -20)
+	bottomContainer.Size = UDim2.fromScale(1, 1)
+	bottomContainer.ZIndex = 6
+
+	rounded1 = Instance.new("Frame")
+	rounded1.Name = "Rounded"
+	rounded1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	rounded1.BackgroundTransparency = 0.35
+	rounded1.Position = UDim2.fromOffset(0, -30)
+	rounded1.Size = UDim2.new(1, 0, 0, 50)
+	rounded1.ZIndex = 6
+
+	uICorner19 = Instance.new("UICorner")
+	uICorner19.Name = "UICorner"
+	uICorner19.Parent = rounded1
+
+	rounded1.Parent = bottomContainer
+
+	bottomContainer.Parent = dropdown
+
+	options = Instance.new("Frame")
+	options.Name = "Options"
+	options.AutomaticSize = Enum.AutomaticSize.Y
+	options.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	options.BackgroundTransparency = 1
+	options.Size = UDim2.fromScale(1, 0)
+	options.ZIndex = 6
+
+	uIListLayout4 = Instance.new("UIListLayout")
+	uIListLayout4.Name = "UIListLayout"
+	uIListLayout4.Padding = UDim.new(0, 3)
+	uIListLayout4.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	uIListLayout4.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout4.Parent = options
+
+	options.Parent = dropdown
+
+	uIPadding3 = Instance.new("UIPadding")
+	uIPadding3.Name = "UIPadding"
+	uIPadding3.PaddingBottom = UDim.new(0, 55)
+	uIPadding3.Parent = dropdown
+
+	frame = Instance.new("Frame")
+	frame.Name = "Frame"
+	frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	frame.BackgroundTransparency = 0.35
+	frame.BorderSizePixel = 0
+	frame.Size = UDim2.new(1, 0, 1, -20)
+	frame.ZIndex = 6
+	frame.Parent = dropdown
+
+	dropdown.Parent = chatbarFont
+
+	chatbarFont.Parent = scroller3
+
+	textFont = Instance.new("Frame")
+	textFont.Name = "TextFont"
+	textFont.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	textFont.BackgroundTransparency = 1
+	textFont.ClipsDescendants = true
+	textFont.LayoutOrder = 1
+	textFont.Size = UDim2.new(1, -10, 0, 30)
+	textFont.ZIndex = 6
+
+	title6 = Instance.new("Frame")
+	title6.Name = "Title"
+	title6.AnchorPoint = Vector2.new(0.5, 0.5)
+	title6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title6.BackgroundTransparency = 1
+	title6.BorderSizePixel = 0
+	title6.Position = UDim2.new(0.5, 0, 0, 15)
+	title6.Size = UDim2.new(0.95, 0, 0, 20)
+	title6.ZIndex = 8
+
+	icon10 = Instance.new("ImageLabel")
+	icon10.Name = "Icon"
+	icon10.Image = "rbxassetid://8678012976"
+	icon10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon10.BackgroundTransparency = 1
+	icon10.Size = UDim2.fromOffset(20, 20)
+	icon10.ZIndex = 9
+	icon10.Parent = title6
+
+	label5 = Instance.new("TextLabel")
+	label5.Name = "Label"
+	label5.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label5.Text = "Text Font"
+	label5.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label5.TextSize = 14
+	label5.TextXAlignment = Enum.TextXAlignment.Left
+	label5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label5.BackgroundTransparency = 1
+	label5.Position = UDim2.fromOffset(25, 0)
+	label5.Size = UDim2.fromOffset(0, 18)
+	label5.ZIndex = 9
+	label5.Parent = title6
+
+	drop1 = Instance.new("TextButton")
+	drop1.Name = "Drop"
+	drop1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	drop1.Text = ""
+	drop1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	drop1.TextSize = 14
+	drop1.AnchorPoint = Vector2.new(1, 0)
+	drop1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	drop1.BorderSizePixel = 0
+	drop1.Position = UDim2.fromScale(1, 0)
+	drop1.Size = UDim2.fromOffset(30, 20)
+	drop1.ZIndex = 9
+
+	uICorner20 = Instance.new("UICorner")
+	uICorner20.Name = "UICorner"
+	uICorner20.Parent = drop1
+
+	icon11 = Instance.new("ImageLabel")
+	icon11.Name = "Icon"
+	icon11.Image = "rbxassetid://8677555693"
+	icon11.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon11.BackgroundTransparency = 1
+	icon11.Position = UDim2.fromScale(0.5, 0.5)
+	icon11.Size = UDim2.fromOffset(25, 25)
+	icon11.ZIndex = 10
+	icon11.Parent = drop1
+
+	drop1.Parent = title6
+
+	selected1 = Instance.new("TextLabel")
+	selected1.Name = "Selected"
+	selected1.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json")
+	selected1.Text = "GothamMedium"
+	selected1.TextColor3 = Color3.fromRGB(200, 200, 200)
+	selected1.TextSize = 14
+	selected1.TextXAlignment = Enum.TextXAlignment.Right
+	selected1.AnchorPoint = Vector2.new(1, 0.5)
+	selected1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	selected1.BackgroundTransparency = 1
+	selected1.Position = UDim2.new(1, -35, 0.5, 0)
+	selected1.Size = UDim2.fromOffset(0, 18)
+	selected1.ZIndex = 9
+	selected1.Parent = title6
+
+	title6.Parent = textFont
+
+	topContainer1 = Instance.new("Frame")
+	topContainer1.Name = "TopContainer"
+	topContainer1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	topContainer1.BackgroundTransparency = 1
+	topContainer1.LayoutOrder = 2
+	topContainer1.Size = UDim2.new(1, 0, 0, 25)
+	topContainer1.ZIndex = 6
+
+	background1 = Instance.new("Frame")
+	background1.Name = "Background"
+	background1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	background1.BackgroundTransparency = 1
+	background1.LayoutOrder = 2
+	background1.Size = UDim2.new(1, 0, 0, 25)
+	background1.ZIndex = 6
+
+	main4 = Instance.new("Frame")
+	main4.Name = "Main"
+	main4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	main4.BackgroundTransparency = 0.5
+	main4.LayoutOrder = 2
+	main4.Size = UDim2.new(1, 0, 0, 30)
+	main4.ZIndex = 6
+
+	uICorner21 = Instance.new("UICorner")
+	uICorner21.Name = "UICorner"
+	uICorner21.Parent = main4
+
+	main4.Parent = background1
+
+	background1.Parent = topContainer1
+
+	flat1 = Instance.new("Frame")
+	flat1.Name = "Flat"
+	flat1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	flat1.BackgroundTransparency = 0.5
+	flat1.BorderSizePixel = 0
+	flat1.Position = UDim2.fromOffset(0, 25)
+	flat1.Size = UDim2.new(1, 0, 0, 5)
+	flat1.Visible = false
+	flat1.ZIndex = 6
+	flat1.Parent = topContainer1
+
+	topContainer1.Parent = textFont
+
+	dropdown1 = Instance.new("Frame")
+	dropdown1.Name = "Dropdown"
+	dropdown1.AutomaticSize = Enum.AutomaticSize.Y
+	dropdown1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	dropdown1.BackgroundTransparency = 1
+	dropdown1.BorderSizePixel = 0
+	dropdown1.ClipsDescendants = true
+	dropdown1.Position = UDim2.fromOffset(0, 30)
+	dropdown1.Size = UDim2.fromScale(1, 0)
+	dropdown1.ZIndex = 6
+
+	bottomContainer1 = Instance.new("Frame")
+	bottomContainer1.Name = "BottomContainer"
+	bottomContainer1.AnchorPoint = Vector2.new(0, 1)
+	bottomContainer1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	bottomContainer1.BackgroundTransparency = 1
+	bottomContainer1.BorderSizePixel = 0
+	bottomContainer1.ClipsDescendants = true
+	bottomContainer1.Position = UDim2.new(0, 0, 2, -20)
+	bottomContainer1.Size = UDim2.fromScale(1, 1)
+	bottomContainer1.ZIndex = 6
+
+	rounded2 = Instance.new("Frame")
+	rounded2.Name = "Rounded"
+	rounded2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	rounded2.BackgroundTransparency = 0.35
+	rounded2.Position = UDim2.fromOffset(0, -30)
+	rounded2.Size = UDim2.new(1, 0, 0, 50)
+	rounded2.ZIndex = 6
+
+	uICorner22 = Instance.new("UICorner")
+	uICorner22.Name = "UICorner"
+	uICorner22.Parent = rounded2
+
+	rounded2.Parent = bottomContainer1
+
+	bottomContainer1.Parent = dropdown1
+
+	options1 = Instance.new("Frame")
+	options1.Name = "Options"
+	options1.AutomaticSize = Enum.AutomaticSize.Y
+	options1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	options1.BackgroundTransparency = 1
+	options1.Size = UDim2.fromScale(1, 0)
+	options1.ZIndex = 6
+
+	uIListLayout5 = Instance.new("UIListLayout")
+	uIListLayout5.Name = "UIListLayout"
+	uIListLayout5.Padding = UDim.new(0, 3)
+	uIListLayout5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	uIListLayout5.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout5.Parent = options1
+
+	options1.Parent = dropdown1
+
+	uIPadding4 = Instance.new("UIPadding")
+	uIPadding4.Name = "UIPadding"
+	uIPadding4.PaddingBottom = UDim.new(0, 55)
+	uIPadding4.Parent = dropdown1
+
+	frame1 = Instance.new("Frame")
+	frame1.Name = "Frame"
+	frame1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	frame1.BackgroundTransparency = 0.35
+	frame1.BorderSizePixel = 0
+	frame1.Size = UDim2.new(1, 0, 1, -20)
+	frame1.ZIndex = 6
+	frame1.Parent = dropdown1
+
+	dropdown1.Parent = textFont
+
+	textFont.Parent = scroller3
+
+	scroller3.Parent = uI1
+
+	uI1.Parent = pages
+
+	bubbleChat1 = Instance.new("Frame")
+	bubbleChat1.Name = "BubbleChat"
+	bubbleChat1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	bubbleChat1.BackgroundTransparency = 1
+	bubbleChat1.Position = UDim2.fromScale(1, 0)
+	bubbleChat1.Size = UDim2.fromScale(1, 1)
+	bubbleChat1.ZIndex = 6
+
+	title7 = Instance.new("TextLabel")
+	title7.Name = "Title"
+	title7.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	title7.Text = "Bubble Chat"
+	title7.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title7.TextSize = 20
+	title7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title7.BackgroundTransparency = 1
+	title7.Position = UDim2.fromOffset(0, 5)
+	title7.Size = UDim2.new(1, 0, 0, 30)
+	title7.ZIndex = 6
+
+	back1 = Instance.new("TextButton")
+	back1.Name = "Back"
+	back1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	back1.Text = ""
+	back1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	back1.TextSize = 14
+	back1.AnchorPoint = Vector2.new(0, 0.5)
+	back1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	back1.Position = UDim2.new(0, 5, 0.5, 0)
+	back1.Size = UDim2.fromOffset(25, 25)
+	back1.ZIndex = 6
+
+	imageLabel1 = Instance.new("ImageLabel")
+	imageLabel1.Name = "ImageLabel"
+	imageLabel1.Image = "rbxassetid://8677511725"
+	imageLabel1.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	imageLabel1.BackgroundTransparency = 1
+	imageLabel1.Position = UDim2.fromScale(0.5, 0.5)
+	imageLabel1.Size = UDim2.fromScale(0.85, 0.85)
+	imageLabel1.ZIndex = 6
+	imageLabel1.Parent = back1
+
+	uICorner23 = Instance.new("UICorner")
+	uICorner23.Name = "UICorner"
+	uICorner23.Parent = back1
+
+	back1.Parent = title7
+
+	title7.Parent = bubbleChat1
+
+	scroller4 = Instance.new("ScrollingFrame")
+	scroller4.Name = "Scroller"
+	scroller4.BottomImage = "rbxassetid://8082116996"
+	scroller4.CanvasSize = UDim2.new()
+	scroller4.MidImage = "rbxassetid://7488333553"
+	scroller4.ScrollBarThickness = 5
+	scroller4.TopImage = "rbxassetid://8082122989"
+	scroller4.AnchorPoint = Vector2.new(0.5, 1)
+	scroller4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	scroller4.BackgroundTransparency = 1
+	scroller4.BorderSizePixel = 0
+	scroller4.Position = UDim2.new(0.5, 0, 1, -10)
+	scroller4.Selectable = false
+	scroller4.Size = UDim2.new(1, -10, 1, -50)
+	scroller4.ZIndex = 6
+
+	uIListLayout6 = Instance.new("UIListLayout")
+	uIListLayout6.Name = "UIListLayout"
+	uIListLayout6.Padding = UDim.new(0, 5)
+	uIListLayout6.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout6.Parent = scroller4
+
+	animationStyle = Instance.new("Frame")
+	animationStyle.Name = "AnimationStyle"
+	animationStyle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	animationStyle.BackgroundTransparency = 1
+	animationStyle.ClipsDescendants = true
+	animationStyle.Size = UDim2.new(1, -10, 0, 30)
+	animationStyle.ZIndex = 6
+
+	title8 = Instance.new("Frame")
+	title8.Name = "Title"
+	title8.AnchorPoint = Vector2.new(0.5, 0.5)
+	title8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title8.BackgroundTransparency = 1
+	title8.BorderSizePixel = 0
+	title8.Position = UDim2.new(0.5, 0, 0, 15)
+	title8.Size = UDim2.new(0.95, 0, 0, 20)
+	title8.ZIndex = 8
+
+	icon12 = Instance.new("ImageLabel")
+	icon12.Name = "Icon"
+	icon12.Image = "rbxassetid://8677960616"
+	icon12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon12.BackgroundTransparency = 1
+	icon12.Size = UDim2.fromOffset(20, 20)
+	icon12.ZIndex = 9
+	icon12.Parent = title8
+
+	label6 = Instance.new("TextLabel")
+	label6.Name = "Label"
+	label6.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label6.Text = "Animation Style"
+	label6.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label6.TextSize = 14
+	label6.TextXAlignment = Enum.TextXAlignment.Left
+	label6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label6.BackgroundTransparency = 1
+	label6.Position = UDim2.fromOffset(25, 0)
+	label6.Size = UDim2.fromOffset(0, 18)
+	label6.ZIndex = 9
+	label6.Parent = title8
+
+	drop2 = Instance.new("TextButton")
+	drop2.Name = "Drop"
+	drop2.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	drop2.Text = ""
+	drop2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	drop2.TextSize = 14
+	drop2.AnchorPoint = Vector2.new(1, 0)
+	drop2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	drop2.BorderSizePixel = 0
+	drop2.Position = UDim2.fromScale(1, 0)
+	drop2.Size = UDim2.fromOffset(30, 20)
+	drop2.ZIndex = 9
+
+	uICorner24 = Instance.new("UICorner")
+	uICorner24.Name = "UICorner"
+	uICorner24.Parent = drop2
+
+	icon13 = Instance.new("ImageLabel")
+	icon13.Name = "Icon"
+	icon13.Image = "rbxassetid://8677555693"
+	icon13.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon13.BackgroundTransparency = 1
+	icon13.Position = UDim2.fromScale(0.5, 0.5)
+	icon13.Size = UDim2.fromOffset(25, 25)
+	icon13.ZIndex = 10
+	icon13.Parent = drop2
+
+	drop2.Parent = title8
+
+	selected2 = Instance.new("TextLabel")
+	selected2.Name = "Selected"
+	selected2.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json")
+	selected2.Text = "Linear"
+	selected2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	selected2.TextSize = 14
+	selected2.TextXAlignment = Enum.TextXAlignment.Right
+	selected2.AnchorPoint = Vector2.new(1, 0.5)
+	selected2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	selected2.BackgroundTransparency = 1
+	selected2.Position = UDim2.new(1, -35, 0.5, 0)
+	selected2.Size = UDim2.fromOffset(0, 18)
+	selected2.ZIndex = 9
+	selected2.Parent = title8
+
+	title8.Parent = animationStyle
+
+	topContainer2 = Instance.new("Frame")
+	topContainer2.Name = "TopContainer"
+	topContainer2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	topContainer2.BackgroundTransparency = 1
+	topContainer2.LayoutOrder = 2
+	topContainer2.Size = UDim2.new(1, 0, 0, 25)
+	topContainer2.ZIndex = 6
+
+	background2 = Instance.new("Frame")
+	background2.Name = "Background"
+	background2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	background2.BackgroundTransparency = 1
+	background2.LayoutOrder = 2
+	background2.Size = UDim2.new(1, 0, 0, 25)
+	background2.ZIndex = 6
+
+	main5 = Instance.new("Frame")
+	main5.Name = "Main"
+	main5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	main5.BackgroundTransparency = 0.5
+	main5.LayoutOrder = 2
+	main5.Size = UDim2.new(1, 0, 0, 30)
+	main5.ZIndex = 6
+
+	uICorner25 = Instance.new("UICorner")
+	uICorner25.Name = "UICorner"
+	uICorner25.Parent = main5
+
+	main5.Parent = background2
+
+	background2.Parent = topContainer2
+
+	flat2 = Instance.new("Frame")
+	flat2.Name = "Flat"
+	flat2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	flat2.BackgroundTransparency = 0.5
+	flat2.BorderSizePixel = 0
+	flat2.Position = UDim2.fromOffset(0, 25)
+	flat2.Size = UDim2.new(1, 0, 0, 5)
+	flat2.Visible = false
+	flat2.ZIndex = 6
+	flat2.Parent = topContainer2
+
+	topContainer2.Parent = animationStyle
+
+	dropdown2 = Instance.new("Frame")
+	dropdown2.Name = "Dropdown"
+	dropdown2.AutomaticSize = Enum.AutomaticSize.Y
+	dropdown2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	dropdown2.BackgroundTransparency = 1
+	dropdown2.BorderSizePixel = 0
+	dropdown2.ClipsDescendants = true
+	dropdown2.Position = UDim2.fromOffset(0, 30)
+	dropdown2.Size = UDim2.fromScale(1, 0)
+	dropdown2.ZIndex = 6
+
+	bottomContainer2 = Instance.new("Frame")
+	bottomContainer2.Name = "BottomContainer"
+	bottomContainer2.AnchorPoint = Vector2.new(0, 1)
+	bottomContainer2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	bottomContainer2.BackgroundTransparency = 1
+	bottomContainer2.BorderSizePixel = 0
+	bottomContainer2.ClipsDescendants = true
+	bottomContainer2.Position = UDim2.new(0, 0, 2, -20)
+	bottomContainer2.Size = UDim2.fromScale(1, 1)
+	bottomContainer2.ZIndex = 6
+
+	rounded3 = Instance.new("Frame")
+	rounded3.Name = "Rounded"
+	rounded3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	rounded3.BackgroundTransparency = 0.35
+	rounded3.Position = UDim2.fromOffset(0, -30)
+	rounded3.Size = UDim2.new(1, 0, 0, 50)
+	rounded3.ZIndex = 6
+
+	uICorner26 = Instance.new("UICorner")
+	uICorner26.Name = "UICorner"
+	uICorner26.Parent = rounded3
+
+	rounded3.Parent = bottomContainer2
+
+	bottomContainer2.Parent = dropdown2
+
+	options2 = Instance.new("Frame")
+	options2.Name = "Options"
+	options2.AutomaticSize = Enum.AutomaticSize.Y
+	options2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	options2.BackgroundTransparency = 1
+	options2.Size = UDim2.fromScale(1, 0)
+	options2.ZIndex = 6
+
+	uIListLayout7 = Instance.new("UIListLayout")
+	uIListLayout7.Name = "UIListLayout"
+	uIListLayout7.Padding = UDim.new(0, 3)
+	uIListLayout7.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	uIListLayout7.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout7.Parent = options2
+
+	options2.Parent = dropdown2
+
+	uIPadding5 = Instance.new("UIPadding")
+	uIPadding5.Name = "UIPadding"
+	uIPadding5.PaddingBottom = UDim.new(0, 55)
+	uIPadding5.Parent = dropdown2
+
+	frame2 = Instance.new("Frame")
+	frame2.Name = "Frame"
+	frame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	frame2.BackgroundTransparency = 0.35
+	frame2.BorderSizePixel = 0
+	frame2.Size = UDim2.new(1, 0, 1, -20)
+	frame2.ZIndex = 6
+	frame2.Parent = dropdown2
+
+	dropdown2.Parent = animationStyle
+
+	animationStyle.Parent = scroller4
+
+	fadeoutTime = Instance.new("Frame")
+	fadeoutTime.Name = "FadeoutTime"
+	fadeoutTime.Active = true
+	fadeoutTime.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	fadeoutTime.BackgroundTransparency = 0.5
+	fadeoutTime.BorderSizePixel = 0
+	fadeoutTime.LayoutOrder = 2
+	fadeoutTime.Position = UDim2.fromScale(0.0328, 0.044)
+	fadeoutTime.Selectable = true
+	fadeoutTime.Size = UDim2.new(1, -10, 0, 55)
+	fadeoutTime.ZIndex = 6
+
+	center2 = Instance.new("Frame")
+	center2.Name = "Center"
+	center2.AnchorPoint = Vector2.new(0, 0.5)
+	center2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	center2.BackgroundTransparency = 1
+	center2.Position = UDim2.fromScale(0, 0.5)
+	center2.Size = UDim2.fromScale(1, 0.75)
+	center2.ZIndex = 6
+
+	title9 = Instance.new("Frame")
+	title9.Name = "Title"
+	title9.AnchorPoint = Vector2.new(0.5, 0)
+	title9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title9.BackgroundTransparency = 1
+	title9.BorderSizePixel = 0
+	title9.Position = UDim2.fromScale(0.5, 0)
+	title9.Size = UDim2.new(0.95, 0, 0, 20)
+	title9.ZIndex = 6
+
+	icon14 = Instance.new("ImageLabel")
+	icon14.Name = "Icon"
+	icon14.Image = "rbxassetid://8677983647"
+	icon14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon14.BackgroundTransparency = 1
+	icon14.Size = UDim2.fromOffset(20, 20)
+	icon14.ZIndex = 6
+	icon14.Parent = title9
+
+	label7 = Instance.new("TextLabel")
+	label7.Name = "Label"
+	label7.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label7.Text = "Fade Time"
+	label7.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label7.TextSize = 14
+	label7.TextXAlignment = Enum.TextXAlignment.Left
+	label7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label7.BackgroundTransparency = 1
+	label7.Position = UDim2.fromOffset(25, 0)
+	label7.Size = UDim2.new(0.5, 0, 0, 18)
+	label7.ZIndex = 6
+	label7.Parent = title9
+
+	title9.Parent = center2
+
+	actual2 = Instance.new("Frame")
+	actual2.Name = "Actual"
+	actual2.AnchorPoint = Vector2.new(0.5, 1)
+	actual2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	actual2.BackgroundTransparency = 1
+	actual2.Position = UDim2.new(0.5, 0, 1, 5)
+	actual2.Size = UDim2.new(0.95, 0, 0, 25)
+	actual2.ZIndex = 6
+
+	amount2 = Instance.new("TextBox")
+	amount2.Name = "Amount"
+	amount2.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	amount2.PlaceholderColor3 = Color3.fromRGB(220, 220, 220)
+	amount2.PlaceholderText = "%"
+	amount2.Text = "_"
+	amount2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	amount2.TextSize = 14
+	amount2.AnchorPoint = Vector2.new(1, 0.5)
+	amount2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	amount2.BackgroundTransparency = 0.5
+	amount2.BorderSizePixel = 0
+	amount2.Position = UDim2.fromScale(1, 0.5)
+	amount2.Size = UDim2.new(0.125, 0, 0, 20)
+	amount2.ZIndex = 6
+
+	uICorner27 = Instance.new("UICorner")
+	uICorner27.Name = "UICorner"
+	uICorner27.Parent = amount2
+
+	uIPadding6 = Instance.new("UIPadding")
+	uIPadding6.Name = "UIPadding"
+	uIPadding6.PaddingLeft = UDim.new(0, 5)
+	uIPadding6.PaddingRight = UDim.new(0, 5)
+	uIPadding6.Parent = amount2
+
+	amount2.Parent = actual2
+
+	bar3 = Instance.new("Frame")
+	bar3.Name = "Bar"
+	bar3.AnchorPoint = Vector2.new(0, 0.5)
+	bar3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	bar3.BorderSizePixel = 0
+	bar3.Position = UDim2.fromScale(0, 0.5)
+	bar3.Size = UDim2.new(0.85, 0, 0, 10)
+	bar3.ZIndex = 6
+
+	ignore9 = Instance.new("UICorner")
+	ignore9.Name = "Ignore"
+	ignore9.CornerRadius = UDim.new(1, 0)
+	ignore9.Parent = bar3
+
+	button2 = Instance.new("TextButton")
+	button2.Name = "Button"
+	button2.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	button2.Text = ""
+	button2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	button2.TextSize = 14
+	button2.AnchorPoint = Vector2.new(0.5, 0.5)
+	button2.BackgroundColor3 = Color3.fromRGB(30, 200, 150)
+	button2.BorderSizePixel = 0
+	button2.Position = UDim2.new(0, 10, 0.5, 0)
+	button2.Size = UDim2.fromOffset(20, 20)
+	button2.ZIndex = 7
+
+	ignore10 = Instance.new("UICorner")
+	ignore10.Name = "Ignore"
+	ignore10.CornerRadius = UDim.new(1, 0)
+	ignore10.Parent = button2
+
+	button2.Parent = bar3
+
+	progress2 = Instance.new("Frame")
+	progress2.Name = "Progress"
+	progress2.BackgroundColor3 = Color3.fromRGB(25, 170, 127)
+	progress2.BorderSizePixel = 0
+	progress2.Size = UDim2.fromScale(0, 1)
+	progress2.ZIndex = 6
+
+	ignore11 = Instance.new("UICorner")
+	ignore11.Name = "Ignore"
+	ignore11.CornerRadius = UDim.new(1, 0)
+	ignore11.Parent = progress2
+
+	progress2.Parent = bar3
+
+	bar3.Parent = actual2
+
+	actual2.Parent = center2
+
+	center2.Parent = fadeoutTime
+
+	uICorner28 = Instance.new("UICorner")
+	uICorner28.Name = "UICorner"
+	uICorner28.Parent = fadeoutTime
+
+	fadeoutTime.Parent = scroller4
+
+	font = Instance.new("Frame")
+	font.Name = "Font"
+	font.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	font.BackgroundTransparency = 1
+	font.ClipsDescendants = true
+	font.LayoutOrder = 1
+	font.Size = UDim2.new(1, -10, 0, 30)
+	font.ZIndex = 6
+
+	title10 = Instance.new("Frame")
+	title10.Name = "Title"
+	title10.AnchorPoint = Vector2.new(0.5, 0.5)
+	title10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title10.BackgroundTransparency = 1
+	title10.BorderSizePixel = 0
+	title10.Position = UDim2.new(0.5, 0, 0, 15)
+	title10.Size = UDim2.new(0.95, 0, 0, 20)
+	title10.ZIndex = 8
+
+	icon15 = Instance.new("ImageLabel")
+	icon15.Name = "Icon"
+	icon15.Image = "rbxassetid://8678012976"
+	icon15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon15.BackgroundTransparency = 1
+	icon15.Size = UDim2.fromOffset(20, 20)
+	icon15.ZIndex = 9
+	icon15.Parent = title10
+
+	label8 = Instance.new("TextLabel")
+	label8.Name = "Label"
+	label8.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label8.Text = "Font"
+	label8.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label8.TextSize = 14
+	label8.TextXAlignment = Enum.TextXAlignment.Left
+	label8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label8.BackgroundTransparency = 1
+	label8.Position = UDim2.fromOffset(25, 0)
+	label8.Size = UDim2.fromOffset(0, 18)
+	label8.ZIndex = 9
+	label8.Parent = title10
+
+	drop3 = Instance.new("TextButton")
+	drop3.Name = "Drop"
+	drop3.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	drop3.Text = ""
+	drop3.TextColor3 = Color3.fromRGB(0, 0, 0)
+	drop3.TextSize = 14
+	drop3.AnchorPoint = Vector2.new(1, 0)
+	drop3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	drop3.BorderSizePixel = 0
+	drop3.Position = UDim2.fromScale(1, 0)
+	drop3.Size = UDim2.fromOffset(30, 20)
+	drop3.ZIndex = 9
+
+	uICorner29 = Instance.new("UICorner")
+	uICorner29.Name = "UICorner"
+	uICorner29.Parent = drop3
+
+	icon16 = Instance.new("ImageLabel")
+	icon16.Name = "Icon"
+	icon16.Image = "rbxassetid://8677555693"
+	icon16.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon16.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon16.BackgroundTransparency = 1
+	icon16.Position = UDim2.fromScale(0.5, 0.5)
+	icon16.Size = UDim2.fromOffset(25, 25)
+	icon16.ZIndex = 10
+	icon16.Parent = drop3
+
+	drop3.Parent = title10
+
+	selected3 = Instance.new("TextLabel")
+	selected3.Name = "Selected"
+	selected3.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json")
+	selected3.Text = "GothamMedium"
+	selected3.TextColor3 = Color3.fromRGB(200, 200, 200)
+	selected3.TextSize = 14
+	selected3.TextXAlignment = Enum.TextXAlignment.Right
+	selected3.AnchorPoint = Vector2.new(1, 0.5)
+	selected3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	selected3.BackgroundTransparency = 1
+	selected3.Position = UDim2.new(1, -35, 0.5, 0)
+	selected3.Size = UDim2.fromOffset(0, 18)
+	selected3.ZIndex = 9
+	selected3.Parent = title10
+
+	title10.Parent = font
+
+	topContainer3 = Instance.new("Frame")
+	topContainer3.Name = "TopContainer"
+	topContainer3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	topContainer3.BackgroundTransparency = 1
+	topContainer3.LayoutOrder = 2
+	topContainer3.Size = UDim2.new(1, 0, 0, 25)
+	topContainer3.ZIndex = 6
+
+	background3 = Instance.new("Frame")
+	background3.Name = "Background"
+	background3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	background3.BackgroundTransparency = 1
+	background3.LayoutOrder = 2
+	background3.Size = UDim2.new(1, 0, 0, 25)
+	background3.ZIndex = 6
+
+	main6 = Instance.new("Frame")
+	main6.Name = "Main"
+	main6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	main6.BackgroundTransparency = 0.5
+	main6.LayoutOrder = 2
+	main6.Size = UDim2.new(1, 0, 0, 30)
+	main6.ZIndex = 6
+
+	uICorner30 = Instance.new("UICorner")
+	uICorner30.Name = "UICorner"
+	uICorner30.Parent = main6
+
+	main6.Parent = background3
+
+	background3.Parent = topContainer3
+
+	flat3 = Instance.new("Frame")
+	flat3.Name = "Flat"
+	flat3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	flat3.BackgroundTransparency = 0.5
+	flat3.BorderSizePixel = 0
+	flat3.Position = UDim2.fromOffset(0, 25)
+	flat3.Size = UDim2.new(1, 0, 0, 5)
+	flat3.Visible = false
+	flat3.ZIndex = 6
+	flat3.Parent = topContainer3
+
+	topContainer3.Parent = font
+
+	dropdown3 = Instance.new("Frame")
+	dropdown3.Name = "Dropdown"
+	dropdown3.AutomaticSize = Enum.AutomaticSize.Y
+	dropdown3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	dropdown3.BackgroundTransparency = 1
+	dropdown3.BorderSizePixel = 0
+	dropdown3.ClipsDescendants = true
+	dropdown3.Position = UDim2.fromOffset(0, 30)
+	dropdown3.Size = UDim2.fromScale(1, 0)
+	dropdown3.ZIndex = 6
+
+	bottomContainer3 = Instance.new("Frame")
+	bottomContainer3.Name = "BottomContainer"
+	bottomContainer3.AnchorPoint = Vector2.new(0, 1)
+	bottomContainer3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	bottomContainer3.BackgroundTransparency = 1
+	bottomContainer3.BorderSizePixel = 0
+	bottomContainer3.ClipsDescendants = true
+	bottomContainer3.Position = UDim2.new(0, 0, 2, -20)
+	bottomContainer3.Size = UDim2.fromScale(1, 1)
+	bottomContainer3.ZIndex = 6
+
+	rounded4 = Instance.new("Frame")
+	rounded4.Name = "Rounded"
+	rounded4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	rounded4.BackgroundTransparency = 0.35
+	rounded4.Position = UDim2.fromOffset(0, -30)
+	rounded4.Size = UDim2.new(1, 0, 0, 50)
+	rounded4.ZIndex = 6
+
+	uICorner31 = Instance.new("UICorner")
+	uICorner31.Name = "UICorner"
+	uICorner31.Parent = rounded4
+
+	rounded4.Parent = bottomContainer3
+
+	bottomContainer3.Parent = dropdown3
+
+	options3 = Instance.new("Frame")
+	options3.Name = "Options"
+	options3.AutomaticSize = Enum.AutomaticSize.Y
+	options3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	options3.BackgroundTransparency = 1
+	options3.Size = UDim2.fromScale(1, 0)
+	options3.ZIndex = 6
+
+	uIListLayout8 = Instance.new("UIListLayout")
+	uIListLayout8.Name = "UIListLayout"
+	uIListLayout8.Padding = UDim.new(0, 3)
+	uIListLayout8.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	uIListLayout8.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout8.Parent = options3
+
+	options3.Parent = dropdown3
+
+	uIPadding7 = Instance.new("UIPadding")
+	uIPadding7.Name = "UIPadding"
+	uIPadding7.PaddingBottom = UDim.new(0, 55)
+	uIPadding7.Parent = dropdown3
+
+	frame3 = Instance.new("Frame")
+	frame3.Name = "Frame"
+	frame3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	frame3.BackgroundTransparency = 0.35
+	frame3.BorderSizePixel = 0
+	frame3.Size = UDim2.new(1, 0, 1, -20)
+	frame3.ZIndex = 6
+	frame3.Parent = dropdown3
+
+	dropdown3.Parent = font
+
+	font.Parent = scroller4
+
+	enabled = Instance.new("Frame")
+	enabled.Name = "Enabled"
+	enabled.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	enabled.BackgroundTransparency = 0.5
+	enabled.LayoutOrder = -1
+	enabled.Size = UDim2.new(1, -10, 0, 30)
+	enabled.ZIndex = 6
+
+	title11 = Instance.new("Frame")
+	title11.Name = "Title"
+	title11.AnchorPoint = Vector2.new(0.5, 0.5)
+	title11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title11.BackgroundTransparency = 1
+	title11.BorderSizePixel = 0
+	title11.Position = UDim2.fromScale(0.5, 0.5)
+	title11.Size = UDim2.new(0.95, 0, 0, 20)
+	title11.ZIndex = 6
+
+	icon17 = Instance.new("ImageLabel")
+	icon17.Name = "Icon"
+	icon17.Image = "rbxassetid://8685962752"
+	icon17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	icon17.BackgroundTransparency = 1
+	icon17.Size = UDim2.fromOffset(20, 20)
+	icon17.ZIndex = 6
+	icon17.Parent = title11
+
+	label9 = Instance.new("TextLabel")
+	label9.Name = "Label"
+	label9.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	label9.Text = "Enabled"
+	label9.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label9.TextSize = 14
+	label9.TextXAlignment = Enum.TextXAlignment.Left
+	label9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	label9.BackgroundTransparency = 1
+	label9.Position = UDim2.fromOffset(25, 0)
+	label9.Size = UDim2.new(0.5, 0, 0, 18)
+	label9.ZIndex = 6
+	label9.Parent = title11
+
+	title11.Parent = enabled
+
+	uICorner32 = Instance.new("UICorner")
+	uICorner32.Name = "UICorner"
+	uICorner32.Parent = enabled
+
+	toggle1 = Instance.new("Frame")
+	toggle1.Name = "Toggle"
+	toggle1.AnchorPoint = Vector2.new(1, 0.5)
+	toggle1.BackgroundColor3 = Color3.fromRGB(72, 175, 240)
+	toggle1.BorderSizePixel = 0
+	toggle1.Position = UDim2.new(1, -5, 0.5, 0)
+	toggle1.Size = UDim2.fromOffset(40, 18)
+	toggle1.ZIndex = 6
+
+	ignore12 = Instance.new("UICorner")
+	ignore12.Name = "Ignore"
+	ignore12.CornerRadius = UDim.new(1, 0)
+	ignore12.Parent = toggle1
+
+	zone2 = Instance.new("TextButton")
+	zone2.Name = "Zone"
+	zone2.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	zone2.Text = ""
+	zone2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	zone2.TextSize = 14
+	zone2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	zone2.BackgroundTransparency = 1
+	zone2.Size = UDim2.fromScale(1, 1)
+	zone2.ZIndex = 8
+
+	ignore13 = Instance.new("UICorner")
+	ignore13.Name = "Ignore"
+	ignore13.CornerRadius = UDim.new(1, 0)
+	ignore13.Parent = zone2
+
+	zone2.Parent = toggle1
+
+	rounded5 = Instance.new("Frame")
+	rounded5.Name = "Rounded"
+	rounded5.AnchorPoint = Vector2.new(1, 0.5)
+	rounded5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	rounded5.Position = UDim2.new(1, -3, 0.5, 0)
+	rounded5.Size = UDim2.fromOffset(14, 14)
+	rounded5.ZIndex = 6
+
+	ignore14 = Instance.new("UICorner")
+	ignore14.Name = "Ignore"
+	ignore14.CornerRadius = UDim.new(1, 0)
+	ignore14.Parent = rounded5
+
+	rounded5.Parent = toggle1
+
+	toggle1.Parent = enabled
+
+	enabled.Parent = scroller4
+
+	scroller4.Parent = bubbleChat1
+
+	bubbleChat1.Parent = pages
+
+	quickChat1 = Instance.new("Frame")
+	quickChat1.Name = "QuickChat"
+	quickChat1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	quickChat1.BackgroundTransparency = 1
+	quickChat1.Position = UDim2.fromScale(1, 0)
+	quickChat1.Size = UDim2.fromScale(1, 1)
+	quickChat1.ZIndex = 6
+
+	title12 = Instance.new("TextLabel")
+	title12.Name = "Title"
+	title12.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	title12.Text = "Quick Chat"
+	title12.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title12.TextSize = 20
+	title12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title12.BackgroundTransparency = 1
+	title12.Position = UDim2.fromOffset(0, 5)
+	title12.Size = UDim2.new(1, 0, 0, 30)
+	title12.ZIndex = 6
+
+	back2 = Instance.new("TextButton")
+	back2.Name = "Back"
+	back2.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	back2.Text = ""
+	back2.TextColor3 = Color3.fromRGB(0, 0, 0)
+	back2.TextSize = 14
+	back2.AnchorPoint = Vector2.new(0, 0.5)
+	back2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	back2.Position = UDim2.new(0, 5, 0.5, 0)
+	back2.Size = UDim2.fromOffset(25, 25)
+	back2.ZIndex = 6
+
+	imageLabel2 = Instance.new("ImageLabel")
+	imageLabel2.Name = "ImageLabel"
+	imageLabel2.Image = "rbxassetid://8677511725"
+	imageLabel2.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	imageLabel2.BackgroundTransparency = 1
+	imageLabel2.Position = UDim2.fromScale(0.5, 0.5)
+	imageLabel2.Size = UDim2.fromScale(0.85, 0.85)
+	imageLabel2.ZIndex = 6
+	imageLabel2.Parent = back2
+
+	uICorner33 = Instance.new("UICorner")
+	uICorner33.Name = "UICorner"
+	uICorner33.Parent = back2
+
+	back2.Parent = title12
+
+	title12.Parent = quickChat1
+
+	scroller5 = Instance.new("ScrollingFrame")
+	scroller5.Name = "Scroller"
+	scroller5.BottomImage = "rbxassetid://8082116996"
+	scroller5.CanvasSize = UDim2.new()
+	scroller5.MidImage = "rbxassetid://7488333553"
+	scroller5.ScrollBarThickness = 5
+	scroller5.TopImage = "rbxassetid://8082122989"
+	scroller5.AnchorPoint = Vector2.new(0.5, 1)
+	scroller5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	scroller5.BackgroundTransparency = 1
+	scroller5.BorderSizePixel = 0
+	scroller5.Position = UDim2.new(0.5, 0, 1, -10)
+	scroller5.Selectable = false
+	scroller5.Size = UDim2.new(1, -10, 1, -50)
+	scroller5.ZIndex = 6
+
+	uIListLayout9 = Instance.new("UIListLayout")
+	uIListLayout9.Name = "UIListLayout"
+	uIListLayout9.Padding = UDim.new(0, 5)
+	uIListLayout9.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout9.Parent = scroller5
+
+	scroller5.Parent = quickChat1
+
+	quickChat1.Parent = pages
+
+	pages.Parent = settings
+
+	settings.Parent = chat
+
+	saveChat = Instance.new("Frame")
+	saveChat.Name = "SaveChat"
+	saveChat.AnchorPoint = Vector2.new(0.5, 0.5)
+	saveChat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	saveChat.BackgroundTransparency = 0.75
+	saveChat.BorderSizePixel = 0
+	saveChat.Position = UDim2.fromScale(0.5, -1.5)
+	saveChat.Size = UDim2.fromOffset(150, 240)
+
+	container5 = Instance.new("ScrollingFrame")
+	container5.Name = "Container"
+	container5.BottomImage = "rbxassetid://8082116996"
+	container5.CanvasSize = UDim2.new()
+	container5.MidImage = "rbxassetid://7488333553"
+	container5.ScrollBarThickness = 5
+	container5.TopImage = "rbxassetid://8082122989"
+	container5.AnchorPoint = Vector2.new(0.5, 1)
+	container5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	container5.BackgroundTransparency = 1
+	container5.BorderSizePixel = 0
+	container5.Position = UDim2.new(0.5, 0, 1, -5)
+	container5.Selectable = false
+	container5.Size = UDim2.new(0, 140, 1, -35)
+
+	uIListLayout10 = Instance.new("UIListLayout")
+	uIListLayout10.Name = "UIListLayout"
+	uIListLayout10.Padding = UDim.new(0, 2)
+	uIListLayout10.SortOrder = Enum.SortOrder.LayoutOrder
+	uIListLayout10.Parent = container5
+
+	slot = Instance.new("TextButton")
+	slot.Name = "Slot"
+	slot.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Medium,
+		Enum.FontStyle.Normal
+	)
+	slot.Text = "Slot 0"
+	slot.TextColor3 = Color3.fromRGB(255, 255, 255)
+	slot.TextSize = 14
+	slot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	slot.BackgroundTransparency = 0.5
+	slot.BorderSizePixel = 0
+	slot.Size = UDim2.new(1, -10, 0, 25)
+
+	uICorner34 = Instance.new("UICorner")
+	uICorner34.Name = "UICorner"
+	uICorner34.Parent = slot
+
+	slot.Parent = container5
+
+	container5.Parent = saveChat
+
+	uICorner35 = Instance.new("UICorner")
+	uICorner35.Name = "UICorner"
+	uICorner35.Parent = saveChat
+
+	uIGradient = Instance.new("UIGradient")
+	uIGradient.Name = "UIGradient"
+	uIGradient.Rotation = -90
+	uIGradient.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0, 0),
+		NumberSequenceKeypoint.new(0.9, 0),
+		NumberSequenceKeypoint.new(0.9, 1),
+		NumberSequenceKeypoint.new(1, 1),
+	})
+	uIGradient.Parent = saveChat
+
+	header = Instance.new("Frame")
+	header.Name = "Header"
+	header.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	header.BackgroundTransparency = 1
+	header.ClipsDescendants = true
+	header.Position = UDim2.fromOffset(0, -13)
+	header.Size = UDim2.new(1, 0, 0, 35)
+
+	uI2 = Instance.new("Frame")
+	uI2.Name = "UI"
+	uI2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	uI2.BackgroundTransparency = 0.5
+	uI2.Size = UDim2.new(1, 0, 0, 48)
+
+	close1 = Instance.new("TextButton")
+	close1.Name = "Close"
+	close1.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
+	close1.Text = ""
+	close1.TextColor3 = Color3.fromRGB(0, 0, 0)
+	close1.TextSize = 14
+	close1.AnchorPoint = Vector2.new(1, 0)
+	close1.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	close1.BorderSizePixel = 0
+	close1.Position = UDim2.new(1, -5, 0, 5)
+	close1.Size = UDim2.fromOffset(25, 25)
+	close1.ZIndex = 5
+
+	imageLabel3 = Instance.new("ImageLabel")
+	imageLabel3.Name = "ImageLabel"
+	imageLabel3.Image = "http://www.roblox.com/asset/?id=6031094678"
+	imageLabel3.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	imageLabel3.BackgroundTransparency = 1
+	imageLabel3.Position = UDim2.fromScale(0.5, 0.5)
+	imageLabel3.Size = UDim2.fromOffset(20, 20)
+	imageLabel3.ZIndex = 6
+	imageLabel3.Parent = close1
+
+	uICorner36 = Instance.new("UICorner")
+	uICorner36.Name = "UICorner"
+	uICorner36.Parent = close1
+
+	close1.Parent = uI2
+
+	title13 = Instance.new("TextLabel")
+	title13.Name = "Title"
+	title13.FontFace = Font.new(
+		"rbxasset://fonts/families/GothamSSm.json",
+		Enum.FontWeight.Bold,
+		Enum.FontStyle.Normal
+	)
+	title13.Text = "Save Chat"
+	title13.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title13.TextSize = 14
+	title13.TextXAlignment = Enum.TextXAlignment.Left
+	title13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title13.BackgroundTransparency = 1
+	title13.Position = UDim2.fromOffset(5, 5)
+	title13.Size = UDim2.new(1, 0, 0, 25)
+	title13.ZIndex = 8
+	title13.Parent = uI2
+
+	uICorner37 = Instance.new("UICorner")
+	uICorner37.Name = "UICorner"
+	uICorner37.Parent = uI2
+
+	uI2.Parent = header
+
+	header.Parent = saveChat
+
+	saveChat.Parent = chat
 	
-	Chat.BottomContainer.Name = "BottomContainer"
-	Chat.BottomContainer.Parent = Chat.Dropdown
-	Chat.BottomContainer.AnchorPoint = Vector2.new(0, 1)
-	Chat.BottomContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.BottomContainer.BackgroundTransparency = 1.000
-	Chat.BottomContainer.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.BottomContainer.BorderSizePixel = 0
-	Chat.BottomContainer.ClipsDescendants = true
-	Chat.BottomContainer.Position = UDim2.new(0, 0, 2, -20)
-	Chat.BottomContainer.Size = UDim2.new(1, 0, 1, 0)
-	Chat.BottomContainer.ZIndex = 6
-
-	Chat.Rounded_2.Name = "Rounded"
-	Chat.Rounded_2.Parent = Chat.BottomContainer
-	Chat.Rounded_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Rounded_2.BackgroundTransparency = 0.350
-	Chat.Rounded_2.Position = UDim2.new(0, 0, 0, -30)
-	Chat.Rounded_2.Size = UDim2.new(1, 0, 0, 50)
-	Chat.Rounded_2.ZIndex = 6
-
-	Chat.UICorner_21.Parent = Chat.Rounded_2
-
-	Chat.Options.Name = "Options"
-	Chat.Options.Parent = Chat.Dropdown
-	Chat.Options.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Options.BackgroundTransparency = 1.000
-	Chat.Options.Size = UDim2.new(1, 0, 0, 0)
-	Chat.Options.ZIndex = 6
-	Chat.Options.AutomaticSize = Enum.AutomaticSize.Y
+	chatbarFont:Destroy()
 	
-	Chat.UIListLayout_6.Parent = Chat.Options
-	Chat.UIListLayout_6.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	Chat.UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_6.Padding = UDim.new(0, 3)
-
-	Chat.UIPadding_4.Parent = Chat.Dropdown
-	Chat.UIPadding_4.PaddingBottom = UDim.new(0, 55)
-
-	Chat.Frame.Parent = Chat.Dropdown
-	Chat.Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Frame.BackgroundTransparency = 0.350
-	Chat.Frame.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Frame.BorderSizePixel = 0
-	Chat.Frame.Size = UDim2.new(1, 0, 1, -20)
-	Chat.Frame.ZIndex = 6
-
-	Chat.FadeoutTime.Name = "FadeoutTime"
-	Chat.FadeoutTime.Parent = Chat.Scroller_5
-	Chat.FadeoutTime.Active = true
-	Chat.FadeoutTime.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.FadeoutTime.BackgroundTransparency = 0.500
-	Chat.FadeoutTime.BorderSizePixel = 0
-	Chat.FadeoutTime.LayoutOrder = 2
-	Chat.FadeoutTime.Position = UDim2.new(0.0327868834, 0, 0.0439999998, 0)
-	Chat.FadeoutTime.Selectable = true
-	Chat.FadeoutTime.Size = UDim2.new(1, -10, 0, 55)
-	Chat.FadeoutTime.ZIndex = 6
-
-	Chat.Center_3.Name = "Center"
-	Chat.Center_3.Parent = Chat.FadeoutTime
-	Chat.Center_3.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Center_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Center_3.BackgroundTransparency = 1.000
-	Chat.Center_3.Position = UDim2.new(0, 0, 0.5, 0)
-	Chat.Center_3.Size = UDim2.new(1, 0, 0.75, 0)
-	Chat.Center_3.ZIndex = 6
-
-	Chat.Title_8.Name = "Title"
-	Chat.Title_8.Parent = Chat.Center_3
-	Chat.Title_8.AnchorPoint = Vector2.new(0.5, 0)
-	Chat.Title_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_8.BackgroundTransparency = 1.000
-	Chat.Title_8.BorderSizePixel = 0
-	Chat.Title_8.Position = UDim2.new(0.5, 0, 0, 0)
-	Chat.Title_8.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_8.ZIndex = 6
-
-	Chat.Icon_11.Name = "Icon"
-	Chat.Icon_11.Parent = Chat.Title_8
-	Chat.Icon_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_11.BackgroundTransparency = 1.000
-	Chat.Icon_11.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_11.ZIndex = 6
-	Chat.Icon_11.Image = "rbxassetid://8677983647"
-
-	Chat.Label_6.Name = "Label"
-	Chat.Label_6.Parent = Chat.Title_8
-	Chat.Label_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_6.BackgroundTransparency = 1.000
-	Chat.Label_6.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_6.Size = UDim2.new(0.5, 0, 0, 18)
-	Chat.Label_6.ZIndex = 6
-	Chat.Label_6.Font = Enum.Font.GothamBold
-	Chat.Label_6.Text = "Fade Time"
-	Chat.Label_6.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_6.TextSize = 14.000
-	Chat.Label_6.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.Actual_3.Name = "Actual"
-	Chat.Actual_3.Parent = Chat.Center_3
-	Chat.Actual_3.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Actual_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Actual_3.BackgroundTransparency = 1.000
-	Chat.Actual_3.Position = UDim2.new(0.5, 0, 1, 5)
-	Chat.Actual_3.Size = UDim2.new(0.949999988, 0, 0, 25)
-	Chat.Actual_3.ZIndex = 6
-
-	Chat.Amount_3.Name = "Amount"
-	Chat.Amount_3.Parent = Chat.Actual_3
-	Chat.Amount_3.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Amount_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Amount_3.BackgroundTransparency = 0.500
-	Chat.Amount_3.BorderSizePixel = 0
-	Chat.Amount_3.Position = UDim2.new(1, 0, 0.5, 0)
-	Chat.Amount_3.Size = UDim2.new(0.125, 0, 0, 20)
-	Chat.Amount_3.ZIndex = 6
-	Chat.Amount_3.Font = Enum.Font.GothamMedium
-	Chat.Amount_3.PlaceholderColor3 = Color3.fromRGB(220, 220, 220)
-	Chat.Amount_3.PlaceholderText = "%"
-	Chat.Amount_3.Text = "_"
-	Chat.Amount_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Amount_3.TextSize = 14.000
-
-	Chat.UICorner_22.Parent = Chat.Amount_3
-
-	Chat.UIPadding_5.Parent = Chat.Amount_3
-	Chat.UIPadding_5.PaddingLeft = UDim.new(0, 5)
-	Chat.UIPadding_5.PaddingRight = UDim.new(0, 5)
-
-	Chat.Bar_4.Name = "Bar"
-	Chat.Bar_4.Parent = Chat.Actual_3
-	Chat.Bar_4.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Bar_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Bar_4.BorderSizePixel = 0
-	Chat.Bar_4.Position = UDim2.new(0, 0, 0.5, 0)
-	Chat.Bar_4.Size = UDim2.new(0.850000024, 0, 0, 10)
-	Chat.Bar_4.ZIndex = 6
-
-	Chat.Ignore_10.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_10.Name = "Ignore"
-	Chat.Ignore_10.Parent = Chat.Bar_4
-
-	Chat.Button_3.Name = "Button"
-	Chat.Button_3.Parent = Chat.Bar_4
-	Chat.Button_3.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Button_3.BackgroundColor3 = Color3.fromRGB(30, 200, 150)
-	Chat.Button_3.BorderSizePixel = 0
-	Chat.Button_3.Position = UDim2.new(0, 10, 0.5, 0)
-	Chat.Button_3.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Button_3.ZIndex = 7
-	Chat.Button_3.Font = Enum.Font.SourceSans
-	Chat.Button_3.Text = ""
-	Chat.Button_3.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Button_3.TextSize = 14.000
-
-	Chat.Ignore_11.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_11.Name = "Ignore"
-	Chat.Ignore_11.Parent = Chat.Button_3
-
-	Chat.Progress_3.Name = "Progress"
-	Chat.Progress_3.Parent = Chat.Bar_4
-	Chat.Progress_3.BackgroundColor3 = Color3.fromRGB(25, 170, 127)
-	Chat.Progress_3.BorderSizePixel = 0
-	Chat.Progress_3.Size = UDim2.new(0, 0, 1, 0)
-	Chat.Progress_3.ZIndex = 6
-
-	Chat.Ignore_12.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_12.Name = "Ignore"
-	Chat.Ignore_12.Parent = Chat.Progress_3
-
-	Chat.UICorner_23.Parent = Chat.FadeoutTime
-
-	Chat.Font.Name = "Font"
-	Chat.Font.Parent = Chat.Scroller_5
-	Chat.Font.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Font.BackgroundTransparency = 1.000
-	Chat.Font.ClipsDescendants = true
-	Chat.Font.LayoutOrder = 1
-	Chat.Font.Size = UDim2.new(1, -10, 0, 30)
-	Chat.Font.ZIndex = 6
-
-	Chat.Title_9.Name = "Title"
-	Chat.Title_9.Parent = Chat.Font
-	Chat.Title_9.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Title_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_9.BackgroundTransparency = 1.000
-	Chat.Title_9.BorderSizePixel = 0
-	Chat.Title_9.Position = UDim2.new(0.5, 0, 0, 15)
-	Chat.Title_9.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_9.ZIndex = 8
-
-	Chat.Icon_12.Name = "Icon"
-	Chat.Icon_12.Parent = Chat.Title_9
-	Chat.Icon_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_12.BackgroundTransparency = 1.000
-	Chat.Icon_12.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_12.ZIndex = 9
-	Chat.Icon_12.Image = "rbxassetid://8678012976"
-
-	Chat.Label_7.Name = "Label"
-	Chat.Label_7.Parent = Chat.Title_9
-	Chat.Label_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_7.BackgroundTransparency = 1.000
-	Chat.Label_7.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_7.Size = UDim2.new(0, 0, 0, 18)
-	Chat.Label_7.ZIndex = 9
-	Chat.Label_7.Font = Enum.Font.GothamBold
-	Chat.Label_7.Text = "Font"
-	Chat.Label_7.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_7.TextSize = 14.000
-	Chat.Label_7.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.Drop_2.Name = "Drop"
-	Chat.Drop_2.Parent = Chat.Title_9
-	Chat.Drop_2.AnchorPoint = Vector2.new(1, 0)
-	Chat.Drop_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Drop_2.BorderSizePixel = 0
-	Chat.Drop_2.Position = UDim2.new(1, 0, 0, 0)
-	Chat.Drop_2.Size = UDim2.new(0, 30, 0, 20)
-	Chat.Drop_2.ZIndex = 9
-	Chat.Drop_2.Font = Enum.Font.SourceSans
-	Chat.Drop_2.Text = ""
-	Chat.Drop_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Drop_2.TextSize = 14.000
-
-	Chat.UICorner_24.Parent = Chat.Drop_2
-
-	Chat.Icon_13.Name = "Icon"
-	Chat.Icon_13.Parent = Chat.Drop_2
-	Chat.Icon_13.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Icon_13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_13.BackgroundTransparency = 1.000
-	Chat.Icon_13.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.Icon_13.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Icon_13.ZIndex = 10
-	Chat.Icon_13.Image = "rbxassetid://8677555693"
-
-	Chat.Selected_2.Name = "Selected"
-	Chat.Selected_2.Parent = Chat.Title_9
-	Chat.Selected_2.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Selected_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Selected_2.BackgroundTransparency = 1.000
-	Chat.Selected_2.Position = UDim2.new(1, -35, 0.5, 0)
-	Chat.Selected_2.Size = UDim2.new(0, 0, 0, 18)
-	Chat.Selected_2.ZIndex = 9
-	Chat.Selected_2.Font = Enum.Font.Gotham
-	Chat.Selected_2.Text = "GothamMedium"
-	Chat.Selected_2.TextColor3 = Color3.fromRGB(200, 200, 200)
-	Chat.Selected_2.TextSize = 14.000
-	Chat.Selected_2.TextXAlignment = Enum.TextXAlignment.Right
-
-	Chat.TopContainer_2.Name = "TopContainer"
-	Chat.TopContainer_2.Parent = Chat.Font
-	Chat.TopContainer_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.TopContainer_2.BackgroundTransparency = 1.000
-	Chat.TopContainer_2.LayoutOrder = 2
-	Chat.TopContainer_2.Size = UDim2.new(1, 0, 0, 25)
-	Chat.TopContainer_2.ZIndex = 6
-
-	Chat.Background_2.Name = "Background"
-	Chat.Background_2.Parent = Chat.TopContainer_2
-	Chat.Background_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Background_2.BackgroundTransparency = 1.000
-	Chat.Background_2.LayoutOrder = 2
-	Chat.Background_2.Size = UDim2.new(1, 0, 0, 25)
-	Chat.Background_2.ZIndex = 6
-
-	Chat.Main_5.Name = "Main"
-	Chat.Main_5.Parent = Chat.Background_2
-	Chat.Main_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Main_5.BackgroundTransparency = 0.500
-	Chat.Main_5.LayoutOrder = 2
-	Chat.Main_5.Size = UDim2.new(1, 0, 0, 30)
-	Chat.Main_5.ZIndex = 6
-
-	Chat.UICorner_25.Parent = Chat.Main_5
-
-	Chat.Flat_2.Name = "Flat"
-	Chat.Flat_2.Parent = Chat.TopContainer_2
-	Chat.Flat_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Flat_2.BackgroundTransparency = 0.500
-	Chat.Flat_2.BorderSizePixel = 0
-	Chat.Flat_2.Position = UDim2.new(0, 0, 0, 25)
-	Chat.Flat_2.Size = UDim2.new(1, 0, 0, 5)
-	Chat.Flat_2.Visible = false
-	Chat.Flat_2.ZIndex = 6
-
-	Chat.Dropdown_2.Name = "Dropdown"
-	Chat.Dropdown_2.Parent = Chat.Font
-	Chat.Dropdown_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Dropdown_2.BackgroundTransparency = 1.000
-	Chat.Dropdown_2.BorderSizePixel = 0
-	Chat.Dropdown_2.ClipsDescendants = true
-	Chat.Dropdown_2.Position = UDim2.new(0, 0, 0, 30)
-	Chat.Dropdown_2.Size = UDim2.new(1, 0, 0, 0)
-	Chat.Dropdown_2.ZIndex = 6
-	Chat.Dropdown_2.AutomaticSize = Enum.AutomaticSize.Y
-	
-	Chat.BottomContainer_2.Name = "BottomContainer"
-	Chat.BottomContainer_2.Parent = Chat.Dropdown_2
-	Chat.BottomContainer_2.AnchorPoint = Vector2.new(0, 1)
-	Chat.BottomContainer_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.BottomContainer_2.BackgroundTransparency = 1.000
-	Chat.BottomContainer_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.BottomContainer_2.BorderSizePixel = 0
-	Chat.BottomContainer_2.ClipsDescendants = true
-	Chat.BottomContainer_2.Position = UDim2.new(0, 0, 2, -20)
-	Chat.BottomContainer_2.Size = UDim2.new(1, 0, 1, 0)
-	Chat.BottomContainer_2.ZIndex = 6
-
-	Chat.Rounded_3.Name = "Rounded"
-	Chat.Rounded_3.Parent = Chat.BottomContainer_2
-	Chat.Rounded_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Rounded_3.BackgroundTransparency = 0.350
-	Chat.Rounded_3.Position = UDim2.new(0, 0, 0, -30)
-	Chat.Rounded_3.Size = UDim2.new(1, 0, 0, 50)
-	Chat.Rounded_3.ZIndex = 6
-
-	Chat.UICorner_26.Parent = Chat.Rounded_3
-
-	Chat.Options_2.Name = "Options"
-	Chat.Options_2.Parent = Chat.Dropdown_2
-	Chat.Options_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Options_2.BackgroundTransparency = 1.000
-	Chat.Options_2.Size = UDim2.new(1, 0, 0, 0)
-	Chat.Options_2.ZIndex = 6
-	Chat.Options_2.AutomaticSize = Enum.AutomaticSize.Y
-	
-	Chat.UIListLayout_7.Parent = Chat.Options_2
-	Chat.UIListLayout_7.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	Chat.UIListLayout_7.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_7.Padding = UDim.new(0, 3)
-
-	Chat.UIPadding_6.Parent = Chat.Dropdown_2
-	Chat.UIPadding_6.PaddingBottom = UDim.new(0, 55)
-
-	Chat.Frame_2.Parent = Chat.Dropdown_2
-	Chat.Frame_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Frame_2.BackgroundTransparency = 0.350
-	Chat.Frame_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Frame_2.BorderSizePixel = 0
-	Chat.Frame_2.Size = UDim2.new(1, 0, 1, -20)
-	Chat.Frame_2.ZIndex = 6
-
-	Chat.Enabled.Name = "Enabled"
-	Chat.Enabled.Parent = Chat.Scroller_5
-	Chat.Enabled.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Enabled.BackgroundTransparency = 0.500
-	Chat.Enabled.LayoutOrder = -1
-	Chat.Enabled.Size = UDim2.new(1, -10, 0, 30)
-	Chat.Enabled.ZIndex = 6
-
-	Chat.Title_10.Name = "Title"
-	Chat.Title_10.Parent = Chat.Enabled
-	Chat.Title_10.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.Title_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_10.BackgroundTransparency = 1.000
-	Chat.Title_10.BorderSizePixel = 0
-	Chat.Title_10.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.Title_10.Size = UDim2.new(0.949999988, 0, 0, 20)
-	Chat.Title_10.ZIndex = 6
-
-	Chat.Icon_14.Name = "Icon"
-	Chat.Icon_14.Parent = Chat.Title_10
-	Chat.Icon_14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Icon_14.BackgroundTransparency = 1.000
-	Chat.Icon_14.Size = UDim2.new(0, 20, 0, 20)
-	Chat.Icon_14.ZIndex = 6
-	Chat.Icon_14.Image = "rbxassetid://8685962752"
-
-	Chat.Label_8.Name = "Label"
-	Chat.Label_8.Parent = Chat.Title_10
-	Chat.Label_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_8.BackgroundTransparency = 1.000
-	Chat.Label_8.Position = UDim2.new(0, 25, 0, 0)
-	Chat.Label_8.Size = UDim2.new(0.5, 0, 0, 18)
-	Chat.Label_8.ZIndex = 6
-	Chat.Label_8.Font = Enum.Font.GothamBold
-	Chat.Label_8.Text = "Enabled"
-	Chat.Label_8.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Label_8.TextSize = 14.000
-	Chat.Label_8.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.UICorner_27.Parent = Chat.Enabled
-
-	Chat.Toggle_2.Name = "Toggle"
-	Chat.Toggle_2.Parent = Chat.Enabled
-	Chat.Toggle_2.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Toggle_2.BackgroundColor3 = Color3.fromRGB(72, 175, 240)
-	Chat.Toggle_2.BorderSizePixel = 0
-	Chat.Toggle_2.Position = UDim2.new(1, -5, 0.5, 0)
-	Chat.Toggle_2.Size = UDim2.new(0, 40, 0, 18)
-	Chat.Toggle_2.ZIndex = 6
-
-	Chat.Ignore_13.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_13.Name = "Ignore"
-	Chat.Ignore_13.Parent = Chat.Toggle_2
-
-	Chat.Zone_3.Name = "Zone"
-	Chat.Zone_3.Parent = Chat.Toggle_2
-	Chat.Zone_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Zone_3.BackgroundTransparency = 1.000
-	Chat.Zone_3.Size = UDim2.new(1, 0, 1, 0)
-	Chat.Zone_3.ZIndex = 8
-	Chat.Zone_3.Font = Enum.Font.SourceSans
-	Chat.Zone_3.Text = ""
-	Chat.Zone_3.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Zone_3.TextSize = 14.000
-
-	Chat.Ignore_14.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_14.Name = "Ignore"
-	Chat.Ignore_14.Parent = Chat.Zone_3
-
-	Chat.Rounded_4.Name = "Rounded"
-	Chat.Rounded_4.Parent = Chat.Toggle_2
-	Chat.Rounded_4.AnchorPoint = Vector2.new(1, 0.5)
-	Chat.Rounded_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Rounded_4.Position = UDim2.new(1, -3, 0.5, 0)
-	Chat.Rounded_4.Size = UDim2.new(0, 14, 0, 14)
-	Chat.Rounded_4.ZIndex = 6
-
-	Chat.Ignore_15.CornerRadius = UDim.new(1, 0)
-	Chat.Ignore_15.Name = "Ignore"
-	Chat.Ignore_15.Parent = Chat.Rounded_4
-
-	Chat.QuickChat_2.Name = "QuickChat"
-	Chat.QuickChat_2.Parent = Chat.Pages
-	Chat.QuickChat_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.QuickChat_2.BackgroundTransparency = 1.000
-	Chat.QuickChat_2.Position = UDim2.new(1, 0, 0, 0)
-	Chat.QuickChat_2.Size = UDim2.new(1, 0, 1, 0)
-	Chat.QuickChat_2.ZIndex = 6
-
-	Chat.Title_11.Name = "Title"
-	Chat.Title_11.Parent = Chat.QuickChat_2
-	Chat.Title_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_11.BackgroundTransparency = 1.000
-	Chat.Title_11.Position = UDim2.new(0, 0, 0, 5)
-	Chat.Title_11.Size = UDim2.new(1, 0, 0, 30)
-	Chat.Title_11.ZIndex = 6
-	Chat.Title_11.Font = Enum.Font.GothamMedium
-	Chat.Title_11.Text = "Quick Chat"
-	Chat.Title_11.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_11.TextSize = 20.000
-
-	Chat.Back_3.Name = "Back"
-	Chat.Back_3.Parent = Chat.Title_11
-	Chat.Back_3.AnchorPoint = Vector2.new(0, 0.5)
-	Chat.Back_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Back_3.Position = UDim2.new(0, 5, 0.5, 0)
-	Chat.Back_3.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Back_3.ZIndex = 6
-	Chat.Back_3.Font = Enum.Font.SourceSans
-	Chat.Back_3.Text = ""
-	Chat.Back_3.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Back_3.TextSize = 14.000
-
-	Chat.ImageLabel_3.Parent = Chat.Back_3
-	Chat.ImageLabel_3.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ImageLabel_3.BackgroundTransparency = 1.000
-	Chat.ImageLabel_3.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.ImageLabel_3.Size = UDim2.new(0.850000024, 0, 0.850000024, 0)
-	Chat.ImageLabel_3.ZIndex = 6
-	Chat.ImageLabel_3.Image = "rbxassetid://8677511725"
-
-	Chat.UICorner_28.Parent = Chat.Back_3
-
-	Chat.Scroller_6.Name = "Scroller"
-	Chat.Scroller_6.Parent = Chat.QuickChat_2
-	Chat.Scroller_6.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Scroller_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Scroller_6.BackgroundTransparency = 1.000
-	Chat.Scroller_6.BorderSizePixel = 0
-	Chat.Scroller_6.Position = UDim2.new(0.5, 0, 1, -10)
-	Chat.Scroller_6.Selectable = false
-	Chat.Scroller_6.Size = UDim2.new(1, -10, 1, -50)
-	Chat.Scroller_6.ZIndex = 6
-	Chat.Scroller_6.BottomImage = "rbxassetid://8082116996"
-	Chat.Scroller_6.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Scroller_6.MidImage = "rbxassetid://7488333553"
-	Chat.Scroller_6.ScrollBarThickness = 5
-	Chat.Scroller_6.TopImage = "rbxassetid://8082122989"
-
-	Chat.UIListLayout_8.Parent = Chat.Scroller_6
-	Chat.UIListLayout_8.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_8.Padding = UDim.new(0, 5)
-
-	Chat.SaveChat.Name = "SaveChat"
-	Chat.SaveChat.Parent = Chat.Chat
-	Chat.SaveChat.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.SaveChat.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.SaveChat.BackgroundTransparency = 0.750
-	Chat.SaveChat.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.SaveChat.BorderSizePixel = 0
-	Chat.SaveChat.Position = UDim2.new(0.5, 0, -1.5, 0)
-	Chat.SaveChat.Size = UDim2.new(0, 150, 0, 240)
-
-	Chat.Container_6.Name = "Container"
-	Chat.Container_6.Parent = Chat.SaveChat
-	Chat.Container_6.AnchorPoint = Vector2.new(0.5, 1)
-	Chat.Container_6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Container_6.BackgroundTransparency = 1.000
-	Chat.Container_6.BorderSizePixel = 0
-	Chat.Container_6.Position = UDim2.new(0.5, 0, 1, -5)
-	Chat.Container_6.Selectable = false
-	Chat.Container_6.Size = UDim2.new(0, 140, 1, -35)
-	Chat.Container_6.BottomImage = "rbxassetid://8082116996"
-	Chat.Container_6.CanvasSize = UDim2.new(0, 0, 0, 0)
-	Chat.Container_6.MidImage = "rbxassetid://7488333553"
-	Chat.Container_6.ScrollBarThickness = 5
-	Chat.Container_6.TopImage = "rbxassetid://8082122989"
-
-	Chat.UIListLayout_9.Parent = Chat.Container_6
-	Chat.UIListLayout_9.SortOrder = Enum.SortOrder.LayoutOrder
-	Chat.UIListLayout_9.Padding = UDim.new(0, 2)
-
-	Chat.Slot.Name = "Slot"
-	Chat.Slot.Parent = Chat.Container_6
-	Chat.Slot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Slot.BackgroundTransparency = 0.500
-	Chat.Slot.BorderSizePixel = 0
-	Chat.Slot.Size = UDim2.new(1, -10, 0, 25)
-	Chat.Slot.Font = Enum.Font.GothamMedium
-	Chat.Slot.Text = "Slot 0"
-	Chat.Slot.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Slot.TextSize = 14.000
-
-	Chat.UICorner_29.Parent = Chat.Slot
-
-	Chat.UICorner_30.Parent = Chat.SaveChat
-
-	Chat.UIGradient.Rotation = -90
-	Chat.UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.90, 0.00), NumberSequenceKeypoint.new(0.90, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	Chat.UIGradient.Parent = Chat.SaveChat
-
-	Chat.Header.Name = "Header"
-	Chat.Header.Parent = Chat.SaveChat
-	Chat.Header.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Header.BackgroundTransparency = 1.000
-	Chat.Header.ClipsDescendants = true
-	Chat.Header.Position = UDim2.new(0, 0, 0, -13)
-	Chat.Header.Size = UDim2.new(1, 0, 0, 35)
-
-	Chat.UI_3.Name = "UI"
-	Chat.UI_3.Parent = Chat.Header
-	Chat.UI_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.UI_3.BackgroundTransparency = 0.500
-	Chat.UI_3.Size = UDim2.new(1, 0, 0, 48)
-
-	Chat.Close_2.Name = "Close"
-	Chat.Close_2.Parent = Chat.UI_3
-	Chat.Close_2.AnchorPoint = Vector2.new(1, 0)
-	Chat.Close_2.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-	Chat.Close_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Chat.Close_2.BorderSizePixel = 0
-	Chat.Close_2.Position = UDim2.new(1, -5, 0, 5)
-	Chat.Close_2.Size = UDim2.new(0, 25, 0, 25)
-	Chat.Close_2.ZIndex = 5
-	Chat.Close_2.Font = Enum.Font.SourceSans
-	Chat.Close_2.Text = ""
-	Chat.Close_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Chat.Close_2.TextSize = 14.000
-
-	Chat.ImageLabel_4.Parent = Chat.Close_2
-	Chat.ImageLabel_4.AnchorPoint = Vector2.new(0.5, 0.5)
-	Chat.ImageLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.ImageLabel_4.BackgroundTransparency = 1.000
-	Chat.ImageLabel_4.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Chat.ImageLabel_4.Size = UDim2.new(0, 20, 0, 20)
-	Chat.ImageLabel_4.ZIndex = 6
-	Chat.ImageLabel_4.Image = "http://www.roblox.com/asset/?id=6031094678"
-
-	Chat.UICorner_31.Parent = Chat.Close_2
-
-	Chat.Title_12.Name = "Title"
-	Chat.Title_12.Parent = Chat.UI_3
-	Chat.Title_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_12.BackgroundTransparency = 1.000
-	Chat.Title_12.Position = UDim2.new(0, 5, 0, 5)
-	Chat.Title_12.Size = UDim2.new(1, 0, 0, 25)
-	Chat.Title_12.ZIndex = 8
-	Chat.Title_12.Font = Enum.Font.GothamBold
-	Chat.Title_12.Text = "Save Chat"
-	Chat.Title_12.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Chat.Title_12.TextSize = 14.000
-	Chat.Title_12.TextXAlignment = Enum.TextXAlignment.Left
-
-	Chat.UICorner_32.Parent = Chat.UI_3
-
-	return Chat.Chat
+	return chat
 end

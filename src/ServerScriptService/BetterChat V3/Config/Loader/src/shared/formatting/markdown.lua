@@ -7,6 +7,8 @@
 local colorModule = require(script.Parent:WaitForChild("color"))
 
 return function(rich_text)
+	local guid = rich_text:getId()
+	
 	local parse_color = function(color)
 		color = color:gsub(" ","") -- remove spaces
 		local default = Color3.fromRGB(255,255,255)
@@ -24,14 +26,19 @@ return function(rich_text)
 	end
 
 	local color_tag = function(text,color) -- place text in a rich text color tag with the specified color
-		return ('<font color="%s">%s</font>'):format(parse_color(color),text)
+		return ('<font n = "%s" color="%s">%s</font>'):format(guid,parse_color(color),text)
 	end
 
 	local main = {}
+	
 	local regulartag = function(text,tag,format)
 		main = {}
 		local from = function(t,c) --> generates a XML tag for opening and closing (c -> true = closing): eg: <a> </a>
-			return ("<%s%s>"):format((c and "/" or ""),t)
+			if c then
+				return ("<%s%s>"):format((c and "/" or ""),t)
+			else
+				return(`<%s n="{guid}">`):format(t)
+			end
 		end
 		local opening = ""
 		local closing = ""
@@ -109,9 +116,15 @@ return function(rich_text)
 		{"(","",customcolor,")"} --> (255,0,0 / red) (#FF0000 / red) (Really red / red) --> red text
 	}
 
-	local escapePattern = function(pattern)
-		local magic_characters = "%%%^%$%(%)%.%[%]%*%+%-%?"
-		return (pattern:gsub("[" .. magic_characters .. "]", "%%%1"))
+	local _gsub_escape_table = {
+		["\000"] = "%z", ["("] = "%(", [")"] = "%)", ["."] = "%.",
+		["%"] = "%%", ["+"] = "%+", ["-"] = "%-", ["*"] = "%*",
+		["?"] = "%?", ["["] = "%[", ["]"] = "%]", ["^"] = "%^",
+		["$"] = "%$",
+	}
+
+	local escapePattern = function(str)
+		return str:gsub("([%z%(%)%.%%%+%-%*%?%[%]%^%$])", _gsub_escape_table)
 	end
 	
 	local new = function(p1,p2) -- generates the pattern needed to find text
@@ -121,7 +134,7 @@ return function(rich_text)
 	local markdownFormat
 	markdownFormat = function(text,depth,canUseColor)
 		if(not depth) then
-			text = rich_text:escape(text)
+			--text = rich_text:escape(text)
 		end
 		local base = text
 		local matches = {gsub = {},count = 0}

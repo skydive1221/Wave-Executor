@@ -6,6 +6,7 @@ local runService = game:GetService("RunService")
 local userInput = game:GetService("UserInputService")
 local players = game:GetService("Players")
 local textService = game:GetService("TextService")
+local collectionService = game:GetService("CollectionService")
 local heartbeat = runService.Heartbeat
 
 local localPlayer = players.LocalPlayer
@@ -29,6 +30,20 @@ end
 return function(environment)
 	local useIcons = environment.config.Messages.IncludeIcon
 	local font = environment.config.UI.Fonts.TextFont
+	
+	function environment:updFont(new)
+		font = environment.config.UI.Fonts.TextFont
+		for _,obj in pairs(collectionService:GetTagged("TextFont")) do
+			if obj and obj:GetFullName() ~= obj.Name then
+				obj.Font = font
+			end
+		end
+		for _,obj in pairs(collectionService:GetTagged("ChatbarFont")) do
+			if obj and obj:GetFullName() ~= obj.Name then
+				obj.Font = font
+			end
+		end
+	end
 
 	local editedText = environment.localization:localize("Chat_Edited")
 	local editedStamp = ("<font color=\"rgb(200,200,200)\"> (%s)</font>"):format(editedText)
@@ -56,7 +71,7 @@ return function(environment)
 
 	return function(data)
 		local editCount = data.edits or 0
-		local object = regular.new()
+		local object = regular.new(environment)
 		local id = data.player ~= nil and data.player.UserId or 0
 		local canReceiveInput,lastPosition,iconOption,lastInBounds,lastSize,lastInput,lastPrompt = false,nil,nil,nil,nil,nil,nil
 

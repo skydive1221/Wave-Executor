@@ -10,15 +10,15 @@ local style = Enum.EasingStyle.Linear
 function utility:tween(...)
 	local args = {...}
 	if(type(args[1]) ~= "table") then
-		local object,length,properties = unpack(args)
-		local tween = tweenService:Create(object,TweenInfo.new(length,style,Enum.EasingDirection.Out),properties)
+		local object,length,properties,direction,overStyle = unpack(args)
+		local tween = tweenService:Create(object,TweenInfo.new(length,overStyle or style,direction or Enum.EasingDirection.Out),properties)
 		tween:Play()
 		return tween
 	else
 		local tweens = {}
 		for _,t in pairs(args) do
-			local object,length,properties = unpack(t)
-			local tween = tweenService:Create(object,TweenInfo.new(length,style,Enum.EasingDirection.Out),properties)
+			local object,length,properties,direction,overStyle = unpack(t)
+			local tween = tweenService:Create(object,TweenInfo.new(length,overStyle or style,direction or Enum.EasingDirection.Out),properties)
 			tween:Play()
 			tweens[object] = tween
 		end

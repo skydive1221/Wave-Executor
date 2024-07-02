@@ -54,7 +54,7 @@ return function(environment)
 		end
 		local endIdx = #internal[id]
 		for key,reply in pairs(internal[id]) do
-			local template = replyMessage[key < endIdx and "Middle" or "Bottom"]()
+			local template = replyMessage[key < endIdx and "Middle" or "Bottom"](environment)
 			local content,userPrefix,raw = getText(reply,(reply.edits and reply.edits >= 1 and true or false))
 			local isMentioned = raw:find(("@"..localPlayer.Name))
 			local isOwner = (reply.senderId == localPlayer.UserId)
@@ -165,7 +165,7 @@ return function(environment)
 		end
 		
 		environment:checkScrollerPos()
-		local object = replyMessage.new()
+		local object = replyMessage.new(environment)
 		local id = dta.replyingTo.id
 		local originalMessage = dta.replyingTo
 		local _,userPrefix,textContent = getText(originalMessage)

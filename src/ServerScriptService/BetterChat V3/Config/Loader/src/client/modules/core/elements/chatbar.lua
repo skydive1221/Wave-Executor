@@ -7,6 +7,7 @@ local runService = game:GetService("RunService")
 local userInput = game:GetService("UserInputService")
 local players = game:GetService("Players")
 local chatService = game:GetService("Chat")
+local collectionService = game:GetService("CollectionService")
 
 local localPlayer = players.LocalPlayer
 local heartbeat = runService.Heartbeat
@@ -105,6 +106,10 @@ return function(environment)
 		local offset = 10
 		local single,isReply = nil,nil
 		environment.currentChannel = "Main"
+		
+		local colorOptions = environment.config.UI.ColorOptions
+		channelButton.ReplyIcon.ImageColor3 = colorOptions.Buttons.ReplyAndChannel.TextAndIconColor
+		channelButton.BackgroundColor3 = colorOptions.Buttons.ReplyAndChannel.BackgroundColor
 
 		function environment:setChannel(name,is,display,extra)
 			extraData = extra
@@ -254,6 +259,11 @@ return function(environment)
 		end
 
 		local container = resize.Parent:WaitForChild("Container")
+		chatbox.Font = environment.config.UI.Fonts.TextFont
+		chatbox.Bar.Font = environment.config.UI.Fonts.TextFont
+		
+		collectionService:AddTag(chatbox,"TextFont")
+		collectionService:AddTag(chatbox.Bar,"TextFont")
 
 		textChanged = function()
 			if(utf8.len(utf8.nfcnormalize(chatbox.Text)) > environment.config.Messages.MaximumLength) then

@@ -14,7 +14,6 @@
 ]]
 
 return {
-	VoiceChatEnabled = false, -- Set this accordingly to make the topbar UI more functional for beta users
 	Permissions = {
 		Ranks = { 
 			--[[
@@ -85,11 +84,54 @@ return {
 			Desktop = UDim2.new(0.3,0,0.25,24); --> Chat size on desktop
 		},
 		Fonts = {
-			Chatbar = Enum.Font.Gotham, --> Chatbar font
-			TextFont = Enum.Font.GothamMedium --> Every other text's font in the chat
+			TextFont = Enum.Font.GothamMedium --> Every text's font in the chat
 		},
 		Colors = {
 			SystemPrefixColor = Color3.fromRGB(253,80,111) --> Color of the prefix used for [Team] / [From: user]
+		},
+		FadeOptions = {
+			Window = {
+				HoveringTransparency = 0.75, --> Transparency of main window when hovering
+				NotHoveringTransparency = 1 --> When not hovering
+			},
+			Chatbar = { --> Transparency of chatbar, resize button, channel button
+				HoveringTransparency = 0,
+				NotHoveringTransparency = 1,
+				TextColor = { --> Chatbar text color when hovering
+					Regular = {
+						Hovering = Color3.fromRGB(100,100,100),
+						NotHovering = Color3.fromRGB(255,255,255)
+					},
+					Placeholder = {
+						Hovering = Color3.fromRGB(80,80,80),
+						NotHovering = Color3.fromRGB(200,200,200)
+					}
+				}
+			}
+		},
+		ColorOptions = {
+			ChatbarColor = Color3.fromRGB(255,255,255),
+			Buttons = {
+				ResizeButton = { --> UI resize button
+					BackgroundColor = Color3.fromRGB(52,52,52),
+					IconColor = Color3.fromRGB(255,255,255)
+				},
+				ChannelButton = { --> Channel bar channel buttons: (also autofill too lol)
+					BackgroundColor = Color3.fromRGB(0,0,0),
+					TextColor = Color3.fromRGB(255,255,255)
+				},
+				AutofillButton = { --> Autofill buttons
+					BackgroundColor = Color3.fromRGB(30,30,30),
+					TextColor = Color3.fromRGB(255,255,255)
+				},
+				ReplyAndChannel = { --> On the chatbar, when whispering or replying this icon shows up
+					BackgroundColor = Color3.fromRGB(253,80,111), --> 253,80,111
+					TextAndIconColor = Color3.fromRGB(255,255,255)
+				}
+			},
+			Window = {
+				BackgroundColor = Color3.fromRGB(0,0,0),
+			}
 		},
 		ChatWindowVisible = true, --> Is it just the chatbar visible?
 		ChannelBarEnabled = true, --> Channel navigation bar at the top of the chat
@@ -114,7 +156,12 @@ return {
 		SaveData = { --> Data saving for the options menu (uses ProfileService internally)
 			Enabled = true, --> Enable data-saving for these? (Better user-experience if enabled)
 			Advanced = { --> Recommend not changing if you don't know what you're doing.
-				DatastoreName = "BetterChatV3Data" --> Changing this can reset any existing user data for the chat until you change it back
+				DatastoreName = "BetterChatV3Data", --> Changing this can reset any existing user data for the chat until you change it back
+				HandleOwnData = false --[[
+				Create a server addon and register these functions 
+					:registerGetProfileFunction(<function:callback>) <plr> (return a table that will save data that's updated in it)
+					:registerUnloadProfileFunction(<function:callback>) <plr>
+				--]]
 			}
 		}
 	},

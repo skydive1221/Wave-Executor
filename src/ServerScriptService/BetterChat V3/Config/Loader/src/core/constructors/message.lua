@@ -4,7 +4,7 @@
 
 return function(utility,config,messageEditingEnabled,permission,richText,signal)
 	local message = {}
-	local filter = require(script.Parent.Parent:WaitForChild("filter"))(config,richText)
+	local filter = require(script.Parent.Parent:WaitForChild("filter"))(config,richText,message)
 	local httpService = game:GetService("HttpService")
 	local ids = 0
 	local messages = {}
@@ -18,7 +18,7 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 	local deepCopy;
 	deepCopy = function(original)
 		local copy
-		if type(original) == 'table' then
+		if type(original) == "table" then
 			copy = {}
 			for key, value in next, original, nil do
 				copy[deepCopy(key)] = deepCopy(value)
@@ -82,7 +82,7 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 		local markdownEnabled = (speaker.player and permission:canUse(config.Messages.Extra.MarkdownEnabled,speaker.player.UserId)) or 0
 
 		local object = {
-			data = {
+			data = { --> jesus :sobbing:
 				historyLogic = historyLogic,
 				isPlayer = (speaker.player ~= nil),
 				guid = httpService:GenerateGUID(false),
@@ -115,7 +115,8 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 			filtered = nil,
 			sender = speaker.player,
 			senderId = senderId,
-			message = text
+			message = text,
+			unblacklisted = text
 		}
 		if(not viewport and (config.Messages.IncludeIcon and not object.data.player)) then
 			object.data.imageId = speaker.icon
@@ -145,7 +146,7 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 		end
 		local success,filterObj = filter.new(newText,message.sender,message.isBroadcast,message.markdownEnabled)
 		message.filtered = filterObj
-		message.data.wwww = success
+		message.data.filteredSuccessfully = success
 		message.data.edits += 1
 	end
 

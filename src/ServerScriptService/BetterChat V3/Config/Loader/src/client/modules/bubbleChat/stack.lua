@@ -39,7 +39,7 @@ return function(environment)
 			function stack:update()
 				local basePosition,yHeight = UDim2.fromScale(0.5,0.9),0
 				for key,object in pairs(stack.queue) do
-					object:TweenPosition(basePosition - UDim2.fromOffset(0,yHeight),Enum.EasingDirection.Out,config.EasingStyle,config.Length,true)
+					environment.tweenPosition(object,basePosition - UDim2.fromOffset(0,yHeight),Enum.EasingDirection.Out,config.EasingStyle,config.Length,true)
 					object.caret.Visible = (key == 1)
 					yHeight += (object.AbsoluteSize.Y + 4)
 				end
