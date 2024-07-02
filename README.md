@@ -2,7 +2,7 @@ DevForum post: https://devforum.roblox.com/t/better-chat-v3-feature-rich-custom-
 
 Uncompleted documentation: https://jumpathy.gitbook.io/betterchat-v3
 
-##Installation instructions:##
+Installation instructions:
 1. Insert the loader: https://create.roblox.com/store/asset/9376009942/BetterChat-V3-Alpha
 2. Insert the source code from the releases page or from the auto-update plugin (updater.lua)
 2A. If installing manually, modify the loader to reference the new source code
