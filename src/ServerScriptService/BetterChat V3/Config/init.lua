@@ -1,16 +1,24 @@
 --[[
-	  ____       _   _                _____ _           _    __      ______  
-	 |  _ \     | | | |              / ____| |         | |   \ \    / /___ \ 
-	 | |_) | ___| |_| |_ ___ _ __   | |    | |__   __ _| |_   \ \  / /  __) |
-	 |  _ < / _ \ __| __/ _ \ '__|  | |    | '_ \ / _` | __|   \ \/ /  |__ < 
-	 | |_) |  __/ |_| ||  __/ |     | |____| | | | (_| | |_     \  /   ___) |
-	 |____/ \___|\__|\__\___|_|      \_____|_| |_|\__,_|\__|     \/   |____/ 
-	                                                                         	
-	Welcome to BetterChat v3! It's going to be a fun ride for this chat system, and I can't
-	wait for this to finally be public. This system has taken me so long because of some of
-	school and stress, but once it's here it should be amazing.
-	
-	- @Jumpathy (4/2/22)
+
+  ___      _   _              ___ _         _         ____
+ | _ ) ___| |_| |_ ___ _ _   / __| |_  __ _| |_  __ _|__ /
+ | _ \/ -_)  _|  _/ -_) '_| | (__| ' \/ _` |  _| \ V /|_ \
+ |___/\___|\__|\__\___|_|    \___|_||_\__,_|\__|  \_/|___/
+ 
+Created by: @Jumpathy
+
+Credits:
+@Xsitsu - A few of the original chat functions such as user chat colors and chat cooldowns.
+@qwreey74 - High quality material icons
+@Blockzez - Hex color encode / decode functions
+@boatbomber - Textbox+'s undo/redo system code concept
+@boatbomber - Image masking for some user thumbnails
+@ForeverHD - Topbar+
+@Fm_Trick - Slider math help via public resource
+@McThor2 - Math help for bubble chat
+@sleitnick - Raycasting code for bubble chat
+@alexinite - Contributing bug fixes and helping people in replies with their issues
+
 ]]
 
 return {
@@ -202,7 +210,12 @@ return {
 			ReplyEnabled = "Guest", --> Permission needed to reply to a message
 			MentionEnabled = "Guest", --> Permission needed to mention another user in the chat
 			MeCommand = "Guest" --> Permission needed to use the /me command
-		}
+		},
+		MessageGrouping = {
+			Enabled = true, --> Merge messages when sent by the same user back to back?
+			GroupTimeout = 120 --> When do they split back up again?
+		},
+		UserAndMessageOnSeparateLines = true, --> Separate messages so the message is below the sender's name?
 	},
 	BubbleChat = {
 		Enabled = true, --> Custom bubble chat enabled state (setting to false will default to the regular bubble chat which can be turned off in the properties of game.Chat)

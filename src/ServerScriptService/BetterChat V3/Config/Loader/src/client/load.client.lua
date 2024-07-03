@@ -14,7 +14,10 @@ local heartbeat = runService.Heartbeat
 
 local scaleToOffset = function(size)
 	local viewportSize = workspace.CurrentCamera.ViewportSize
-	return(UDim2.fromOffset((viewportSize.X * size.X.Scale) + size.X.Offset,(viewportSize.Y * size.Y.Scale) + size.Y.Offset))
+	return(UDim2.fromOffset(
+		math.clamp((viewportSize.X * size.X.Scale) + size.X.Offset,50,math.huge),
+		math.clamp((viewportSize.Y * size.Y.Scale) + size.Y.Offset,50,math.huge)
+	))
 end
 
 local platform = function()
@@ -324,6 +327,7 @@ if(currentPlatform ~= "Console") then
 				message_senders.system(
 					unpack(environment.localization:produceSystemMessage(message))
 				)
+				environment:checkScrollerPos(false,0)
 			end,
 		}
 
@@ -457,6 +461,10 @@ if(currentPlatform ~= "Console") then
 			onMessage(sm)
 			environment:checkScrollerPos(true,0)
 		end
+		
+		local run = function(c)
+			c()
+		end
 
 		environment.channelChanged = signal.new()
 		
@@ -476,7 +484,7 @@ if(currentPlatform ~= "Console") then
 				if(data.id ~= nil) then
 					last = data.id
 				end
-				task.spawn(function()
+				run(function()
 					if(not data.replyingTo) then
 						data.massMessageLoad = true
 						createNewMessage(data)
@@ -491,10 +499,10 @@ if(currentPlatform ~= "Console") then
 					end
 				end)
 				-- chunking (makes loading much faster, as well as optimizations to only load the message function after the mouse hovers on it)
-				if(key == 10) then
+				--[[if(key == 10) then
 					task.wait(0.05)
 					key = 0
-				end
+				end--]]
 			end
 			includeBeginningMessageAndScroll((last or 9999)+1)
 			environment.channelChanged:Fire(channel)

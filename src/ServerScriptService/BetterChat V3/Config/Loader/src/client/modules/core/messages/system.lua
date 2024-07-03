@@ -11,7 +11,7 @@ return function(environment,queue)
 	return function(speaker,message,order)
 		environment:checkScrollerPos()
 		local object = regular.new(environment)
-		local message = rich:escape(message)
+		local message = rich:mark(rich:escape(message))
 		object.Raw.Text = speaker ~= "" and ("%s %s"):format(rich:colorize(speaker .. ":",Color3.fromRGB(200,200,200)),message) or message
 		object.Parent = scroller
 		object.LayoutOrder = order and order or (queue[1] and queue[1].LayoutOrder or 0)

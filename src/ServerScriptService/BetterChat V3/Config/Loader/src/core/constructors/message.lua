@@ -83,6 +83,7 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 
 		local object = {
 			data = { --> jesus :sobbing:
+				timeSent = workspace:GetServerTimeNow(),
 				historyLogic = historyLogic,
 				isPlayer = (speaker.player ~= nil),
 				guid = httpService:GenerateGUID(false),
@@ -100,17 +101,17 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 				viewportData = viewport,
 				id = messageId,
 				channelFrom = channel,
-				editingEnabled = speaker.player and permission:canUse(messageEditingEnabled,speaker.player.UserId),
 				senderId = senderId,
+				isMeCommand = false,
+				isBroadcast = isBroadcast,
+				editingEnabled = speaker.player and permission:canUse(messageEditingEnabled,speaker.player.UserId),
 				requiredToReply = (speaker.player and permission:tonumber(config.Messages.Extra.ReplyEnabled)) or 0,
 				userPermission = (speaker.player and permission:get(speaker.player.UserId)) or 0,
 				markdownEnabled = markdownEnabled,
 				mentioningEnabled = (speaker.player and permission:canUse(config.Messages.Extra.MentionEnabled,speaker.player.UserId)) or 0,
 				deletingEnabled = deleteablePerm and (speaker.player and permission:canUse(deleteablePerm,speaker.player.UserId)) or false,
-				isMeCommand = false,
 				tags = combine(speaker,(speaker.player and permission:getUserTags(speaker.player)or{})),
 				chatColor = get(speaker,"ChatColor",getChatColor),
-				isBroadcast = isBroadcast
 			},
 			filtered = nil,
 			sender = speaker.player,

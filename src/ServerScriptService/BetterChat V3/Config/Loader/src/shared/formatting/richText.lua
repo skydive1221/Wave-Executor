@@ -68,6 +68,10 @@ function richText:markdown(text)
 	end
 end
 
+function richText:mark(text)
+	return markdown:format(text)
+end
+
 local stripXMLTags = function(text)
 	return (text:gsub("<.->",""))
 end

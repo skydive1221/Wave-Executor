@@ -30,6 +30,10 @@ end
 return function(environment)
 	local useIcons = environment.config.Messages.IncludeIcon
 	local font = environment.config.UI.Fonts.TextFont
+	local grouping = environment.config.Messages.MessageGrouping
+	local merge = grouping and grouping.Enabled
+	local timeout = grouping and grouping.GroupTimeout or 120
+	local userSplit = environment.config.Messages.UserAndMessageOnSeparateLines
 	
 	function environment:updFont(new)
 		font = environment.config.UI.Fonts.TextFont
@@ -69,7 +73,29 @@ return function(environment)
 		return environment.config.UI.BaseTextSize
 	end
 
+	local getLast = function(toIgnore)
+		local last;
+		for _,msg in pairs(environment.messages) do
+			if(msg.data.id ~= toIgnore) then
+				last = msg
+			end
+		end
+		return last
+	end
+
 	return function(data)
+		local lastMessage = getLast(data.id)
+		local mergeMessage = false
+
+		if lastMessage and lastMessage.data.name == data.name and merge then
+			if lastMessage.data.class == data.class then
+				local timeDiff = data.timeSent - lastMessage.data.timeSent
+				if timeDiff <= timeout then
+					mergeMessage = true
+				end
+			end
+		end
+
 		local editCount = data.edits or 0
 		local object = regular.new(environment)
 		local id = data.player ~= nil and data.player.UserId or 0
@@ -130,12 +156,30 @@ return function(environment)
 		if(isMentioned) then
 			messageContent = messageContent:gsub(mentionString,environment.richText:colorize(mentionString,Color3.fromRGB(255, 170, 0)))
 		end
-		
+
 		if data.deleted then
 			messageContent = deletedStamp
 		end
+		
+		local getPrefix = function(update)
+			if mergeMessage then
+				return ""
+			end
+			
+			if update then
+				return functions.getTags(data) .. userPrefix .. (userSplit and "\n" or "")
+			else
+				return tags .. userPrefix ..  (userSplit and "\n" or "")
+			end
+		end
+		
+		if mergeMessage and iconOption then
+			iconOption:Destroy()
+			iconOption = nil
+		end
+		
+		local prefix = getPrefix()
 
-		local prefix = tags .. userPrefix
 		object.Raw.Text = prefix .. messageContent
 		object.Raw.TextColor3 = data.chatColor
 		object.Raw.User.Text = prefix
@@ -145,7 +189,7 @@ return function(environment)
 		local i = 0
 		local added = false
 		local imgCont;
-		
+
 		local createContainer = function()
 			added = true
 			local container = Instance.new("Frame")
@@ -162,32 +206,34 @@ return function(environment)
 			layout.SortOrder = Enum.SortOrder.LayoutOrder
 			imgCont = container
 		end
-		
-		for dx,tag in pairs(data.tags) do
-			if tag.image and (not isMeCommand) then
-				if not added then
-					createContainer()
-				end
-				i += 1
-				local image = Instance.new("ImageLabel")
-				image.Size = UDim2.fromOffset(ts(),ts())
-				image.Image = tag.image
-				image.Parent = imgCont
-				image.BackgroundTransparency = 1
-				image.Name = tostring(i)
-				image.LayoutOrder = dx
-			elseif not tag.image then
-				if not isMeCommand then
-					if not added and functions:hasImages(data.tags) then
+
+		if not mergeMessage then
+			for dx,tag in pairs(data.tags) do
+				if tag.image and (not isMeCommand) then
+					if not added then
 						createContainer()
 					end
-					local psuedoTagSpacer = Instance.new("Frame")
-					psuedoTagSpacer.Parent = imgCont
-					psuedoTagSpacer.Name = tag.text
-					psuedoTagSpacer.BackgroundTransparency = 1
-					local size = textService:GetTextSize("["..tag.text.."]",ts(),font,Vector2.new(math.huge,ts()))
-					psuedoTagSpacer.Size = UDim2.fromOffset(size.X-5,ts())
-					psuedoTagSpacer.LayoutOrder = dx
+					i += 1
+					local image = Instance.new("ImageLabel")
+					image.Size = UDim2.fromOffset(ts(),ts())
+					image.Image = tag.image
+					image.Parent = imgCont
+					image.BackgroundTransparency = 1
+					image.Name = tostring(i)
+					image.LayoutOrder = dx
+				elseif not tag.image then
+					if not isMeCommand then
+						if not added and functions:hasImages(data.tags) then
+							createContainer()
+						end
+						local psuedoTagSpacer = Instance.new("Frame")
+						psuedoTagSpacer.Parent = imgCont
+						psuedoTagSpacer.Name = tag.text
+						psuedoTagSpacer.BackgroundTransparency = 1
+						local size = textService:GetTextSize("["..tag.text.."]",ts(),font,Vector2.new(math.huge,ts()))
+						psuedoTagSpacer.Size = UDim2.fromOffset(size.X-5,ts())
+						psuedoTagSpacer.LayoutOrder = dx
+					end
 				end
 			end
 		end
@@ -259,7 +305,7 @@ return function(environment)
 		local user = object.Raw.User
 		local mentionedBar = object:WaitForChild("Mentioned"):WaitForChild("Bar")
 		local lastTextSize = 0
-		
+
 		local standardCheck = function()
 			heartbeat:Wait()
 			if(object:GetFullName() ~= object.Name) then
@@ -282,7 +328,7 @@ return function(environment)
 						end
 					end
 					if not isMeCommand then
-						prefix = functions.getTags(data) .. userPrefix
+						prefix = getPrefix(true)
 						object.Raw.Text = prefix .. messageContent				
 					end
 				end
@@ -347,7 +393,7 @@ return function(environment)
 							userPrefix = rich:colorize(data.displayName .. ": ",(data.teamColor or data.displayNameColor))
 						end
 					end
-					local text = tags .. userPrefix .. messageContent
+					local text = getPrefix() .. messageContent
 					object.Raw.Text = isMeCommand and italicize(text) or text
 					if(canEdit and (not edit:IsFocused())) then
 						object.Edit.Visible = (not inBounds)

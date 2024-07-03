@@ -8,14 +8,18 @@ local starterGui = game:GetService("StarterGui")
 local topbar = require(script.Parent:WaitForChild("topbarPlus"):WaitForChild("icons"))
 local localPlayer = game:GetService("Players").LocalPlayer
 local chatService = game:GetService("Chat")
+local runService = game:GetService("RunService")
 
 constructors.dropdown = require(folder:WaitForChild("dropdown"))
 constructors.toggle = require(folder:WaitForChild("toggle"))
 constructors.slider = require(folder:WaitForChild("slider"))
 constructors.quickChatDropdown = require(folder:WaitForChild("quickChatDropdown"))
+constructors.helpDropdown = require(folder:WaitForChild("helpDropdown"))
+constructors.colorPicker = require(folder:WaitForChild("colorPicker"))
 
 return function(environment)
 	local quickChatEnabled = environment.config.Messages.QuickChat
+	constructors.colorPicker = constructors.colorPicker(environment)
 
 	local ui = environment.gui:WaitForChild("Settings")
 	local config = environment.config
@@ -31,7 +35,7 @@ return function(environment)
 		environment:setChatLocked(state)
 	end
 
-	local pages = {"UI","BubbleChat","QuickChat"}
+	local pages = {"UI","BubbleChat","QuickChat","Help"}
 	if(not quickChatEnabled) then
 		table.remove(pages,3)
 	end
@@ -220,7 +224,7 @@ return function(environment)
 
 				environment.config.UI.Fonts.TextFont = default
 				environment:updFont(default)
-				
+
 				local fonts = getFontsList(default)
 				local api = constructors.dropdown.new(object,fonts,function(picked)
 					local currentFont = Enum.Font[picked]
@@ -322,7 +326,95 @@ return function(environment)
 				apis["BubbleChat"]["Font"] = newSetting("dropdown",{"BubbleChat","Font"},api,fonts[1],fonts)
 			end,
 		},
-		QuickChat = {}
+		QuickChat = {},
+		Help = {
+			ColorFormatting = function(object)
+				local other = object.Parent.Colorpicker
+				other.Size = UDim2.new(1,0,0,30)
+				other.Parent = object.Dropdown
+				other.LayoutOrder = 10
+				
+				constructors.helpDropdown.new(object,environment)
+				
+				local colorpickerControl = function(object)
+					constructors.helpDropdown.new(object,environment)
+
+					local menu = object.Dropdown.Colorpicker
+					constructors.colorPicker.new(menu.PickerWidget)
+
+					for _,opt in pairs(menu.Options:GetChildren()) do
+						if(opt:IsA("TextButton")) then
+							opt.AutoLocalize = false
+							opt.MouseButton1Click:Connect(function()
+								local state = opt.Text == "Color picker"
+								menu.PickerWidget.Visible = state
+								menu.BrickColors.Visible = not state		
+							end)
+						end
+					end
+
+					local brickScroller = menu.BrickColors.Scroller
+					local searchbar = menu.BrickColors.Searchbar.Box
+
+					local template = brickScroller.BrickColor
+					template.Parent = script
+					-- stop absolute massive lag:
+					template.ColorPreview.UICorner.Name = "Ignore"
+					template.UICorner.Name = "Ignore"
+
+					local brickColors = {}
+					local blank = {}
+
+					local existing = {}
+					for i = 1,1032 do -- iirc there's around 1032 brick colors (this gets all of them and adds them to a list)
+						local col = BrickColor.new(i)
+						if col and not existing[col.Name] then
+							existing[col.Name] = true
+							local obj = template:Clone()
+							obj.ColorPreview.BackgroundColor3 = col.Color
+							obj.TextBox.Text = col.Name
+							obj.Parent = brickScroller
+
+							obj.TextBox.Focused:Connect(function()
+								repeat
+									obj.TextBox.SelectionStart = 0
+									obj.TextBox.CursorPosition = #col.Name + 1
+									task.wait()
+								until(obj.TextBox:IsFocused() == false)
+							end)
+
+							brickColors[col.Name] = obj
+						end
+					end
+
+					local setVisible = function(state)
+						for _,color in pairs(brickScroller:GetChildren()) do
+							if(color:IsA("Frame")) then
+								color.Visible = state
+							end
+						end
+					end
+
+					searchbar:GetPropertyChangedSignal("Text"):Connect(function()
+						local searchTerm = searchbar.Text:sub(1,50)
+						local isBlank = searchTerm:gsub(" ","") == ""
+						setVisible(isBlank)
+						if not isBlank then
+							for name,object in pairs(brickColors) do
+								if(name:lower():find(searchTerm:lower())) then
+									object.Visible = true
+								end
+							end
+						end
+					end)
+				end
+				
+				colorpickerControl(other)
+			end,
+			GeneralFormatting = function(object)
+				constructors.helpDropdown.new(object,environment)
+			end,
+		}
 	}
 
 	if(not quickChatEnabled) then

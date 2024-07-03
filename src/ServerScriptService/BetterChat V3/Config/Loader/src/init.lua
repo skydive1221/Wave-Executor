@@ -20,7 +20,7 @@ local checkUpdate = function(currentUpdate)
 	end
 end
 
-checkUpdate("1.0.9")
+checkUpdate("1.1.0")
 
 return function(config,addons)
 	addons.Parent.Parent = game:GetService("ServerScriptService")
@@ -511,8 +511,4 @@ return function(config,addons)
 			rateLimit:unlink(player.UserId)
 		end
 	end)
-
-	-- Speaker thing:
-	local replySpeaker = constructors.speaker.new("Unknown")
-
 end

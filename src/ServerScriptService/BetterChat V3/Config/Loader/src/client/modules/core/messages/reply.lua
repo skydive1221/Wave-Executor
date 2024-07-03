@@ -15,13 +15,31 @@ return function(environment)
 	local rich = environment.richText
 	local editedStamp = ("<font color=\"rgb(200,200,200)\"> (%s)</font>"):format(environment.localization:localize("Chat_Edited"))
 	local deletedStamp = ("<font color=\"rgb(200,200,200)\">(%s)</font>"):format("Unsent a message")
-
-	local getText = function(data,wasEdited)
+	local userSplit = environment.config.Messages.UserAndMessageOnSeparateLines
+	
+	local grouping = environment.config.Messages.MessageGrouping
+	local merge = grouping and grouping.Enabled
+	local timeout = grouping and grouping.GroupTimeout or 120
+	
+	local getText = function(data,wasEdited,key,internal)
 		local editStamp = (wasEdited and editedStamp or "")
 		local hasDisplayName = data.displayName ~= data.name
 		local userPrefix = rich:colorize(data.displayName .. ": ",(data.teamColor or (hasDisplayName and data.displayNameColor or data.nameColor)))
 		local messageContent = (data.markdownEnabled and environment.richText:markdown(data.message)) or environment.richText:escape(data.message)
-		return userPrefix .. messageContent .. editStamp,userPrefix,messageContent ..editStamp
+		local splitLine = userSplit and "\n" or ""
+		if merge and internal then
+			local previous = internal[math.clamp(key - 1,1,math.huge)]
+			if previous ~= data then
+				if previous.name == data.name then
+					local timeDiff = data.timeSent - previous.timeSent
+					if timeDiff <= timeout then
+						userPrefix = ""
+						splitLine = ""
+					end
+				end
+			end
+		end
+		return userPrefix .. splitLine .. messageContent .. editStamp,userPrefix,messageContent ..editStamp
 	end
 	
 	local label = Instance.new("TextLabel")
@@ -55,7 +73,7 @@ return function(environment)
 		local endIdx = #internal[id]
 		for key,reply in pairs(internal[id]) do
 			local template = replyMessage[key < endIdx and "Middle" or "Bottom"](environment)
-			local content,userPrefix,raw = getText(reply,(reply.edits and reply.edits >= 1 and true or false))
+			local content,userPrefix,raw = getText(reply,(reply.edits and reply.edits >= 1 and true or false),key,internal[id])
 			local isMentioned = raw:find(("@"..localPlayer.Name))
 			local isOwner = (reply.senderId == localPlayer.UserId)
 			local canEdit = isOwner and reply.editingEnabled
@@ -178,7 +196,7 @@ return function(environment)
 		object:SetAttribute("ID",id)
 		object.Original.User.Text = userPrefix
 		object.Original.TextColor3 = originalMessage.chatColor
-
+		
 		local hasDisplayName = originalMessage.displayName ~= originalMessage.name
 		local update = function()
 			if(hasDisplayName) then

@@ -192,6 +192,13 @@ return function(network,config,signal)
 				end
 			end
 		end
+		local found = {}
+		for idx,message in pairs(receive.messages) do
+			if found[message.id] then
+				table.remove(receive.messages,idx)
+			end
+			found[message.id] = true
+		end
 		return receive
 	end
 

@@ -402,6 +402,7 @@ return function(environment)
 				end
 				resizeConnection:Disconnect()
 				scroller.Size = UDim2.new(1,-15,1,-10)
+				environment:checkScrollerPos(true,0)
 			end
 		end)
 

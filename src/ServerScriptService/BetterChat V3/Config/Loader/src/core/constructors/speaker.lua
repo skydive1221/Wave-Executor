@@ -139,5 +139,12 @@ return function(network,fetch,signal)
 		channel = module
 	end
 
+	function speakerModule:onSpeaker(callback)
+		for _,speaker in pairs(speakerModule:getSpeakers()) do
+			task.spawn(callback,speaker)
+		end
+		speakerModule.speaker.speakerAdded:Connect(callback)
+	end
+	
 	return speakerModule
 end
