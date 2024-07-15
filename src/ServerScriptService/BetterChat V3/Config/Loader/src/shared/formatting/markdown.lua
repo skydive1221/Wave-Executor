@@ -6,8 +6,17 @@
 
 local colorModule = require(script.Parent:WaitForChild("color"))
 
-return function(rich_text)
+return function(rich_text,config)
 	local guid = rich_text:getId()
+	local enabled = config.Messages.Markdown or {
+		ItalicBold = true,
+		Bold = true,
+		Italics = true,
+		Underlines = true,
+		Strikethrough = true,
+		Colored = true,
+		Outlines = true,
+	}
 	
 	local parse_color = function(color)
 		color = color:gsub(" ","") -- remove spaces
@@ -26,9 +35,13 @@ return function(rich_text)
 	end
 
 	local color_tag = function(text,color) -- place text in a rich text color tag with the specified color
-		return ('<font n = "%s" color="%s">%s</font>'):format(guid,parse_color(color),text)
+		return ('<font color="%s">%s</font>'):format(parse_color(color),text)
 	end
-
+	
+	local stroke_tag = function(text,color)
+		return ('<stroke thickness = "1" join = "round" color="%s">%s</stroke>'):format(parse_color(color),text)
+	end
+	
 	local main = {}
 	
 	local regulartag = function(text,tag,format)
@@ -37,7 +50,7 @@ return function(rich_text)
 			if c then
 				return ("<%s%s>"):format((c and "/" or ""),t)
 			else
-				return(`<%s n="{guid}">`):format(t)
+				return(`<%s>`):format(t)
 			end
 		end
 		local opening = ""
@@ -81,12 +94,22 @@ return function(rich_text)
 		end
 	end
 	
-	local customcolor = function(b)
+	local filter = function(tbl)
+		local ret = {}
+		for _,v in pairs(tbl) do
+			if(v) then
+				table.insert(ret,v)
+			end
+		end
+		return ret
+	end
+	
+	local wrap = function(b,start,close,callback)
 		local s, e = string.find(b, "/")
 		if s and e and b:sub(1, 1) ~= "<" then
 			if b and b:find("<i>") then
 				if b:sub(s - 1, s + 2) == "</i>" then
-					return "(" .. b .. ")"
+					return start .. b .. close
 				end				
 			end
 			local split = {b:sub(1, e - 1), b:sub(e + 1, #b)}
@@ -98,23 +121,32 @@ return function(rich_text)
 				text = "-" -- replace with a placeholder if necessary
 			end
 
-			return color_tag(text, color)
+			return callback(text, color)
 		else
-			return "(" .. b .. ")"
+			return start .. b .. close
 		end
 	end
 	
-	local formats = {
+	local customcolor = function(b)
+		return wrap(b,"(",")",color_tag)
+	end
+	
+	local outline = function(b)
+		return wrap(b,"[","]",stroke_tag)
+	end
+	
+	local formats = filter({
 		-- don't change the order of these pls lol
 		-- they're priority-based so things like *** would be grabbed before ** etc
-		{"***","ib",regulartag}, --> ***hello*** means italic and bold
-		{"**","b",regulartag}, --> **bold** means bold
-		{"*","i",regulartag}, --> *italics* means italic ofc
-		{"__","u",regulartag}, --> __under__ underlines your text
-		{"_","i",regulartag}, --> _hi_ makes italics
-		{"~~","s",regulartag}, --> ~~hi~~ makes the text crossed through
-		{"(","",customcolor,")"} --> (255,0,0 / red) (#FF0000 / red) (Really red / red) --> red text
-	}
+		enabled.ItalicBold and {"***","ib",regulartag}, --> ***hello*** means italic and bold
+		enabled.Bold and {"**","b",regulartag}, --> **bold** means bold
+		enabled.Italics and {"*","i",regulartag}, --> *italics* means italic ofc
+		enabled.Underlines and {"__","u",regulartag}, --> __under__ underlines your text
+		enabled.Italics and {"_","i",regulartag}, --> _hi_ makes italics
+		enabled.Strikethrough and {"~~","s",regulartag}, --> ~~hi~~ makes the text crossed through
+		enabled.Colored and {"(","",customcolor,")"}, --> (255,0,0 / red) (#FF0000 / red) (Really red / red) --> red text
+		enabled.Outlines and {"[","",outline,"]"},
+	})
 
 	local _gsub_escape_table = {
 		["\000"] = "%z", ["("] = "%(", [")"] = "%)", ["."] = "%.",

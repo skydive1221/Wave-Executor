@@ -22,7 +22,7 @@ command.call = function(message)
 	end
 
 	local systemMessage = function(message)
-		print("system message",message)
+		--print("system message",message)
 	end
 
 	local emoteName = getEmoteName()

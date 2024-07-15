@@ -64,20 +64,25 @@ if(currentPlatform ~= "Console") then
 		
 		local chatbarContainer = container:WaitForChild("ChatBarContainer"):WaitForChild("Main")
 		local chatbox = chatbarContainer:WaitForChild("Container"):WaitForChild("Box"):WaitForChild("Input")
+		local config = network:invoke("requestConfig")
+		
 		local environment = {
 			utility = require(core:WaitForChild("utility")),
 			localization = require(core:WaitForChild("localization"))(),
-			richText = require(betterchat_shared:WaitForChild("formatting"):WaitForChild("richText")),
+			richText = require(betterchat_shared:WaitForChild("formatting"):WaitForChild("richText"))(config),
 			connections = connections,
 			network = network,
-			config = network:invoke("requestConfig"),
+			config = config,
 			messages = {},
 			main_ui = container,
 			lastRefresh = tick(),
 			gui = gui,
 			container = container,
 			addons = addons,
-			signal = signal
+			signal = signal,
+			betterchat_shared = betterchat_shared,
+			onEmoji = signal.new(),
+			interceptions = {}
 		}
 		
 		environment.config.UI.ColorOptions = environment.config.UI.ColorOptions or {
@@ -109,6 +114,13 @@ if(currentPlatform ~= "Console") then
 		
 		function environment:getTextSize()
 			return chatbox.TextSize
+		end
+		
+		environment.processData = function(messageData,origin)
+			for _,interception in pairs(environment.interceptions) do
+				interception(messageData,origin)
+			end
+			return messageData
 		end
 		
 		local channelBarEnabled = environment.config.UI.ChannelBarEnabled
@@ -510,6 +522,7 @@ if(currentPlatform ~= "Console") then
 		
 		local onMessageReceived = function(received) --> this message will handle every single message ever displayed in the chat, kinda crazy tbh
 			for _,data in pairs(received.messages) do
+				data = environment.processData(data,"chat")
 				task.spawn(function()
 					if(channelBarEnabled) then
 						if(currentChannel == data.channelFrom) then
@@ -562,7 +575,7 @@ if(currentPlatform ~= "Console") then
 		
 		-- core ui:
 
-		local chatOpenState = true
+		local chatOpenState = false
 		local locked = false
 		
 		local toggleChatState = function()
@@ -583,9 +596,7 @@ if(currentPlatform ~= "Console") then
 		end
 		
 		connections:Connect("ChatWindow","ToggleVisibility",toggleChatState)
-		for i = 1,2 do
-			toggleChatState()
-		end
+		toggleChatState()
 		
 		connections:Connect("ChatWindow","CoreGuiEnabled",function(state)
 			container.Visible = state

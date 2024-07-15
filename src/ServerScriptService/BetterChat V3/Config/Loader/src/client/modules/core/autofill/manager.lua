@@ -18,7 +18,7 @@ return function(api,autofills,box,environment)
 
 	local capture = function(text,fill,matches,...)
 		local wasReplaced = false
-		local gsub,toFill,callback = fill.onCapture(matches,...)
+		local gsub,toFill,callback,endAt = fill.onCapture(matches,...)
 		if(gsub) then
 			for pattern,replace in pairs(gsub) do
 				text = text:gsub(pattern,replace)
@@ -35,6 +35,9 @@ return function(api,autofills,box,environment)
 		end
 		if(callback) then
 			callback()
+		end
+		if endAt then
+			box.CursorPosition = endAt
 		end
 	end
 	

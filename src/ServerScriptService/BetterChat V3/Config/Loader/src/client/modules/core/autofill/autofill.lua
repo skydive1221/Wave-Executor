@@ -194,6 +194,13 @@ return function(environment,chatbox)
 		local baseSize = UDim2.new(1,0,0,ySize + (#main >= 1 and 8 or 0))
 		scroller.Parent.Size = baseSize
 		scroller.Parent.Parent.Size = baseSize
+		
+		for key,option in pairs(main) do
+			local button = pointers[key]
+			if option.onCreated then
+				option.onCreated(button)
+			end
+		end
 	end
 	
 	local lapse = function(input,callback,otherCondition)

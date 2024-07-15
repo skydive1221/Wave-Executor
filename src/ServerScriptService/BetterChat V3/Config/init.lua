@@ -37,7 +37,7 @@ return {
 			[4] = "Owner" --> Automatically assigned to the group creator or game creator
 		},
 		Users = {
-			[1] = "Admin" --> Roblox -> Admin rank
+			[1] = "Admin", --> Roblox -> Admin rank
 		},
 		Groups = {
 			[1200769] = { --> Roblox admins get the admin rank automatically
@@ -192,7 +192,7 @@ return {
 		FilterProcessingCharacter = "_", --> What messages are replaced with before being properly filtered and distributed (whilst pending)
 		IncludeIcon = true,	--> Display a player thumbnail next to their username in the chat
 		UseViewportForIcon = false, --> Use a viewport frame for this? (Helpful for Roleplay games where your avatar isn't the same as it normally would be)
-		MaximumLength = 200, --> Maximum allowed message length
+		MaximumLength = 200, --> Maximum allowed message length (> 1000 would probably just brick the chat)
 		DisallowedWhitespace = {"\n","\r","\t","\v","\f"}, --> Filter these characters out of the messages to prevent breaking the chat
 		ChannelMessageLimit = 100, --> Max amount of messages displayed in a channel at one time
 		QuickChat = true, --> Quick chat system enabled?
@@ -211,11 +211,36 @@ return {
 			MentionEnabled = "Guest", --> Permission needed to mention another user in the chat
 			MeCommand = "Guest" --> Permission needed to use the /me command
 		},
+		Markdown = {
+			ItalicBold = true,
+			Bold = true,
+			Italics = true,
+			Underlines = true,
+			Strikethrough = true,
+			Colored = true,
+			Outlines = true,
+		},
 		MessageGrouping = {
 			Enabled = true, --> Merge messages when sent by the same user back to back?
 			GroupTimeout = 120 --> When do they split back up again?
 		},
-		UserAndMessageOnSeparateLines = true, --> Separate messages so the message is below the sender's name?
+		CustomEmojis = {
+			Enabled = true, --> Enable custom emojis?
+			PermissionLocked = false, --> Set to a rank such as "Owner" to enable custom emojis for specific users only
+			ScaleType = Enum.ScaleType.Fit, --> Scale type for custom emoji images
+			List = { --> Allowed formats: "id" or {"id","permission to lock it to"}
+				["ban_hammer"] = {"rbxassetid://4813866018","Owner"},
+				["troll"] = "rbxassetid://15828456252",
+				["vibe_cat"] = { --> Vibe cat
+					["Image"] = "rbxassetid://18495257138",
+					["ImageRectSize"] = Vector2.new(68.2,68.2), --> Image dimensions / columns and rows
+					["Columns"] = 5,
+					["Rows"] = 15,
+					["Frames"] = 71,
+					["FPS"] = 15 --> Above this gets a little too fast to comprehend logically
+				}
+			}
+		}
 	},
 	BubbleChat = {
 		Enabled = true, --> Custom bubble chat enabled state (setting to false will default to the regular bubble chat which can be turned off in the properties of game.Chat)

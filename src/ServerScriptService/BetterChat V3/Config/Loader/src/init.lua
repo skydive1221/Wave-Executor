@@ -20,7 +20,7 @@ local checkUpdate = function(currentUpdate)
 	end
 end
 
-checkUpdate("1.1.0")
+checkUpdate("1.1.1")
 
 return function(config,addons)
 	addons.Parent.Parent = game:GetService("ServerScriptService")
@@ -44,12 +44,12 @@ return function(config,addons)
 	local profileService = require(script:WaitForChild("core"):WaitForChild("services"):WaitForChild("profile"))(config,function()
 		return constructors
 	end)
-
+	
+	local callback = {}
 	local sharedFolder = script:WaitForChild("shared")
 	local network = require(sharedFolder:WaitForChild("network"))
 	local signal = require(sharedFolder:WaitForChild("signal"))
 	local wrap = require(sharedFolder:WaitForChild("wrap"))
-	local richText = require(sharedFolder:WaitForChild("formatting"):WaitForChild("richText"))
 
 	sharedFolder.Name = "betterchat_shared"
 	sharedFolder.Parent = replicatedStorage
@@ -77,7 +77,47 @@ return function(config,addons)
 		end
 		return names
 	end
+	
+	local handle = function(list,player)
+		local toReturn = {}
+		for key,emoji in pairs(list) do
+			if(typeof(emoji) == "table") then
+				if emoji.Image then
+					toReturn[key] = emoji
+				elseif #emoji == 2 then
+					local lockedTo = emoji[2]
+					if(permission:canUse(lockedTo,player.UserId)) then
+						toReturn[key] = emoji[1]
+					end
+				end
+			else
+				toReturn[key] = emoji
+			end
+		end
+		for _,cb in pairs(callback) do
+			cb(toReturn,player)
+		end
+		return toReturn
+	end
+	
+	local getAllowedEmojisFor = function(player)
+		local custom = config.Messages.CustomEmojis or {Enabled = false, List = {}}
+		if custom.Enabled then
+			if custom.PermissionLocked then
+				if permission:canUse(custom.PermissionLocked,player.UserId) then
+					return handle(custom.List,player)
+				else
+					return {}
+				end
+			else
+				return handle(custom.List,player)
+			end
+		else 
+			return {}
+		end
+	end
 
+	local richText = require(sharedFolder:WaitForChild("formatting"):WaitForChild("richText"))(config,getAllowedEmojisFor)
 	local services = {}
 
 	constructors = {
@@ -89,7 +129,7 @@ return function(config,addons)
 		signal = signal
 	}
 
-	local api = require(core:WaitForChild("api"))(constructors,wrap,config)
+	local api = require(core:WaitForChild("api"))(constructors,wrap,config,callback,permission)
 	constructors.speaker:setup(constructors.channel)
 	constructors.channel:setup(constructors.speaker,constructors.message)
 
@@ -476,6 +516,10 @@ return function(config,addons)
 		if(success) then
 			return profile.config or {}
 		end
+	end)
+	
+	network:newFunction("getAllowedEmojis",function(player)
+		return getAllowedEmojisFor(player)
 	end)
 
 	-- Data-saving:

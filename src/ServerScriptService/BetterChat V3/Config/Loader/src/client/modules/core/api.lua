@@ -3,6 +3,7 @@
 -- Description: Client api module
 
 return function(environment,wrap)
+	local runService = game:GetService("RunService")
 	local quickChatEnabled = environment.config.Messages.QuickChat
 	local api = {}
 	environment.network.onClientEvent("systemMessage",function(message)
@@ -62,7 +63,30 @@ return function(environment,wrap)
 		return environment
 	end
 	
-	api.connections = connections
+	
+	api.bubbleChat = {}
+	
+	function api.bubbleChat:getForPlayer(player)
+		if not environment.holstered[player] then
+			repeat
+				runService.RenderStepped:Wait()
+			until environment.holstered[player]
+		end
+		return environment.holstered[player]
+	end	
+	
+	function api.bubbleChat.new(object,adornee)
+		if not environment.billboard then
+			repeat
+				runService.RenderStepped:Wait()
+			until environment.billboard
+		end
+		return environment.billboard:create(object,adornee)
+	end
+	
+	function api:interceptMessageData(callback)
+		table.insert(environment.interceptions,callback)
+	end
 	
 	return wrap(api)
 end

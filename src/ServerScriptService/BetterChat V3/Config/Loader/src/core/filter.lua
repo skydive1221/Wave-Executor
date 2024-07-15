@@ -32,12 +32,12 @@ return function(config,richText,msg)
 		
 		return obj
 	end
-
+	
 	function filter.new(message,player,isBroadcast,isMarkdown)
-		local stripped,recombine
+		local stripped,recombine,emojis
 		if isMarkdown then
 			local marked = richText:markdown(richText:escape(message))
-			stripped,recombine = richText:processForFilter(marked)
+			stripped,recombine,emojis = richText:processForFilter(marked,player)
 			if recombine then
 				message = stripped
 			end
@@ -53,23 +53,23 @@ return function(config,richText,msg)
 				end)
 				if(success) then
 					if recombine then
-						return true,wrap(result,recombine)
+						return true,wrap(result,recombine),emojis
 					else
-						return true,result
+						return true,result,emojis
 					end
 				elseif(not success) then
 					handleFilterError(result)
 					return false,psuedoFrom(string.rep(failedCharacter,#message))
 				end
 			elseif(not player) then
-				return true,psuedoFrom(message)
+				return true,psuedoFrom(message),emojis
 			end
 		else
 			local success,response = pcall(function()
 				return chatService:FilterStringForBroadcast(message,player)
 			end)
 			if(success) then
-				return true,response
+				return true,response,emojis
 			else
 				handleFilterError(response)
 				return false,string.rep(failedCharacter,#message)

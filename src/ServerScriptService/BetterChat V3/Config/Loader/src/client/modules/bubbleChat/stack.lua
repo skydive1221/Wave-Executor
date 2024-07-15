@@ -6,32 +6,42 @@ return function(environment)
 	local stack = {}
 	local tweenService = game:GetService("TweenService")
 
-	local tween = function(object,properties)
-		local tweenInfo = TweenInfo.new(0.1,(environment.bubbleChatAnimationStyle or environment.config.BubbleChat.Config.EasingStyle),Enum.EasingDirection.Out)
+	local tween = function(object,properties,config)
+		local isCustom = config.Custom
+		local tweenInfo;
+		if isCustom then
+			tweenInfo = TweenInfo.new(0.1,config.EasingStyle,Enum.EasingDirection.Out)
+		else
+			tweenInfo = TweenInfo.new(0.1,(environment.bubbleChatAnimationStyle or environment.config.BubbleChat.Config.EasingStyle),Enum.EasingDirection.Out)
+		end
 		tweenService:Create(object,tweenInfo,properties):Play()
 	end
 
-	local fade = function(object)
+	local fade = function(object,config)
 		if(object:IsA("Frame")) then
 			tween(object,{
 				["BackgroundTransparency"] = 1
-			})
+			},config)
 		elseif(object:IsA("ImageLabel")) then
 			tween(object,{
 				["ImageTransparency"] = 1
-			})
+			},config)
 		elseif(object:IsA("TextLabel")) then
 			tween(object,{
 				["TextTransparency"] = 1
-			})
+			},config)
 		end
 	end
 
 	function stack.init(c)
-		local config = c.Config
+		local configuration = c.Config
 		local constructor = {}
 
-		function constructor.new(gui)
+		function constructor.new(gui,conf)
+			local config = conf or configuration
+			if conf then
+				config.Custom = true
+			end
 			local stack = {
 				queue = {}
 			}
@@ -67,9 +77,9 @@ return function(environment)
 
 			function stack:fade(ui,len)
 				for _,obj in pairs(ui:GetDescendants()) do
-					fade(obj)
+					fade(obj,config)
 				end
-				fade(ui)
+				fade(ui,config)
 				task.delay(len or 0.15,function()
 					ui:Destroy()
 				end)
@@ -104,7 +114,7 @@ return function(environment)
 				end
 				stack = nil
 			end
-
+			
 			return stack
 		end
 

@@ -129,9 +129,12 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 		messages[messageId] = object
 		callbacks.processMessage(object,false)
 		callbacks.onCreated(object)
-		local success,filterObj = filter.new(object.message,speaker.player,isBroadcast,markdownEnabled)
+		local success,filterObj,emojis = filter.new(object.message,speaker.player,isBroadcast,markdownEnabled)
 		object.filtered = filterObj
 		object.data.filteredSuccessfully = success
+		if emojis then
+			object.data.customEmojis = emojis
+		end
 		callbacks.onFiltered(object)
 		callbacks.processMessage(object,true)
 		return messages[messageId]
@@ -145,7 +148,10 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 		if(message.data.isMeCommand) then
 			newText = "/me " .. newText
 		end
-		local success,filterObj = filter.new(newText,message.sender,message.isBroadcast,message.markdownEnabled)
+		local success,filterObj,emojis = filter.new(newText,message.sender,message.data.isBroadcast,message.data.markdownEnabled)
+		if emojis then
+			message.data.customEmojis = emojis
+		end
 		message.filtered = filterObj
 		message.data.filteredSuccessfully = success
 		message.data.edits += 1

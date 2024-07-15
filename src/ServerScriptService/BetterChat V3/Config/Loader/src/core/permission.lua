@@ -223,6 +223,10 @@ return function(config)
 			setColor(player,userColor)
 		end
 	end
-
+	
+	function permission:resolve(num)
+		return permissionToNumber(num)
+	end
+	
 	return permission
 end

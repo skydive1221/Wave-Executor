@@ -26,7 +26,6 @@ local getTextBounds = function(object,text)
 	return textService:GetTextSize(getTextContent(text),object.TextSize,object.Font,Vector2.new(object.AbsoluteSize.X,math.huge))
 end
 
-
 return function(environment)
 	local useIcons = environment.config.Messages.IncludeIcon
 	local font = environment.config.UI.Fonts.TextFont
@@ -34,7 +33,18 @@ return function(environment)
 	local merge = grouping and grouping.Enabled
 	local timeout = grouping and grouping.GroupTimeout or 120
 	local userSplit = environment.config.Messages.UserAndMessageOnSeparateLines
-	
+
+	local _gsub_escape_table = {
+		["\000"] = "%z", ["("] = "%(", [")"] = "%)", ["."] = "%.",
+		["%"] = "%%", ["+"] = "%+", ["-"] = "%-", ["*"] = "%*",
+		["?"] = "%?", ["["] = "%[", ["]"] = "%]", ["^"] = "%^",
+		["$"] = "%$",
+	}
+
+	local escapePattern = function(str)
+		return str:gsub("([%z%(%)%.%%%+%-%*%?%[%]%^%$])", _gsub_escape_table)
+	end
+
 	function environment:updFont(new)
 		font = environment.config.UI.Fonts.TextFont
 		for _,obj in pairs(collectionService:GetTagged("TextFont")) do
@@ -52,7 +62,8 @@ return function(environment)
 	local editedText = environment.localization:localize("Chat_Edited")
 	local editedStamp = ("<font color=\"rgb(200,200,200)\"> (%s)</font>"):format(editedText)
 	local deletedStamp = ("<font color=\"rgb(200,200,200)\">(%s)</font>"):format("Unsent a message")
-
+	environment.editedStamp = editedStamp
+	
 	local systemPrefixColor = environment.config.UI.Colors.SystemPrefixColor
 	local meCommandColor = Color3.fromRGB(235, 235, 235)
 
@@ -64,6 +75,22 @@ return function(environment)
 	local regular = require(templates:WaitForChild("regular"))
 	local functions = require(util:WaitForChild("functions"))(environment)
 	local prompt = require(util:WaitForChild("prompt"))(environment,functions)
+
+	environment.attachCustomEmojis = functions.attachCustomEmojis
+
+	function environment:processEmojis(object,data,txt)
+		if(data.customEmojis) then
+			local spacing = functions.lineDetector:getSpacingFor(object,object.TextSize)
+			data.spacing = spacing
+			data.emojis = data.emojis or {}
+			local idx = 0
+			for _,emoji in pairs(data.customEmojis) do
+				local emojiTag,emojiImage = emoji[1],emoji[2]
+				txt = txt:gsub(escapePattern(emojiTag),spacing)
+			end
+		end
+		return txt
+	end
 
 	local padding = 2
 	local mentionString = ("@%s"):format(localPlayer.Name)
@@ -84,6 +111,9 @@ return function(environment)
 	end
 
 	return function(data)
+		
+		local t = 0
+		
 		local lastMessage = getLast(data.id)
 		local mergeMessage = false
 
@@ -91,7 +121,9 @@ return function(environment)
 			if lastMessage.data.class == data.class then
 				local timeDiff = data.timeSent - lastMessage.data.timeSent
 				if timeDiff <= timeout then
-					mergeMessage = true
+					if(lastMessage.data.id - data.id < 0) then
+						mergeMessage = true
+					end
 				end
 			end
 		end
@@ -107,6 +139,7 @@ return function(environment)
 		local isMeCommand = data.isMeCommand
 		local canEdit = (data.senderId == localPlayer.UserId) and data.editingEnabled
 		local canReply = (localPlayer:GetAttribute("Permission") >= data.requiredToReply)
+		local originalText = data.message
 
 		if(useIcons and (not isMeCommand)) then
 			local offset = (isMentioned and UDim2.new(0,8,0,0) or UDim2.new(0,0,0,0))
@@ -160,32 +193,40 @@ return function(environment)
 		if data.deleted then
 			messageContent = deletedStamp
 		end
-		
+
 		local getPrefix = function(update)
 			if mergeMessage then
 				return ""
 			end
-			
+
 			if update then
 				return functions.getTags(data) .. userPrefix .. (userSplit and "\n" or "")
 			else
 				return tags .. userPrefix ..  (userSplit and "\n" or "")
 			end
 		end
-		
+
 		if mergeMessage and iconOption then
 			iconOption:Destroy()
 			iconOption = nil
 		end
-		
+
 		local prefix = getPrefix()
 
-		object.Raw.Text = prefix .. messageContent
+		local getText = function()
+			if data.customEmojis and #data.customEmojis > 0 then
+				return environment:processEmojis(object.Raw,data,messageContent)
+			else
+				return messageContent
+			end
+		end
+
+		object.Raw.Text = prefix .. getText()
 		object.Raw.TextColor3 = data.chatColor
 		object.Raw.User.Text = prefix
 		object.Parent = scroller
 		object.LayoutOrder = data.id
-
+		
 		local i = 0
 		local added = false
 		local imgCont;
@@ -237,7 +278,7 @@ return function(environment)
 				end
 			end
 		end
-
+		
 		if(isMeCommand) then
 			object.Raw.Text = italicize(object.Raw.Text)
 		end
@@ -254,6 +295,13 @@ return function(environment)
 		local editCallback = function() end
 
 		if(canEdit) then
+			local hiding = false
+			collector:add(object.Raw.DescendantAdded:Connect(function(child)
+				if hiding and child:GetAttribute("IsEmoji") then
+					child.Visible = false
+				end
+			end))
+
 			editCallback = function()
 				local prefix = getTextContent(prefix)
 				local raw = object.Raw
@@ -265,11 +313,20 @@ return function(environment)
 				end))
 
 				collector:add(edit.Focused:Connect(function()
+					hiding = true
+					for _,obj in pairs(object.Raw:GetDescendants()) do
+						if(obj:GetAttribute("IsEmoji")) then
+							obj.Visible = false
+						end
+					end
 					if(iconOption) then
 						iconOption.Visible = false
 					end
 					edit.TextTransparency = 0
-					object.Raw.TextTransparency = 1
+					object.Raw:SetAttribute("CurrentlyEditing",true)
+					if not data.customEmojis or #data.customEmojis < 1 then
+						object.Raw.TextTransparency = 1
+					end
 				end))
 
 				collector:add(edit.FocusLost:Connect(function(enterPressed)
@@ -283,7 +340,16 @@ return function(environment)
 							environment.network:fire("editMessage",data.id,data.channelFrom,newText)
 						end
 						edit.TextTransparency = 1
-						object.Raw.TextTransparency = 0
+						hiding = false
+						for _,obj in pairs(object.Raw:GetDescendants()) do
+							if(obj:GetAttribute("IsEmoji")) then
+								obj.Visible = true
+							end
+						end
+						object.Raw:SetAttribute("CurrentlyEditing",false)
+						if not data.customEmojis or #data.customEmojis < 1 then
+							object.Raw.TextTransparency = 0
+						end
 					end)
 				end))
 
@@ -296,15 +362,32 @@ return function(environment)
 					end
 				end))
 
+				collector:add(object.Raw:GetAttributeChangedSignal("CurrentlyEditing"):Connect(function()
+					local currentlyEditing = object.Raw:GetAttribute("CurrentlyEditing")	
+					for _,child in pairs(object.Raw:GetChildren()) do
+						if(child.Name == "WrappedLine") then
+							child.TextTransparency = currentlyEditing and 1 or 0
+						end
+					end
+				end))
+
 				environment.utility:clampTextLimit(edit,environment.config.Messages.MaximumLength)
 			end
 		else
 			edit:Destroy()
 		end
-
+			
 		local user = object.Raw.User
 		local mentionedBar = object:WaitForChild("Mentioned"):WaitForChild("Bar")
 		local lastTextSize = 0
+
+		local handleDifference = function()
+			if data.customEmojis and #data.customEmojis > 0 then
+				local txt = getText()
+				object.Raw.Text = prefix .. txt
+				functions:attachCustomEmojis(object.Raw,originalText,data.customEmojis,data.spacing,nil,editedStamp)
+			end
+		end
 
 		local standardCheck = function()
 			heartbeat:Wait()
@@ -313,6 +396,7 @@ return function(environment)
 					lastSize = object.AbsoluteSize
 					local currentPadding = (object.Raw.TextBounds.Y > object.Raw.TextSize and padding or 0)
 					mentionedBar.Size = UDim2.new(0,5,0,object.Raw.AbsoluteSize.Y + (currentPadding * 2)) --UDim2.new(0,5,0,object.Raw.TextBounds.Y + (currentPadding * 2))
+					handleDifference()
 				end
 				if(object.Raw.TextSize ~= lastTextSize) then
 					lastTextSize = object.Raw.TextSize
@@ -329,8 +413,9 @@ return function(environment)
 					end
 					if not isMeCommand then
 						prefix = getPrefix(true)
-						object.Raw.Text = prefix .. messageContent				
+						object.Raw.Text = prefix .. getText()				
 					end
+					handleDifference()
 				end
 			else
 				lastPosition = nil
@@ -393,8 +478,10 @@ return function(environment)
 							userPrefix = rich:colorize(data.displayName .. ": ",(data.teamColor or data.displayNameColor))
 						end
 					end
-					local text = getPrefix() .. messageContent
-					object.Raw.Text = isMeCommand and italicize(text) or text
+					prefix = getPrefix()
+					--object.Raw.Text = isMeCommand and italicize(text) or text
+					handleDifference()
+
 					if(canEdit and (not edit:IsFocused())) then
 						object.Edit.Visible = (not inBounds)
 					end
@@ -442,6 +529,21 @@ return function(environment)
 				load()
 			end
 		end))
+
+		-- sobbing, the stupid custom emojis WILL NOT WORK (initially) without this
+
+		if data.customEmojis and #data.customEmojis > 0 then
+			local og,sig = tick(),nil
+			local iterations = 0
+			sig = runService.RenderStepped:Connect(function()
+				if(iterations < 5) then
+					iterations += 1
+					handleDifference()
+				else
+					sig:Disconnect()
+				end
+			end)
+		end
 
 		return object
 	end

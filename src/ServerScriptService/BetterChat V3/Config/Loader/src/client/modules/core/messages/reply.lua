@@ -8,6 +8,14 @@ local runService = game:GetService("RunService")
 local heartbeat = runService.Heartbeat
 local localPlayer = players.LocalPlayer
 
+local label = Instance.new("TextLabel")
+label.RichText = true
+
+local getTextContent = function(text)
+	label.Text = text
+	return label.ContentText
+end
+
 return function(environment)
 	local scroller = environment.mainUi.scroller
 	local templates = script.Parent:WaitForChild("templates")
@@ -21,7 +29,7 @@ return function(environment)
 	local merge = grouping and grouping.Enabled
 	local timeout = grouping and grouping.GroupTimeout or 120
 	
-	local getText = function(data,wasEdited,key,internal)
+	local getText = function(data,wasEdited,key,internal,object)
 		local editStamp = (wasEdited and editedStamp or "")
 		local hasDisplayName = data.displayName ~= data.name
 		local userPrefix = rich:colorize(data.displayName .. ": ",(data.teamColor or (hasDisplayName and data.displayNameColor or data.nameColor)))
@@ -38,6 +46,14 @@ return function(environment)
 					end
 				end
 			end
+		end
+		messageContent = environment:processEmojis(object,data,messageContent)
+		if(data.customEmojis) then
+			if(object.Name == "Reply") then
+				object.Size = UDim2.new(1,0,0,object.TextSize)
+				object.User.Size = UDim2.new(1,0,0,object.TextSize)
+			end
+			environment:attachCustomEmojis(object,messageContent,data.customEmojis,data.spacing,nil,editedStamp)
 		end
 		return userPrefix .. splitLine .. messageContent .. editStamp,userPrefix,messageContent ..editStamp
 	end
@@ -73,7 +89,9 @@ return function(environment)
 		local endIdx = #internal[id]
 		for key,reply in pairs(internal[id]) do
 			local template = replyMessage[key < endIdx and "Middle" or "Bottom"](environment)
-			local content,userPrefix,raw = getText(reply,(reply.edits and reply.edits >= 1 and true or false),key,internal[id])
+			template.Parent = replyChain.Parent
+			
+			local content,userPrefix,raw = getText(reply,(reply.edits and reply.edits >= 1 and true or false),key,internal[id],template.ReplyArea.Reply)
 			local isMentioned = raw:find(("@"..localPlayer.Name))
 			local isOwner = (reply.senderId == localPlayer.UserId)
 			local canEdit = isOwner and reply.editingEnabled
@@ -81,31 +99,52 @@ return function(environment)
 			local connected
 			template.ReplyArea.Reply.Text = content
 			template.ReplyArea.Reply.TextColor3 = reply.chatColor
+			getText(reply,(reply.edits and reply.edits >= 1 and true or false),key,internal[id],template.ReplyArea.Reply)
+			
+			local signals = {}
+			local connect = function(sig)
+				table.insert(signals,sig)
+				if(not connected) then
+					connected = template.Changed:Connect(function()
+						if(template:GetFullName() == template.Name) then
+							connected:Disconnect()
+							for _,signal in pairs(signals) do 
+								signal:Disconnect()
+							end
+							signals = {}
+						end
+					end)
+				end
+			end
+			
+			connect(template:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				getText(reply,(reply.edits and reply.edits >= 1 and true or false),key,internal[id],template.ReplyArea.Reply)
+			end))
 			
 			if(editBox and canEdit) then
 				local prefix = getContent(userPrefix)
-				local signals = {}
-				editBox.Text = prefix .. reply.message
+				editBox.Text = prefix .. getTextContent(reply.message)
 				editBox.TextTransparency = 1
+				local hiding = false
 				
-				local connect = function(sig)
-					table.insert(signals,sig)
-					if(not connected) then
-						connected = template.Changed:Connect(function()
-							if(template:GetFullName() == template.Name) then
-								connected:Disconnect()
-								for _,signal in pairs(signals) do 
-									signal:Disconnect()
-								end
-								signals = {}
-							end
-						end)
+				connect(template.ReplyArea.Reply.DescendantAdded:Connect(function(child)
+					if(child:GetAttribute("IsEmoji") and hiding) then
+						child.Visible = false
 					end
-				end
+				end))
 				
 				connect(editBox.Focused:Connect(function()
+					hiding = true
+					for _,obj in pairs(template.ReplyArea.Reply:GetDescendants()) do
+						if(obj:GetAttribute("IsEmoji")) then
+							obj.Visible = false
+						end
+					end
 					editBox.TextTransparency = 0
-					template.ReplyArea.Reply.TextTransparency = 1
+					template.ReplyArea.Reply:SetAttribute("CurrentlyEditing",true)
+					if not reply.customEmojis then
+						template.ReplyArea.Reply.TextTransparency = 1
+					end
 				end))
 
 				connect(editBox.FocusLost:Connect(function(enterPressed)
@@ -115,8 +154,17 @@ return function(environment)
 							environment:onEdit(newText)
 							environment.network:fire("editMessage",reply.id,reply.channelFrom,newText)
 						end
+						hiding = false
+						for _,obj in pairs(template.ReplyArea.Reply:GetDescendants()) do
+							if(obj:GetAttribute("IsEmoji")) then
+								obj.Visible = true
+							end
+						end
 						editBox.TextTransparency = 1
-						template.ReplyArea.Reply.TextTransparency = 0
+						template.ReplyArea.Reply:SetAttribute("CurrentlyEditing",false)
+						if not reply.customEmojis then
+							template.ReplyArea.Reply.TextTransparency = 0
+						end
 					end)
 				end))
 
@@ -126,6 +174,15 @@ return function(environment)
 					end
 					if(#editBox.Text < #prefix) then
 						editBox.Text = prefix
+					end
+				end))
+				
+				connect(template.ReplyArea.Reply:GetAttributeChangedSignal("CurrentlyEditing"):Connect(function()
+					local currentlyEditing = template.ReplyArea.Reply:GetAttribute("CurrentlyEditing")	
+					for _,child in pairs(template.ReplyArea.Reply:GetChildren()) do
+						if(child.Name == "WrappedLine") then
+							child.TextTransparency = currentlyEditing and 1 or 0
+						end
 					end
 				end))
 				
@@ -184,18 +241,20 @@ return function(environment)
 		
 		environment:checkScrollerPos()
 		local object = replyMessage.new(environment)
+		object.Parent = scroller
+
 		local id = dta.replyingTo.id
 		local originalMessage = dta.replyingTo
-		local _,userPrefix,textContent = getText(originalMessage)
+		local _,userPrefix,textContent = getText(originalMessage,nil,nil,nil,object.Original)
 		local user = object.Original.User
 		local lastInBounds = false
 		
 		object.Original.Text = userPrefix .. textContent
 		object.LayoutOrder = dta.id
-		object.Parent = scroller
 		object:SetAttribute("ID",id)
 		object.Original.User.Text = userPrefix
 		object.Original.TextColor3 = originalMessage.chatColor
+		getText(originalMessage,nil,nil,nil,object.Original)
 		
 		local hasDisplayName = originalMessage.displayName ~= originalMessage.name
 		local update = function()
@@ -277,7 +336,7 @@ return function(environment)
 				end
 			end,
 			editBaseMessage = function(self,new)
-				local _,_,newText = getText(new)
+				local _,_,newText = getText(new,nil,nil,nil,object.Original)
 				textContent = newText .. editedStamp
 				if new.deleted == true then
 					textContent = deletedStamp

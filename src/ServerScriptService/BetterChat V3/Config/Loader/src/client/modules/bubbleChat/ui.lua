@@ -165,8 +165,8 @@ return {
 			billboard.Name = name
 			billboard.Active = true
 			billboard.MaxDistance = 40
-			billboard.Size = UDim2.new(5, 0, 5, 0)
-			billboard.StudsOffset = Vector3.new(0, 3.5, 2)
+			billboard.Size = UDim2.new(20, 0, 20, 0)
+			billboard.StudsOffset = Vector3.new(0, 9.5, 2)
 
 			container.Name = "Container"
 			container.Parent = billboard

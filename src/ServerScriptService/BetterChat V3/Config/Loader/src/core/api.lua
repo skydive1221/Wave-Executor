@@ -2,13 +2,15 @@
 -- Name: api.lua
 -- Description: Better chat server API
 
-return function(constructors,wrap,config)
+return function(constructors,wrap,config,callbacks,permission)
 	local topic = "betterchat_bl_update"
 	local datastoreName = "betterchat_blacklisted_words2"
 	local blacklistHardcoded = config.Messages.BlacklistedWords or {}
 	local blacklistCanUseDatastores = config.Messages.BlacklistCanUseDatastores == true
 	
 	local api = {}
+	api.permission = permission
+	
 	local message = constructors.message
 	local textChatService = game:GetService("TextChatService")
 	local datastoreService = game:GetService("DataStoreService")
@@ -244,6 +246,12 @@ return function(constructors,wrap,config)
 			constructors.profileService:register2(callback)
 		end
 	end
+	
+	api.onCustomEmojiListRequest = {
+		Connect = function(self,callback)
+			table.insert(callbacks,callback)
+		end
+	}
 	
 	return wrap(api)
 end

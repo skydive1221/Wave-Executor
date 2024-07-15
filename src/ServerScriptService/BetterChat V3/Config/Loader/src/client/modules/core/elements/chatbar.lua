@@ -325,7 +325,7 @@ return function(environment)
 			utility:tween({chatbox.Parent,0.05,{ -- white box
 				Size = UDim2.new(1,offset,0,(base() - (chatbox.TextSize * 2)) + (size.Y) + (padding * 2))
 			}},{chatbox,0.05,{ -- actual box
-				Size = UDim2.new(1,-10,0,size.Y),
+				Size = UDim2.new(1,-10,0,math.ceil(size.Y)),
 			}},{chatbox.Parent.Parent.Parent,0.05,{ -- main thing
 				Size = totalSize
 			}})

@@ -18,6 +18,8 @@ function bubbleChat.init(config,network,environment)
 	for _,player in pairs(players:GetPlayers()) do
 		task.spawn(newBillboard,player)
 	end
+	
+	environment.billboard = billboard
 end
 
 return bubbleChat
