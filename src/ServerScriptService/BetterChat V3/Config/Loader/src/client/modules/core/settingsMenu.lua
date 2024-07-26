@@ -24,6 +24,10 @@ return function(environment)
 	local ui = environment.gui:WaitForChild("Settings")
 	local config = environment.config
 	local state = false
+	
+	local sampleToggle = ui.Pages.BubbleChat.Scroller.Enabled:Clone()
+	local sampleSlider = ui.Pages.BubbleChat.Scroller.FadeoutTime:Clone()
+	local sampleDropdown = ui.Pages.BubbleChat.Scroller.Font:Clone()
 
 	environment.settingChanged = environment.signal.new()
 
@@ -426,6 +430,41 @@ return function(environment)
 		guiOptions["BubbleChat"] = nil
 		navigation:WaitForChild("Content"):WaitForChild("BubbleChat"):Destroy()
 	end
+	
+	function environment:addCustomOption(container,class,options)
+		local text = options.Text or "DEFAULT"
+		local icon = options.Icon or nil
+		
+		if(class == "Toggle") then
+			local toggleUi = sampleToggle:Clone()
+			toggleUi.Parent = pageContainer[container]["Scroller"]
+			toggleUi.LayoutOrder = 10
+			toggleUi.Title.Label.Text = text
+			if icon then
+				toggleUi.Title.Icon.Image = icon
+			end
+			local defaultValue = options.DefaultValue
+			return constructors.toggle.new(toggleUi,defaultValue,options.Callback,environment)
+		elseif(class == "Slider") then
+			local sliderUi = sampleSlider:Clone()
+			sliderUi.Parent = pageContainer[container]["Scroller"]
+			sliderUi.LayoutOrder = 10
+			sliderUi.Center.Title.Label.Text = text
+			if icon then
+				sliderUi.Center.Title.Icon.Image = icon
+			end
+			return constructors.slider.new(sliderUi,options.Minimum,options.Maximum,default,options.Callback,new)
+		elseif(class == "Dropdown") then
+			local dropdownUi = sampleDropdown:Clone()
+			dropdownUi.Parent = pageContainer[container]["Scroller"]
+			dropdownUi.LayoutOrder = 10
+			dropdownUi.Title.Label.Text = text
+			if icon then
+				dropdownUi.Title.Icon.Image = icon
+			end
+			return constructors.dropdown.new(dropdownUi,options.Options,options.Callback,nil,environment)
+		end
+	end
 
 	for pageName,opts in pairs(guiOptions) do
 		local page = pageContainer:WaitForChild(pageName)
@@ -456,7 +495,7 @@ return function(environment)
 		for i = 1,20 do
 			local text = (getConfig("QuickChats",i) or "")
 			slots[i] = text
-
+						
 			local callback = function(option,api)
 				if(option == "Save") then
 					local new = environment.network:invoke("writeConfig","QuickChats",i,api:getText())

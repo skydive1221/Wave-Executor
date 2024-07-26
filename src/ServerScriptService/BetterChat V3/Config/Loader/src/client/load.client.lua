@@ -82,7 +82,8 @@ if(currentPlatform ~= "Console") then
 			signal = signal,
 			betterchat_shared = betterchat_shared,
 			onEmoji = signal.new(),
-			interceptions = {}
+			interceptions = {},
+			addToCache = {}
 		}
 		
 		environment.config.UI.ColorOptions = environment.config.UI.ColorOptions or {
@@ -114,6 +115,14 @@ if(currentPlatform ~= "Console") then
 		
 		function environment:getTextSize()
 			return chatbox.TextSize
+		end
+		
+		environment.doDestroy = function(object)
+			object.Parent = nil
+			local class = object:GetAttribute("Class")
+			if(class == "regular") then
+				environment.addToCache[class](object)
+			end
 		end
 		
 		environment.processData = function(messageData,origin)
@@ -335,10 +344,14 @@ if(currentPlatform ~= "Console") then
 			reply = require(messages:WaitForChild("reply"))(environment),
 			system = require(messages:WaitForChild("system"))(environment,queue),
 			default = require(messages:WaitForChild("default"))(environment),
-			makeSm = function(message)
-				message_senders.system(
-					unpack(environment.localization:produceSystemMessage(message))
-				)
+			makeSm = function(message,override)
+				if not override then
+					message_senders.system(
+						unpack(environment.localization:produceSystemMessage(message))
+					)
+				else
+					message_senders.system("",message)
+				end
 				environment:checkScrollerPos(false,0)
 			end,
 		}
@@ -357,7 +370,7 @@ if(currentPlatform ~= "Console") then
 			end
 			for _,child in pairs(scroller:GetChildren()) do
 				if(child:IsA("Frame")) then
-					child:Destroy()
+					environment.doDestroy(child)
 				end
 			end
 		end
@@ -374,7 +387,7 @@ if(currentPlatform ~= "Console") then
 			if(#queue > messageLimit) then
 				local idx = #queue
 				local obj = queue[idx]
-				obj:Destroy()
+				environment.doDestroy(obj)
 				table.remove(queue,idx)
 			end
 		end
@@ -387,8 +400,6 @@ if(currentPlatform ~= "Console") then
 		local getObject = function(data)
 			if(data.class == "regular") then
 				return message_senders.default(data)
-			elseif(data.class == "whisper") then
-				-- deprecated (refer to 'regular')
 			elseif(data.class == "reply") then
 				return message_senders.reply(data,queue)
 			end
@@ -492,6 +503,7 @@ if(currentPlatform ~= "Console") then
 			local last = 0
 			local key = 0
 			for _,data in pairs(received.messages) do
+				environment.processData(data,"chat")
 				key += 1
 				if(data.id ~= nil) then
 					last = data.id
@@ -511,10 +523,10 @@ if(currentPlatform ~= "Console") then
 					end
 				end)
 				-- chunking (makes loading much faster, as well as optimizations to only load the message function after the mouse hovers on it)
-				--[[if(key == 10) then
+				if(key == 10) then
 					task.wait(0.05)
 					key = 0
-				end--]]
+				end
 			end
 			includeBeginningMessageAndScroll((last or 9999)+1)
 			environment.channelChanged:Fire(channel)

@@ -3,7 +3,6 @@
 -- Description: Rich text formatting
 
 return function(config,getAllowedEmojisFor)
-	local root = require(script.Parent.Parent.xml)
 	local richText = {}
 	local f = math.floor
 	local runService = game:GetService("RunService")
@@ -11,15 +10,7 @@ return function(config,getAllowedEmojisFor)
 	local httpService = game:GetService("HttpService")
 	local guid = httpService:GenerateGUID()
 	
-	local fromXml = function(xml)
-		local xmlParser = root()
-		local handler = xmlParser.tree
-
-		local parser = xmlParser.parser(handler)
-		parser:parse(xml)
-
-		return handler.root
-	end
+	local fromXml = require(script.Parent.Parent.xml)
 
 	function richText:escape(text) -- like one of the most important functions lol
 		return text:gsub(".",{

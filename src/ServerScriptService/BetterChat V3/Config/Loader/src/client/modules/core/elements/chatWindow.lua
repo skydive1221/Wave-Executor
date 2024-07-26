@@ -352,7 +352,18 @@ return function(environment)
 		local minX,maxX = baseSize.X/2,baseSize.X * 1.75
 		local minY,maxY = baseSize.Y/2,baseSize.Y * 1.75
 		local scroller = mainUi.scroller.Parent
+		
 
+		ui.Changed:Connect(function()
+			if(ui.Size.Y.Offset < minY or ui.Size.X.Offset < minX) then
+				environment.tweenSize(ui,UDim2.fromOffset(
+					math.clamp(ui.Size.X.Offset,minX,maxX),
+					math.clamp(ui.Size.Y.Offset,minY,maxY)
+				),Enum.EasingDirection.Out,Enum.EasingStyle.Quad,0.015,true)
+			end
+		end)
+		
+		
 		resizeButton.MouseButton1Down:Connect(function()
 			holdingResize = true
 			resizeConnection = userInput.InputChanged:Connect(function(input)

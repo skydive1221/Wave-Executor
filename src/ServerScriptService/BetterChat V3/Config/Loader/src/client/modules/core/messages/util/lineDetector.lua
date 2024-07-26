@@ -1,16 +1,8 @@
-return function(root)
+return function(root,chatUi)
 	local playerGui = game:GetService("Players").LocalPlayer.PlayerGui
 	local textService = game:GetService("TextService")
-
-	local fromXml = function(xml)
-		local xmlParser = root()
-		local handler = xmlParser.tree
-
-		local parser = xmlParser.parser(handler)
-		parser:parse(xml)
-
-		return handler.root
-	end
+	
+	local fromXml = root
 
 	local byLetter = function(inputString,callback,spacing)
 		for idx,codepoint in utf8.codes(inputString) do
@@ -18,7 +10,7 @@ return function(root)
 		end
 	end
 
-	local splitXmlAndText = function(input)
+	local splitXmlAndText = function(input,override)
 		local result = {}
 		local stack = {}
 		local lastIndex = 1
@@ -58,7 +50,11 @@ return function(root)
 							toAdd = tagEnd
 							content = content:sub(1,#content-1)
 						end
-						table.insert(result, {["type"] = "xml", content = fromXml(content)})
+						if not override then
+							table.insert(result, {["type"] = "xml", content = fromXml(content)})
+						else
+							table.insert(result, {["type"] = "text", content = content})
+						end
 						if toAdd then
 							addText(tagEnd,tagEnd)
 						end
@@ -73,7 +69,6 @@ return function(root)
 
 		return result
 	end
-
 
 	local getIndex = function(dict)
 		if(dict[1]) then
@@ -107,9 +102,7 @@ return function(root)
 	end
 
 	local constructProxy = function()
-		local gui = Instance.new("ScreenGui")
-		gui.Parent = playerGui
-		gui.Name = "BetterChatWrappingProxy"
+		local gui = chatUi
 
 		local label = Instance.new("TextLabel")
 		label.Parent = gui
@@ -118,7 +111,8 @@ return function(root)
 		label.RichText = true
 		label.TextTransparency = 1
 		label.BackgroundTransparency = 1
-
+		label.Name = "WrappingLabel"
+		
 		return label
 	end
 
@@ -186,10 +180,6 @@ return function(root)
 	end
 
 	local lineDetector = {}
-	
-	function lineDetector:getChar()
-		return invisibleChars[1]
-	end
 	
 	local countChar = function(str, char)
 		return select(2, string.gsub(str, char, ""))
@@ -375,6 +365,7 @@ return function(root)
 			end
 			lines[k] = reconstructed
 		end
+		
 		for k,line in pairs(lines) do
 			if(line:sub(1,1):match("%s")) then
 				lines[k] = line:sub(2,#line)
@@ -401,7 +392,7 @@ return function(root)
 	end
 	
 	function lineDetector:splitXml(text)
-		return splitXmlAndText(text)
+		return splitXmlAndText(text,true)
 	end
 
 	function lineDetector:getSpacingFor(object,spacing)
@@ -413,14 +404,6 @@ return function(root)
 		proxyLabel.Text = text
 		proxyLabel.AutomaticSize = Enum.AutomaticSize.None
 		return proxyLabel.TextBounds
-	end
-	
-	function lineDetector:getTextSize2(object,text)
-		wrapLabel(object)
-		proxyLabel.AutomaticSize = Enum.AutomaticSize.X
-		proxyLabel.Text = text
-		proxyLabel.Size = UDim2.fromOffset(0,1000)
-		return proxyLabel.AbsoluteSize
 	end
 
 	return lineDetector

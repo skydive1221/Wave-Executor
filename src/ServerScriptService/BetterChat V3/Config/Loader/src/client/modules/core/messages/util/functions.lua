@@ -10,7 +10,8 @@ return function(environment)
 	local playerGui = players.LocalPlayer.PlayerGui
 
 	local lineDetector = require(script.Parent.lineDetector)(
-		require(environment.betterchat_shared.xml)
+		require(environment.betterchat_shared.xml),
+		environment.gui
 	)
 	
 	local spritesheetManager = require(script.Parent.spritesheet)
@@ -152,18 +153,17 @@ return function(environment)
 		return lineDetector:getTextSize(object,text)
 	end
 
-	local placeEmoji = function(object,customEmojis,id,toPlaceAt,anchorPoint)
+	local placeEmoji = function(object,customEmojis,id,num)
 		local emoji = object:FindFirstChild(tostring(id)) or Instance.new("ImageLabel")
 		emoji.Size = UDim2.fromOffset(object.TextSize,object.TextSize)
 		emoji:SetAttribute("IsEmoji",true)
 		emoji.Parent = object
-		emoji.Position = toPlaceAt
 		emoji.Name = tostring(id)
 		emoji.Image = customEmojis[id][2]
 		emoji.BorderSizePixel = 0
 		emoji.BackgroundTransparency = 1
-		emoji.AnchorPoint = anchorPoint
 		emoji.ScaleType = environment.config.Messages.CustomEmojis.ScaleType
+		emoji.LayoutOrder = num
 		if customEmojis[id][5] then
 			functions.animate(emoji,customEmojis[id][5])
 		end
@@ -178,6 +178,26 @@ return function(environment)
 		return typeof(cb) == "function" and cb or nil
 	end
 	
+	local split = function(str, delimiter)
+		local result = {}
+		local pattern = string.format("(.-)()" .. delimiter .. "()")
+		local lastEnd = 1
+
+		for part, partEnd, splitStart in str:gmatch(pattern) do
+			if part ~= "" then
+				table.insert(result, part)
+			end
+			table.insert(result, str:sub(partEnd, splitStart - 1))
+			lastEnd = splitStart
+		end
+
+		if lastEnd <= #str then
+			table.insert(result, str:sub(lastEnd))
+		end
+
+		return result
+	end
+		
 	local wrappedObject = {}
 	
 	function functions.animate(object,data)
@@ -209,7 +229,7 @@ return function(environment)
 				lineClone.TextTransparency = currentlyEditing and 1 or 0
 				lineClone.Parent = object
 				lineClone.Position = UDim2.fromOffset(0,(idx - 1) * object.TextSize)
-				lineClone.Text = line
+				lineClone.Text = ""
 				lineClone.Parent = object
 				lineClone.Name = "WrappedLine"
 				if(object.Name ~= "Label") then
@@ -221,28 +241,42 @@ return function(environment)
 				lineClone.TextWrapped = false
 				lineClone.ClipsDescendants = true
 				lineClone:ClearAllChildren()
+				
+				local layout = Instance.new("UIListLayout")
+				layout.Parent = lineClone
+				layout.FillDirection = Enum.FillDirection.Horizontal
+				layout.SortOrder = Enum.SortOrder.LayoutOrder
+				
+				if(object.Name == "Label") then
+					layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+				end
+				
 				table.insert(wrappedObject[object],lineClone)
 				local prevEndPos = 0
-				for match in string.gmatch(line,spacing) do
-					local startPos, endPos = string.find(line, match, prevEndPos + 1, true)
-					local previousText = line:sub(1,startPos-1)
-					local previousTextSize = lineDetector:getTextSize2(lineClone,previousText,true)
-					local diff = 0
-					
-					local toPlaceAt = transformFunction(UDim2.fromOffset(previousTextSize.X - diff,0))
-					local anchorPoint = Vector2.new(0,0)
-					if(object.Name == "Label") then
-						toPlaceAt = UDim2.new(
-							toPlaceAt.X.Scale,
-							toPlaceAt.X.Offset + object.TextSize/2,
-							0,
-							0
-						)
-						anchorPoint = Vector2.new(0.5,0)
+				local order = 0
+				
+				local createText = function(text)
+					local label = lineClone:Clone()
+					label:ClearAllChildren()
+					label.Parent = lineClone
+					label.Text = text
+					label.AutomaticSize = Enum.AutomaticSize.X
+					label.Size = UDim2.new(0,0,0,label.TextSize)
+					label:SetAttribute("IsMessagePart",true)
+					order += 1
+					label.LayoutOrder = order
+				end
+				
+				for _,tag in pairs(lineDetector:splitXml(line)) do
+					for _,text in pairs(split(tag.content,spacing)) do
+						if(text == spacing) then
+							emojiNumber += 1
+							order += 1
+							placeEmoji(lineClone,customEmojis,emojiNumber,order)
+						else
+							createText(text)
+						end
 					end
-					emojiNumber += 1
-					placeEmoji(lineClone,customEmojis,emojiNumber,toPlaceAt,anchorPoint)
-					prevEndPos = endPos
 				end
 			end
 		end

@@ -30,9 +30,12 @@ return function(environment)
 	local timeout = grouping and grouping.GroupTimeout or 120
 	
 	local getText = function(data,wasEdited,key,internal,object)
+		local isBlank = data.name == "" and data.displayName == ""
+		local atEnd = isBlank and "" or ": "
+		
 		local editStamp = (wasEdited and editedStamp or "")
 		local hasDisplayName = data.displayName ~= data.name
-		local userPrefix = rich:colorize(data.displayName .. ": ",(data.teamColor or (hasDisplayName and data.displayNameColor or data.nameColor)))
+		local userPrefix = rich:colorize(data.displayName .. atEnd,(data.teamColor or (hasDisplayName and data.displayNameColor or data.nameColor)))
 		local messageContent = (data.markdownEnabled and environment.richText:markdown(data.message)) or environment.richText:escape(data.message)
 		local splitLine = userSplit and "\n" or ""
 		if merge and internal then
@@ -136,7 +139,7 @@ return function(environment)
 				connect(editBox.Focused:Connect(function()
 					hiding = true
 					for _,obj in pairs(template.ReplyArea.Reply:GetDescendants()) do
-						if(obj:GetAttribute("IsEmoji")) then
+						if(obj:GetAttribute("IsEmoji") or obj:GetAttribute("IsMessagePart")) then
 							obj.Visible = false
 						end
 					end
@@ -156,7 +159,7 @@ return function(environment)
 						end
 						hiding = false
 						for _,obj in pairs(template.ReplyArea.Reply:GetDescendants()) do
-							if(obj:GetAttribute("IsEmoji")) then
+							if(obj:GetAttribute("IsEmoji") or obj:GetAttribute("IsMessagePart")) then
 								obj.Visible = true
 							end
 						end
@@ -181,7 +184,11 @@ return function(environment)
 					local currentlyEditing = template.ReplyArea.Reply:GetAttribute("CurrentlyEditing")	
 					for _,child in pairs(template.ReplyArea.Reply:GetChildren()) do
 						if(child.Name == "WrappedLine") then
-							child.TextTransparency = currentlyEditing and 1 or 0
+							for _,obj in pairs(child:GetChildren()) do
+								if obj:IsA("TextLabel") then
+									obj.TextTransparency = currentlyEditing and 1 or 0
+								end
+							end
 						end
 					end
 				end))
@@ -258,11 +265,14 @@ return function(environment)
 		
 		local hasDisplayName = originalMessage.displayName ~= originalMessage.name
 		local update = function()
+			local isBlank = originalMessage.name == "" and originalMessage.displayName == ""
+			local atEnd = isBlank and "" or ": "
+			
 			if(hasDisplayName) then
 				if(lastInBounds) then
-					userPrefix = rich:colorize(originalMessage.name .. ": ",(originalMessage.teamColor or originalMessage.nameColor))
+					userPrefix = rich:colorize(originalMessage.name .. atEnd,(originalMessage.teamColor or originalMessage.nameColor))
 				else
-					userPrefix = rich:colorize(originalMessage.displayName .. ": ",(originalMessage.teamColor or originalMessage.displayNameColor))
+					userPrefix = rich:colorize(originalMessage.displayName .. atEnd,(originalMessage.teamColor or originalMessage.displayNameColor))
 				end
 			end
 			object.Original.Text = userPrefix .. textContent

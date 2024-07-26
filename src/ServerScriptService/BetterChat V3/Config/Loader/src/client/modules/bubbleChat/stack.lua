@@ -69,6 +69,7 @@ return function(environment)
 						for guid,obj in pairs(environment.betterchatv3bubbles) do
 							if(obj == ui) then
 								environment.betterchatv3bubbles[guid] = nil
+								environment.stacks[guid] = nil
 							end
 						end
 					end

@@ -177,9 +177,14 @@ function billboard.init(config,network,environment)
 		end
 
 		environment.betterchatv3bubbles = {}
-
+		environment.stacks = {}
+		
 		link(network.onClientEvent("editMessage",function(data)
 			if(environment.betterchatv3bubbles[data.guid]) then
+				local stack = environment.stacks[data.guid]
+				if not stack then
+					return
+				end
 				stack:remove(environment.betterchatv3bubbles[data.guid],true)
 				stack:fade(environment.betterchatv3bubbles[data.guid],0)					
 				if not data.deleted then
@@ -223,6 +228,7 @@ function billboard.init(config,network,environment)
 					end
 					local bubble = ui.bubble.new(text,gui.Container)
 					environment.betterchatv3bubbles[data.guid] = bubble
+					environment.stacks[data.guid] = stack
 					stack:push(
 						bubble,false,data["guid"]						
 					)
@@ -257,6 +263,7 @@ function billboard.init(config,network,environment)
 				local guid = httpService:GenerateGUID()
 				local bubble = ui.bubble.new(text,gui.Container)
 				environment.betterchatv3bubbles[guid] = bubble
+				environment.stacks[guid] = stack
 				stack:push(
 					bubble,false,guid					
 				)
@@ -360,6 +367,7 @@ function billboard.init(config,network,environment)
 				local guid = httpService:GenerateGUID()
 				local bubble = ui.bubble.new(text,gui.Container)
 				environment.betterchatv3bubbles[guid] = bubble
+				environment.stacks[guid] = stack
 				stack:push(
 					bubble,false,guid					
 				)

@@ -3,16 +3,42 @@
 -- Description: Regular message constructor
 
 local collectionService = game:GetService("CollectionService")
+local cache = {}
+
+local reset = function(object)
+	for _,obj in pairs(object:GetDescendants()) do
+		if(obj.Name == "WrappedLine") then
+			obj:Destroy()
+		end
+	end
+end
 
 local create = function(environment)
-	local message = Instance.new("Frame")
+	local newMessage
+	if cache[1] then --> using a message cache to be more memory-friendly :skull:
+		local message = cache[1]
+		table.remove(cache,1)
+		reset(message)
+		newMessage = message
+	end
+	
+	local raw,user,icon,edit;
+	if newMessage then
+		raw = newMessage.Raw
+		user = raw.User
+		icon = newMessage:FindFirstChild("Icon")
+		edit = newMessage:FindFirstChild("Edit")
+	end
+	
+	local message = newMessage or Instance.new("Frame")
 	message.Name = "Message"
 	message.AutomaticSize = Enum.AutomaticSize.Y
 	message.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	message.BackgroundTransparency = 1
 	message.Size = UDim2.new(1, 0, 0, 16)
-
-	local raw = Instance.new("TextLabel")
+	message:SetAttribute("Class","regular")
+	
+	local raw = raw or Instance.new("TextLabel")
 	raw.Name = "Raw"
 	raw.Font = environment.config.UI.Fonts.TextFont	
 	raw.RichText = true
@@ -31,7 +57,7 @@ local create = function(environment)
 	raw.ZIndex = 2
 	collectionService:AddTag(raw,"TextFont")
 
-	local user = Instance.new("TextButton")
+	local user = user or Instance.new("TextButton")
 	user.Name = "User"
 	user.Font = Enum.Font.GothamMedium
 	user.RichText = true
@@ -51,7 +77,7 @@ local create = function(environment)
 
 	raw.Parent = message
 
-	local icon = Instance.new("ImageLabel")
+	local icon = icon or Instance.new("ImageLabel")
 	icon.Name = "Icon"
 	icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	icon.BackgroundTransparency = 1
@@ -89,7 +115,7 @@ local create = function(environment)
 
 	mentioned.Parent = message
 
-	local edit = Instance.new("TextBox")
+	local edit = edit or Instance.new("TextBox")
 	edit.Name = "Edit"
 	edit.ClearTextOnFocus = false
 	edit.Font = Enum.Font.GothamMedium
@@ -111,10 +137,12 @@ local create = function(environment)
 	edit.Parent = message
 	edit.Font = environment.config.UI.Fonts.TextFont
 	collectionService:AddTag(edit,"TextFont")
-
+	
 	return message
 end
 
 return {new = function(environment)
 	return create(environment)
+end, addToCache = function(object)
+	table.insert(cache,object)
 end}

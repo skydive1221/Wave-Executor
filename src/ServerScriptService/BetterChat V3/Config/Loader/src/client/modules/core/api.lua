@@ -34,6 +34,10 @@ return function(environment,wrap)
 		environment.message_senders.makeSm(message)
 	end
 	
+	function api:sendMessage(message)
+		environment.message_senders.makeSm(message,true)
+	end
+	
 	function api:stopSizeUpdates()
 		environment.stopSizing = true
 	end
@@ -86,6 +90,17 @@ return function(environment,wrap)
 	
 	function api:interceptMessageData(callback)
 		table.insert(environment.interceptions,callback)
+	end
+	
+	if(environment.config.SettingsMenu.Enabled) then
+		function api:addCustomSetting(container,class,options)
+			if not environment.addCustomOption then
+				repeat
+					runService.RenderStepped:Wait()
+				until environment.addCustomOption
+			end
+			return environment:addCustomOption(container,class,options)
+		end
 	end
 	
 	return wrap(api)
