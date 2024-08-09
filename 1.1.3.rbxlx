@@ -1,7 +1,7 @@
 <roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
 	<External>null</External>
 	<External>nil</External>
-	<Item class="Workspace" referent="RBXFBE922F2139A422EA7BBEF0DC8545421">
+	<Item class="Workspace" referent="RBXE12CACB6A21F4C9693FE769C68F52DD9">
 		<Properties>
 			<float name="AirDensity">0.00120000006</float>
 			<bool name="AllowThirdPartySales">false</bool>
@@ -11,7 +11,7 @@
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 			<token name="ClientAnimatorThrottling">0</token>
 			<BinaryString name="CollisionGroupData">AQEABP////8HRGVmYXVsdA==</BinaryString>
-			<Ref name="CurrentCamera">RBXF9CB2EEE662A44BB873D161AFE33F133</Ref>
+			<Ref name="CurrentCamera">RBX28D44ED6D4BB4FD89F18EE1EE3499E45</Ref>
 			<token name="DecreaseMinimumPartDensityMode">0</token>
 			<bool name="DefinesCapabilities">false</bool>
 			<double name="DistributedGameTime">0</double>
@@ -90,7 +90,7 @@
 				</CFrame>
 			</OptionalCoordinateFrame>
 		</Properties>
-		<Item class="Camera" referent="RBXF9CB2EEE662A44BB873D161AFE33F133">
+		<Item class="Camera" referent="RBX28D44ED6D4BB4FD89F18EE1EE3499E45">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
@@ -137,7 +137,7 @@
 				<bool name="VRTiltAndRollEnabled">false</bool>
 			</Properties>
 		</Item>
-		<Item class="Terrain" referent="RBX61892EB3F2E142F982CB74BA57B7CEDB">
+		<Item class="Terrain" referent="RBXC4830F25783A48A4ADBF6EF81EF90976">
 			<Properties>
 				<token name="AcquisitionMethod">0</token>
 				<bool name="Anchored">true</bool>
@@ -253,7 +253,132 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="SpawnLocation" referent="RBX0CF5FEB2F2EA477A844929045144ED77">
+		<Item class="Part" referent="RBX5185EA61A47A4CFF8B79FED6CFF7EF40">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>-8</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4284177243</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="EnableFluidForces">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Baseplate</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000036c</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">0</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>2048</X>
+					<Y>16</Y>
+					<Z>2048</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Texture" referent="RBX29FDAF7377DB4BA7A72F8668A64E0519">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<Color3 name="Color3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<bool name="DefinesCapabilities">false</bool>
+					<token name="Face">1</token>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<string name="Name">Texture</string>
+					<float name="OffsetStudsU">0</float>
+					<float name="OffsetStudsV">0</float>
+					<int64 name="SourceAssetId">-1</int64>
+					<float name="StudsPerTileU">8</float>
+					<float name="StudsPerTileV">8</float>
+					<BinaryString name="Tags"></BinaryString>
+					<Content name="Texture"><url>rbxassetid://6372755229</url></Content>
+					<float name="Transparency">0.800000012</float>
+					<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000036d</UniqueId>
+					<int name="ZIndex">1</int>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="SpawnLocation" referent="RBXF92E2C9019A940058F1FFC2EDA616BBE">
 			<Properties>
 				<bool name="AllowTeamChangeOnTouch">false</bool>
 				<bool name="Anchored">true</bool>
@@ -357,7 +482,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 					<Z>12</Z>
 				</Vector3>
 			</Properties>
-			<Item class="Decal" referent="RBX95F9B819C7F74484A4E9EFD8A1EDF14D">
+			<Item class="Decal" referent="RBXFC8DFC006E5C4057AB7B3F7AD323B8B8">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -379,133 +504,8 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="Part" referent="RBXF67D6CC411174AD0A4BF15B2F0AC838A">
-			<Properties>
-				<bool name="Anchored">true</bool>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<float name="BackParamA">-0.5</float>
-				<float name="BackParamB">0.5</float>
-				<token name="BackSurface">0</token>
-				<token name="BackSurfaceInput">0</token>
-				<float name="BottomParamA">-0.5</float>
-				<float name="BottomParamB">0.5</float>
-				<token name="BottomSurface">0</token>
-				<token name="BottomSurfaceInput">0</token>
-				<CoordinateFrame name="CFrame">
-					<X>0</X>
-					<Y>-8</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
-				<bool name="CanCollide">true</bool>
-				<bool name="CanQuery">true</bool>
-				<bool name="CanTouch">true</bool>
-				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-				<bool name="CastShadow">true</bool>
-				<string name="CollisionGroup">Default</string>
-				<int name="CollisionGroupId">0</int>
-				<Color3uint8 name="Color3uint8">4284177243</Color3uint8>
-				<PhysicalProperties name="CustomPhysicalProperties">
-					<CustomPhysics>false</CustomPhysics>
-				</PhysicalProperties>
-				<bool name="DefinesCapabilities">false</bool>
-				<bool name="EnableFluidForces">true</bool>
-				<float name="FrontParamA">-0.5</float>
-				<float name="FrontParamB">0.5</float>
-				<token name="FrontSurface">0</token>
-				<token name="FrontSurfaceInput">0</token>
-				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-				<float name="LeftParamA">-0.5</float>
-				<float name="LeftParamB">0.5</float>
-				<token name="LeftSurface">0</token>
-				<token name="LeftSurfaceInput">0</token>
-				<bool name="Locked">true</bool>
-				<bool name="Massless">false</bool>
-				<token name="Material">256</token>
-				<string name="MaterialVariantSerialized"></string>
-				<string name="Name">Baseplate</string>
-				<CoordinateFrame name="PivotOffset">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
-				<float name="Reflectance">0</float>
-				<float name="RightParamA">-0.5</float>
-				<float name="RightParamB">0.5</float>
-				<token name="RightSurface">0</token>
-				<token name="RightSurfaceInput">0</token>
-				<int name="RootPriority">0</int>
-				<Vector3 name="RotVelocity">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<float name="TopParamA">-0.5</float>
-				<float name="TopParamB">0.5</float>
-				<token name="TopSurface">0</token>
-				<token name="TopSurfaceInput">0</token>
-				<float name="Transparency">0</float>
-				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000036c</UniqueId>
-				<Vector3 name="Velocity">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
-				<token name="formFactorRaw">0</token>
-				<token name="shape">1</token>
-				<Vector3 name="size">
-					<X>2048</X>
-					<Y>16</Y>
-					<Z>2048</Z>
-				</Vector3>
-			</Properties>
-			<Item class="Texture" referent="RBXC57D396080424720B72EA9036C18B639">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-					<Color3 name="Color3">
-						<R>0</R>
-						<G>0</G>
-						<B>0</B>
-					</Color3>
-					<bool name="DefinesCapabilities">false</bool>
-					<token name="Face">1</token>
-					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-					<string name="Name">Texture</string>
-					<float name="OffsetStudsU">0</float>
-					<float name="OffsetStudsV">0</float>
-					<int64 name="SourceAssetId">-1</int64>
-					<float name="StudsPerTileU">8</float>
-					<float name="StudsPerTileV">8</float>
-					<BinaryString name="Tags"></BinaryString>
-					<Content name="Texture"><url>rbxassetid://6372755229</url></Content>
-					<float name="Transparency">0.800000012</float>
-					<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000036d</UniqueId>
-					<int name="ZIndex">1</int>
-				</Properties>
-			</Item>
-		</Item>
 	</Item>
-	<Item class="SoundService" referent="RBX9D7B5F7A235D44DBABCB25F2E73D62B7">
+	<Item class="SoundService" referent="RBXA9734E9BF42B4C15AF25F01D9270B092">
 		<Properties>
 			<token name="AmbientReverb">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -523,7 +523,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<token name="VolumetricAudio">1</token>
 		</Properties>
 	</Item>
-	<Item class="VideoCaptureService" referent="RBX6A322D32AE064CD4BAFFD30AE0D7ABC3">
+	<Item class="VideoCaptureService" referent="RBX81018EB8DD62440E8FD40B113B3DCFD1">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -535,7 +535,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff000002fc</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="NonReplicatedCSGDictionaryService" referent="RBXCD073DF5F7884985B6D7D99369AEFBDE">
+	<Item class="NonReplicatedCSGDictionaryService" referent="RBX2C8F6F02868B4FDE950B17C48FAFC314">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -547,7 +547,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff000002fd</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="CSGDictionaryService" referent="RBX8CB2545814304B9B8EEFDDC01A8EDC4A">
+	<Item class="CSGDictionaryService" referent="RBXC476EF01CFE64C34B8365F8B8E90DA6A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -559,7 +559,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff000002fe</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="Chat" referent="RBX4DEF89693B0E4DB9AE49D75FF3FB633D">
+	<Item class="Chat" referent="RBX96A065683DED41FE8C0B11D257D7ECB0">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="BubbleChatEnabled">false</bool>
@@ -573,7 +573,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000303</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="TimerService" referent="RBXB4D9410096844954802865C553EF02E4">
+	<Item class="TimerService" referent="RBXC281A056FEC54D049ECF5C6BA8A42AF4">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -585,7 +585,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000304</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="Players" referent="RBX8D39DD4A259D4FA6BD6739B8C48035F2">
+	<Item class="Players" referent="RBX9F53E7BEB6B545169F00D9BCCF637EAB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -602,7 +602,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<bool name="UseStrafingAnimations">false</bool>
 		</Properties>
 	</Item>
-	<Item class="ReplicatedFirst" referent="RBX1CEBF3C17C784A0C97F4162AE8319A4C">
+	<Item class="ReplicatedFirst" referent="RBX3A4E9F4AACE44FEB831153AF95BEB36B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -614,7 +614,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000309</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="TweenService" referent="RBX17ED5CE7F3D147EBBE0AE1E9BE442189">
+	<Item class="TweenService" referent="RBX6F1FBF4B33A946AB9C8F309E0CE18F9A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -626,7 +626,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000030b</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="MaterialService" referent="RBX038E6D9C32DF409E9F9FF0973095A8F9">
+	<Item class="MaterialService" referent="RBX1E375675D3784DF6ABB001CB8AB48BFE">
 		<Properties>
 			<string name="AsphaltName">Asphalt</string>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -679,7 +679,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<string name="WoodPlanksName">WoodPlanks</string>
 		</Properties>
 	</Item>
-	<Item class="TextChatService" referent="RBX9BE92406AFDD42D1A56288A2816880C4">
+	<Item class="TextChatService" referent="RBX85E43FB6F3FC477196829E5D73DB92F1">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -695,7 +695,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000030d</UniqueId>
 		</Properties>
-		<Item class="ChatWindowConfiguration" referent="RBX386354B6C2D04EE2B88A0D0C63C26939">
+		<Item class="ChatWindowConfiguration" referent="RBX6F2C453EFB5C47E3A441AD7D01654BB1">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="BackgroundColor3">
@@ -736,7 +736,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				<float name="WidthScale">1</float>
 			</Properties>
 		</Item>
-		<Item class="ChatInputBarConfiguration" referent="RBXD0AA959B75F54E5ABAD0B415BFD6036A">
+		<Item class="ChatInputBarConfiguration" referent="RBXDA47042DA0AA4F1EB49FFADF303F2781">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutocompleteEnabled">true</bool>
@@ -781,7 +781,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000037b</UniqueId>
 			</Properties>
 		</Item>
-		<Item class="BubbleChatConfiguration" referent="RBXCDD38469CE6A4F05B425FC204F48ECF9">
+		<Item class="BubbleChatConfiguration" referent="RBX2790868A53F840BCA2C399043F2436DA">
 			<Properties>
 				<string name="AdorneeName">HumanoidRootPart</string>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -825,7 +825,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000037c</UniqueId>
 				<float name="VerticalStudsOffset">0</float>
 			</Properties>
-			<Item class="UIGradient" referent="RBXD807D9CD8C84414C84EED4C3E1F1299F">
+			<Item class="UIGradient" referent="RBXB6A7FD2128554093A3E9F052F6DF1954">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -845,7 +845,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 					<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000037d</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="ImageLabel" referent="RBX37CF8C945542458CAE94AE2B47AA4621">
+			<Item class="ImageLabel" referent="RBX3BE04FE2AC654252932AE6AA00421C44">
 				<Properties>
 					<bool name="Active">false</bool>
 					<Vector2 name="AnchorPoint">
@@ -944,7 +944,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 					<int name="ZIndex">1</int>
 				</Properties>
 			</Item>
-			<Item class="UICorner" referent="RBX40B4BCD15EFA406FAE8A4B55DD3550C5">
+			<Item class="UICorner" referent="RBX41A78D6CF2F64E71A867ADDA7BFD2E89">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -960,7 +960,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 					<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000037f</UniqueId>
 				</Properties>
 			</Item>
-			<Item class="UIPadding" referent="RBX826C50DF89D14AF28B4D9C38F16A238A">
+			<Item class="UIPadding" referent="RBX2FB139484A1B4543BEB53C3FA7287CCF">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -990,7 +990,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			</Item>
 		</Item>
 	</Item>
-	<Item class="PermissionsService" referent="RBXC12A4D5DF3764570A3F4D84A8F3BA917">
+	<Item class="PermissionsService" referent="RBX82FAD416887E4EA5BD7A478D18C20C41">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1002,7 +1002,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000030f</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="PlayerEmulatorService" referent="RBXC13A9A3B81B7412D9F286E3F2B3B4279">
+	<Item class="PlayerEmulatorService" referent="RBX928EE7387C87433DAC8E8D6308268EE0">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1020,7 +1020,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000310</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="StudioData" referent="RBX3482464CC4A94EE894861542C368D2E4">
+	<Item class="StudioData" referent="RBX4A019BD205694A48801F46DEDCC8AE52">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1033,7 +1033,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000314</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="StarterPlayer" referent="RBX863BC82DBD68403EABD724B5B42CE383">
+	<Item class="StarterPlayer" referent="RBX1A9BA032E6C84A44BE197A5404A3518E">
 		<Properties>
 			<bool name="AllowCustomAnimations">true</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -1085,7 +1085,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000316</UniqueId>
 			<bool name="UserEmotesEnabled">true</bool>
 		</Properties>
-		<Item class="StarterPlayerScripts" referent="RBXF63F32EDC0D544D19775B36BB9697CAA">
+		<Item class="StarterPlayerScripts" referent="RBX9E699E071B174901AF66BD10456C3BDC">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1097,7 +1097,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000372</UniqueId>
 			</Properties>
 		</Item>
-		<Item class="StarterCharacterScripts" referent="RBX4FE5E0B0B77241F8AFD4FE6AEB46543E">
+		<Item class="StarterCharacterScripts" referent="RBX14078D530BFA4AC7A344E64A8701C131">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1110,7 +1110,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			</Properties>
 		</Item>
 	</Item>
-	<Item class="StarterPack" referent="RBX28A6ED948B334BCC91CB5DD87417EB80">
+	<Item class="StarterPack" referent="RBXDA170E20597040B88003471DD33FA64B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1122,7 +1122,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000317</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="StarterGui" referent="RBX82023928EEDE4056A4D8BDE97AF2A2B4">
+	<Item class="StarterGui" referent="RBX42250686822640ECABEE79FFFB1FB62E">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1139,7 +1139,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<token name="VirtualCursorMode">0</token>
 		</Properties>
 	</Item>
-	<Item class="LocalizationService" referent="RBXEDA9C232329D43FABE5A48DE8798A0A5">
+	<Item class="LocalizationService" referent="RBXC1F3BB74A4F948DA97BD0E47455F5953">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1151,7 +1151,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000031a</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="TeleportService" referent="RBX9307A915ACCF4949BCCFFACCD4B034E7">
+	<Item class="TeleportService" referent="RBX7BFB6435377A4E53BDFBAE360683D69B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1163,7 +1163,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000031f</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="CollectionService" referent="RBXD1F9C499ED35419F9F54EDB3202D5623">
+	<Item class="CollectionService" referent="RBXFF09951923ED476EBC23733C51E24FE2">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1175,7 +1175,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000321</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="PhysicsService" referent="RBXAA93E74DE34242DB8BB4D98327F66127">
+	<Item class="PhysicsService" referent="RBX0AE2300D48A1494897DC58E68B6565F4">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1187,7 +1187,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000322</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="InsertService" referent="RBX0CD9338C8DF34772B36E827E2F1F6695">
+	<Item class="InsertService" referent="RBXD6F3F48C30154B5784F609CF7A0B4E75">
 		<Properties>
 			<bool name="AllowClientInsertModels">false</bool>
 			<bool name="AllowInsertFreeModels">false</bool>
@@ -1200,7 +1200,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000326</UniqueId>
 		</Properties>
-		<Item class="StringValue" referent="RBXA1EF4BEFE48F48E29A55ED7D70C13910">
+		<Item class="StringValue" referent="RBXC3ECAE285B254314A07F7EC83D791B06">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1214,7 +1214,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			</Properties>
 		</Item>
 	</Item>
-	<Item class="GamePassService" referent="RBX22218C6E887A415D9B5BC4D497F34C43">
+	<Item class="GamePassService" referent="RBX100160A51EAB43B08A6EC9F82DA7785F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1226,7 +1226,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000327</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="Debris" referent="RBX5EE9F95BFA484A23A8833CB0828041E5">
+	<Item class="Debris" referent="RBX49ABB8B82546454EAA26A90AFBEEED25">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1239,7 +1239,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000328</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="CookiesService" referent="RBX9053DF4FADE74DE0902AF2D9B418686D">
+	<Item class="CookiesService" referent="RBXBC42868C84D14AEDA008BF7CD776F4EA">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1251,7 +1251,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000329</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="Selection" referent="RBX9E830909077F4212AF3AE368B488CEA7">
+	<Item class="Selection" referent="RBX5CFD3F9A5F454CA182745029EE4F9FA7">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1263,7 +1263,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000032b</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="VRService" referent="RBX7A968E79AD7D462D8F51C7AEEAA4A6F5">
+	<Item class="VRService" referent="RBXC22BFC69A74E4D4584EE215C968BAADA">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<token name="AutomaticScaling">0</token>
@@ -1278,7 +1278,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000032f</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ContextActionService" referent="RBXED275EB8FCE84C43BCC371E980D5CC01">
+	<Item class="ContextActionService" referent="RBX87C8C89A1FFE4F69B8B52AE1C858B0AF">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1290,7 +1290,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000330</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ScriptService" referent="RBXC33407FC1CB94749B0715025CE2DEECE">
+	<Item class="ScriptService" referent="RBX4ED343B478A04017A3C4FA9CB74EDC9A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1302,7 +1302,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000331</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="AssetService" referent="RBX8CFB871EF9C34ADD90B6E31DD015F798">
+	<Item class="AssetService" referent="RBX8B1415FC80254290B56D1663C039CA57">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1314,7 +1314,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000332</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="TouchInputService" referent="RBXF63B5D60853A4DD99676C9E24860D37D">
+	<Item class="TouchInputService" referent="RBX5A20079EAD1F4BA0B0D504CE83158EFF">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1326,7 +1326,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000333</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ServerScriptService" referent="RBX3109CFBC0900451B9340C3B6D0EA23F2">
+	<Item class="ServerScriptService" referent="RBX97DA714C296D4DC0AE07AF472AF3F5A6">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1338,7 +1338,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000339</UniqueId>
 		</Properties>
-		<Item class="Folder" referent="RBX4A475CC2985A4660AEA3DF1185DDAEA2">
+		<Item class="Folder" referent="RBX4AA8AC7723FD4FAF81F3982D4A365BF2">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1349,7 +1349,7 @@ zNLfaoZA///+//PAj5CH]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fc6</UniqueId>
 			</Properties>
-			<Item class="ModuleScript" referent="RBXD342602C25F3403095D8BE2EB136B07D">
+			<Item class="ModuleScript" referent="RBX66540200553044C1B078FF7701C0D8DA">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1632,7 +1632,7 @@ return {
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fc7</UniqueId>
 				</Properties>
-				<Item class="Script" referent="RBX8D75B6083B934883ADF63D9CDD1D4F05">
+				<Item class="Script" referent="RBXEC5077AD628C4B48B155EB02993D14F2">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -1656,7 +1656,7 @@ require(toRequire)(configuration,addons)]]></ProtectedString>
 						<BinaryString name="Tags"></BinaryString>
 						<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fc8</UniqueId>
 					</Properties>
-					<Item class="ModuleScript" referent="RBX62AE6C6DCFD0443AB5FF1509E0E4CC8C">
+					<Item class="ModuleScript" referent="RBX9F9EDEA6C6DD44398D68EABEC4676604">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -2227,7 +2227,7 @@ end]]></ProtectedString>
 							<BinaryString name="Tags"></BinaryString>
 							<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fc9</UniqueId>
 						</Properties>
-						<Item class="Folder" referent="RBX6166474737404BE1A3E28FB5B23CA50D">
+						<Item class="Folder" referent="RBX0C803E40F7014ADA8E3A3676ABF0C248">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -2238,7 +2238,7 @@ end]]></ProtectedString>
 								<BinaryString name="Tags"></BinaryString>
 								<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fca</UniqueId>
 							</Properties>
-							<Item class="Folder" referent="RBXE7F53B1649BC4906BF84DFD93CDC6CFE">
+							<Item class="Folder" referent="RBXF694815EDDA84E1F91E0D56F5C73CBA5">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -2249,7 +2249,7 @@ end]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fcb</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBXCDE312D1A9674FC3ADC7326C44412ABF">
+								<Item class="ModuleScript" referent="RBX009356AC72F047A2BD07C2EF7DF3A859">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -2413,7 +2413,7 @@ end]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fcc</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="ModuleScript" referent="RBXE26BA0C3CE894A2AA5A114B19298B275">
+								<Item class="ModuleScript" referent="RBX68E0AADF52834074BC10FE06A2D33915">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -2832,7 +2832,7 @@ end]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fcd</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="ModuleScript" referent="RBX286E77FF1B1E48778EAA26477520E699">
+								<Item class="ModuleScript" referent="RBXE3FE238823AF49CD89A8145790496B9C">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -3023,7 +3023,7 @@ end]]></ProtectedString>
 									</Properties>
 								</Item>
 							</Item>
-							<Item class="ModuleScript" referent="RBX7E85554BD77B4BD1BC1DF6C8B36819A1">
+							<Item class="ModuleScript" referent="RBXEB291E4C0DB246FC91A8BC5FC772DA72">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -3091,7 +3091,7 @@ end]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fcf</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="ModuleScript" referent="RBXB4234F82B64C4D80B7A66CF1B69B8431">
+							<Item class="ModuleScript" referent="RBXB5F0B51FCBE9457D9E79769988203B56">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -3337,7 +3337,7 @@ end]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd0</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="Folder" referent="RBX0DF7C366F0534C4BA10C8732A92040DE">
+							<Item class="Folder" referent="RBXDCA9D69296924E60941555DFB17A2725">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -3348,7 +3348,7 @@ end]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd1</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBX2C91B4D432C44505926A0A71534CCB35">
+								<Item class="ModuleScript" referent="RBX481D6D3EF21E4245929F1B58C2FD6DB4">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -5927,7 +5927,7 @@ end]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd2</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="ModuleScript" referent="RBXAD330D27A3E04751B7410B9830FA3B92">
+								<Item class="ModuleScript" referent="RBXCD7D0C345AE544BCA4C5C60453C64307">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -5976,7 +5976,7 @@ end]]></ProtectedString>
 									</Properties>
 								</Item>
 							</Item>
-							<Item class="ModuleScript" referent="RBXBAE6D8CD36424A2FA2578E99F6D0AE83">
+							<Item class="ModuleScript" referent="RBXC218090DEBE2445ABA98A1BD3AE4DF34">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6247,7 +6247,7 @@ end]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd4</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="ModuleScript" referent="RBXB92C3DE324E048EA94665B2B1637E3CD">
+							<Item class="ModuleScript" referent="RBX8AB44D4837CD469089B605E49BEEDB72">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6342,7 +6342,7 @@ end]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd5</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="Folder" referent="RBX3C13FA64E95948A38CC99EA0CB8AB2C8">
+							<Item class="Folder" referent="RBXBEC6B700E73943D3A1CD7F36A8EB2086">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6353,7 +6353,7 @@ end]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd6</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBX52B826EAD0CC406BB88C22D0BFFC1647">
+								<Item class="ModuleScript" referent="RBX0417594CBC1945B8ADE17573E234658B">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6461,7 +6461,7 @@ end]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd7</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="Folder" referent="RBXDFE4AE982B0140C89FF115A01BCA9936">
+								<Item class="Folder" referent="RBX2B9B7058EAD343A892D98B4811D1EF8E">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6472,7 +6472,7 @@ end]]></ProtectedString>
 										<BinaryString name="Tags"></BinaryString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd8</UniqueId>
 									</Properties>
-									<Item class="LocalScript" referent="RBX7C12D2BDBE02465CA71615B99430BDFB">
+									<Item class="LocalScript" referent="RBX0A4538623AE249E782EF80C0EFA69B68">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6502,7 +6502,7 @@ script.Parent:Destroy()]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fd9</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX2565ED02C0F64CD3AE495FEB2B9D1D23">
+									<Item class="ModuleScript" referent="RBXE98636CACA2D471C9FD6171E7D24B455">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6571,7 +6571,7 @@ end]]></ProtectedString>
 								</Item>
 							</Item>
 						</Item>
-						<Item class="Folder" referent="RBXD6325670A2DD480F8AF0369567FDE44E">
+						<Item class="Folder" referent="RBXAEA1C56E900043EBB4FA5EC7BE956F56">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6582,7 +6582,7 @@ end]]></ProtectedString>
 								<BinaryString name="Tags"></BinaryString>
 								<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fdb</UniqueId>
 							</Properties>
-							<Item class="ModuleScript" referent="RBX7BBC4ECA5F5B4D2DB82AC21FAD434EF1">
+							<Item class="ModuleScript" referent="RBX46B1BB26C15C4502AF7F9DED2C4CCED1">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6656,7 +6656,7 @@ return network;]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fdc</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="Folder" referent="RBX54B26E696071476EAF024FE1C7037A61">
+							<Item class="Folder" referent="RBX54BEC93EF0344039AA4A72864606ADB4">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6667,23 +6667,8 @@ return network;]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fdd</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBX8ECBEB153042434498585CD7DEBB82A1">
-									<Properties>
-										<BinaryString name="AttributesSerialize"></BinaryString>
-										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-										<bool name="DefinesCapabilities">false</bool>
-										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-										<Content name="LinkedSource"><null></null></Content>
-										<string name="Name">_placeholder</string>
-										<string name="ScriptGuid">{69CDE568-41D1-4575-8385-4A8CE8A59F62}</string>
-										<ProtectedString name="Source">-- disregard, this is for Rbxl-to-rojo to recognize this folder&apos;s existence</ProtectedString>
-										<int64 name="SourceAssetId">-1</int64>
-										<BinaryString name="Tags"></BinaryString>
-										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fde</UniqueId>
-									</Properties>
-								</Item>
 							</Item>
-							<Item class="Folder" referent="RBXA0A38972C49649659CC2F044D36D8CBB">
+							<Item class="Folder" referent="RBXACA4368F978F4299B6529A407B9950F1">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6694,25 +6679,8 @@ return network;]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fdf</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBXC7C6864E744742958D034F21975C50DD">
-									<Properties>
-										<BinaryString name="AttributesSerialize"></BinaryString>
-										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-										<bool name="DefinesCapabilities">false</bool>
-										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-										<Content name="LinkedSource"><null></null></Content>
-										<string name="Name">_placeholder</string>
-										<string name="ScriptGuid">{F4C347D8-702E-4E76-BBC7-9D6B1C892955}</string>
-										<ProtectedString name="Source"><![CDATA[-- disregard, this is for Rbxl-to-rojo to recognize this folder's existence
-
-return function() end]]></ProtectedString>
-										<int64 name="SourceAssetId">-1</int64>
-										<BinaryString name="Tags"></BinaryString>
-										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe0</UniqueId>
-									</Properties>
-								</Item>
 							</Item>
-							<Item class="Folder" referent="RBX3B595759EA5347ED9FDB06DA77E41253">
+							<Item class="Folder" referent="RBX204A7D12C00140CB8B2AB32EB7F61AA8">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6723,23 +6691,8 @@ return function() end]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe1</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBX690471C01A604D7F92B6A4B20EF19B28">
-									<Properties>
-										<BinaryString name="AttributesSerialize"></BinaryString>
-										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-										<bool name="DefinesCapabilities">false</bool>
-										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-										<Content name="LinkedSource"><null></null></Content>
-										<string name="Name">_placeholder</string>
-										<string name="ScriptGuid">{4420CFD8-EF65-4404-8732-125F2EEBF54D}</string>
-										<ProtectedString name="Source">-- disregard, this is for Rbxl-to-rojo to recognize this folder&apos;s existence</ProtectedString>
-										<int64 name="SourceAssetId">-1</int64>
-										<BinaryString name="Tags"></BinaryString>
-										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe2</UniqueId>
-									</Properties>
-								</Item>
 							</Item>
-							<Item class="ModuleScript" referent="RBXABB344624520461CA4008FE316EBDA44">
+							<Item class="ModuleScript" referent="RBX75F998CC18FA48E1A039DC3D850495D1">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6916,7 +6869,7 @@ return Signal]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe3</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="ModuleScript" referent="RBX44D33E5AC6A240F0AEB8E213A0F4AFEC">
+							<Item class="ModuleScript" referent="RBX56C8A13F29E14214A18E65CD6CD59B67">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6987,7 +6940,7 @@ return wrap]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe4</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="Folder" referent="RBX78E8F5A9F9F6417B8AD19D1E6136AF51">
+							<Item class="Folder" referent="RBX08EAE510F9E94558B341CB95D74F8ACA">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -6998,7 +6951,7 @@ return wrap]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe5</UniqueId>
 								</Properties>
-								<Item class="ModuleScript" referent="RBXAB0261442F654840AFCDA86AE3CD3CE5">
+								<Item class="ModuleScript" referent="RBX3E787EC257524837A3515A3501BF5D19">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -7302,7 +7255,7 @@ end]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe6</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="ModuleScript" referent="RBX80D2BCE989E94892A64884626F06BCDF">
+								<Item class="ModuleScript" referent="RBXB2796F8A25F24F238D72D94845B0BFFE">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -7535,7 +7488,7 @@ end]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fe7</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="ModuleScript" referent="RBXBC6572076C0B4BA988B594B00290EF34">
+								<Item class="ModuleScript" referent="RBXFE964F76D94043F290CDA3950DD54988">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -7593,7 +7546,7 @@ return {
 									</Properties>
 								</Item>
 							</Item>
-							<Item class="ModuleScript" referent="RBX0263896366634DC3AEBFC0446078248A">
+							<Item class="ModuleScript" referent="RBX813318950D744B83A8B11EAF1BD53774">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -7675,7 +7628,7 @@ end]]></ProtectedString>
 								</Properties>
 							</Item>
 						</Item>
-						<Item class="Folder" referent="RBX797F6AE9D48B4FFEBCD3E7DDDAFC2DFC">
+						<Item class="Folder" referent="RBX5071660B33AC43BE8B42156B3B00580B">
 							<Properties>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -7686,7 +7639,7 @@ end]]></ProtectedString>
 								<BinaryString name="Tags"></BinaryString>
 								<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fea</UniqueId>
 							</Properties>
-							<Item class="LocalScript" referent="RBX7DC1087CD1FF4C08B80BB58FA3A1AE4B">
+							<Item class="LocalScript" referent="RBX91A8B856A87F4E55B1B7D5109BD07FE2">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8372,7 +8325,7 @@ end]]></ProtectedString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005feb</UniqueId>
 								</Properties>
 							</Item>
-							<Item class="Folder" referent="RBX104F301285854FC2839D1E66F92C4102">
+							<Item class="Folder" referent="RBXE30E9CCEE49546BDA519EC7913ED8BFD">
 								<Properties>
 									<BinaryString name="AttributesSerialize"></BinaryString>
 									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8383,7 +8336,7 @@ end]]></ProtectedString>
 									<BinaryString name="Tags"></BinaryString>
 									<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fec</UniqueId>
 								</Properties>
-								<Item class="Folder" referent="RBXAAF204E3B78B4139B353A6E11C026E9C">
+								<Item class="Folder" referent="RBXD794B1CE4F2144E8BA214D43EECF0C76">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8394,7 +8347,7 @@ end]]></ProtectedString>
 										<BinaryString name="Tags"></BinaryString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fed</UniqueId>
 									</Properties>
-									<Item class="ModuleScript" referent="RBXFFA16162B92546F1879A7442B9544EA9">
+									<Item class="ModuleScript" referent="RBXEE4835896A4B4F85B5F7AFB94FBD5A53">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8558,7 +8511,7 @@ return pending]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fee</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX76A80FBF20AD4086867D8750040D6FE5">
+									<Item class="ModuleScript" referent="RBXCB5E62EFDD3C49578C0F0F327F3543BD">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8651,7 +8604,7 @@ return utility]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fef</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBXD368B6E9D7B746D6BCA40FCAD6998DE1">
+									<Item class="ModuleScript" referent="RBX6220761FA3E74DEEAE8FFB342F08B437">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8765,7 +8718,7 @@ end]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff0</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="Folder" referent="RBX5E3D90AF8BF24207A88343D42C53A37C">
+									<Item class="Folder" referent="RBX5601008D211147BA9ADD5D14FA08DD68">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8776,7 +8729,7 @@ end]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff1</UniqueId>
 										</Properties>
-										<Item class="ModuleScript" referent="RBXDCCB7EE189304CF4B58449E5D657F7F5">
+										<Item class="ModuleScript" referent="RBX0D67448596F14D33A2FEC5C99ABD7C28">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8810,7 +8763,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff2</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="Folder" referent="RBX6869A32A92A54165BD362210DB0E6A2F">
+										<Item class="Folder" referent="RBX40F88358651C4EAEB35D2742D897DAED">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8821,7 +8774,7 @@ end]]></ProtectedString>
 												<BinaryString name="Tags"></BinaryString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff3</UniqueId>
 											</Properties>
-											<Item class="ModuleScript" referent="RBX8061D8B0A23542DFBAE1E93C0241CBDC">
+											<Item class="ModuleScript" referent="RBXCC5338EAAC5E46BBA0698C5F135ECC4B">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -8985,7 +8938,7 @@ end}]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff4</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBXB2ADD2B9874F43AD8FB14803D7278729">
+											<Item class="ModuleScript" referent="RBXF3F01AD744424C7994CAAF773C246340">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -9385,7 +9338,7 @@ end,}]]></ProtectedString>
 												</Properties>
 											</Item>
 										</Item>
-										<Item class="ModuleScript" referent="RBX071618B63DC34D5CAFCEDB2EFA4BFC16">
+										<Item class="ModuleScript" referent="RBXBAC28A956AB24227B48B5B1EE2A1DE52">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -9960,7 +9913,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff6</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX325E3EB5C4104024BD2F406637AF0D4F">
+										<Item class="ModuleScript" referent="RBXD46E2EDDAC714A0F910F3060D95FD372">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -10336,7 +10289,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff7</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="Folder" referent="RBX059F83CC8B3041979E298FE015FFABA0">
+										<Item class="Folder" referent="RBX15813D3C896C40389B4290E096586551">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -10347,7 +10300,7 @@ end]]></ProtectedString>
 												<BinaryString name="Tags"></BinaryString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff8</UniqueId>
 											</Properties>
-											<Item class="ModuleScript" referent="RBX7505FC9BEB7C4A479B2627703FEEBC57">
+											<Item class="ModuleScript" referent="RBX1C86C6C0B020442D88F0F734643CB52F">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -10649,7 +10602,7 @@ end]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ff9</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX266F04D6D1354EE49EB7F7297314D388">
+											<Item class="ModuleScript" referent="RBX7613925DD55441BE80886E3ABFD0ABDB">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11004,7 +10957,7 @@ end]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ffa</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX3171A65139D64CEA9BD0C158C9D6FF37">
+											<Item class="ModuleScript" referent="RBXFE8D2E54523B4B99BD2572651DA3C4A6">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11428,7 +11381,7 @@ end]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ffb</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBXEE3B60AF132A4638AFBF9E7D90FBDE93">
+											<Item class="ModuleScript" referent="RBX227E0B58AA844836A10B0CEB8C61FF30">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11478,7 +11431,7 @@ return manager]]></ProtectedString>
 											</Item>
 										</Item>
 									</Item>
-									<Item class="Folder" referent="RBX76C4A5E8F696405D9B2578CD8ECA1C0F">
+									<Item class="Folder" referent="RBXC101106ACC854EED9380207C43B4E7CE">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11489,7 +11442,7 @@ return manager]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ffd</UniqueId>
 										</Properties>
-										<Item class="Folder" referent="RBX3A56B830EBF5436F8660510D4874951D">
+										<Item class="Folder" referent="RBX1A26C6D5D10E4CA4B1D59B5B968C0A39">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11500,7 +11453,7 @@ return manager]]></ProtectedString>
 												<BinaryString name="Tags"></BinaryString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005ffe</UniqueId>
 											</Properties>
-											<Item class="ModuleScript" referent="RBX83C9AFCE143D454FB05FD946E8B0C257">
+											<Item class="ModuleScript" referent="RBXF5AF81F893504C31BAD04B8E98B82CD8">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11528,7 +11481,7 @@ return command]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400005fff</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX8B5E4C87276446A6B0E5CFD65A518BAA">
+											<Item class="ModuleScript" referent="RBX4CA7D4381C914A7781A7253C26A8C897">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11643,7 +11596,7 @@ return command]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006000</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX9FFF411CEA654DFEB8D472CD7EFDC91D">
+											<Item class="ModuleScript" referent="RBX90D5FA7BD9384EB3A3373717E7685E32">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11677,7 +11630,7 @@ return command]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006001</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBXDE5064265CFD4A608B4E83BF1E72E43C">
+											<Item class="ModuleScript" referent="RBXBD8CB21F3D5A45EE95D79162A6B8F14B">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11714,7 +11667,7 @@ return command]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006002</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX4F205AD0EE51475BB05D1682BA01940B">
+											<Item class="ModuleScript" referent="RBX5B4B9F745C3A416AABE851F372BD6518">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11751,7 +11704,7 @@ return command]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006003</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX9078A5588D9E481BB2EF961FFC8D14A6">
+											<Item class="ModuleScript" referent="RBX7C34178C79E74FBE8C6F6C08BAAD853A">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11783,7 +11736,7 @@ return command;]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006004</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBXA5428A5D213046D1A279781DBB397C9C">
+											<Item class="ModuleScript" referent="RBX988AF60D2F614DDAAA3FA60148B160A4">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11826,7 +11779,7 @@ return command]]></ProtectedString>
 												</Properties>
 											</Item>
 										</Item>
-										<Item class="ModuleScript" referent="RBX656D277310904F7FBAD426EF5274BC06">
+										<Item class="ModuleScript" referent="RBX031079C34DF14655A16A3FCE8E3FC284">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11874,7 +11827,7 @@ end]]></ProtectedString>
 											</Properties>
 										</Item>
 									</Item>
-									<Item class="Folder" referent="RBX0713949738544F62BD8ED4A2EAA16D08">
+									<Item class="Folder" referent="RBX9AF5A1C03FB34A56A4BF4F74B243A1AA">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11885,7 +11838,7 @@ end]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006007</UniqueId>
 										</Properties>
-										<Item class="ModuleScript" referent="RBX612D6D0DF98841819D6046D1B5481437">
+										<Item class="ModuleScript" referent="RBXF3BDEC8A736A452C92C19632398CA222">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11985,7 +11938,7 @@ return slider]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006008</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX5056FBC940704893942CE593D5405056">
+										<Item class="ModuleScript" referent="RBXDCADC6155FC545A0A92CEFBA9819700F">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -12039,7 +11992,7 @@ return toggle]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006009</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBXA25F686E347B40B282521CA42B438F72">
+										<Item class="ModuleScript" referent="RBX17B672E093EA419C96135064D9706EDB">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -12142,7 +12095,7 @@ return dropdown]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c753940000600a</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX28B1799074C24F37BE53CDD878F39FA0">
+										<Item class="ModuleScript" referent="RBXED3F074EA76D4028A3461FF66D10EA99">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -12465,7 +12418,7 @@ return quickChatDropdown]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c753940000600b</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX5973EE67F0944739A07F780A3DB2D302">
+										<Item class="ModuleScript" referent="RBXC15024A5D0D942C99932DD1AE9FB451B">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -12530,7 +12483,7 @@ return buildViewport]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c753940000600c</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="Folder" referent="RBX934961C4CFF4464AB1739723B24DADDA">
+										<Item class="Folder" referent="RBXE7289F7E39134286B9EA168EE91F145C">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -12541,7 +12494,7 @@ return buildViewport]]></ProtectedString>
 												<BinaryString name="Tags"></BinaryString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c753940000600d</UniqueId>
 											</Properties>
-											<Item class="ModuleScript" referent="RBX4F19ED6EA59B430388B61247C79467D0">
+											<Item class="ModuleScript" referent="RBXB6D5084F02874620952BC864C54D3CB5">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -15966,7 +15919,7 @@ return Compression]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c753940000600e</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX39D622F309FA4436835C4825818906DB">
+											<Item class="ModuleScript" referent="RBXB8B98453CDFF45538E217B8EE736BB24">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -16174,7 +16127,7 @@ return utility]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c753940000600f</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX16EFA263B8E14775BD2258B24524CF96">
+											<Item class="ModuleScript" referent="RBX771606CF20F546FA84B0635DAD9626FC">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -16337,7 +16290,7 @@ end]]></ProtectedString>
 												</Properties>
 											</Item>
 										</Item>
-										<Item class="ModuleScript" referent="RBX84CF43A1E3094FB1A441E92FCE8A6DAB">
+										<Item class="ModuleScript" referent="RBX0CF688E1AA2A4C09898D2E3D36FFE42B">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -16663,7 +16616,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006011</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBXF9E3A90665C549BDB7A71605149FB750">
+										<Item class="ModuleScript" referent="RBX4EFC46A6795C44BCB14F26C512237310">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -16716,7 +16669,7 @@ return dropdown]]></ProtectedString>
 											</Properties>
 										</Item>
 									</Item>
-									<Item class="ModuleScript" referent="RBX2CFAD44D7B2A41D58ED00417F1F2E807">
+									<Item class="ModuleScript" referent="RBX66D1E999C3A3412C9CCB6E4A29F5EDC1">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -17258,7 +17211,7 @@ end]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006013</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX000CF9CE732F4CF9BD56A76CFA59CB3D">
+									<Item class="ModuleScript" referent="RBX6BA50F1CEE444BCEA968B02AB8BC5652">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -17297,7 +17250,7 @@ end]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006014</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX1694E3977F584033BEB5A465465209A4">
+									<Item class="ModuleScript" referent="RBXA2EFD3FE1D804DF8B1067D15DE951440">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -17418,7 +17371,7 @@ end]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006015</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="Folder" referent="RBX683438876438495C8AE87E7D4458E9A4">
+									<Item class="Folder" referent="RBXEE2D550BD6D048D3AC151868D68F3A63">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -17429,7 +17382,7 @@ end]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006016</UniqueId>
 										</Properties>
-										<Item class="ModuleScript" referent="RBX9E09500EE93240398FE2A54418B86DAC">
+										<Item class="ModuleScript" referent="RBX73C554FA975245989EF9A8C2189BFDDA">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -17483,7 +17436,7 @@ end
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006017</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="Folder" referent="RBX1B90A24AAE454E2891A1485C1B7D40A3">
+										<Item class="Folder" referent="RBX680E4D4C4D2143EEB4312AAA0010E8E0">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -17494,7 +17447,7 @@ end
 												<BinaryString name="Tags"></BinaryString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006018</UniqueId>
 											</Properties>
-											<Item class="ModuleScript" referent="RBX1A508FD178AA4CDEA1B689B14BA43FA6">
+											<Item class="ModuleScript" referent="RBXF91E3346F8C94348A8BC5C3E298F36C7">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -18601,7 +18554,7 @@ return Icon]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006019</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="Folder" referent="RBXF804D4BC5321448EBFB9FD5828832E20">
+											<Item class="Folder" referent="RBX3B4AF9C215D44D8885FC2962DAE80FC8">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -18612,7 +18565,7 @@ return Icon]]></ProtectedString>
 													<BinaryString name="Tags"></BinaryString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c753940000601a</UniqueId>
 												</Properties>
-												<Item class="Folder" referent="RBX3394AC92744C4B6C90004114C3886B59">
+												<Item class="Folder" referent="RBXAD9D360A7C1D4EEBA0511B2093E4C088">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -18623,7 +18576,7 @@ return Icon]]></ProtectedString>
 														<BinaryString name="Tags"></BinaryString>
 														<UniqueId name="UniqueId">1019158d1738e2ce06c753940000601b</UniqueId>
 													</Properties>
-													<Item class="ModuleScript" referent="RBXEB9E780C1C8642998F572A6F8C528EEB">
+													<Item class="ModuleScript" referent="RBXB1C01106BCF9455BB61A0A77352E5840">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -18952,7 +18905,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c753940000601c</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBXF3B8762AD7EF4D8CB9F90825FCE4DE79">
+													<Item class="ModuleScript" referent="RBXA7A2C9C2106645C48B2428F6DF321462">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -19096,7 +19049,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c753940000601d</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBXA92BE5F23F264388BD6F54C29459957E">
+													<Item class="ModuleScript" referent="RBX187E41D92E5441D7A554164F82FA8E3D">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -19279,7 +19232,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c753940000601e</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX4BCB1715EAFA4EFBB41312AB030C8168">
+													<Item class="ModuleScript" referent="RBX09AD8C737B354BBFA582DE62A003277E">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -19384,7 +19337,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c753940000601f</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBXEF801658EA4942D08AABB822F542C21A">
+													<Item class="ModuleScript" referent="RBX1561CD9D036E49368C21A424651C6855">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -19581,7 +19534,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006020</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX3E948BBDF42E4E0D997649BACF879003">
+													<Item class="ModuleScript" referent="RBXFACEF408A19E469BABD75B39B1A545C2">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -19644,7 +19597,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006021</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX2845E53B537A42438F69B9D9B07F5B7F">
+													<Item class="ModuleScript" referent="RBX03DF28268EAA4035B99E18A61E46FD2E">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -20069,7 +20022,7 @@ end]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006022</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX5D8068232977425AB15EAB24DDFDE1C8">
+													<Item class="ModuleScript" referent="RBXBC4D316C20124FC3A981FFEB51ED9A31">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -20198,7 +20151,7 @@ end]]></ProtectedString>
 														</Properties>
 													</Item>
 												</Item>
-												<Item class="Folder" referent="RBXF3DC85E4B38E4B5EA31127EBED66DD2C">
+												<Item class="Folder" referent="RBX0E722339BC5F4EBB87E51B1EA425A58B">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -20209,7 +20162,7 @@ end]]></ProtectedString>
 														<BinaryString name="Tags"></BinaryString>
 														<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006024</UniqueId>
 													</Properties>
-													<Item class="ModuleScript" referent="RBX6B1D116F8DFC4848AFF3729D6A991F13">
+													<Item class="ModuleScript" referent="RBX9C184EE0FC404D72A51D0DA3FBBDE0F5">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -20422,7 +20375,7 @@ return Gamepad]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006025</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX4B991A6C114544E0A4E4334EA6696B9A">
+													<Item class="ModuleScript" referent="RBX145477F1F7C345C383D2CCA8C3AAF2B1">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -20761,7 +20714,7 @@ return Overflow]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006026</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX850004E9AC074F179EA53B290CF06195">
+													<Item class="ModuleScript" referent="RBXF8EA2CE839BA46E3BDAB78280D58EE3A">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21127,7 +21080,7 @@ return Themes]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006027</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="Folder" referent="RBXDE8AB1776043431697CB11626264ED2B">
+													<Item class="Folder" referent="RBXED8807BB8D8147FD868464FCD7CFFCB2">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21138,7 +21091,7 @@ return Themes]]></ProtectedString>
 															<BinaryString name="Tags"></BinaryString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006028</UniqueId>
 														</Properties>
-														<Item class="ModuleScript" referent="RBX00061DEF1D494B1184FD3FE90B2966B9">
+														<Item class="ModuleScript" referent="RBX4241E2D63C78456C9B643ADE79A8F036">
 															<Properties>
 																<BinaryString name="AttributesSerialize"></BinaryString>
 																<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21179,7 +21132,7 @@ return {
 																<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006029</UniqueId>
 															</Properties>
 														</Item>
-														<Item class="ModuleScript" referent="RBX94623E49BC9D4235BAE4055840E12B47">
+														<Item class="ModuleScript" referent="RBXC56AAF9081FA4521A50F0F36BFADCF76">
 															<Properties>
 																<BinaryString name="AttributesSerialize"></BinaryString>
 																<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21268,7 +21221,7 @@ return {
 														</Item>
 													</Item>
 												</Item>
-												<Item class="Folder" referent="RBXCFE80DE71EE34F729D9420141E46E1D6">
+												<Item class="Folder" referent="RBX3BC67C11A32C484EA701D3E450F445F1">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21279,7 +21232,7 @@ return {
 														<BinaryString name="Tags"></BinaryString>
 														<UniqueId name="UniqueId">1019158d1738e2ce06c753940000602b</UniqueId>
 													</Properties>
-													<Item class="ModuleScript" referent="RBX247574BCD59A47A18E3D7C9A87FA282D">
+													<Item class="ModuleScript" referent="RBX3C23D1517AAD4639908651ECEDFB6B3E">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21475,7 +21428,7 @@ return Signal]]></ProtectedString>
 															<UniqueId name="UniqueId">1019158d1738e2ce06c753940000602c</UniqueId>
 														</Properties>
 													</Item>
-													<Item class="ModuleScript" referent="RBX9F06E689B49B423D91CCBBE3649ED89F">
+													<Item class="ModuleScript" referent="RBX5FEA23CED615465CA66DA631668961F1">
 														<Properties>
 															<BinaryString name="AttributesSerialize"></BinaryString>
 															<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21867,7 +21820,7 @@ return Janitor]]></ProtectedString>
 														</Properties>
 													</Item>
 												</Item>
-												<Item class="ModuleScript" referent="RBXAB0B7ABA049F48B18EDD03302F295953">
+												<Item class="ModuleScript" referent="RBX373CB937CB074E1D9AE6D049ACC7BCC4">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21895,7 +21848,7 @@ return {}]]></ProtectedString>
 														<UniqueId name="UniqueId">1019158d1738e2ce06c753940000602e</UniqueId>
 													</Properties>
 												</Item>
-												<Item class="ModuleScript" referent="RBXB440E677EFBD4DFD9F70C6F12B2AE30E">
+												<Item class="ModuleScript" referent="RBX53BDDFE5AC104952B490C943E8EB0F1E">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -21939,7 +21892,7 @@ return Reference]]></ProtectedString>
 														<UniqueId name="UniqueId">1019158d1738e2ce06c753940000602f</UniqueId>
 													</Properties>
 												</Item>
-												<Item class="ModuleScript" referent="RBX6E1EF917209D4F068E0C6621ED803DF2">
+												<Item class="ModuleScript" referent="RBX2173C09634CF44D18EF59F1A21A45EE4">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -22400,7 +22353,7 @@ return Utility]]></ProtectedString>
 														<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006030</UniqueId>
 													</Properties>
 												</Item>
-												<Item class="ModuleScript" referent="RBX712BC12867B24CD0A6365D7737D51973">
+												<Item class="ModuleScript" referent="RBX054169384D8F477CA8613F17740CEC98">
 													<Properties>
 														<BinaryString name="AttributesSerialize"></BinaryString>
 														<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -22418,7 +22371,7 @@ return Utility]]></ProtectedString>
 											</Item>
 										</Item>
 									</Item>
-									<Item class="Folder" referent="RBXF09262EF39F74BF4B8F0E048291820C6">
+									<Item class="Folder" referent="RBX84EDFE696CD546CC9E1DBCA419DEBF9C">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -22429,7 +22382,7 @@ return Utility]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006032</UniqueId>
 										</Properties>
-										<Item class="ModuleScript" referent="RBX8D67FC2EBA70401DAE6F36C480B20AA5">
+										<Item class="ModuleScript" referent="RBX6D1CCDBF5A774717B6112B097017E42E">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -22678,7 +22631,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006033</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX4E2898145B454353889BC366C672BDDB">
+										<Item class="ModuleScript" referent="RBX8DD14789B4FA488CB6EA2E67A035CE20">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -23163,7 +23116,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006034</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX506C2718D45C46EA84CDE6F8CDFA7B57">
+										<Item class="ModuleScript" referent="RBX6C929E57996E45E29A706189810DA6BE">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -23663,7 +23616,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006035</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBXB679E3C135444124830DFD4678E2F191">
+										<Item class="ModuleScript" referent="RBXBD15D3A5AAE743F0A27BF4EAEAD02FCA">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27563,7 +27516,7 @@ end]]></ProtectedString>
 											</Properties>
 										</Item>
 									</Item>
-									<Item class="Folder" referent="RBX5FD6AA32D3E148038049D187A5AC2F07">
+									<Item class="Folder" referent="RBX4A76E41AEA6D4561BFE584BD61EF6AB8">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27574,7 +27527,7 @@ end]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006037</UniqueId>
 										</Properties>
-										<Item class="Folder" referent="RBXC956BDC689194754AD37EB99DBD51C55">
+										<Item class="Folder" referent="RBX94BDD53DC7944BCAB85943750B4A87FB">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27585,7 +27538,7 @@ end]]></ProtectedString>
 												<BinaryString name="Tags"></BinaryString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006038</UniqueId>
 											</Properties>
-											<Item class="ModuleScript" referent="RBX5075967AE85343348D6A03A184B08D9F">
+											<Item class="ModuleScript" referent="RBX5C376480B533438683E70BBEBAF8F928">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27638,7 +27591,7 @@ return autofill]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006039</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX7F31FE29047C4D2C89001257633B4C1C">
+											<Item class="ModuleScript" referent="RBXC5FF0263B81046CAB1BAEF1E5A7B424C">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27725,7 +27678,7 @@ end]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c753940000603a</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX6BCE8CC708C34FCC944A2646797EDBD6">
+											<Item class="ModuleScript" referent="RBX2A1913B142024A2E98ED25276460CC3E">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27796,7 +27749,7 @@ end]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c753940000603b</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX5F314C080A3549CF97F48D6DFCC511E9">
+											<Item class="ModuleScript" referent="RBXCCBC25D7958643BCAD2ACB43FF27E545">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27904,7 +27857,7 @@ end]]></ProtectedString>
 													<UniqueId name="UniqueId">1019158d1738e2ce06c753940000603c</UniqueId>
 												</Properties>
 											</Item>
-											<Item class="ModuleScript" referent="RBX2E0F71CB2A07475F90595AB7C6BE338D">
+											<Item class="ModuleScript" referent="RBX99CB24D26E0F4075ACFD9352D2F226DA">
 												<Properties>
 													<BinaryString name="AttributesSerialize"></BinaryString>
 													<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -27951,7 +27904,7 @@ end]]></ProtectedString>
 												</Properties>
 											</Item>
 										</Item>
-										<Item class="ModuleScript" referent="RBX00AEBFB906A2498CB2B947E109A5B116">
+										<Item class="ModuleScript" referent="RBXE90C9C3F54BA40379DBAE1383FDA6A88">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -28218,7 +28171,7 @@ end]]></ProtectedString>
 												<UniqueId name="UniqueId">1019158d1738e2ce06c753940000603e</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBXB4C32EC671374056936CC4F87624C993">
+										<Item class="ModuleScript" referent="RBX4159184579C44BB0B55B083377BF9498">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -28314,7 +28267,7 @@ end]]></ProtectedString>
 											</Properties>
 										</Item>
 									</Item>
-									<Item class="Folder" referent="RBX26F302B27AD34746967ED90B643D05BF">
+									<Item class="Folder" referent="RBX45C51A7E6E5D4D6D8700A850FDC0E2EC">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -28325,7 +28278,7 @@ end]]></ProtectedString>
 											<BinaryString name="Tags"></BinaryString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006040</UniqueId>
 										</Properties>
-										<Item class="ModuleScript" referent="RBX47B6AB0EA4DA4A84AC4A106D63F8D18F">
+										<Item class="ModuleScript" referent="RBX9BBD0FCAE8C3467583E7266DE3D32A71">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -30659,7 +30612,7 @@ return {
 												<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006041</UniqueId>
 											</Properties>
 										</Item>
-										<Item class="ModuleScript" referent="RBX6C845E46CB004F1C8E1B2051277B9559">
+										<Item class="ModuleScript" referent="RBXB7C69003E1E94257BCD08B73F4E4493D">
 											<Properties>
 												<BinaryString name="AttributesSerialize"></BinaryString>
 												<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -31707,7 +31660,7 @@ end]]></ProtectedString>
 											</Properties>
 										</Item>
 									</Item>
-									<Item class="ModuleScript" referent="RBX868B1DBFCA134F53BCF0794608387FF0">
+									<Item class="ModuleScript" referent="RBX4B2DA624FAB849689E5668C1035F8F44">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -31845,7 +31798,7 @@ end]]></ProtectedString>
 										</Properties>
 									</Item>
 								</Item>
-								<Item class="ModuleScript" referent="RBX8B502B7439434381AD2416307C2DB349">
+								<Item class="ModuleScript" referent="RBX814C1C31ED924D2EAC75E9A50FA76017">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -31882,7 +31835,7 @@ return privacy]]></ProtectedString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006044</UniqueId>
 									</Properties>
 								</Item>
-								<Item class="Folder" referent="RBX45299795E7A54BFCAADFFE9BD5F67E2B">
+								<Item class="Folder" referent="RBX0FCBBA2C6EF340D7A05BE7EF447AD1E2">
 									<Properties>
 										<BinaryString name="AttributesSerialize"></BinaryString>
 										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -31893,7 +31846,7 @@ return privacy]]></ProtectedString>
 										<BinaryString name="Tags"></BinaryString>
 										<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006045</UniqueId>
 									</Properties>
-									<Item class="ModuleScript" referent="RBXB58CA40C59234F578F7AB0C723D89FF5">
+									<Item class="ModuleScript" referent="RBXB49569D4FB3B4068B91E27892F492A07">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -31932,7 +31885,7 @@ return bubbleChat]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006046</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX546AD4CF03E44040B571A13FA7B4101D">
+									<Item class="ModuleScript" referent="RBX633030AF9D49411BABBA540F2A6BB31F">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32152,7 +32105,7 @@ return {
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006047</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX26CAFC5B37324E289D75280C6EC3B602">
+									<Item class="ModuleScript" referent="RBX53A047BA616C4B36ADD10BE9DA8E3B66">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32292,7 +32245,7 @@ end]]></ProtectedString>
 											<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006048</UniqueId>
 										</Properties>
 									</Item>
-									<Item class="ModuleScript" referent="RBX51BB1EA9DBB441A6AB4D71D5C67027AF">
+									<Item class="ModuleScript" referent="RBX0AF3E28A697C40F285377D165BF09553">
 										<Properties>
 											<BinaryString name="AttributesSerialize"></BinaryString>
 											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32720,7 +32673,7 @@ return billboard]]></ProtectedString>
 					</Item>
 				</Item>
 			</Item>
-			<Item class="Configuration" referent="RBX41D3CA9554C648018D27E8E2D90E427E">
+			<Item class="Configuration" referent="RBX681A482DFF664038A4CE089A91D33C62">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32731,7 +32684,7 @@ return billboard]]></ProtectedString>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">1019158d1738e2ce06c753940000604a</UniqueId>
 				</Properties>
-				<Item class="Folder" referent="RBX7E7009E7749C406D85DFF5FC1D4B148F">
+				<Item class="Folder" referent="RBX4518E1165A5240D287974E9FC62A82EA">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32742,23 +32695,8 @@ return billboard]]></ProtectedString>
 						<BinaryString name="Tags"></BinaryString>
 						<UniqueId name="UniqueId">1019158d1738e2ce06c753940000604b</UniqueId>
 					</Properties>
-					<Item class="ModuleScript" referent="RBX8C7CCEF561A34434B77092C8646E7666">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-							<bool name="DefinesCapabilities">false</bool>
-							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-							<Content name="LinkedSource"><null></null></Content>
-							<string name="Name">_placeholder</string>
-							<string name="ScriptGuid">{6C0E2DBF-626A-448D-A114-00C716B51FE0}</string>
-							<ProtectedString name="Source">-- disregard, this is for Rbxl-to-rojo to recognize this folder&apos;s existence</ProtectedString>
-							<int64 name="SourceAssetId">-1</int64>
-							<BinaryString name="Tags"></BinaryString>
-							<UniqueId name="UniqueId">1019158d1738e2ce06c753940000604c</UniqueId>
-						</Properties>
-					</Item>
 				</Item>
-				<Item class="Folder" referent="RBX8E5FCB0CE592454DB9F181EDBF20B7FC">
+				<Item class="Folder" referent="RBX26A70FD0C8A841D496D4381928153B76">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32769,7 +32707,7 @@ return billboard]]></ProtectedString>
 						<BinaryString name="Tags"></BinaryString>
 						<UniqueId name="UniqueId">1019158d1738e2ce06c753940000604d</UniqueId>
 					</Properties>
-					<Item class="Configuration" referent="RBXA7FD37EF7CB545198B3133E555035F26">
+					<Item class="Configuration" referent="RBX11679BA9A1E944429DEC21A768FC600A">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32781,7 +32719,7 @@ return billboard]]></ProtectedString>
 							<UniqueId name="UniqueId">1019158d1738e2ce06c753940000604e</UniqueId>
 						</Properties>
 					</Item>
-					<Item class="Configuration" referent="RBXD995BBC83FAE4F539407086E1C1860B2">
+					<Item class="Configuration" referent="RBXA6DAA27FA44A442FB25353C32EF78BE1">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32793,7 +32731,7 @@ return billboard]]></ProtectedString>
 							<UniqueId name="UniqueId">1019158d1738e2ce06c753940000604f</UniqueId>
 						</Properties>
 					</Item>
-					<Item class="Configuration" referent="RBX5E8FAFE1A75C4BCE90206D4656326735">
+					<Item class="Configuration" referent="RBX88B3A9D33C6B4647B25BB8455A889A50">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32807,7 +32745,7 @@ return billboard]]></ProtectedString>
 					</Item>
 				</Item>
 			</Item>
-			<Item class="Camera" referent="RBXBB0A556D0FC740A1977B4099D428654D">
+			<Item class="Camera" referent="RBXA763B06233214DBDB8DDEB02A426CB30">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<CoordinateFrame name="CFrame">
@@ -32824,7 +32762,7 @@ return billboard]]></ProtectedString>
 						<R21>0</R21>
 						<R22>1</R22>
 					</CoordinateFrame>
-					<Ref name="CameraSubject">RBX6B6F30BCCFFE4EFF89AF78BA15BBD979</Ref>
+					<Ref name="CameraSubject">RBXE90DFCA33767426C848139E4D382B21B</Ref>
 					<token name="CameraType">0</token>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 					<bool name="DefinesCapabilities">false</bool>
@@ -32853,7 +32791,7 @@ return billboard]]></ProtectedString>
 					<UniqueId name="UniqueId">1019158d1738e2ce06c7539400006051</UniqueId>
 					<bool name="VRTiltAndRollEnabled">false</bool>
 				</Properties>
-				<Item class="Part" referent="RBX6B6F30BCCFFE4EFF89AF78BA15BBD979">
+				<Item class="Part" referent="RBXE90DFCA33767426C848139E4D382B21B">
 					<Properties>
 						<bool name="Anchored">true</bool>
 						<BinaryString name="AttributesSerialize"></BinaryString>
@@ -32952,7 +32890,7 @@ return billboard]]></ProtectedString>
 							<Z>0.200000003</Z>
 						</Vector3>
 					</Properties>
-					<Item class="Decal" referent="RBXA3C694BA0A464E03BF5D48F25BCF3248">
+					<Item class="Decal" referent="RBX8A2BC46F70964A9DAB093BD371F931C2">
 						<Properties>
 							<BinaryString name="AttributesSerialize"></BinaryString>
 							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32977,7 +32915,7 @@ return billboard]]></ProtectedString>
 			</Item>
 		</Item>
 	</Item>
-	<Item class="ServerStorage" referent="RBX047F12A46A854C5397A10A6645940394">
+	<Item class="ServerStorage" referent="RBX96AD8DCB26FF4827AA384373F30B9ED0">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -32989,7 +32927,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000033a</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ReplicatedStorage" referent="RBX8B70D8EC9FB64E759927A0A51916CAF7">
+	<Item class="ReplicatedStorage" referent="RBXAE562BF51F354AB38C9691F42143BE27">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33001,7 +32939,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff0000033b</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="LuaWebService" referent="RBX9FC299F9CEF34B8E8FF6B1FAF3630E1D">
+	<Item class="LuaWebService" referent="RBX6B247BA81B944F1B93B63FD0DAC5B280">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33013,7 +32951,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000345</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ProcessInstancePhysicsService" referent="RBX60998F8107BA45F1A5D0CD33251C2987">
+	<Item class="ProcessInstancePhysicsService" referent="RBX8536C7D340F44FCF9B1040C917A73BF0">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33025,7 +32963,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000347</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="DataStoreService" referent="RBX3A4ED2D152C745978C444242A2786C79">
+	<Item class="DataStoreService" referent="RBXB04654BAD6994BB2AE7F41DF7E20C678">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="AutomaticRetry">true</bool>
@@ -33039,7 +32977,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000363</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="HttpService" referent="RBX9C379260245349039F124C90E02164FC">
+	<Item class="HttpService" referent="RBXDE89FBE149C548BDACEEED3F9B1FFF6D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33052,7 +32990,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000361</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="Lighting" referent="RBX21A8D03131A04E46B65F45848EA810B7">
+	<Item class="Lighting" referent="RBXAF413DA90E0742D598CF9CD306756954">
 		<Properties>
 			<Color3 name="Ambient">
 				<R>0.274509817</R>
@@ -33100,7 +33038,7 @@ return billboard]]></ProtectedString>
 			<string name="TimeOfDay">14:30:00</string>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000364</UniqueId>
 		</Properties>
-		<Item class="Sky" referent="RBX3A1052C3712947CDB4842D0A33253571">
+		<Item class="Sky" referent="RBX97FC275DB6934B84999A470139526CDE">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33124,7 +33062,7 @@ return billboard]]></ProtectedString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000375</UniqueId>
 			</Properties>
 		</Item>
-		<Item class="SunRaysEffect" referent="RBX9A724CA857FC490ABAF561929DA2C92B">
+		<Item class="SunRaysEffect" referent="RBX3C4DC485837E41F79EEEC535B5BDF189">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33139,7 +33077,7 @@ return billboard]]></ProtectedString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000376</UniqueId>
 			</Properties>
 		</Item>
-		<Item class="Atmosphere" referent="RBX60D7D256920E4908AECB7160DF2CCEBF">
+		<Item class="Atmosphere" referent="RBXA9CB9A53EDB642D5A6AAC1EABD56E2FD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33165,7 +33103,7 @@ return billboard]]></ProtectedString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000377</UniqueId>
 			</Properties>
 		</Item>
-		<Item class="BloomEffect" referent="RBX9C7826AF5A0D40BC93BAB0029CE3790A">
+		<Item class="BloomEffect" referent="RBXC1B2972D56CE409BAACC7A9AE6A5AA04">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33181,7 +33119,7 @@ return billboard]]></ProtectedString>
 				<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000378</UniqueId>
 			</Properties>
 		</Item>
-		<Item class="DepthOfFieldEffect" referent="RBX4F424E220FE14A0880C702F5A57E04FC">
+		<Item class="DepthOfFieldEffect" referent="RBX79A5958E9EE24FFE9439FAB7E3A04552">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33199,7 +33137,7 @@ return billboard]]></ProtectedString>
 			</Properties>
 		</Item>
 	</Item>
-	<Item class="LodDataService" referent="RBX1C90B06D063945C6BA70CA7A9C62F8CD">
+	<Item class="LodDataService" referent="RBX678B580C71B64829BCC46F2D81DD5A1B">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33211,7 +33149,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000365</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ProximityPromptService" referent="RBXDB73E8F0787841EAA26217623B40D66A">
+	<Item class="ProximityPromptService" referent="RBXB9F70931569F48C1AE0A44E29F405A73">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33225,7 +33163,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000366</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="ServiceVisibilityService" referent="RBX7D6A034B4C9641819C72BCB531468DA7">
+	<Item class="ServiceVisibilityService" referent="RBX3267157FADD24443A6544E375B2A2DB8">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33239,7 +33177,7 @@ return billboard]]></ProtectedString>
 			<BinaryString name="VisibleServices">AQAAAAIEAAAAQ2hhdA==</BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Teams" referent="RBX5339FE506ADC4D808984895EF7BF744D">
+	<Item class="Teams" referent="RBX765B5BE23D9248779014BA950BE423D3">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33251,7 +33189,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000367</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="TestService" referent="RBX80D32D36BBA045F3846D96E05AEB1AF9">
+	<Item class="TestService" referent="RBX73E9EAEF43C24C2587DF7E000274CCF7">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="AutoRuns">true</bool>
@@ -33270,7 +33208,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000368</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="UGCAvatarService" referent="RBX1416096B047B4FF39C8D56C98B7FD922">
+	<Item class="UGCAvatarService" referent="RBXB1668DD78DDE42429AC1ECDB4AD5140A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -33282,7 +33220,7 @@ return billboard]]></ProtectedString>
 			<UniqueId name="UniqueId">061efb2f16c7048f06b523ff00000369</UniqueId>
 		</Properties>
 	</Item>
-	<Item class="VirtualInputManager" referent="RBXD3748BFE18EC42FE8CAB3E1E5AE86FB4">
+	<Item class="VirtualInputManager" referent="RBXA1386957CCAF486F815239F09FF18482">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
