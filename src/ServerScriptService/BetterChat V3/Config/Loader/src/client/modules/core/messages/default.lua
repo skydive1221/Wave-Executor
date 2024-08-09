@@ -268,6 +268,7 @@ return function(environment)
 					image.BackgroundTransparency = 1
 					image.Name = tostring(i)
 					image.LayoutOrder = dx
+					image.ImageColor3 = tag.color or Color3.fromRGB(255,255,255)
 				elseif not tag.image then
 					if not isMeCommand then
 						if not added and functions:hasImages(data.tags) then

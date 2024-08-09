@@ -14,6 +14,7 @@ local reset = function(object)
 end
 
 local create = function(environment)
+	--[[
 	local newMessage
 	if cache[1] then --> using a message cache to be more memory-friendly :skull:
 		local message = cache[1]
@@ -29,8 +30,9 @@ local create = function(environment)
 		icon = newMessage:FindFirstChild("Icon")
 		edit = newMessage:FindFirstChild("Edit")
 	end
+	]]
 	
-	local message = newMessage or Instance.new("Frame")
+	local message = Instance.new("Frame")
 	message.Name = "Message"
 	message.AutomaticSize = Enum.AutomaticSize.Y
 	message.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -38,7 +40,7 @@ local create = function(environment)
 	message.Size = UDim2.new(1, 0, 0, 16)
 	message:SetAttribute("Class","regular")
 	
-	local raw = raw or Instance.new("TextLabel")
+	local raw = Instance.new("TextLabel")
 	raw.Name = "Raw"
 	raw.Font = environment.config.UI.Fonts.TextFont	
 	raw.RichText = true
@@ -57,7 +59,7 @@ local create = function(environment)
 	raw.ZIndex = 2
 	collectionService:AddTag(raw,"TextFont")
 
-	local user = user or Instance.new("TextButton")
+	local user =  Instance.new("TextButton")
 	user.Name = "User"
 	user.Font = Enum.Font.GothamMedium
 	user.RichText = true
@@ -77,7 +79,7 @@ local create = function(environment)
 
 	raw.Parent = message
 
-	local icon = icon or Instance.new("ImageLabel")
+	local icon = Instance.new("ImageLabel")
 	icon.Name = "Icon"
 	icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	icon.BackgroundTransparency = 1
@@ -115,7 +117,7 @@ local create = function(environment)
 
 	mentioned.Parent = message
 
-	local edit = edit or Instance.new("TextBox")
+	local edit = Instance.new("TextBox")
 	edit.Name = "Edit"
 	edit.ClearTextOnFocus = false
 	edit.Font = Enum.Font.GothamMedium

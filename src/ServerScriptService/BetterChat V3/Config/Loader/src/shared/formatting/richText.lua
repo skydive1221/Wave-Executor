@@ -64,6 +64,9 @@ return function(config,getAllowedEmojisFor)
 
 	function richText:markdown(text)
 		if isServer then
+			if text:sub(1,1) == [[\]] then
+				return text:sub(2,#text)
+			end
 			return markdown:format(text)
 		else
 			-- new update has server process rich text
@@ -134,8 +137,6 @@ return function(config,getAllowedEmojisFor)
 			return indexed
 		end
 	end
-
-
 
 	local allTags = function(tags)
 		return recurse(tags,nil,0)

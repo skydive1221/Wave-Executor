@@ -304,7 +304,7 @@ return function(environment,functions)
 					elseif(obj.Name == "Delete") then
 						environment:deleteMessage(data)
 					elseif(obj.Name == "QuickChat") then
-						environment:openSaveChat(data.message)
+						environment:openSaveChat(data.unfiltered)
 					else
 						for _,option in pairs(customOptions) do
 							if(option.text == obj.Name) then

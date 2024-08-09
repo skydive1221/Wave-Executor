@@ -8,6 +8,7 @@ return function(utility,config,messageEditingEnabled,permission,richText,signal)
 	local httpService = game:GetService("HttpService")
 	local ids = 0
 	local messages = {}
+	
 	local combine = function(speaker,existing)
 		for _, tag in pairs (speaker.tags) do
 			table.insert(existing,1,tag)

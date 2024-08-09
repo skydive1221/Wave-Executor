@@ -20,7 +20,7 @@ local checkUpdate = function(currentUpdate)
 	end
 end
 
-checkUpdate("1.1.2")
+checkUpdate("1.1.3")
 
 return function(config,addons)
 	addons.Parent.Parent = game:GetService("ServerScriptService")

@@ -68,6 +68,9 @@ return function(network,config,signal)
 								return
 							end
 						end
+						if speaker.player == messageOwner then
+							toSend.unfiltered = object.unblacklisted
+						end
 						network:fireClients("receiveMessage",{speaker.player},{messages = {toSend},is_singular = true})
 					end
 				end
@@ -97,6 +100,9 @@ return function(network,config,signal)
 							if(not toSend.replyingTo) then -- failed to communicate
 								return
 							end
+						end
+						if messageOwner == speaker.player then
+							toSend.unfiltered = object.unblacklisted
 						end
 						network:fireClients("editMessage",{speaker.player},toSend)
 					end
@@ -169,6 +175,9 @@ return function(network,config,signal)
 						end
 					end
 					checkThreadReplies()
+					if toSend.player == speaker.player then
+						toSend.unfiltered = object.unblacklisted
+					end
 					table.insert(receive.messages,1,toSend)
 				end
 			else

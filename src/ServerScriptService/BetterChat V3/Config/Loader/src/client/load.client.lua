@@ -485,10 +485,6 @@ if(currentPlatform ~= "Console") then
 			environment:checkScrollerPos(true,0)
 		end
 		
-		local run = function(c)
-			c()
-		end
-
 		environment.channelChanged = signal.new()
 		
 		local refreshHistory = function(channel)
@@ -508,7 +504,6 @@ if(currentPlatform ~= "Console") then
 				if(data.id ~= nil) then
 					last = data.id
 				end
-				run(function()
 					if(not data.replyingTo) then
 						data.massMessageLoad = true
 						createNewMessage(data)
@@ -521,7 +516,6 @@ if(currentPlatform ~= "Console") then
 							createNewMessage(data)
 						end
 					end
-				end)
 				-- chunking (makes loading much faster, as well as optimizations to only load the message function after the mouse hovers on it)
 				if(key == 10) then
 					task.wait(0.05)
