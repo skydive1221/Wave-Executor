@@ -122,12 +122,16 @@ return function(environment,chatbox)
 		end)
 	end
 
-	local picked = function(option)
+	local picked = function(option,wasTabbed)
 		if(option.gsub) then
 			chatbox.Text = chatbox.Text:gsub(unpack(option.gsub))
 		end
 		chatbox:CaptureFocus()
 		chatbox.CursorPosition = 10000
+		if wasTabbed then
+			task.wait()
+			chatbox.Text = chatbox.Text:sub(1,#chatbox.Text - 1)
+		end
 	end
 
 	local api,last = {},nil
@@ -225,7 +229,7 @@ return function(environment,chatbox)
 			local current = last
 			if(input.KeyCode == Enum.KeyCode.Right or input.KeyCode == Enum.KeyCode.Tab) then
 				if(selected ~= nil) then
-					picked(selected)
+					picked(selected,input.KeyCode == Enum.KeyCode.Tab)
 				end
 			elseif(input.KeyCode == Enum.KeyCode.Down and not heldGeneral[input.KeyCode]) then
 				if(#pointers >= 1) then

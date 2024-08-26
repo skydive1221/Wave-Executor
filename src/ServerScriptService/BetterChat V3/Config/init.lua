@@ -219,6 +219,7 @@ return {
 			Strikethrough = true,
 			Colored = true,
 			Outlines = true,
+			Fonts = true
 		},
 		MessageGrouping = {
 			Enabled = true, --> Merge messages when sent by the same user back to back?
@@ -240,7 +241,8 @@ return {
 					["FPS"] = 15 --> Above this gets a little too fast to comprehend logically
 				}
 			}
-		}
+		},
+		RemoveFormattingForChattedEvent = true
 	},
 	BubbleChat = {
 		Enabled = true, --> Custom bubble chat enabled state (setting to false will default to the regular bubble chat which can be turned off in the properties of game.Chat)

@@ -5,6 +5,8 @@
 local network = {};
 local blank = function() end
 local events = script.Parent:WaitForChild("events");
+local inDebug = false
+local logs = {}
 
 local new = function(class,name)
 	local object = Instance.new(class);
@@ -17,14 +19,59 @@ local get = function(name)
 	return events:WaitForChild(name,12)
 end
 
+local log = function(event,data)
+	logs[event.Name] = logs[event.Name] or {}
+	table.insert(logs[event.Name],data)
+end
+
 -- Server:
 
-function network:newEvent(name,callback)
-	new("RemoteEvent",name).OnServerEvent:Connect(callback or blank);
+local formatTime = function()
+	local time = os.time()
+	local milliseconds = math.floor((os.clock() % 1) * 1000)
+	return os.date("%H:%M:%S", time) .. string.format(".%03d", milliseconds)
+end
+
+function network:newEvent(name,callback,bypass)
+	if inDebug and not bypass then
+		local event = new("RemoteEvent",name)
+		event.OnServerEvent:Connect(function(...)
+			local data = {
+				on = formatTime(),
+				sent = {...},
+				identifier = game:GetService("HttpService"):GenerateGUID()
+			}
+			log(event,data);
+			network:fireClients("logUpdated","all",event,data);
+			(callback or blank)(...);
+		end)
+	else
+		new("RemoteEvent",name).OnServerEvent:Connect(callback or blank);
+	end
 end
 
 function network:newFunction(name,callback)
-	new("RemoteFunction",name).OnServerInvoke = callback or blank;
+	if inDebug then
+		local event = new("RemoteFunction",name)
+		event.OnServerInvoke = function(...)
+			local response = {(callback or blank)(...)}
+			local data = {
+				on = formatTime(),
+				sent = {
+					{
+						request = {...},
+						response = response
+					}
+				},
+				identifier = game:GetService("HttpService"):GenerateGUID()
+			}
+			log(event,data);
+			network:fireClients("logUpdated","all",event,data);
+			return unpack(response)
+		end
+	else
+		new("RemoteFunction",name).OnServerInvoke = callback or blank;
+	end
 end
 
 function network:fireClients(name,clients,...)
@@ -46,7 +93,7 @@ end
 -- Client:
 
 network.onClientEvent = function(name,callback)
-	return get(name).OnClientEvent:Connect(callback);
+	get(name).OnClientEvent:Connect(callback)
 end
 
 function network:invoke(name,...)
@@ -55,6 +102,19 @@ end
 
 function network:fire(name,...)
 	get(name):FireServer(...);
+end
+
+function network:setup(debugMode)
+	inDebug = debugMode
+	if inDebug then
+		warn("[BetterChat]: Debug mode enabled, memory usage will go up as a result")
+		warn("[BetterChat]: Debug mode will expose all calls to the server for the chat to all clients, your messages will not be private.")
+		network:newFunction("getEventLogs",function(player,event)
+			return logs[event.Name] or {}
+		end,true)
+		network:newEvent("logUpdated",nil,true)
+	end
+	return network
 end
 
 return network;

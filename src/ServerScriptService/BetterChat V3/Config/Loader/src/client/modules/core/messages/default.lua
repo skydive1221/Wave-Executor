@@ -101,11 +101,13 @@ return function(environment)
 		return environment.config.UI.BaseTextSize
 	end
 	
-	local getLast = function(toIgnore)
+	local getLast = function(toIgnore,relevantChannel)
 		local last;
 		for _,msg in pairs(environment.messages) do
-			if(msg.data.id ~= toIgnore) then
-				last = msg
+			if(msg.data.id ~= toIgnore and msg.data.id < toIgnore) then
+				if(msg.data.channelFrom == relevantChannel) then
+					last = msg
+				end
 			end
 		end
 		return last
@@ -118,11 +120,11 @@ return function(environment)
 		end
 		local t = 0
 		
-		local lastMessage = getLast(data.id)
+		local lastMessage = getLast(data.id,data.channelFrom)
 		local mergeMessage = false
-		
+				
 		if lastMessage and lastMessage.data.name == data.name and merge then
-			if lastMessage.data.class == data.class then
+			if lastMessage.data.class == data.class and data.channelFrom == lastMessage.data.channelFrom then
 				local timeDiff = data.timeSent - lastMessage.data.timeSent
 				if timeDiff <= timeout then
 					if(lastMessage.data.id - data.id < 0) then

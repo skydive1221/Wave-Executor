@@ -38,6 +38,10 @@ if(currentPlatform ~= "Console") then
 	local signal = require(betterchat_shared:WaitForChild("signal"))
 	local wrap = require(betterchat_shared:WaitForChild("wrap"))
 	
+	-- info:
+	
+	local debugMode = betterchat_shared:GetAttribute("debugMode")
+	
 	-- client:
 
 	local container = script.Parent
@@ -486,8 +490,10 @@ if(currentPlatform ~= "Console") then
 		end
 		
 		environment.channelChanged = signal.new()
+		local batchCount = 0
 		
 		local refreshHistory = function(channel)
+			batchCount += 1
 			currentChannel = channel
 			local received = network:invoke("requestHistory",channel)
 			environment.lastRefresh = tick()
@@ -528,6 +534,10 @@ if(currentPlatform ~= "Console") then
 		
 		local onMessageReceived = function(received) --> this message will handle every single message ever displayed in the chat, kinda crazy tbh
 			for _,data in pairs(received.messages) do
+				if debugMode then
+					local current = batchCount
+					print("[BetterChat]: Creating",data.id,"for batch",current)
+				end
 				data = environment.processData(data,"chat")
 				task.spawn(function()
 					if(channelBarEnabled) then
@@ -662,9 +672,5 @@ if(currentPlatform ~= "Console") then
 		environment.utility.childAdded(addons:FindFirstChild("Plugins") or Instance.new("Folder"),function(module)
 			require(module)(api)
 		end)
-		
-		-- start(?)
-		
-		refreshHistory("Main")
 	end
 end

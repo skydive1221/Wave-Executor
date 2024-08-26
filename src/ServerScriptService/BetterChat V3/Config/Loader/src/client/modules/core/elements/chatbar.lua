@@ -65,6 +65,16 @@ return function(environment)
 	local setplaceholderText = function(message)
 		chatbox.PlaceholderText = message or chatbox.PlaceholderText
 	end
+	
+	local process = function(message)
+		if environment.config.Messages.RemoveFormattingForChattedEvent then
+			message = environment.richText:markdown(message,true)
+			message = environment.richText:strip(message)
+			connections:Fire("ChatWindow","MessagePosted",message)
+		else
+			connections:Fire("ChatWindow","MessagePosted",message)
+		end
+	end
 
 	local sendMessage = function(message)
 		table.insert(messageHistory,1,message)
@@ -78,10 +88,10 @@ return function(environment)
 			if(hasResponse and (not success)) then
 				environment:addMessageToQueue(environment.message_senders.makeSm(localization:localizeResponse(unpack(localizationData))))
 			elseif(success) then
-				connections:Fire("ChatWindow","MessagePosted",message)
+				process(message)
 			end
 		else
-			connections:Fire("ChatWindow","MessagePosted",message)
+			process(message)
 		end
 	end
 
@@ -106,7 +116,7 @@ return function(environment)
 		local offset = 10
 		local single,isReply = nil,nil
 		environment.currentChannel = "Main"
-		
+
 		local colorOptions = environment.config.UI.ColorOptions
 		channelButton.ReplyIcon.ImageColor3 = colorOptions.Buttons.ReplyAndChannel.TextAndIconColor
 		channelButton.BackgroundColor3 = colorOptions.Buttons.ReplyAndChannel.BackgroundColor
@@ -261,7 +271,7 @@ return function(environment)
 		local container = resize.Parent:WaitForChild("Container")
 		chatbox.Font = environment.config.UI.Fonts.TextFont
 		chatbox.Bar.Font = environment.config.UI.Fonts.TextFont
-		
+
 		collectionService:AddTag(chatbox,"TextFont")
 		collectionService:AddTag(chatbox.Bar,"TextFont")
 
@@ -481,6 +491,14 @@ return function(environment)
 
 	connections:Connect("ChatWindow","SpecialKeyPressed",focusChatbar)
 	--connections:Connect("ChatWindow","ChatBarFocusChanged",focusChatbar)
+
+	if environment.config.BubbleChat.Enabled and environment.config.BubbleChat.Config.TypingIndicator then
+		localPlayer:GetAttributeChangedSignal("TypingIndicatorEnabled"):Connect(function()
+			if not localPlayer:GetAttribute("TypingIndicatorEnabled") then
+				environment.network:fire("typingIndicator",false)
+			end
+		end)
+	end
 
 	return chatbar
 end

@@ -62,8 +62,8 @@ return function(config,getAllowedEmojisFor)
 
 	local markdown = require(script.Parent:WaitForChild("markdown"))(richText,config)
 
-	function richText:markdown(text)
-		if isServer then
+	function richText:markdown(text,bypass)
+		if isServer or bypass then
 			if text:sub(1,1) == [[\]] then
 				return text:sub(2,#text)
 			end

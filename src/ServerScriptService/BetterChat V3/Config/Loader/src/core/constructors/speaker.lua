@@ -34,9 +34,12 @@ return function(network,fetch,signal)
 		}
 		
 		if(player) then
-			speaker.events.channelUpdated:Connect(function()
+			function speaker:sendChannels()
 				network:fireClients("receiveChannelUpdate",{player},fetch(speaker))
-			end)
+			end
+			
+			speaker.events.channelUpdated:Connect(speaker.sendChannels)
+			
 			speaker.events.muteUpdate:Connect(function()
 				network:fireClients("receiveMuteUpdate",{player},speaker.muted)
 			end)

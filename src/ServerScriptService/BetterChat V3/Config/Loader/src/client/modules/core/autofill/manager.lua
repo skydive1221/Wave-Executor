@@ -49,27 +49,31 @@ return function(api,autofills,box,environment)
 			for _,fill in pairs(autofills) do
 				if(fill.beginsWith ~= "") then
 					if(text:find(fill.beginsWith)) then
-						local matches = {}
-						local found,beginAt = 1,1
-						repeat
-							local startIdx,endIdx = text:find(fill.beginsWith,beginAt)
-							if(endIdx and (endIdx < #text)) then
-								local ending = fill.endsWith
-								local split = text:sub(endIdx+1,#text):split(((ending ~= "" and ending) or nil))
-								local between = split[1]
-								if(#between:gsub(" ","") >= 1 or (fill.ignoreSpaces)) then
-									table.insert(matches,{
-										text = between,
-										before = text:sub(1,startIdx-1),
-										hasClosing = (#split >= 2)
-									})
+						if fill.isCommandFill and #text == #fill.beginsWith and text == fill.beginsWith then
+							capture(text,fill,{},security(fill))
+						else
+							local matches = {}
+							local found,beginAt = 1,1
+							repeat
+								local startIdx,endIdx = text:find(fill.beginsWith,beginAt)
+								if(endIdx and (endIdx < #text)) then
+									local ending = fill.endsWith
+									local split = text:sub(endIdx+1,#text):split(((ending ~= "" and ending) or nil))
+									local between = split[1]
+									if(#between:gsub(" ","") >= 1 or (fill.ignoreSpaces)) then
+										table.insert(matches,{
+											text = between,
+											before = text:sub(1,startIdx-1),
+											hasClosing = (#split >= 2)
+										})
+									end
 								end
+								found = (endIdx and 1 or 0)
+								beginAt = (endIdx and endIdx + 1 or beginAt)
+							until(found == 0)
+							if(#matches >= 1) then
+								capture(text,fill,matches,security(fill))
 							end
-							found = (endIdx and 1 or 0)
-							beginAt = (endIdx and endIdx + 1 or beginAt)
-						until(found == 0)
-						if(#matches >= 1) then
-							capture(text,fill,matches,security(fill))
 						end
 					end
 				else

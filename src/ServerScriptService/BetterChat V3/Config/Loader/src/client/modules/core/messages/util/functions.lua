@@ -76,14 +76,25 @@ return function(environment)
 				local prefix = environment.localization:getMessagePrefix(sender == localPlayer and "To" or "From")
 				table.insert(tagsList,1,{
 					text = ("%s %s"):format(prefix,opposite:GetAttribute("DisplayName")),
-					color = systemPrefixColor
+					color = systemPrefixColor,
+					specialTag = true
 				})
 			end
 		elseif(data.isTeam) then
-			table.insert(tagsList,1,{
-				text = environment.localization:getMessagePrefix("Team"),
-				color = systemPrefixColor
-			})
+			local found = false;
+			for k,v in pairs(tagsList) do
+				if(v.teamTag) then
+					found = true;
+					break
+				end
+			end
+			if not found then
+				table.insert(tagsList,1,{
+					text = environment.localization:getMessagePrefix("Team"),
+					color = systemPrefixColor,
+					teamTag = true
+				})
+			end
 		end
 		local tags = ""
 		local padded = false

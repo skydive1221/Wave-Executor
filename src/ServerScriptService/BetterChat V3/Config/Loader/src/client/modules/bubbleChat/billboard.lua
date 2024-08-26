@@ -7,6 +7,7 @@
 
 local billboard = {}
 local useRaycastingToDetermineVisibility = true
+local collectionService = game:GetService("CollectionService")
 local connections = {}
 
 local onDescendant = function(object,callback)
@@ -23,6 +24,8 @@ function billboard.init(config,network,environment)
 	local ui = require(script.Parent:WaitForChild("ui")).init(config)
 	local stackModule = require(script.Parent:WaitForChild("stack"))(environment).init(config)
 	local padding = config.Config.Padding
+	local camera = workspace.CurrentCamera
+	local billboardData = {}
 
 	local players = game:GetService("Players")
 	local localPlayer = players.LocalPlayer
@@ -34,25 +37,36 @@ function billboard.init(config,network,environment)
 	containerGui.ResetOnSpawn = false
 	environment.bubbleChatContainer = containerGui
 
-	local linkAlwaysOnTop = function(gui,adornee,link)
-		link = link or function() end
-		local camera = workspace.CurrentCamera
+	local linkAlwaysOnTop = function(gui,adornee)
 		local raycastParams = RaycastParams.new()
 		raycastParams.IgnoreWater = true
 		raycastParams.FilterType = Enum.RaycastFilterType.Exclude
 		raycastParams.FilterDescendantsInstances = {adornee.Parent}
-		link(camera.Changed:Connect(function()
-			local vector,inViewport = camera:WorldToViewportPoint(adornee.Position)
-			local onScreen = inViewport and vector.Z > 0
-			if(onScreen) then
-				local raycastResult = workspace:Raycast(camera.CFrame.Position,(adornee.Position - camera.CFrame.Position),raycastParams)
-				local isVisible = not raycastResult
-				gui.AlwaysOnTop = isVisible
-			else
-				gui.AlwaysOnTop = false
-			end
-		end))
+		billboardData[gui] = {
+			adornee = adornee,
+			params = raycastParams
+		}
 	end
+
+	camera.Changed:Connect(function()
+		for gui,billboard in pairs(billboardData) do
+			if gui:GetFullName() == gui.Name or billboard.adornee:GetFullName() == billboard.adornee.Name then
+				billboardData[gui] = nil
+			else
+				local result = (billboard.adornee.Position - camera.CFrame.Position)
+				if(result.magnitude < gui.MaxDistance) then
+					local vector,inViewport = camera:WorldToViewportPoint(billboard.adornee.Position)
+					local onScreen = inViewport and vector.Z > 0
+					if(onScreen) then
+						local raycastResult = workspace:Raycast(camera.CFrame.Position,result,billboard.params)
+						gui.AlwaysOnTop = not raycastResult
+					else
+						gui.AlwaysOnTop = false
+					end
+				end
+			end
+		end
+	end)
 
 	function billboard:holster(player)
 		local isLocalPlayer = (player == localPlayer)
@@ -84,7 +98,7 @@ function billboard.init(config,network,environment)
 			linked[character] = gui
 
 			if(useRaycastingToDetermineVisibility) then
-				linkAlwaysOnTop(gui,gui.Adornee,link)
+				linkAlwaysOnTop(gui,gui.Adornee)
 			end
 
 			local objs = {}
@@ -163,12 +177,13 @@ function billboard.init(config,network,environment)
 		if(config.Config.TypingIndicator) then
 			link(network.onClientEvent("typingIndicator",function(p,state) 
 				if(p == player and p.Character) then
-					typingIndicator.Visible = state
 					if(lastState ~= state) then
 						lastState = state
-						if(state) then
+						if(state and p:GetAttribute("TypingIndicatorEnabled")) then
+							typingIndicator.Visible = true
 							stack:push(typingIndicator,true)
 						else
+							typingIndicator.Visible = false
 							stack:remove(typingIndicator)
 						end
 					end
@@ -178,7 +193,7 @@ function billboard.init(config,network,environment)
 
 		environment.betterchatv3bubbles = {}
 		environment.stacks = {}
-		
+
 		link(network.onClientEvent("editMessage",function(data)
 			if(environment.betterchatv3bubbles[data.guid]) then
 				local stack = environment.stacks[data.guid]
@@ -190,19 +205,19 @@ function billboard.init(config,network,environment)
 				if not data.deleted then
 					local text = data.message .. environment.editedStamp
 					local guid = data.guid
-					
+
 					if data.customEmojis then
 						local sample = ui.bubble.new(text,gui.Container)
 						text = environment:processEmojis(sample.Label,data,text)
 						sample:Destroy()
 					end
-					
+
 					local bubble = ui.bubble.new(text,gui.Container)
 					environment.betterchatv3bubbles[guid] = bubble
 					stack:push(
 						bubble,false,guid					
 					)
-					
+
 					if(data.customEmojis) then	
 						environment:attachCustomEmojis(bubble.Label,text,data.customEmojis,data.spacing,function(pos)
 							pos += UDim2.fromOffset(padding,padding)
@@ -288,15 +303,7 @@ function billboard.init(config,network,environment)
 		typingIndicator.Visible = false
 
 		if(useRaycastingToDetermineVisibility) then
-			linkAlwaysOnTop(gui,gui.Adornee,function(connection)
-				local sig;
-				sig = part.AncestryChanged:Connect(function()
-					if(part:GetFullName() == part.Name or part.Parent == nil) then
-						sig:Disconnect()
-						connection:Disconnect()
-					end
-				end)
-			end)
+			linkAlwaysOnTop(gui,gui.Adornee)
 		end
 
 		local objs = {}
@@ -354,7 +361,7 @@ function billboard.init(config,network,environment)
 			EasingStyle = options.EasingStyle or config.Config.EasingStyle,
 			Length = options.Length or config.Config.Length
 		})
-			
+
 		local lastState = false
 
 		return {

@@ -90,6 +90,7 @@ return function(constructors,wrap,config,callbacks,permission)
 	api.channel = constructors.channel
 	api.speaker = constructors.speaker
 	api.network = constructors.network
+	api.profiles = constructors.profileService
 	api.network:newEvent("systemMessage")
 
 	function api:systemMessage(text)

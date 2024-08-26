@@ -8,6 +8,8 @@ local colorModule = require(script.Parent:WaitForChild("color"))
 
 return function(rich_text,config)
 	local guid = rich_text:getId()
+	local availableFonts = Enum.Font:GetEnumItems()
+	
 	local enabled = config.Messages.Markdown or {
 		ItalicBold = true,
 		Bold = true,
@@ -17,6 +19,10 @@ return function(rich_text,config)
 		Colored = true,
 		Outlines = true,
 	}
+	
+	if enabled.Fonts == nil then
+		enabled.Fonts = true
+	end
 	
 	local parse_color = function(color)
 		color = color:gsub(" ","") -- remove spaces
@@ -32,6 +38,24 @@ return function(rich_text,config)
 		else
 			return colorModule.rgb_to_hex(colorModule.matchBrickcolor(color))
 		end
+	end
+	
+	local parse_font = function(text)
+		for _,font in pairs(availableFonts) do
+			if(font.Name:lower() == text) then
+				return font.Name
+			end
+		end
+	end
+	
+	local font_tag = function(text,info)
+		if info and #info >= 1 then
+			local font = parse_font(info:lower():gsub(" ",""))
+			if font then
+				return ('<font face="%s">%s</font>'):format(font,text)
+			end
+		end
+		return text
 	end
 
 	local color_tag = function(text,color) -- place text in a rich text color tag with the specified color
@@ -135,6 +159,10 @@ return function(rich_text,config)
 		return wrap(b,"[","]",stroke_tag)
 	end
 	
+	local font = function(b)
+		return wrap(b,"&lt;","&gt;",font_tag)
+	end
+	
 	local formats = filter({
 		-- don't change the order of these pls lol
 		-- they're priority-based so things like *** would be grabbed before ** etc
@@ -146,6 +174,7 @@ return function(rich_text,config)
 		enabled.Strikethrough and {"~~","s",regulartag}, --> ~~hi~~ makes the text crossed through
 		enabled.Colored and {"(","",customcolor,")"}, --> (255,0,0 / red) (#FF0000 / red) (Really red / red) --> red text
 		enabled.Outlines and {"[","",outline,"]"},
+		enabled.Fonts and {"&lt;","",font,"&gt;"},
 	})
 
 	local _gsub_escape_table = {

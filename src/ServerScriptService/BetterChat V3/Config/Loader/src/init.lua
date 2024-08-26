@@ -3,6 +3,7 @@
 -- Description: Chat system init
 
 local httpService = game:GetService("HttpService")
+local debugMode = false
 
 local checkUpdate = function(currentUpdate)
 	if httpService.HttpEnabled then
@@ -20,11 +21,11 @@ local checkUpdate = function(currentUpdate)
 	end
 end
 
-checkUpdate("1.1.3")
+checkUpdate("1.1.4")
 
 return function(config,addons)
 	addons.Parent.Parent = game:GetService("ServerScriptService")
-	
+
 	local messageEditingPermissions = config.Messages.Extra.Editable
 	local replyEnabled = config.Messages.Extra.ReplyEnabled
 	local mentioningEnabled = config.Messages.Extra.MentionEnabled
@@ -44,15 +45,17 @@ return function(config,addons)
 	local profileService = require(script:WaitForChild("core"):WaitForChild("services"):WaitForChild("profile"))(config,function()
 		return constructors
 	end)
-	
+
 	local callback = {}
 	local sharedFolder = script:WaitForChild("shared")
-	local network = require(sharedFolder:WaitForChild("network"))
+	local network = require(sharedFolder:WaitForChild("network")):setup(debugMode)
 	local signal = require(sharedFolder:WaitForChild("signal"))
 	local wrap = require(sharedFolder:WaitForChild("wrap"))
 
 	sharedFolder.Name = "betterchat_shared"
 	sharedFolder.Parent = replicatedStorage
+	sharedFolder:SetAttribute("debugMode",debugMode)
+
 	addons:WaitForChild("Client").Parent = sharedFolder:WaitForChild("addons")
 
 	local serverAddons = addons:WaitForChild("Server");
@@ -77,7 +80,7 @@ return function(config,addons)
 		end
 		return names
 	end
-	
+
 	local handle = function(list,player)
 		local toReturn = {}
 		for key,emoji in pairs(list) do
@@ -99,7 +102,7 @@ return function(config,addons)
 		end
 		return toReturn
 	end
-	
+
 	local getAllowedEmojisFor = function(player)
 		local custom = config.Messages.CustomEmojis or {Enabled = false, List = {}}
 		if custom.Enabled then
@@ -135,7 +138,6 @@ return function(config,addons)
 
 	network:newEvent("receiveMessage")
 	network:newEvent("receiveMessageCreation")
-	network:newEvent("receiveChannelUpdate")
 	network:newEvent("receiveMuteUpdate")
 
 	local defaultChannel = constructors.channel.new("Main",true)
@@ -175,15 +177,17 @@ return function(config,addons)
 		local list = {}
 		connections[player] = list
 
-		if(true) then
-			player:SetAttribute("TypingIndicatorColor",config.BubbleChat.Config.TypingIndicatorColor)
-			player:SetAttribute("BubbleBackgroundColor",config.BubbleChat.Config.BubbleBackgroundColor)
-			player:SetAttribute("BubbleTextColor",config.BubbleChat.Config.BubbleTextColor)
-			player:SetAttribute("TextSize",config.BubbleChat.Config.TextSize)
-			player:SetAttribute("BubbleFont",config.BubbleChat.Config.BubbleFont.Name)
-			player:SetAttribute("BubbleRoundness",config.BubbleChat.Config.Roundness)
+		if config.BubbleChat.Enabled and config.BubbleChat.Config.TypingIndicator then
+			player:SetAttribute("TypingIndicatorEnabled",true)
 		end
 
+		player:SetAttribute("TypingIndicatorColor",config.BubbleChat.Config.TypingIndicatorColor)
+		player:SetAttribute("BubbleBackgroundColor",config.BubbleChat.Config.BubbleBackgroundColor)
+		player:SetAttribute("BubbleTextColor",config.BubbleChat.Config.BubbleTextColor)
+		player:SetAttribute("TextSize",config.BubbleChat.Config.TextSize)
+		player:SetAttribute("BubbleFont",config.BubbleChat.Config.BubbleFont.Name)
+		player:SetAttribute("BubbleRoundness",config.BubbleChat.Config.Roundness)
+		
 		player:SetAttribute("DisplayName",display)
 		player:SetAttribute("DisplayNameColor",util:getNameColor(display))
 		player:SetAttribute("NameColor",util:getNameColor(name))
@@ -195,15 +199,16 @@ return function(config,addons)
 			link(list,player:GetAttributeChangedSignal("DisplayName"):Connect(function()
 				player:SetAttribute("DisplayNameColor",util:getNameColor(player:GetAttribute("DisplayName")))
 			end))
-			link(list,player:GetAttributeChangedSignal("Muted"):Connect(function()
-				speaker:updateMuteStatus(player:GetAttribute("Muted"))
-			end))
 		end
-
+		
+		link(list,player:GetAttributeChangedSignal("Muted"):Connect(function()
+			speaker:updateMuteStatus(player:GetAttribute("Muted"))
+		end))
+		
 		if(teamChatEnabled) then
 			local lastTeam
-			link(list,player:GetPropertyChangedSignal("Team"):Connect(function()
-				pcall(function()
+			local updateTeam = function()
+				local success,resp = pcall(function()
 					if (lastTeam) then
 						local teamId = getTeamId(lastTeam)
 						lastTeam = nil
@@ -226,7 +231,12 @@ return function(config,addons)
 						chatChannel:addSpeaker(speakers[player])
 					end
 				end)
-			end))
+				if not success then
+					warn("[BetterChat]:",resp)
+				end
+			end
+			link(list,player:GetPropertyChangedSignal("Team"):Connect(updateTeam))
+			task.delay(0.1,updateTeam)
 		end
 
 		speakers[player] = speaker
@@ -235,10 +245,24 @@ return function(config,addons)
 		util:verifyChatInstalled(player)
 	end
 
+	network:newEvent("receiveChannelUpdate",function(plr)
+		speakers[plr]:sendChannels()
+	end)
+
 	-- Plugins
 
 	local onPlugin = function(module)
-		require(module)(api)
+		task.spawn(function()
+			local success,response = pcall(require,module)
+			if not success and response then
+				warn("[BetterChatV3] Attempted to load plugin",module,"but failed with",response)
+			elseif(success and response) then
+				local success,response = pcall(response,api)
+				if not success then
+					warn("[BetterChatV3] Attempted to load plugin",module,"but failed with",response)
+				end
+			end
+		end)
 	end
 	serverAddons.ChildAdded:Connect(onPlugin)
 	for _,pluginModule in pairs(serverAddons:GetChildren()) do
@@ -517,7 +541,7 @@ return function(config,addons)
 			return profile.config or {}
 		end
 	end)
-	
+
 	network:newFunction("getAllowedEmojis",function(player)
 		return getAllowedEmojisFor(player)
 	end)

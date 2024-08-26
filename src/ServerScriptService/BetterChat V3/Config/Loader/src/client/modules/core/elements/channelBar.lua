@@ -147,9 +147,11 @@ return function(environment)
 				task.wait(5/1000)
 			until(environment.fetchChannelHistory)
 		end
-		environment:clearChannelNotifications(channel)
-		currentlySelected = channel
-		environment:fetchChannelHistory(channel)
+		if currentlySelected ~= channel then
+			environment:clearChannelNotifications(channel)
+			currentlySelected = channel
+			environment:fetchChannelHistory(channel)
+		end
 	end
 
 	local update = function(channels,size)
@@ -230,6 +232,8 @@ return function(environment)
 			update(last,size)
 		end
 	end
+	
+	environment.network:fire("receiveChannelUpdate")
 
 	return channelBar
 end
